@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<title>Zapier vs Make vs n8n in 2026: Real Costs, Explained Simply</title>
+<meta name="description" content="The three big automation platforms compared the way it matters: what counts as a billable unit, what that costs at volume, and who should pick which.">
+<link rel="canonical" href="https://voxahq.in/guides/zapier-vs-make-vs-n8n-for-ai-automation">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="keywords" content="Zapier vs Make vs n8n, automation tools compared, n8n pricing, Make vs Zapier cost">
+<meta name="author" content="VOXA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://voxahq.in/images/guides/zapier-vs-make-vs-n8n-for-ai-automation.png">
+
+<meta property="og:title" content="Zapier vs Make vs n8n in 2026: Real Costs, Explained Simply">
+<meta property="og:description" content="The three big automation platforms compared the way it matters: what counts as a billable unit, what that costs at volume, and who should pick which.">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/guides/zapier-vs-make-vs-n8n-for-ai-automation.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Zapier vs Make vs n8n: which one should you use?","description":"The three big automation platforms compared the way it matters: what counts as a billable unit, what that costs at volume, and who should pick which.","datePublished":"2026-10-06","dateModified":"2026-10-06","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA"},"mainEntityOfPage":"https://voxahq.in/guides/zapier-vs-make-vs-n8n-for-ai-automation"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is n8n actually free?","acceptedAnswer":{"@type":"Answer","text":"The self-hosted version is, and it has no execution limit. You still pay for a server and your own time to keep it running. Cloud plans start around $20 a month."}},{"@type":"Question","name":"Why does Zapier get expensive?","acceptedAnswer":{"@type":"Answer","text":"It bills per task and counts every step. A five-step automation running 10,000 times a month is 50,000 tasks. Make bills per operation and n8n per run, so multi-step workflows cost less there."}},{"@type":"Question","name":"Which one is best for AI agents?","acceptedAnswer":{"@type":"Answer","text":"n8n, by some distance. It has agent nodes, vector database connectors and MCP support built in. Make is second. Zapier is fine for simple AI steps but treats AI as an add-on."}},{"@type":"Question","name":"Do I need to code?","acceptedAnswer":{"@type":"Answer","text":"Not for Zapier, and mostly not for Make. n8n is usable without code for simple flows, but anything real tends to need a bit of JavaScript."}},{"@type":"Question","name":"Can I move my workflows somewhere else later?","acceptedAnswer":{"@type":"Answer","text":"Not automatically. You rebuild the logic, usually a day or two for a dozen workflows. Keep the old ones running until the new ones have gone a full month without errors."}}]}</script>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="alternate icon" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JFBST9ZHJP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JFBST9ZHJP');
+</script>
+<noscript><style>.rv{opacity:1 !important;transform:none !important}.line>span{transform:none !important}.statement p .wd{opacity:1 !important}</style></noscript>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Automation platforms prices at VOXA","description":"Prices checked on vendor pricing pages in October 2026.","url":"https://voxahq.in/guides/zapier-vs-make-vs-n8n-for-ai-automation","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"SoftwareApplication","name":"n8n (self-hosted)","applicationCategory":"BusinessApplication","description":"free"}},{"@type":"ListItem","position":2,"item":{"@type":"SoftwareApplication","name":"Make Core","applicationCategory":"BusinessApplication","description":"$9/mo, 10,000 operations","offers":{"@type":"Offer","price":"9","priceCurrency":"USD"}}},{"@type":"ListItem","position":3,"item":{"@type":"SoftwareApplication","name":"n8n cloud","applicationCategory":"BusinessApplication","description":"from about $20/mo","offers":{"@type":"Offer","price":"20","priceCurrency":"USD"}}},{"@type":"ListItem","position":4,"item":{"@type":"SoftwareApplication","name":"Zapier","applicationCategory":"BusinessApplication","description":"from about $20-30/mo, billed per task","offers":{"@type":"Offer","price":"20","priceCurrency":"USD"}}}]}</script>
+</head>
+<body class="loading" data-scene="monolith">
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+<div class="loader" id="loader">
+  <div class="mono" style="color:var(--muted)">VOXA / AI TOOLS &amp; AUTOMATION</div>
+  <div class="loader__count" id="loaderCount">0</div>
+  <div class="loader__bar"><i id="loaderBar"></i></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/" data-cursor><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="VOXA"><rect x="1" y="1" width="46" height="46" rx="12" fill="#0b0f10" stroke="#1e2c30"/><path d="M14 15 L24 34" fill="none" stroke="#22d3ee" stroke-width="4.6" stroke-linecap="round"/><path d="M24 34 L34 15" fill="none" stroke="#c8f751" stroke-width="4.6" stroke-linecap="round"/><circle cx="14" cy="15" r="3.2" fill="#22d3ee"/><circle cx="34" cy="15" r="3.2" fill="#c8f751"/></svg>VOXA</a>
+  <nav class="nav__links" id="navLinks">
+    <a href="/">Home</a>
+    <a href="/guides">Guides</a>
+    <a href="/notes">Notes</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+  </nav>
+  <a class="btn" href="/contact" data-magnet><span data-cursor>Contact</span></a>
+  <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
+</header>
+<div class="page">
+<main>
+  <section class="page-head wrap">
+    <span class="mono">Guide / Automation</span>
+    <h1>Zapier vs Make vs n8n: which one should you use?</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/guides">Guides</a><span>/</span><span>Zapier vs Make vs n8n</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0">
+    <div class="panel">
+      <p class="byline mono">By the VOXA team &middot; we check every price by hand before it goes up</p>
+      <p class="meta-line mono"><span>Updated October 6, 2026</span><span>7 min read</span><span>Prices checked Oct 2026</span></p>
+      <figure class="guide-figure">
+        <img src="../images/guides/zapier-vs-make-vs-n8n-for-ai-automation.png" alt="Chart comparing automation platform prices: n8n free self-hosted, Make $9, n8n cloud about $20, Zapier about $20-30" width="1200" height="675" loading="lazy" decoding="async">
+      </figure>
+            <div class="prose">
+        <div class="tldr">
+          <h2>Quick answer</h2>
+          <p style="margin:0 0 12px;color:rgba(244,244,241,.9)">Zapier is fastest to set up, Make is the best value for branching logic, and n8n is cheapest at volume if you can host it.</p>
+          <ul>
+            <li>Zapier bills per task and counts every step, so a five-step workflow running 10,000 times is 50,000 tasks.</li>
+            <li>Make bills per operation and starts at $9/mo for 10,000 operations.</li>
+            <li>n8n self-hosted is free and bills per workflow run, not per step.</li>
+            <li>App coverage: Zapier 7,000+, Make 3,000+, n8n 400+ official nodes.</li>
+          </ul>
+        </div>
+
+
+        <p>All three of these tools will connect your apps and save you hours. The difference only shows up when a workflow runs thousands of times a month, and then it shows up on your bill. That's the part nobody puts in the comparison table.</p>
+        <p>Short version first: Zapier is the fastest to set up and the most expensive as you grow. Make is the best value if your workflows branch. n8n is the cheapest at volume, but only if someone can look after it.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>&nbsp;</th><th>Zapier</th><th>Make</th><th>n8n</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Free plan</strong></td><td>100 tasks a month, single-step only</td><td>1,000 operations, 2 active scenarios</td><td>Unlimited if you host it yourself</td></tr>
+              <tr><td><strong>Paid from</strong></td><td>About $20-30 a month</td><td>$9 a month</td><td>About $20 a month, or free self-hosted</td></tr>
+              <tr><td><strong>What counts as one unit</strong></td><td>Every step in a Zap</td><td>Every module that runs</td><td>Every workflow run</td></tr>
+              <tr><td><strong>Apps</strong></td><td>7,000-9,000+</td><td>3,000+</td><td>400+ official, 2,000+ with community</td></tr>
+              <tr><td><strong>Self-hosting</strong></td><td>No</td><td>No</td><td>Yes</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="billing">The billing thing that catches everyone</h2>
+        <p>Picture one small workflow: a form comes in, you clean the data, add a row to a sheet, send an email, and post to Slack. Five steps.</p>
+        <p>On Zapier, that's five tasks per run. Run it 10,000 times a month and you've used 50,000 tasks, which puts you on a plan built for companies, not solo operators.</p>
+        <p>On Make, it's 50,000 operations, but operations are cheap at that level.</p>
+        <p>On n8n, it's 10,000 runs. If you're self-hosting, it costs you nothing extra.</p>
+        <p>Same workflow, wildly different bills. That's why you'll see one person say Zapier costs $30 and another say $400. Both are telling the truth.</p>
+
+        <h2 id="zapier">Zapier: pay for speed</h2>
+        <p>Nothing beats it for getting two apps talking in ten minutes, and its app library is the biggest by a mile. If you're not technical and your workflows are short, this is the one to pick.</p>
+        <p>The catch is volume. Tasks add up fast, and there's no version you can host yourself when the bill gets silly.</p>
+
+        <h2 id="make">Make: the value pick</h2>
+        <p>Make's canvas is built for the messy middle: branches, filters, loops over line items, error handling. At $9 a month for 10,000 operations it's almost a rounding error next to Zapier, and the AI modules are built in rather than tacked on.</p>
+        <p>If your automation has conditions in it, start here.</p>
+
+        <h2 id="n8n">n8n: for people who can maintain it</h2>
+        <p>n8n is the only one you can run on your own server. Because it bills per run instead of per step, a twelve-step workflow costs the same as a two-step one. Its AI agent tools are the deepest of the three.</p>
+        <p>Here's the honest part: self-hosting means updates, backups, and someone to fix it on a Sunday. If nobody on your team wants that job, the free version isn't actually free.</p>
+
+        <h2 id="choose">Pick in one line</h2>
+        <ul>
+          <li>Two apps, no code, today: <strong>Zapier</strong>.</li>
+          <li>Branching logic on a small budget: <strong>Make</strong>.</li>
+          <li>High volume, AI agents, or data that can't leave your servers: <strong>n8n</strong>.</li>
+        </ul>
+        <p>Building a writing or publishing pipeline instead? Start with the <a href="/guides/best-ai-writing-tools-for-blog-posts">AI writing tools guide</a> and come back here for the platform that moves the output.</p>
+
+        <div class="callout">
+          <p style="margin:0"><strong>One note:</strong> AI pricing moves fast. We read these numbers off the vendors' own pricing pages in October 2026, so check the current price before you buy.</p>
+        </div>
+        <h2>Where to check the current price</h2>
+        <p>These are the official pages we read while writing this guide. Plain links, no tracking, no middlemen. If a number here ever disagrees with what you see, trust their page and tell us so we can fix it.</p>
+        <ul>
+          <li><a href="https://zapier.com/pricing" target="_blank" rel="noopener">Zapier pricing</a></li>
+          <li><a href="https://www.make.com/en/pricing" target="_blank" rel="noopener">Make pricing</a></li>
+          <li><a href="https://n8n.io/pricing/" target="_blank" rel="noopener">n8n pricing</a></li>
+        </ul>
+
+        <h2>Frequently asked questions</h2>
+        <h3>Is n8n actually free?</h3>
+        <p>The self-hosted version is, and it has no execution limit. You still pay for a server and your own time to keep it running. Cloud plans start around $20 a month.</p>
+        <h3>Why does Zapier get expensive?</h3>
+        <p>It bills per task and counts every step. A five-step automation running 10,000 times a month is 50,000 tasks. Make bills per operation and n8n per run, so multi-step workflows cost less there.</p>
+        <h3>Which one is best for AI agents?</h3>
+        <p>n8n, by some distance. It has agent nodes, vector database connectors and MCP support built in. Make is second. Zapier is fine for simple AI steps but treats AI as an add-on.</p>
+        <h3>Do I need to code?</h3>
+        <p>Not for Zapier, and mostly not for Make. n8n is usable without code for simple flows, but anything real tends to need a bit of JavaScript.</p>
+        <h3>Can I move my workflows somewhere else later?</h3>
+        <p>Not automatically. You rebuild the logic, usually a day or two for a dozen workflows. Keep the old ones running until the new ones have gone a full month without errors.</p>
+        <div class="related">
+          <a class="btn" href="/guides/ai-agents-for-small-business">AI agents for small business &rarr;</a>
+          <a class="btn" href="/guides/ai-tool-stack-cost">AI tool stack costs &rarr;</a>
+          <a class="btn" href="/guides/best-ai-writing-tools-for-blog-posts">AI writing tools &rarr;</a>
+          <a class="btn" href="/guides/local-ai-tools-privacy">local AI tools &rarr;</a>
+          <a class="btn" href="/guides">all VOXA guides &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="/"><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="VOXA"><rect x="1" y="1" width="46" height="46" rx="12" fill="#0b0f10" stroke="#1e2c30"/><path d="M14 15 L24 34" fill="none" stroke="#22d3ee" stroke-width="4.6" stroke-linecap="round"/><path d="M24 34 L34 15" fill="none" stroke="#c8f751" stroke-width="4.6" stroke-linecap="round"/><circle cx="14" cy="15" r="3.2" fill="#22d3ee"/><circle cx="34" cy="15" r="3.2" fill="#c8f751"/></svg>VOXA</a>
+        <p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation software.</p>
+      </div>
+      <div><h5 class="mono">Pages</h5><ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/guides">Guides</a></li>
+        <li><a href="/notes">Notes</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul></div>
+      <div><h5 class="mono">Legal</h5><ul>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms &amp; Conditions</a></li>
+        <li><a href="/disclaimer">Disclaimer</a></li>
+        <li><a href="/cookie-policy">Cookie Policy</a></li>
+      </ul></div>
+      <div><h5 class="mono">Contact</h5><ul>
+        <li><a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a></li>
+        <li><a href="/contact">Contact form</a></li>
+        <li><a href="https://www.pinterest.com/voxahq" rel="me noopener" target="_blank">Pinterest</a></li>
+      </ul></div>
+    </div>
+    <div class="foot__bottom mono">
+      <span>&copy; <span id="year">2026</span> VOXA</span>
+      <span id="clock">--:--:--</span>
+      <span>Independent guide &middot; no sponsored rankings</span>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="../js/main.js"></script>
+<script src="../js/lazy3d.js" data-scene-src="../js/scene.js"></script>
+</body>
+</html>

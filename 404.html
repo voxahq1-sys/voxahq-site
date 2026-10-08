@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page not found | VOXA</title>
+<meta name="robots" content="noindex, follow">
+<meta name="description" content="That page does not exist on VOXA. Browse the guides and notes instead.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="loading" data-scene="monolith">
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/" data-cursor><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="VOXA"><rect x="1" y="1" width="46" height="46" rx="12" fill="#0b0f10" stroke="#1e2c30"/><path d="M14 15 L24 34" fill="none" stroke="#22d3ee" stroke-width="4.6" stroke-linecap="round"/><path d="M24 34 L34 15" fill="none" stroke="#c8f751" stroke-width="4.6" stroke-linecap="round"/><circle cx="14" cy="15" r="3.2" fill="#22d3ee"/><circle cx="34" cy="15" r="3.2" fill="#c8f751"/></svg>VOXA</a>
+  <nav class="nav__links" id="navLinks">
+    <a href="/">Home</a>
+    <a href="/guides">Guides</a>
+    <a href="/notes">Notes</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+  </nav>
+  <a class="btn" href="/contact" data-magnet><span data-cursor>Contact</span></a>
+  <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
+</header>
+<div class="page">
+<main>
+  <section class="page-head wrap">
+    <span class="mono">Error 404</span>
+    <h1>That page <em class="serif">moved on</em></h1>
+    <p style="max-width:60ch;color:var(--muted);margin-top:22px">The link you followed does not exist any more, or it never did. Nothing is broken on your side. Here is where people usually want to go.</p>
+    <div class="related" style="margin-top:30px">
+      <a class="btn" href="/guides">all guides &rarr;</a>
+      <a class="btn" href="/notes">latest notes &rarr;</a>
+      <a class="btn" href="/">home &rarr;</a>
+      <a class="btn" href="/contact">tell us about the broken link &rarr;</a>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="/"><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="VOXA"><rect x="1" y="1" width="46" height="46" rx="12" fill="#0b0f10" stroke="#1e2c30"/><path d="M14 15 L24 34" fill="none" stroke="#22d3ee" stroke-width="4.6" stroke-linecap="round"/><path d="M24 34 L34 15" fill="none" stroke="#c8f751" stroke-width="4.6" stroke-linecap="round"/><circle cx="14" cy="15" r="3.2" fill="#22d3ee"/><circle cx="34" cy="15" r="3.2" fill="#c8f751"/></svg>VOXA</a>
+        <p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation software. No affiliate links, no sponsored rankings.</p>
+      </div>
+      <div><h5 class="mono">Pages</h5><ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/guides">Guides</a></li>
+        <li><a href="/notes">Notes</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul></div>
+      <div><h5 class="mono">Legal</h5><ul>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms &amp; Conditions</a></li>
+        <li><a href="/disclaimer">Disclaimer</a></li>
+        <li><a href="/cookie-policy">Cookie Policy</a></li>
+      </ul></div>
+      <div><h5 class="mono">Contact</h5><ul>
+        <li><a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a></li>
+        <li><a href="/contact">Contact form</a></li>
+        <li><a href="https://www.pinterest.com/voxahq" rel="me noopener" target="_blank">Pinterest</a></li>
+      </ul></div>
+    </div>
+    <div class="foot__bottom mono">
+      <span>&copy; <span id="year">2026</span> VOXA</span>
+      <span id="clock">--:--:--</span>
+      <span>Independent guide &middot; no sponsored rankings</span>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="js/main.js"></script>
+<script src="js/lazy3d.js" data-scene-src="js/scene.js"></script>
+</body>
+</html>

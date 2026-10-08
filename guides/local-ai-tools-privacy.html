@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="alternate icon" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<title>Local AI Tools in 2026: Run AI on Your Own Computer Without Uploading Data</title>
+<meta name="description" content="Ollama, LM Studio, Jan, GPT4All and Whisper compared, with honest hardware requirements and where local models are still worse.">
+<link rel="canonical" href="https://voxahq.in/guides/local-ai-tools-privacy">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="keywords" content="local AI tools, run AI locally, Ollama, LM Studio, private AI offline">
+<meta name="author" content="VOXA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://voxahq.in/images/guides/local-ai-tools-privacy.png">
+
+<meta property="og:title" content="Local AI Tools in 2026: Run AI on Your Own Computer Without Uploading Data">
+<meta property="og:description" content="Ollama, LM Studio, Jan, GPT4All and Whisper compared, with honest hardware requirements and where local models are still worse.">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/guides/local-ai-tools-privacy.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Local AI tools: run AI on your own computer","description":"Ollama, LM Studio, Jan, GPT4All and Whisper compared, with honest hardware requirements and where local models are still worse.","datePublished":"2026-10-07","dateModified":"2026-10-07","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA"},"mainEntityOfPage":"https://voxahq.in/guides/local-ai-tools-privacy"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is local AI actually free?","acceptedAnswer":{"@type":"Answer","text":"The software is. Ollama, Jan, GPT4All and Whisper are open source with no subscription. You pay with your own hardware, electricity and setup time, and you miss the capability of the paid frontier models."}},{"@type":"Question","name":"How much RAM do I need to run a local model?","acceptedAnswer":{"@type":"Answer","text":"Around 8GB runs small quantised models for basic writing and summarising. 16GB is comfortable. For larger models that feel closer to a cloud assistant, plan on 32GB of memory or a GPU with 8 to 16GB of video memory."}},{"@type":"Question","name":"Is local AI as good as ChatGPT?","acceptedAnswer":{"@type":"Answer","text":"No. A model that fits on a laptop is noticeably weaker at multi-step reasoning, long documents and current information. It is better at privacy, offline use and bulk processing, which is usually why people install one."}},{"@type":"Question","name":"Can I use local AI for client work?","acceptedAnswer":{"@type":"Answer","text":"That is the main reason to use it. Nothing leaves your machine, so client files, recordings and drafts stay private. Check the licence of the specific model you download, since some restrict commercial use."}},{"@type":"Question","name":"Which is easier, local AI or a cloud subscription?","acceptedAnswer":{"@type":"Answer","text":"The cloud subscription, by a wide margin. Local tools need a download, a model file, and some patience with speed. The payoff is privacy and no per-use cost, which is worth it only if those two things matter to you."}}]}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JFBST9ZHJP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JFBST9ZHJP');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<noscript><style>.rv{opacity:1 !important;transform:none !important}.line>span{transform:none !important}.statement p .wd{opacity:1 !important}</style></noscript>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Local AI prices at VOXA","description":"Prices checked on vendor pricing pages in October 2026.","url":"https://voxahq.in/guides/local-ai-tools-privacy","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"SoftwareApplication","name":"Ollama, LM Studio, Jan, GPT4All, Whisper","applicationCategory":"BusinessApplication","description":"free"}},{"@type":"ListItem","position":2,"item":{"@type":"SoftwareApplication","name":"Hardware","applicationCategory":"BusinessApplication","description":"8GB RAM for small models, 32GB or a GPU for larger ones"}}]}</script>
+</head>
+<body class="loading" data-scene="monolith">
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+<div class="loader" id="loader">
+  <div class="mono" style="color:var(--muted)">VOXA / AI TOOLS &amp; AUTOMATION</div>
+  <div class="loader__count" id="loaderCount">0</div>
+  <div class="loader__bar"><i id="loaderBar"></i></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/" data-cursor><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="VOXA"><rect x="1" y="1" width="46" height="46" rx="12" fill="#0b0f10" stroke="#1e2c30"/><path d="M14 15 L24 34" fill="none" stroke="#22d3ee" stroke-width="4.6" stroke-linecap="round"/><path d="M24 34 L34 15" fill="none" stroke="#c8f751" stroke-width="4.6" stroke-linecap="round"/><circle cx="14" cy="15" r="3.2" fill="#22d3ee"/><circle cx="34" cy="15" r="3.2" fill="#c8f751"/></svg>VOXA</a>
+  <nav class="nav__links" id="navLinks">
+    <a href="/">Home</a>
+    <a href="/guides">Guides</a>
+    <a href="/notes">Notes</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+  </nav>
+  <a class="btn" href="/contact" data-magnet><span data-cursor>Contact</span></a>
+  <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
+</header>
+<div class="page">
+<main>
+  <section class="page-head wrap">
+    <span class="mono">Guide / Privacy &amp; hardware</span>
+    <h1>Local AI tools: run AI on your own computer</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/guides">Guides</a><span>/</span><span>Local AI tools</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0">
+    <div class="panel">
+      <p class="byline mono">By the VOXA team &middot; we check every price by hand before it goes up</p>
+      <p class="meta-line mono"><span>Updated October 7, 2026</span><span>6 min read</span><span>Prices checked Oct 2026</span></p>
+      <figure class="guide-figure">
+        <img src="../images/guides/local-ai-tools-privacy.png" alt="Chart showing that Ollama, LM Studio, Jan, GPT4All and Whisper are all free to run locally" width="1200" height="675" loading="lazy" decoding="async">
+      </figure>
+            <div class="prose">
+        <div class="tldr">
+          <h2>Quick answer</h2>
+          <p style="margin:0 0 12px;color:rgba(244,244,241,.9)">Local AI means the model runs on your machine: no subscription, no upload, no per-use charge. Ollama, LM Studio, Jan, GPT4All and Whisper are all free.</p>
+          <ul>
+            <li>Around 8GB of RAM runs small quantised models; 16GB is comfortable; 32GB or a GPU with 8 to 16GB of video memory handles larger ones.</li>
+            <li>Local models are weaker than paid frontier models at long reasoning, coding and current information.</li>
+            <li>They are better at privacy, offline work and bulk jobs you would not want to pay per token for.</li>
+            <li>Pair one local model with one $20 cloud assistant for the tasks that need frontier capability.</li>
+          </ul>
+        </div>
+
+
+        <p>Everything you type into a cloud AI assistant leaves your computer. For most questions that is fine. For client contracts, medical notes, legal drafts or unpublished financials, it is a problem you should not have to think about twice.</p>
+        <p>Local AI means running a model on your own machine. No subscription, no upload, no per-token bill. The trade-off is honest and specific: you need the hardware, the answers are weaker than a frontier model, and you maintain it yourself.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Tool</th><th>Cost</th><th>Runs on</th><th>Best for</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Ollama</strong></td><td>Free, open source</td><td>Mac, Windows, Linux</td><td>Command-line and API access to open models</td></tr>
+              <tr><td><strong>LM Studio</strong></td><td>Free for personal use</td><td>Mac, Windows, Linux</td><td>A normal desktop app with a model browser</td></tr>
+              <tr><td><strong>Jan</strong></td><td>Free, open source</td><td>Mac, Windows, Linux</td><td>A chat interface that looks like a cloud assistant</td></tr>
+              <tr><td><strong>GPT4All</strong></td><td>Free</td><td>Windows, Mac, Linux</td><td>Older machines without a dedicated GPU</td></tr>
+              <tr><td><strong>Whisper</strong></td><td>Free, open source</td><td>Any modern machine</td><td>Transcribing audio without uploading it</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="hardware">What hardware you actually need</h2>
+        <p>The model size is what decides everything. As a rough guide:</p>
+        <ul>
+          <li><strong>8GB of RAM:</strong> small models (7 to 8 billion parameters, quantised). Good enough for summarising, rewriting and simple questions. Slow but usable.</li>
+          <li><strong>16GB of RAM:</strong> comfortable for everyday small models, and you can stretch to larger ones if you accept waiting.</li>
+          <li><strong>32GB of RAM, or a GPU with 8 to 16GB of video memory:</strong> larger models that start to feel close to a mid-tier cloud assistant.</li>
+          <li><strong>A modern Mac with unified memory</strong> is the easiest way in, because the memory is shared between processor and graphics, which is exactly what these models want.</li>
+        </ul>
+
+        <h2 id="limits">Where local AI is genuinely worse</h2>
+        <p>Do not expect a small local model to plan a complex project, write working code across several files, or reason through a legal question the way the paid frontier models do. It will be noticeably weaker at long context, multi-step reasoning and current information, and it will not know anything that happened after it was trained.</p>
+        <p>Where it is genuinely better: privacy, offline use on a plane or in a basement office, bulk processing you would not want to pay per token for, and never being rate limited.</p>
+
+        <h2 id="use">The honest use cases</h2>
+        <ul>
+          <li><strong>Private documents.</strong> Drafts under NDA, client files, anything with personal data in it.</li>
+          <li><strong>Transcription.</strong> Whisper locally means meeting recordings never leave the laptop, and there is no per-minute charge.</li>
+          <li><strong>Bulk, boring jobs.</strong> Rewriting 400 product descriptions overnight costs nothing but electricity.</li>
+          <li><strong>Learning.</strong> Experimenting with prompts and models without watching a usage meter.</li>
+        </ul>
+
+        <h2 id="setup">A sane way to start</h2>
+        <ol>
+          <li>Install one app, not four. LM Studio or Jan if you want a normal window, Ollama if you want a command line and an API.</li>
+          <li>Download one small model and use it for a week on real work.</li>
+          <li>Keep the cloud subscription for the hard 20% of tasks and use the local model for the routine 80%.</li>
+          <li>Revisit in six months. Open models improve quickly, and your hardware does not get slower.</li>
+        </ol>
+
+        <h2 id="verdict">What we would pay for</h2>
+        <p>Nothing. The software is free. The real cost is the machine you already own, plus an hour of setup. Pair a local model for private and bulk work with one $20 cloud assistant for the tasks that actually need a frontier model, and you have both privacy and capability.</p>
+
+        <div class="callout">
+          <p style="margin:0"><strong>One note:</strong> AI pricing moves fast. We read these numbers off the vendors' own pricing pages in October 2026, so check the current price before you buy.</p>
+        </div>
+        <h2>Where to check the current price</h2>
+        <p>These are the official pages we read while writing this guide. Plain links, no tracking, no middlemen. If a number here disagrees with what you see, trust their page and tell us so we can fix it.</p>
+        <ul>
+          <li><a href="https://ollama.com/" target="_blank" rel="noopener">Ollama (free, open source)</a></li>
+          <li><a href="https://lmstudio.ai/" target="_blank" rel="noopener">LM Studio</a></li>
+          <li><a href="https://jan.ai/" target="_blank" rel="noopener">Jan (open source)</a></li>
+          <li><a href="https://www.nomic.ai/gpt4all" target="_blank" rel="noopener">GPT4All</a></li>
+          <li><a href="https://github.com/openai/whisper" target="_blank" rel="noopener">OpenAI Whisper (open source)</a></li>
+        </ul>
+        <h2>Frequently asked questions</h2>
+        <h3>Is local AI actually free?</h3>
+        <p>The software is. Ollama, Jan, GPT4All and Whisper are open source with no subscription. You pay with your own hardware, electricity and setup time, and you miss the capability of the paid frontier models.</p>
+        <h3>How much RAM do I need to run a local model?</h3>
+        <p>Around 8GB runs small quantised models for basic writing and summarising. 16GB is comfortable. For larger models that feel closer to a cloud assistant, plan on 32GB of memory or a GPU with 8 to 16GB of video memory.</p>
+        <h3>Is local AI as good as ChatGPT?</h3>
+        <p>No. A model that fits on a laptop is noticeably weaker at multi-step reasoning, long documents and current information. It is better at privacy, offline use and bulk processing, which is usually why people install one.</p>
+        <h3>Can I use local AI for client work?</h3>
+        <p>That is the main reason to use it. Nothing leaves your machine, so client files, recordings and drafts stay private. Check the licence of the specific model you download, since some restrict commercial use.</p>
+        <h3>Which is easier, local AI or a cloud subscription?</h3>
+        <p>The cloud subscription, by a wide margin. Local tools need a download, a model file, and some patience with speed. The payoff is privacy and no per-use cost, which is worth it only if those two things matter to you.</p>
+        <div class="related">
+          <a class="btn" href="/guides/best-ai-transcription-tools">AI transcription tools &rarr;</a>
+          <a class="btn" href="/guides/chatgpt-plus-vs-claude-pro">assistant comparison &rarr;</a>
+          <a class="btn" href="/guides/ai-tool-stack-cost">AI stack costs &rarr;</a>
+          <a class="btn" href="/guides">all VOXA guides &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="/"><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="VOXA"><rect x="1" y="1" width="46" height="46" rx="12" fill="#0b0f10" stroke="#1e2c30"/><path d="M14 15 L24 34" fill="none" stroke="#22d3ee" stroke-width="4.6" stroke-linecap="round"/><path d="M24 34 L34 15" fill="none" stroke="#c8f751" stroke-width="4.6" stroke-linecap="round"/><circle cx="14" cy="15" r="3.2" fill="#22d3ee"/><circle cx="34" cy="15" r="3.2" fill="#c8f751"/></svg>VOXA</a>
+        <p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation software.</p>
+      </div>
+      <div><h5 class="mono">Pages</h5><ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/guides">Guides</a></li>
+        <li><a href="/notes">Notes</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul></div>
+      <div><h5 class="mono">Legal</h5><ul>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms &amp; Conditions</a></li>
+        <li><a href="/disclaimer">Disclaimer</a></li>
+        <li><a href="/cookie-policy">Cookie Policy</a></li>
+      </ul></div>
+      <div><h5 class="mono">Contact</h5><ul>
+        <li><a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a></li>
+        <li><a href="/contact">Contact form</a></li>
+        <li><a href="https://www.pinterest.com/voxahq" rel="me noopener" target="_blank">Pinterest</a></li>
+      </ul></div>
+    </div>
+    <div class="foot__bottom mono">
+      <span>&copy; <span id="year">2026</span> VOXA</span>
+      <span id="clock">--:--:--</span>
+      <span>Independent guide &middot; no sponsored rankings</span>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="../js/main.js"></script>
+<script src="../js/lazy3d.js" data-scene-src="../js/scene.js"></script>
+</body>
+</html>

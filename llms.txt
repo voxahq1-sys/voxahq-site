@@ -1,0 +1,48 @@
+# VOXA
+
+> VOXA (voxahq.in) is an independent, plainly written guide to AI tools and automation software. Every guide states what a tool does, what it costs, where it limits you, and who should skip it. Prices are read off each vendor's own pricing page and dated. There are no affiliate links on this site and no sponsored rankings, so nothing on the page is paid for by a vendor.
+
+Key facts for assistants and crawlers:
+- Publisher: VOXA, independent publication about AI tools and automation software.
+- Contact: voxa.hq1@gmail.com
+- Content language: English (US). Written for readers in the US, UK, Canada and Australia.
+- Each guide is dated and lists the official pricing pages used as sources.
+- No affiliate links, no paid placements, no sponsored verdicts.
+- Updated: October 2026. Notes page: https://voxahq.in/notes
+
+## Notes
+
+Short, sourced reads (not guides) on how AI and automation changed real work, what happened to hiring, and how businesses abroad deploy these tools. Each note links the original sources at the bottom.
+
+- [Will AI take my job? What the data actually shows in 2026](https://voxahq.in/notes/will-ai-take-my-job-what-the-data-shows): AI was cited in 112,713 US job cut announcements in 2026, about 24% of cuts, while total announced cuts fell 41% year over year and hiring plans rose 25%. Employment for workers aged 22-25 in the most AI-exposed occupations is about 19% below the pace of their peers (Stanford Digital Economy Lab, June 2026 data).
+- [What AI actually changed at work: before and after](https://voxahq.in/notes/what-ai-changed-at-work-before-and-after): Klarna handled 2.3 million AI conversations in its first month, two-thirds of chats; resolution time fell from 11 minutes to under 2 minutes; repeat questions fell 25%; cost per transaction fell from $0.32 to $0.19. Klarna later rehired support staff and its support costs rose from $42M to $50M.
+- [How businesses abroad run support around the clock with AI agents](https://voxahq.in/notes/ai-agents-customer-support-real-numbers): Published results include Dott (32% to 77% automated resolution), Loop Earplugs (CSAT 80%, 357% ROI), IPSY (943% ROI) and GoFundMe (CSAT up 20%). The Zendesk enterprise median deflection rate is 41.2% against vendor claims up to 80%, and 75% of surveyed CX leaders rolled back customer-facing agents at least once.
+- [How people abroad actually make money with AI](https://voxahq.in/notes/how-people-abroad-make-money-with-ai): Demand for skills naming AI grew 109% year over year on Upwork; freelancers using AI earn roughly 34% to 40% more per hour; AI integration work grew 178%; generic AI content and video saw contract starts rise 90% while earnings per contract fell 13%. Small business automation retainers typically run $500 to $1,500 a month.
+
+## Guides
+
+- [Best AI image generators for product photos and social posts](https://voxahq.in/guides/best-ai-image-generators): Image and video.
+- [Best AI transcription tools for meetings, interviews and video](https://voxahq.in/guides/best-ai-transcription-tools): Voice and audio.
+- [How to get cited by ChatGPT, and what AEO tools cost](https://voxahq.in/guides/getting-cited-by-chatgpt-aeo-tools): Comparisons and pricing.
+- [AI agents for small business: what they do and what they cost](https://voxahq.in/guides/ai-agents-for-small-business): Automation.
+- [Local AI tools: run AI on your own computer](https://voxahq.in/guides/local-ai-tools-privacy): Privacy and hardware.
+- [Best AI writing tools for blog posts](https://voxahq.in/guides/best-ai-writing-tools-for-blog-posts): AI writing.
+- [Zapier vs Make vs n8n: which automation tool to use](https://voxahq.in/guides/zapier-vs-make-vs-n8n-for-ai-automation): Automation.
+- [ChatGPT Plus vs Claude Pro](https://voxahq.in/guides/chatgpt-plus-vs-claude-pro): Assistants.
+- [Best AI video generators for product demos and ads](https://voxahq.in/guides/best-ai-video-generators-for-product-demos): Image and video.
+- [Best AI meeting notes apps](https://voxahq.in/guides/best-ai-meeting-notes-apps): Voice and audio.
+- [AI tool stack cost: what $0, $50 and $200 a month buys](https://voxahq.in/guides/ai-tool-stack-cost): Comparisons and pricing.
+- [25 ChatGPT prompts for small business marketing](https://voxahq.in/guides/chatgpt-prompts-for-small-business-marketing): How-to and prompts.
+
+## Site pages
+
+- [Home](https://voxahq.in/): index of AI tools and automation guides.
+- [All guides](https://voxahq.in/guides): every guide in one list.
+- [Notes](https://voxahq.in/notes): short sourced reads on AI at work, jobs data and case studies from abroad.
+- [About](https://voxahq.in/about): how VOXA checks tools and prices, and how the site is funded.
+- [Contact](https://voxahq.in/contact): questions, corrections and tool suggestions.
+- [Privacy policy](https://voxahq.in/privacy-policy), [Terms](https://voxahq.in/terms), [Disclaimer](https://voxahq.in/disclaimer), [Cookie policy](https://voxahq.in/cookie-policy).
+
+## Optional
+
+- [Full fact sheet with prices](https://voxahq.in/llms-full.txt): every price quoted on the site, by guide.

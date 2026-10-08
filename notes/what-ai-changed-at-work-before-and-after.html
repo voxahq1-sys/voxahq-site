@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="alternate icon" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<title>What AI Changed at Work: Before and After, in Real Numbers | VOXA</title>
+<meta name="description" content="Real before-and-after figures from a company that moved most of its support to AI, plus what happened when it went too far and hired people back.">
+<link rel="canonical" href="https://voxahq.in/notes/what-ai-changed-at-work-before-and-after">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="keywords" content="AI before and after, AI at work, AI customer service results, automation before after, AI productivity numbers">
+<meta name="author" content="VOXA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://voxahq.in/images/notes/what-ai-changed-at-work-before-and-after.png">
+<meta property="og:title" content="What AI Changed at Work: Before and After, in Real Numbers | VOXA">
+<meta property="og:description" content="Real before-and-after figures from a company that moved most of its support to AI, plus what happened when it went too far and hired people back.">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/notes/what-ai-changed-at-work-before-and-after.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What AI actually changed at work: before and after, in numbers","description":"Real before-and-after figures from a company that moved most of its support to AI, plus what happened when it went too far and hired people back.","datePublished":"2026-10-08","dateModified":"2026-10-08","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA"},"mainEntityOfPage":"https://voxahq.in/notes/what-ai-changed-at-work-before-and-after","image":"https://voxahq.in/images/notes/what-ai-changed-at-work-before-and-after.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Did AI actually replace customer service jobs?","acceptedAnswer":{"@type":"Answer","text":"Not cleanly. Klarna shrank its workforce and paused hiring, then started hiring support staff again in 2025. In most companies the pattern is fewer routine roles and more escalation and specialist roles, not a straight swap."}},{"@type":"Question","name":"Is going from 11 minutes to 2 minutes realistic for a small business?","acceptedAnswer":{"@type":"Answer","text":"The direction is real, the size depends on your inbox. If most of your questions are the same ten things, expect a big drop. If every enquiry is unusual, expect much less."}},{"@type":"Question","name":"What should a small team automate first?","acceptedAnswer":{"@type":"Answer","text":"The task you repeat most often with the least judgement in it. Answering the same question, moving data between two tools, or writing a first draft. Keep a person checking anything that touches money or a customer account."}},{"@type":"Question","name":"How do I know if the automation is working?","acceptedAnswer":{"@type":"Answer","text":"Measure one number before and after: minutes per task, or the share of contacts handled without a human. If it does not move in two weeks, the tool is doing the wrong job."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JFBST9ZHJP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JFBST9ZHJP');
+</script>
+<noscript><style>.rv{opacity:1 !important;transform:none !important}.line>span{transform:none !important}.statement p .wd{opacity:1 !important}</style></noscript>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxahq.in/"},{"@type":"ListItem","position":2,"name":"Notes","item":"https://voxahq.in/notes"},{"@type":"ListItem","position":3,"name":"What AI actually changed at work: before and after, in numbers","item":"https://voxahq.in/notes/what-ai-changed-at-work-before-and-after"}]}</script>
+</head>
+<body class="loading" data-scene="wave">
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+<div class="loader" id="loader">
+  <div class="mono" style="color:var(--muted)">VOXA / AI TOOLS &amp; AUTOMATION</div>
+  <div class="loader__count" id="loaderCount">0</div>
+  <div class="loader__bar"><i id="loaderBar"></i></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/" data-cursor><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="VOXA"><rect x="1" y="1" width="46" height="46" rx="12" fill="#0b0f10" stroke="#1e2c30"/><path d="M14 15 L24 34" fill="none" stroke="#22d3ee" stroke-width="4.6" stroke-linecap="round"/><path d="M24 34 L34 15" fill="none" stroke="#c8f751" stroke-width="4.6" stroke-linecap="round"/><circle cx="14" cy="15" r="3.2" fill="#22d3ee"/><circle cx="34" cy="15" r="3.2" fill="#c8f751"/></svg>VOXA</a>
+  <nav class="nav__links" id="navLinks">
+    <a href="/">Home</a>
+    <a href="/guides">Guides</a>
+    <a href="/notes">Notes</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+  </nav>
+  <a class="btn" href="/contact" data-magnet><span data-cursor>Contact</span></a>
+  <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
+</header>
+<div class="page">
+<main>
+  <section class="page-head wrap">
+    <span class="mono">Notes / Before and after</span>
+    <h1>What AI actually changed at work: before and after, in numbers</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/notes">Notes</a><span>/</span><span>What AI changed at work</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0">
+    <div class="panel">
+      <p class="byline mono">By the VOXA team &middot; written from published company numbers, linked below</p>
+      <p class="meta-line mono"><span>Published October 8, 2026</span><span>6 min read</span><span>Sources linked</span></p>
+      <figure class="guide-figure">
+        <img src="../images/notes/what-ai-changed-at-work-before-and-after.png" alt="Chart comparing work before and after AI: support resolution time fell from 11 minutes to under 2 minutes, cost per contact fell from 0.32 to 0.19 dollars, and repeat questions dropped 25 percent" width="1200" height="675" loading="lazy" decoding="async">
+      </figure>
+      <div class="prose">
+        <div class="tldr">
+          <h2>Quick answer</h2>
+          <p style="margin:0 0 12px;color:rgba(244,244,241,.9)">AI did not delete the work. It deleted the first pass: the drafts, the sorting, the typing, the notes. Companies that got real results kept a human on the messy cases. The ones that removed the human ended up hiring people back.</p>
+        </div>
+        <h2>Key numbers</h2>
+        <ul>
+          <li>2.3 million conversations handled by Klarna's AI assistant in its first month, two-thirds of all support chats</li>
+          <li>Average resolution time: 11 minutes before, under 2 minutes after</li>
+          <li>Repeat questions about the same issue: down 25%</li>
+          <li>Cost per transaction: $0.32 to $0.19; $60 million in documented savings by Q3 2025</li>
+          <li>Klarna support costs still rose from $42 million to $50 million year over year, and it resumed hiring support staff in May 2025</li>
+        </ul>
+        <h2>Before: the day started with typing</h2>
+        <p>Most office work is four tasks wearing different clothes. Read something, sort it, write something, send it. Before these tools existed, every one of those steps needed a person sitting still at a screen.</p>
+        <p>A support agent read a ticket, looked up a policy, typed a reply. A marketer stared at a blank page and wrote a rough first draft. Someone on a call took notes and then typed them again later, in a nicer version.</p>
+        <p>None of that was hard. It just took hours, and hours are the one thing you cannot buy back.</p>
+        <h2>After: same tasks, fewer minutes</h2>
+        <p>The cleanest public example is Klarna, the Swedish payments company. In February 2024 its AI assistant handled 2.3 million conversations in its first month, about two-thirds of all its support chats. Average resolution time fell from 11 minutes to under 2 minutes, an 82% improvement. Repeat questions about the same issue dropped 25%, which usually means the first answer was actually right. By the third quarter of 2025 the company reported 60 million dollars in savings and a cost per transaction that fell from 0.32 to 0.19 dollars.</p>
+        <p>Read that as a business owner and the shape is clear. The same job, roughly a sixth of the time, at around 40% less cost per contact.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Task</th><th>Before</th><th>After</th></tr></thead>
+            <tbody>
+              <tr><td>Answering a support chat (Klarna)</td><td>11 min average, a person on every one</td><td>Under 2 min average, AI on about two-thirds</td></tr>
+              <tr><td>Cost per support contact (Klarna)</td><td>$0.32</td><td>$0.19</td></tr>
+              <tr><td>Repeat questions (Klarna)</td><td>Baseline</td><td>Down 25%</td></tr>
+              <tr><td>First draft of an article</td><td>Two to three hours to a blank page</td><td>Twenty minutes editing a rough AI draft</td></tr>
+              <tr><td>Meeting notes</td><td>Someone typing during the call</td><td>Transcript and summary, a few minutes of review</td></tr>
+              <tr><td>The same question asked every day</td><td>Answered by hand, every time</td><td>Written once, then answered automatically</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="color:var(--muted);font-size:.92rem">Only the top three rows are Klarna numbers. The rest are the pattern most teams report, not a measured study, so treat them as direction rather than a promise.</p>
+        <h2>The part that never makes it into the case study</h2>
+        <p>Klarna went further than most. It paused hiring, cut its workforce, and publicly said AI was doing the work of 700 agents. Then in May 2025 it started hiring support people again. Its support costs actually rose from 42 million to 50 million dollars year over year, even with two-thirds of chats automated.</p>
+        <p>That is not a story about AI failing. It is a story about scope. Gartner scored 432 customer service AI use cases and found 25% produced a positive return, 25% a negative one, 11% broke even, and 42% were unclear because nobody could measure them. A survey of more than 600 customer experience leaders found 70% had adopted AI, only 2% saw real value from it, and 75% had rolled back customer-facing agents after launch.</p>
+        <p>The difference between the wins and the rollbacks is rarely the model. It is what people pointed it at. High volume, repeatable, boring questions work. Angry customers, refunds, edge cases and anything legal still need a person.</p>
+        <h2>What we would do with this</h2>
+        <p>Pick one task you do more than ten times a week. Count the minutes it takes now. Automate it, keep a human check on the output, and count the minutes again after two weeks. If the number does not move, you automated the wrong thing.</p>
+        <p>Then write down what the AI is not allowed to answer. Every company with a good result had that list before it had a model.</p>
+        <h2>Where these numbers come from</h2>
+        <p>Plain links to the original sources, so you can check every figure yourself. We do not take sponsorships and we do not get paid for these links.</p>
+        <ul>
+          <li><a href="https://www.klarna.com/international/press/klarna-ai-assistant-handles-two-thirds-of-customer-service-chats-in-its-first-month/" target="_blank" rel="noopener">Klarna: AI assistant handles two-thirds of customer service chats in its first month</a></li>
+          <li><a href="https://www.customerexperiencedive.com/news/klarna-reinvests-human-talent-customer-service-AI-chatbot/747586" target="_blank" rel="noopener">CX Dive: Klarna recruits humans again for customer service</a></li>
+          <li><a href="https://www.usefini.com/blog/klarna-automates-two-thirds-of-customer-service-with-ai-assistant" target="_blank" rel="noopener">Fini: Klarna AI assistant, both halves of the story with dated numbers</a></li>
+          <li><a href="https://irisagent.com/customer-support-statistics-2026/" target="_blank" rel="noopener">IrisAgent: AI customer support statistics 2026, including the Gartner and Forethought findings</a></li>
+          <li><a href="https://www.fastcompany.com/91468582/klarna-tried-to-replace-its-workforce-with-ai" target="_blank" rel="noopener">Fast Company: Klarna tried to replace its workforce with AI</a></li>
+        </ul>
+        <h2>Common questions</h2>
+        <h3>Did AI actually replace customer service jobs?</h3>
+        <p>Not cleanly. Klarna shrank its workforce and paused hiring, then started hiring support staff again in 2025. In most companies the pattern is fewer routine roles and more escalation and specialist roles, not a straight swap.</p>
+        <h3>Is going from 11 minutes to 2 minutes realistic for a small business?</h3>
+        <p>The direction is real, the size depends on your inbox. If most of your questions are the same ten things, expect a big drop. If every enquiry is unusual, expect much less.</p>
+        <h3>What should a small team automate first?</h3>
+        <p>The task you repeat most often with the least judgement in it. Answering the same question, moving data between two tools, or writing a first draft. Keep a person checking anything that touches money or a customer account.</p>
+        <h3>How do I know if the automation is working?</h3>
+        <p>Measure one number before and after: minutes per task, or the share of contacts handled without a human. If it does not move in two weeks, the tool is doing the wrong job.</p>
+        <div class="related">
+          <a class="btn" href="/guides/ai-agents-for-small-business">AI agents for small business &rarr;</a>
+          <a class="btn" href="/guides/ai-tool-stack-cost">what an AI stack costs &rarr;</a>
+          <a class="btn" href="/guides/chatgpt-plus-vs-claude-pro">ChatGPT Plus vs Claude Pro &rarr;</a>
+          <a class="btn" href="/notes">all VOXA notes &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="/"><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="VOXA"><rect x="1" y="1" width="46" height="46" rx="12" fill="#0b0f10" stroke="#1e2c30"/><path d="M14 15 L24 34" fill="none" stroke="#22d3ee" stroke-width="4.6" stroke-linecap="round"/><path d="M24 34 L34 15" fill="none" stroke="#c8f751" stroke-width="4.6" stroke-linecap="round"/><circle cx="14" cy="15" r="3.2" fill="#22d3ee"/><circle cx="34" cy="15" r="3.2" fill="#c8f751"/></svg>VOXA</a>
+        <p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation software. No affiliate links, no sponsored rankings.</p>
+      </div>
+      <div><h5 class="mono">Pages</h5><ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/guides">Guides</a></li>
+        <li><a href="/notes">Notes</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul></div>
+      <div><h5 class="mono">Legal</h5><ul>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms &amp; Conditions</a></li>
+        <li><a href="/disclaimer">Disclaimer</a></li>
+        <li><a href="/cookie-policy">Cookie Policy</a></li>
+      </ul></div>
+      <div><h5 class="mono">Contact</h5><ul>
+        <li><a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a></li>
+        <li><a href="/contact">Contact form</a></li>
+        <li><a href="https://www.pinterest.com/voxahq" rel="me noopener" target="_blank">Pinterest</a></li>
+      </ul></div>
+    </div>
+    <div class="foot__bottom mono">
+      <span>&copy; <span id="year">2026</span> VOXA</span>
+      <span id="clock">--:--:--</span>
+      <span>Independent guide &middot; no sponsored rankings</span>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="../js/main.js"></script>
+<script src="../js/lazy3d.js" data-scene-src="../js/scene.js"></script>
+</body>
+</html>

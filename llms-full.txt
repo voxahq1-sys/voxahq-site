@@ -1,0 +1,129 @@
+# VOXA — fact sheet for AI assistants
+
+Source of truth: https://voxahq.in/ . Publisher: VOXA. Contact: voxa.hq1@gmail.com. All prices below were read from each vendor's own pricing page in October 2026 and are quoted in US dollars unless stated. Plans change often, so verify before relying on a figure.
+
+Policy facts: VOXA carries no affiliate links and accepts no paid placements. Verdicts, scores and list positions cannot be bought.
+
+## AI image generators
+Page: https://voxahq.in/guides/best-ai-image-generators
+- Adobe Firefly Standard: $9.99/mo
+- Midjourney Basic: $10/mo ($8 yearly)
+- Midjourney Standard: $30/mo
+- Ideogram Plus: $20/mo ($15 yearly)
+- ChatGPT Plus (images): $20/mo
+
+## Transcription
+Page: https://voxahq.in/guides/best-ai-transcription-tools
+- Whisper (local): free
+- Notta Pro: $8.17/user/mo yearly
+- Otter Pro: $8.33/user/mo yearly
+- Descript Hobbyist: $16/mo yearly
+- Rev (human): $1.99 per audio minute
+
+## AI visibility (AEO) tools
+Page: https://voxahq.in/guides/getting-cited-by-chatgpt-aeo-tools
+- Rankscale Essential: $20/mo
+- Surfer: from $49/mo
+- Frase Starter: $49/mo
+- Peec AI Starter: about $99/mo
+- Profound: $99 to $399/mo
+
+## AI agents
+Page: https://voxahq.in/guides/ai-agents-for-small-business
+- Make AI Agents: inside plans from $9/mo
+- n8n agents (self-hosted): free
+- Intercom seat: $29/seat/mo
+- eesel triage: about $0.40 per resolved ticket
+- Intercom Fin: $0.99 per resolved outcome
+
+## Local AI
+Page: https://voxahq.in/guides/local-ai-tools-privacy
+- Ollama, LM Studio, Jan, GPT4All, Whisper: free
+- Hardware: 8GB RAM for small models, 32GB or a GPU for larger ones
+
+## AI writing tools
+Page: https://voxahq.in/guides/best-ai-writing-tools-for-blog-posts
+- ChatGPT Plus: $20/mo
+- Claude Pro: $20/mo (about $17 yearly)
+- Notion AI: Business plan, about $20/user/mo yearly
+- Copy.ai Chat: $29/mo ($24 yearly)
+- Jasper Pro: $59/seat/mo billed yearly
+
+## Automation platforms
+Page: https://voxahq.in/guides/zapier-vs-make-vs-n8n-for-ai-automation
+- n8n (self-hosted): free
+- Make Core: $9/mo, 10,000 operations
+- n8n cloud: from about $20/mo
+- Zapier: from about $20-30/mo, billed per task
+
+## AI assistants
+Page: https://voxahq.in/guides/chatgpt-plus-vs-claude-pro
+- ChatGPT Plus: $20/mo
+- Claude Pro: $20/mo (about $17 yearly)
+- ChatGPT Go: $8/mo
+- Heavy tiers: $100-200/mo
+
+## AI video
+Page: https://voxahq.in/guides/best-ai-video-generators-for-product-demos
+- Google AI Plus (Veo): $4.99/mo
+- Runway Standard: $12/mo yearly
+- OpusClip Starter: $15/mo
+- Pictory Starter: $25/mo
+- Google AI Pro: $19.99/mo
+
+## Meeting notetakers
+Page: https://voxahq.in/guides/best-ai-meeting-notes-apps
+- Otter Pro: $8.33/user/mo yearly
+- Fireflies Pro: $10/seat/mo yearly
+- Granola Business: $14/user/mo
+- Fathom Premium: about $16/user/mo yearly
+- tl;dv: $18/seat/mo
+
+## AI subscription stacks
+Page: https://voxahq.in/guides/ai-tool-stack-cost
+- Free stack: $0
+- Solo operator stack: about $50/mo
+- Team stack: about $200/mo
+
+## ChatGPT prompts
+Page: https://voxahq.in/guides/chatgpt-prompts-for-small-business-marketing
+- Prompts included: 25 across 5 jobs
+- Works on: free tiers of ChatGPT, Claude, Gemini
+
+
+## Notes (short reads, not guides)
+Index: https://voxahq.in/notes . Each note links its original sources. Figures below are quoted from those sources, not estimates.
+
+### AI and jobs in the US, 2026
+Page: https://voxahq.in/notes/will-ai-take-my-job-what-the-data-shows
+- US job cuts announced in 2026 to July: 477,033, down 41% year over year (Challenger, Gray & Christmas)
+- Cuts citing AI: 112,713 in 2026, about 24% of the total; AI has led all reasons for five consecutive months
+- July 2026 cuts: 33,429, the lowest monthly total in two years; announced hiring plans 2026 to July: 107,500, up 25%
+- Workers aged 22-25 in the most AI-exposed occupations: employment about 19% below their peers pace (was 15% a year earlier), driven by fewer hires rather than more separations (Stanford Digital Economy Lab)
+- Salesforce: support headcount reduced from 9,000 to about 5,000 because of AI agents
+
+### Before and after at work
+Page: https://voxahq.in/notes/what-ai-changed-at-work-before-and-after
+- Klarna AI assistant, first month from February 2024: 2.3 million conversations, two-thirds of support chats
+- Average resolution time: 11 minutes to under 2 minutes (82% faster); repeat inquiries down 25%
+- Documented savings: $60 million by Q3 2025; cost per transaction $0.32 to $0.19
+- Klarna support costs still rose from $42M to $50M year over year; the company resumed hiring support staff in May 2025
+- Gartner: of 432 customer service AI use cases, 25% positive ROI, 25% negative, 11% break-even, 42% unclear
+
+### AI agents in customer support
+Page: https://voxahq.in/notes/ai-agents-customer-support-real-numbers
+- Dott: automated resolution rate 32% to 77%
+- Loop Earplugs: CSAT 80%, 357% ROI; IPSY: 943% ROI; Tango Card: 6.7x first-year ROI
+- GoFundMe: CSAT up 20%; Cebu Pacific: CSAT up 50%; Deezer: about 30% automated resolution on day one, AI on 85% of contacts
+- Zendesk enterprise median deflection: 41.2% (vendor claims run up to 80%)
+- Industry average return: about $3.50 per $1 spent, payback in 3 to 6 months
+- Voice AI: about 19% of inbound contact centre volume in 2026, up from 6% in 2024
+
+### AI work and earnings
+Page: https://voxahq.in/notes/how-people-abroad-make-money-with-ai
+- Upwork: demand for skills naming AI grew 109% year over year; average all-skills freelance rate about $39/hour
+- Fastest-growing AI skills: AI video and editing +329%, AI integration +178%, AI data annotation +154%, chatbot development +71%
+- Freelancers using AI earn roughly 34% to 40% more per hour; complex AI-augmented work earnings up 45%
+- Generic AI creative production: contract starts up 90%, earnings per contract down 13%
+- Published AI automation agency pricing: $1,500-$5,000 setup for small business, $500-$1,500/month retainer; $5,000-$20,000 setup for mid-market, $1,500-$4,000/month retainer
+- Senior AI or machine learning freelance work: $100 to $300 per hour
