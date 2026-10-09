@@ -33,6 +33,12 @@ Short, sourced reads (not guides) on how AI and automation changed real work, wh
 - [Best AI meeting notes apps](https://voxahq.in/guides/best-ai-meeting-notes-apps): Voice and audio.
 - [AI tool stack cost: what $0, $50 and $200 a month buys](https://voxahq.in/guides/ai-tool-stack-cost): Comparisons and pricing.
 - [25 ChatGPT prompts for small business marketing](https://voxahq.in/guides/chatgpt-prompts-for-small-business-marketing): How-to and prompts.
+- [n8n cost: cloud plans vs self-hosting, priced for 2026](https://voxahq.in/guides/n8n-self-hosting-cost): Cloud plans from 24&euro; a month, self-hosted Community Edition on a 4&ndash;12&euro; VPS, and where the break-even sits.
+- [Is Descript free What the free plan actually includes](https://voxahq.in/guides/is-descript-free): The free plan gives one transcription hour a month and watermarked 720p exports; paid tiers start at $16 a month.
+- [Otter vs Notta: which free plan is actually usable](https://voxahq.in/guides/otter-vs-notta-free-plans): Otter's free plan allows 300 minutes a month with 30-minute recordings; Notta's allows 120 minutes and caps each recording at 3 minutes.
+- [How much does AI customer support cost per resolution](https://voxahq.in/guides/ai-customer-support-cost-per-resolution): Fin $0.99, Zendesk about $1.50, Gorgias $0.60&ndash;1.27 per resolution, against $6&ndash;13.50 for a human contact.
+- [Automated invoice chasing: what it costs and when it pays](https://voxahq.in/guides/automate-invoice-chasing): Built-in accounting reminders are free; dedicated tools run from 45&pound; to 899&pound; a month, with Xero's June 2026 late-payment data.
+- [AI review replies: what they cost and when to use them](https://voxahq.in/guides/ai-review-replies): Free Google replies and free generators against $15&ndash;29 a month for drafted, approvable replies.
 
 ## Site pages
 
