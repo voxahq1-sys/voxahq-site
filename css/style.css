@@ -346,6 +346,6 @@ pre{overflow-x:auto;white-space:pre-wrap;word-break:break-word}
 }
 
 @media (max-width:640px){
-  .panel .guide-figure, .prose .guide-figure{margin-left:-22px!important;margin-right:-22px!important;padding-left:22px;padding-right:0}
+  .panel .guide-figure, .prose .guide-figure{margin-left:-22px!important;margin-right:-22px!important;padding:0!important}
   body .panel .guide-figure img, body .prose .guide-figure img{width:100%!important;max-width:100%!important;height:auto!important}
 }
