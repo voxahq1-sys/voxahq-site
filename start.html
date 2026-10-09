@@ -87,15 +87,9 @@
     <div class="panel rv" style="padding:28px 22px">
       <h2 class="mono" style="font-size:.8rem;letter-spacing:.14em;color:var(--muted);margin-bottom:10px">THE FREE BRIEF</h2>
       <p style="font-size:1.12rem;color:var(--ink);margin-bottom:6px"><strong>AI, Actually</strong> - what actually works, what it costs, and the catch. 5-minute read, Monday Wednesday Friday.</p>
-      <form action="https://aiactually.beehiiv.com/create" method="post" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
-        <input hidden name="subscribe_success_message" value="Subscribed! Check your inbox.">
-        <input hidden name="subscribe_error_message" value="Something went wrong. Try again.">
-        <input type="hidden" name="sent_from_orchid" value="true">
-        <input type="hidden" name="double_opt" value="false">
-        <input type="hidden" name="auto_login_enabled" value="true">
-        <input type="email" name="email" required placeholder="you@yourbusiness.com" aria-label="Email address" style="flex:1 1 260px;min-height:48px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:rgba(244,244,241,.04);color:var(--ink)">
-        <button class="btn" type="submit" style="min-height:48px"><span>Subscribe free</span></button>
-      </form>
+      <div style="margin-top:16px">
+        <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="8144f44d-5d61-44e8-b3da-def169f92579"></script>
+      </div>
       <p class="mono" style="color:var(--muted);font-size:.78rem;margin-top:10px">No spam. Unsubscribe in one click. We never sell your address.</p>
     </div>
   </section>
