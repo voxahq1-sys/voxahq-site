@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 /* VOXA — 3D Motion Studio. Placeholder brand, swap freely. */
 :root{
   --bg:#08090a; --bg2:#0e1012; --ink:#f4f4f1; --muted:#8d8f8c;
@@ -288,3 +289,52 @@ footer{background:rgba(8,9,10,.86)}
 /* brand mark */
 .brand .mark{width:24px;height:24px;flex:0 0 auto;display:block;border-radius:7px}
 .foot .brand .mark{width:22px;height:22px}
+
+/* ===== VOXA mobile readability pass (9 Oct 2026) =====
+   Goal: every page readable on a phone. Clean sans body text, no clipped
+   headings, tables become stacked cards, background canvas off on small
+   screens so nothing bleeds through the cards. */
+html{-webkit-text-size-adjust:100%;scroll-padding-top:100px}
+body{
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+h1,h2,h3,h4,h5{height:auto!important;max-height:none!important;overflow-wrap:break-word}
+p,li,blockquote,td,th{overflow-wrap:break-word}
+img,video{max-width:100%;height:auto}
+pre{overflow-x:auto;white-space:pre-wrap;word-break:break-word}
+
+@media (max-width:900px){
+  canvas{display:none}
+  .grain{display:none}
+  .foot{grid-template-columns:1fr;gap:26px}
+  .scroll-cue{display:none}
+}
+
+@media (max-width:640px){
+  body{font-size:16px;line-height:1.68}
+  h1{font-size:clamp(29px,8.6vw,35px)!important;line-height:1.16!important;letter-spacing:-.01em}
+  h2{font-size:clamp(23px,6.4vw,28px)!important;line-height:1.22!important}
+  h3{font-size:clamp(19px,5.2vw,22px)!important;line-height:1.28!important}
+  p{text-wrap:pretty}
+  .meta-line{gap:5px 12px;font-size:.82rem;line-height:1.6}
+  .prose{font-size:16px}
+  .prose p,.prose li{line-height:1.74}
+  .prose blockquote{font-size:1.02rem}
+  .prose img,figure img,.panel img{width:100%;height:auto;border-radius:14px;display:block}
+  .prose table{min-width:0!important;width:100%!important;display:block}
+  .prose thead{display:none}
+  .prose tbody,.prose tr,.prose td,.prose th{display:block;width:auto}
+  .prose tr{border:1px solid var(--line);border-radius:14px;margin:0 0 12px;padding:11px 13px;background:rgba(244,244,241,.025)}
+  .prose td,.prose th{border:0;padding:4px 0;font-size:15.5px}
+  .prose td:first-child,.prose th:first-child{font-weight:600;color:var(--ink);margin-bottom:2px}
+  .stats,.steps{grid-template-columns:1fr 1fr;gap:12px}
+  a.btn,button,.nav__cta{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .mono,code,kbd{font-size:.8rem;letter-spacing:.05em}
+}
+
+@media (max-width:380px){
+  h1{font-size:27px!important}
+  .stats,.steps{grid-template-columns:1fr}
+  .prose td,.prose th{font-size:15px}
+}
