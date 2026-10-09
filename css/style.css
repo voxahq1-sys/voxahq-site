@@ -344,3 +344,8 @@ pre{overflow-x:auto;white-space:pre-wrap;word-break:break-word}
   .guide-figure img{width:100%;height:auto;border-radius:14px}
   figure figcaption{font-size:.82rem;line-height:1.55}
 }
+
+@media (max-width:640px){
+  .panel .guide-figure, .prose .guide-figure{margin-left:-22px!important;margin-right:-22px!important;padding-left:22px;padding-right:0}
+  body .panel .guide-figure img, body .prose .guide-figure img{width:100%!important;max-width:100%!important;height:auto!important}
+}
