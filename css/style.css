@@ -338,3 +338,9 @@ pre{overflow-x:auto;white-space:pre-wrap;word-break:break-word}
   .stats,.steps{grid-template-columns:1fr}
   .prose td,.prose th{font-size:15px}
 }
+
+@media (max-width:640px){
+  .guide-figure{margin-left:-22px;margin-right:-22px}
+  .guide-figure img{width:100%;height:auto;border-radius:14px}
+  figure figcaption{font-size:.82rem;line-height:1.55}
+}
