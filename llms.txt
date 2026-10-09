@@ -52,3 +52,7 @@ Short, sourced reads (not guides) on how AI and automation changed real work, wh
 ## Optional
 
 - [Full fact sheet with prices](https://voxahq.in/llms-full.txt): every price quoted on the site, by guide.
+
+## Editorial pages
+- How we check prices and limits: https://voxahq.in/how-we-test
+- Editorial policy, funding and corrections: https://voxahq.in/editorial-policy
