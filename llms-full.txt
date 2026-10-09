@@ -127,3 +127,50 @@ Page: https://voxahq.in/notes/how-people-abroad-make-money-with-ai
 - Generic AI creative production: contract starts up 90%, earnings per contract down 13%
 - Published AI automation agency pricing: $1,500-$5,000 setup for small business, $500-$1,500/month retainer; $5,000-$20,000 setup for mid-market, $1,500-$4,000/month retainer
 - Senior AI or machine learning freelance work: $100 to $300 per hour
+
+## n8n cost: cloud plans vs self-hosting, priced for 2026
+Page: https://voxahq.in/guides/n8n-self-hosting-cost
+- n8n Cloud Starter: 24&euro;/mo (20&euro; annual), 2,500 executions
+- n8n Cloud Pro: 60&euro;/mo (50&euro; annual), 10,000 executions
+- n8n Business (self-hosted licence): 800&euro;/mo (667&euro; annual), 40,000 executions
+- n8n Community Edition: free, unlimited executions
+- Self-hosted VPS: about 4&ndash;12&euro;/mo
+
+## Is Descript free What the free plan actually includes
+Page: https://voxahq.in/guides/is-descript-free
+- Descript Free: $0, 1 transcription hour/mo, 720p watermarked export
+- Descript Hobbyist: $16/mo annual ($24 monthly), 10 transcription hours
+- Descript Creator: $24/mo annual ($35 monthly)
+- Descript Business: $50/mo annual ($65 monthly)
+
+## Otter vs Notta: which free plan is actually usable
+Page: https://voxahq.in/guides/otter-vs-notta-free-plans
+- Otter Free: 300 min/user/mo, 30 min per conversation
+- Notta Free: 120 min/mo, 3 min per conversation
+- Otter Pro: $8.33/user/mo annual, 1,200 min
+- Notta Pro: $8.17/user/mo annual, 1,800 min
+- Otter Business $19.99/user/mo; Notta Business $16.67/user/mo
+
+## How much does AI customer support cost per resolution
+Page: https://voxahq.in/guides/ai-customer-support-cost-per-resolution
+- Intercom Fin: $0.99 per resolution
+- Zendesk: about $1.50 per verified resolution committed, $2.00 pay-as-you-go
+- Gorgias: $0.60&ndash;$1.27 per resolution
+- Freshdesk Freddy: $0.10 per session
+- Salesforce Agentforce: $2.00 per conversation or $0.10 per action
+- Human agent cost: $6.00&ndash;$13.50 per contact (Gartner average $13.50)
+
+## Automated invoice chasing: what it costs and when it pays
+Page: https://voxahq.in/guides/automate-invoice-chasing
+- Xero/QuickBooks reminders: included
+- Satago: from 45&pound;/mo
+- Chaser: 199&pound;&ndash;899&pound;/mo by turnover, extra seat 10&pound;
+- Chaser Care specialist: from 324&pound;/mo
+- Xero SBI June 2026 late invoices: UK 8.3%, US 8.3%, Canada 11.4%, NZ 5.1%, AU 4.3%
+
+## AI review replies: what they cost and when to use them
+Page: https://voxahq.in/guides/ai-review-replies
+- Google Business Profile replies: free
+- Free AI generators: about 5 replies/day
+- Entry review-reply plan: about $15/mo, 200 replies, 1 location
+- Autopilot review-reply plan: about $29/mo, unlimited
