@@ -56,3 +56,8 @@ Short, sourced reads (not guides) on how AI and automation changed real work, wh
 ## Editorial pages
 - How we check prices and limits: https://voxahq.in/how-we-test
 - Editorial policy, funding and corrections: https://voxahq.in/editorial-policy
+
+## Launch pages
+- AI phone answering for small business, the real cost: https://voxahq.in/guides/ai-phone-answering-cost
+- What AI will actually do for a small business by 2027: https://voxahq.in/guides/ai-for-small-business-2027
+- Start here (and the free AI, Actually brief): https://voxahq.in/start

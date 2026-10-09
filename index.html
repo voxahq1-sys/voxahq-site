@@ -347,6 +347,26 @@
     </div>
   </section>
 
+
+  <section class="wrap" style="padding-top:0">
+    <div class="panel rv" style="padding:26px 22px;display:flex;gap:22px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+      <div style="flex:1 1 320px">
+        <span class="mono" style="color:var(--accent);font-size:.75rem;letter-spacing:.14em">AI, ACTUALLY</span>
+        <h2 style="margin:10px 0 8px">What actually works, what it costs, and the catch</h2>
+        <p style="color:var(--muted)">A 5-minute brief, Monday Wednesday Friday. Free. Every number checked by hand.</p>
+      </div>
+      <form action="https://aiactually.beehiiv.com/create" method="post" style="display:flex;gap:10px;flex-wrap:wrap;flex:1 1 320px;justify-content:flex-end">
+        <input hidden name="subscribe_success_message" value="Subscribed! Check your inbox.">
+        <input hidden name="subscribe_error_message" value="Something went wrong. Try again.">
+        <input type="hidden" name="sent_from_orchid" value="true">
+        <input type="hidden" name="double_opt" value="false">
+        <input type="hidden" name="auto_login_enabled" value="true">
+        <input type="email" name="email" required placeholder="you@yourbusiness.com" aria-label="Email address" style="flex:1 1 220px;min-height:48px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:rgba(244,244,241,.04);color:var(--ink)">
+        <button class="btn" type="submit" style="min-height:48px"><span>Subscribe free</span></button>
+      </form>
+    </div>
+  </section>
+
 </main>
 
 <footer>
@@ -367,7 +387,7 @@
         <li><a href="/privacy-policy">Privacy Policy</a></li>
         <li><a href="/terms">Terms &amp; Conditions</a></li>
         <li><a href="/disclaimer">Disclaimer</a></li>
-        <li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/how-we-test">How we check</a></li><li><a href="/editorial-policy">Editorial policy</a></li>
+        <li><a href="/cookie-policy">Cookie Policy</a></li>
       </ul></div>
       <div><h5 class="mono">Contact</h5><ul>
         <li><a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a></li>
