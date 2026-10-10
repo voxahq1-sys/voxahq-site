@@ -87,9 +87,25 @@
     <div class="panel rv" style="padding:28px 22px">
       <h2 class="mono" style="font-size:.8rem;letter-spacing:.14em;color:var(--muted);margin-bottom:10px">THE FREE BRIEF</h2>
       <p style="font-size:1.12rem;color:var(--ink);margin-bottom:6px"><strong>AI, Actually</strong> - what actually works, what it costs, and the catch. 5-minute read, Monday Wednesday Friday.</p>
-      <div style="margin-top:16px;min-height:120px">
-        <script async data-uid="9abd6091e4" src="https://voxa-2.kit.com/9abd6091e4/index.js"></script>
-      </div>
+      <form id="voxa-sub" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+        <input type="email" name="email" required placeholder="you@yourbusiness.com" aria-label="Email address" style="flex:1 1 260px;min-height:48px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:rgba(244,244,241,.04);color:var(--ink)">
+        <button class="btn" type="submit" style="min-height:48px"><span>Subscribe free</span></button>
+      </form>
+      <p id="voxa-sub-msg" class="mono" role="status" style="display:none;color:var(--accent);font-size:.82rem;margin-top:10px"></p>
+      <script>
+      document.getElementById('voxa-sub').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var f = e.target, m = document.getElementById('voxa-sub-msg'), b = f.querySelector('button');
+        b.disabled = true; m.style.display = 'block'; m.style.color = 'var(--muted)'; m.textContent = 'Sending...';
+        try {
+          var r = await fetch('/subscribe', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: f.email.value }) });
+          var d = await r.json();
+          if (d.ok) { m.style.color = 'var(--accent)'; m.textContent = 'You are in. Check your inbox for the welcome.'; f.email.value = ''; }
+          else { m.style.color = '#ff8a65'; m.textContent = d.error || 'Something went wrong. Try again.'; }
+        } catch (err) { m.style.color = '#ff8a65'; m.textContent = 'Network error. Try again.'; }
+        b.disabled = false;
+      });
+      </script>
       <p class="mono" style="color:var(--muted);font-size:.78rem;margin-top:10px">No spam. Unsubscribe in one click. We never sell your address.</p>
     </div>
   </section>
