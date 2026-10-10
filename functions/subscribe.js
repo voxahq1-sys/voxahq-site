@@ -44,7 +44,7 @@ export async function onRequestPost(context) {
         method: 'POST',
         headers: { 'content-type': 'application/json', authorization: 'Bearer ' + env.RESEND_API_KEY },
         body: JSON.stringify({
-          from: env.MAIL_FROM || 'AI Actually <onboarding@resend.dev>',
+          from: env.MAIL_FROM || 'AI Actually <hello@voxahq.in>',
           to: [email],
           reply_to: 'voxa.hq1@gmail.com',
           subject: 'You are in. This is AI, Actually.',
