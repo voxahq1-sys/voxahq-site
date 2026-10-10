@@ -357,3 +357,11 @@ pre{overflow-x:auto;white-space:pre-wrap;word-break:break-word}
   section.wrap{padding-top:6px}
   .page-head + section.wrap{padding-top:0}
 }
+
+
+/* Fail-safe: readable without JS (email in-app browsers) */
+html:not(.js) .loader{display:none!important}
+html:not(.js) .rv{opacity:1!important;transform:none!important}
+html:not(.js) body.loading{overflow:auto!important}
+html.js .loader{animation:loaderHide .001s linear 5s forwards}
+@keyframes loaderHide{to{opacity:0;visibility:hidden;pointer-events:none}}
