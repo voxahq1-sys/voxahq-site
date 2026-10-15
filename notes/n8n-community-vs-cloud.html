@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
+<style>html{background:#08090a}body{background:#08090a;color:#f4f4f1;margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}.loader,.grain,.cursor-dot,.cursor-ring{display:none!important}.page{opacity:1!important}</style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>n8n Community Edition vs n8n Cloud: The Break-Even, Worked Out</title>
+<meta name="description" content="n8n Cloud starts at 24 euros for 2,500 executions and reaches 800 euros at 40,000. The Community Edition has no licence fee, so self-hosting costs the VPS: 4 to 12 euros. Here is where the lines cross.">
+<link rel="canonical" href="https://voxahq.in/notes/n8n-community-vs-cloud">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="keywords" content="n8n cloud vs community edition, n8n community edition cost, n8n break even, n8n cloud price per execution, self host n8n cheaper">
+<meta name="author" content="VOXA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://voxahq.in/images/guides/n8n-self-hosting-cost.png">
+<meta property="og:title" content="n8n Community Edition vs n8n Cloud: The Break-Even, Worked Out">
+<meta property="og:description" content="n8n Cloud starts at 24 euros for 2,500 executions and reaches 800 euros at 40,000. The Community Edition has no licence fee, so self-hosting costs the VPS: 4 to 12 euros. Here is where the lines cross.">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/guides/n8n-self-hosting-cost.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"n8n Community Edition vs n8n Cloud: The Break-Even, Worked Out","description":"n8n Cloud starts at 24 euros for 2,500 executions and reaches 800 euros at 40,000. The Community Edition has no licence fee, so self-hosting costs the VPS: 4 to 12 euros. Here is where the lines cross.","datePublished":"2026-10-16","dateModified":"2026-10-16","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA"},"mainEntityOfPage":"https://voxahq.in/notes/n8n-community-vs-cloud","image":"https://voxahq.in/images/guides/n8n-self-hosting-cost.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is n8n Community Edition free?","acceptedAnswer":{"@type":"Answer","text":"Yes for the software. There is no licence fee and no execution cap. You pay for the server, about 4 to 12 euros a month for a VPS, plus your own time for updates and backups."}},{"@type":"Question","name":"When is n8n Cloud worth more than self-hosting?","acceptedAnswer":{"@type":"Answer","text":"When the difference between the cloud plan and a VPS is smaller than the value of the hours you would spend maintaining a server, or when you need managed uptime and nobody on the team wants to own it."}},{"@type":"Question","name":"How do I compare n8n Cloud tiers by execution count?","acceptedAnswer":{"@type":"Answer","text":"Count your monthly executions first: a workflow running hourly is about 720 a month, and twenty of those is 14,400. Then match that number to the plan that covers it and compare the price against a VPS at 4 to 12 euros plus your time."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=20261015">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JFBST9ZHJP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JFBST9ZHJP');
+</script>
+<noscript><style>.rv{opacity:1 !important;transform:none !important}.line>span{transform:none !important}.statement p .wd{opacity:1 !important}</style></noscript>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxahq.in/"},{"@type":"ListItem","position":2,"name":"Notes","item":"https://voxahq.in/notes"},{"@type":"ListItem","position":3,"name":"n8n Community vs Cloud","item":"https://voxahq.in/notes/n8n-community-vs-cloud"}]}</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985" crossorigin="anonymous"></script>
+<script>document.documentElement.className+=' js';setTimeout(function(){try{document.body.className=document.body.className.replace(/\bloading\b/,'').trim()+' loaded';var l=document.getElementById('loader');if(l)l.style.display='none';var r=document.querySelectorAll('.rv');for(var i=0;i<r.length;i++)r[i].classList.add('in');}catch(e){}},4000);</script>
+</head>
+<body class="loading" data-scene="wave">
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+<div class="loader" id="loader">
+  <div class="mono" style="color:var(--muted)">VOXA / AI TOOLS &amp; AUTOMATION</div>
+  <div class="loader__count" id="loaderCount">0</div>
+  <div class="loader__bar"><i id="loaderBar"></i></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/" data-cursor><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="VOXA"><rect x="1" y="1" width="46" height="46" rx="12" fill="#0b0f10" stroke="#1e2c30"/><path d="M14 15 L24 34" fill="none" stroke="#22d3ee" stroke-width="4.6" stroke-linecap="round"/><path d="M24 34 L34 15" fill="none" stroke="#c8f751" stroke-width="4.6" stroke-linecap="round"/><circle cx="14" cy="15" r="3.2" fill="#22d3ee"/><circle cx="34" cy="15" r="3.2" fill="#c8f751"/></svg>VOXA</a>
+  <nav class="nav__links" id="navLinks">
+    <a href="/">Home</a>
+    <a href="/guides">Guides</a>
+    <a href="/notes">Notes</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+  </nav>
+  <a class="btn" href="/contact" data-magnet><span data-cursor>Contact</span></a>
+  <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
+</header>
+<div class="page">
+<main>
+  <section class="page-head wrap">
+    <span class="mono">Notes / Automation costs</span>
+    <h1>n8n Community Edition vs n8n Cloud: the break-even</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/notes">Notes</a><span>/</span><span>n8n Community vs Cloud</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0">
+    <div class="panel">
+      <p class="byline mono">By the VOXA team &middot; prices from n8n's own pricing page, checked October 2026</p>
+      <p class="meta-line mono"><span>Published October 16, 2026</span><span>4 min read</span><span>Anchors verified</span></p>
+      <div class="quick">
+        <h2>The short answer</h2>
+        <p>The Community Edition has no licence fee at all, so self-hosting costs the server: about 4 to 12 euros a month. Cloud starts at 24 euros and reaches 800 euros a month at the top tier. At low volume the VPS wins on price; the cloud wins on not owning a server.</p>
+        <div class="row">
+          <div><span class="big">0</span><span class="lbl">Community licence</span></div>
+          <div><span class="big">4-12 EUR</span><span class="lbl">VPS, per month</span></div>
+          <div><span class="big">24-800 EUR</span><span class="lbl">Cloud, per month</span></div>
+        </div>
+      </div>
+      <figure class="guide-figure">
+        <img src="/images/guides/n8n-self-hosting-cost.png" alt="Chart comparing the cost of self-hosted n8n on a VPS with n8n Cloud plans from 24 to 800 euros a month">
+        <figcaption class="mono">The two published anchors, and what a VPS costs instead.</figcaption>
+      </figure>
+
+      <h2>The published anchors</h2>
+      <table>
+        <thead><tr><th>Option</th><th>Price</th><th>Executions</th></tr></thead>
+        <tbody>
+          <tr><td>Cloud, entry tier</td><td><span class="price">24 EUR<small>per month</small></span></td><td>2,500 a month</td></tr>
+          <tr><td>Cloud, top published tier</td><td><span class="price">800 EUR<small>per month</small></span></td><td>40,000 a month</td></tr>
+          <tr><td>Community Edition, self-hosted</td><td><span class="price">4-12 EUR<small>per month, the VPS</small></span></td><td>No cap</td></tr>
+        </tbody>
+      </table>
+      <p>One honest note on this table: the tiers between the entry and top plans move, and n8n's pricing page renders those numbers in the browser rather than in the page text, so we could not read them reliably when writing this. Check the live page for the tier that matches your execution count, then compare it against the VPS line.</p>
+
+      <h2>How to work out your own break-even</h2>
+      <ol>
+        <li>Count executions. A workflow that runs hourly is about 720 a month. Twenty of those is 14,400.</li>
+        <li>Find the cloud plan that covers that number and note its price.</li>
+        <li>Add your maintenance time at your own hourly rate, two to four hours a month, to the 4 to 12 euro VPS.</li>
+        <li>Compare the two totals, not the two headline prices.</li>
+      </ol>
+      <p>At the low end, a few hundred executions a month, the comparison is roughly 6 euros against 24. At that point the licence difference is trivial and the decision is really about who maintains the thing. At high volume the gap widens to hundreds of euros a month, and the maintenance hours start to look cheap.</p>
+
+      <h2>What the cloud buys you</h2>
+      <ul>
+        <li>Managed uptime, so a failed workflow at the weekend is not your weekend</li>
+        <li>No server patching, no SSL renewal, no backup script to write</li>
+        <li>A support channel, which matters the week something breaks badly</li>
+      </ul>
+      <p>What it does not buy is more features. The Community Edition runs the same engine, with no execution cap, and the execution history limit is the main practical difference at high volume.</p>
+
+      <h2>When to switch in either direction</h2>
+      <p>Go self-hosted when volume is growing, when data should stay on your own machine, or when you already run a server. Go cloud when the person maintaining the server leaves, when you need an uptime commitment, or when the monthly difference is smaller than an hour of your time.</p>
+      <p>The full monthly bill for self-hosting is here: <a href="/notes/does-self-hosting-n8n-cost-money">does self-hosting n8n cost money</a>. If you are converting the euro prices to a budget in India, the rupee maths is here: <a href="/notes/n8n-cloud-pricing-india">n8n cloud pricing in India</a>. And the underlying guide with every plan we priced: <a href="/guides/n8n-self-hosting-cost">n8n self-hosting cost</a>.</p>
+
+      <h2>Questions people ask</h2>
+      <h3>Is the Community Edition free?</h3>
+      <p>Yes for the software, with no execution cap. The cost is your server, about 4 to 12 euros a month, plus your own time.</p>
+      <h3>When is the cloud worth it?</h3>
+      <p>When the plan price is smaller than the value of the hours you would spend maintaining a server, or when nobody wants to own that job.</p>
+      <h3>How do I compare tiers?</h3>
+      <p>Count monthly executions first (hourly equals 720 each), find the tier that covers it, then compare its price against a VPS plus your time.</p>
+
+      <p class="meta-line mono"><span>Prices: n8n's own pricing page, October 2026</span><span>Middle tiers not readable at the time of writing, flagged above</span><span>No affiliate links</span></p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="/"><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="VOXA"><rect x="1" y="1" width="46" height="46" rx="12" fill="#0b0f10" stroke="#1e2c30"/><path d="M14 15 L24 34" fill="none" stroke="#22d3ee" stroke-width="4.6" stroke-linecap="round"/><path d="M24 34 L34 15" fill="none" stroke="#c8f751" stroke-width="4.6" stroke-linecap="round"/><circle cx="14" cy="15" r="3.2" fill="#22d3ee"/><circle cx="34" cy="15" r="3.2" fill="#c8f751"/></svg>VOXA</a>
+        <p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation software. No affiliate links, no sponsored rankings.</p>
+      </div>
+      <div><h5 class="mono">Pages</h5><ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/guides">Guides</a></li>
+        <li><a href="/notes">Notes</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul></div>
+      <div><h5 class="mono">Legal</h5><ul>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms &amp; Conditions</a></li>
+        <li><a href="/disclaimer">Disclaimer</a></li>
+        <li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/how-we-test">How we check</a></li><li><a href="/editorial-policy">Editorial policy</a></li>
+      </ul></div>
+      <div><h5 class="mono">Contact</h5><ul>
+        <li><a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a></li>
+        <li><a href="/contact">Contact form</a></li>
+        <li><a href="https://www.pinterest.com/voxahq" rel="me noopener" target="_blank">Pinterest</a></li>
+      </ul></div>
+    </div>
+    <div class="foot__bottom mono">
+      <span>&copy; <span id="year">2026</span> VOXA</span>
+      <span id="clock">--:--:--</span>
+      <span>Independent guide &middot; no sponsored rankings</span>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+<script src="/js/lazy3d.js" data-scene-src="/js/scene.js"></script>
+</body>
+</html>
