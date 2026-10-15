@@ -77,6 +77,15 @@
     <div class="panel">
       <p class="byline mono">By the VOXA team &middot; numbers from n8n's own pricing page and current VPS rates</p>
       <p class="meta-line mono"><span>Published October 15, 2026</span><span>4 min read</span><span>Sources linked</span></p>
+      <div class="quick">
+        <h2>The short answer</h2>
+        <p>There is no licence fee. The bill is the server it runs on, about 4 to 12 euros a month, plus your own time for updates and backups.</p>
+        <div class="row">
+          <div><span class="big">0</span><span class="lbl">Licence fee</span></div>
+          <div><span class="big">4-12 EUR</span><span class="lbl">VPS, per month</span></div>
+          <div><span class="big">24-800 EUR</span><span class="lbl">n8n Cloud instead</span></div>
+        </div>
+      </div>
       <figure class="guide-figure">
         <img src="/images/guides/n8n-self-hosting-cost.png" alt="Chart comparing n8n self-hosting cost on a VPS at 4 to 12 euros a month against n8n Cloud plans from 24 to 800 euros a month">
         <figcaption class="mono">Self-hosting cost against n8n Cloud, checked on n8n's own pricing page.</figcaption>
@@ -90,11 +99,11 @@
       <table>
         <thead><tr><th>Item</th><th>Typical cost</th><th>Notes</th></tr></thead>
         <tbody>
-          <tr><td>Licence</td><td>0</td><td>Community Edition, no execution cap</td></tr>
-          <tr><td>VPS</td><td>4 to 12 euros a month</td><td>2 vCPU and 4GB is comfortable for a few hundred runs a day</td></tr>
-          <tr><td>Domain</td><td>about 1 euro a month</td><td>Only needed if you expose webhooks</td></tr>
+          <tr><td>Licence</td><td><span class="price">0<small>no licence fee</small></span></td><td>Community Edition, no execution cap</td></tr>
+          <tr><td>VPS</td><td><span class="price">4-12 EUR<small>per month</small></span></td><td>2 vCPU and 4GB is comfortable for a few hundred runs a day</td></tr>
+          <tr><td>Domain</td><td><span class="price">1 EUR<small>per month</small></span></td><td>Only needed if you expose webhooks</td></tr>
           <tr><td>SSL</td><td>0</td><td>Handled by the reverse proxy</td></tr>
-          <tr><td>Backups</td><td>0 to 2 euros a month</td><td>Object storage snapshot of the data volume</td></tr>
+          <tr><td>Backups</td><td><span class="price">0-2 EUR<small>per month</small></span></td><td>Object storage snapshot of the data volume</td></tr>
           <tr><td>Your time</td><td>2 to 4 hours a month</td><td>Updates, failed executions, the odd migration</td></tr>
         </tbody>
       </table>
@@ -108,7 +117,7 @@
         <thead><tr><th></th><th>Self-hosted</th><th>n8n Cloud</th></tr></thead>
         <tbody>
           <tr><td>Licence</td><td>0</td><td>Included in the plan</td></tr>
-          <tr><td>Monthly cost</td><td>5 to 15 euros, mostly the VPS</td><td>24 euros for 2,500 executions, up to 800 euros at 40,000</td></tr>
+          <tr><td>Monthly cost</td><td><span class="price">5-15 EUR<small>per month, mostly the VPS</small></span></td><td><span class="price">24-800 EUR<small>2,500 to 40,000 executions</small></span></td></tr>
           <tr><td>Maintenance</td><td>Yours</td><td>Handled</td></tr>
           <tr><td>Best for</td><td>Cost control, data on your own machine</td><td>Not thinking about infrastructure</td></tr>
         </tbody>
