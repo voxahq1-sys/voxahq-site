@@ -1,3 +1,4 @@
+/ai-stack-audit  /  301
 # 301 the .html variants to the clean URLs (removes duplicate URLs Google was choosing as canonical)
 /404.html  /404  301
 /about.html  /about  301
