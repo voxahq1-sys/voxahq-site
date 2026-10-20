@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<title>A Laid-Off Geophysicist Built an AI Job Tool. It Has 59,000 Stars</title>
+<meta name="description" content="ai-job-search turns Claude Code into a job application assistant that scores postings, tailors your CV and writes cover letters. Its author sent 69 applications, got 20 interviews and one job. Here is what it actually needs from you.">
+<link rel="canonical" href="https://voxahq.in/news/ai-job-search-59000-github-stars">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="keywords" content="ai job search tool, ai-job-search github, claude code job application, ai resume tailoring tool, ai job application framework">
+<meta property="og:title" content="A Laid-Off Geophysicist Built an AI Job Tool. It Has 59,000 Stars">
+<meta property="og:description" content="ai-job-search turns Claude Code into a job application assistant that scores postings, tailors your CV and writes cover letters. Its author sent 69 applications, got 20 interviews and one job. Here is what it actually needs from you.">
+<meta property="og:url" content="https://voxahq.in/news/ai-job-search-59000-github-stars">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/news/ai-job-search.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/css/style.css?v=20261020">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"A laid-off geophysicist built an AI job-application tool. It now has 59,000 GitHub stars","description":"ai-job-search turns Claude Code into a job application assistant that scores postings, tailors your CV and writes cover letters. Its author sent 69 applications, got 20 interviews and one job. Here is what it actually needs from you.","datePublished":"2026-10-20","dateModified":"2026-10-20","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA"},"mainEntityOfPage":"https://voxahq.in/news/ai-job-search-59000-github-stars","image":"https://voxahq.in/images/news/ai-job-search.jpg"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is ai-job-search free to use?","acceptedAnswer":{"@type":"Answer","text":"The code is free under the MIT licence. Running it requires Claude Code, which has no free tier and needs a subscription or API credits."}},{"@type":"Question","name":"Does ai-job-search work in the US?","acceptedAnswer":{"@type":"Answer","text":"Yes, partly. It ships LinkedIn and freehire.me search tools that work in any market. The other portal tools are for Denmark, and new boards need the /add-portal command."}},{"@type":"Question","name":"How many stars does ai-job-search have?","acceptedAnswer":{"@type":"Answer","text":"59,364 stars and 18,605 forks as of 20 October 2026, after gaining 3,890 stars in 24 hours."}}]}</script>
+</head><body class="loading" data-scene="wave">
+<canvas id="gl" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/">VOXA</a>
+  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/guides">Guides</a><a href="/notes">Notes</a><a href="/news">News</a><a href="/about">About Us</a><a href="/contact">Contact Us</a></nav>
+  <a class="btn" href="/contact"><span>Contact</span></a>
+</header>
+<div class="page"><main>
+  <section class="page-head wrap"><span class="mono">News / Tools</span><h1>A laid-off geophysicist built an AI job-application tool. It now has 59,000 GitHub stars</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/news">News</a><span>/</span><span>AI job search framework</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0"><div class="panel">
+    <p class="byline mono">By the VOXA team &middot; figures read from GitHub and the project README</p>
+    <p class="meta-line mono"><span>20 October 2026</span><span>7 min read</span><span>Numbers checked by hand</span></p>
+    <div class="quick"><h2>The short version</h2><p>ai-job-search is an open-source framework that turns Claude Code into a job application assistant. It scores postings against your profile, drafts a tailored CV in LaTeX, writes the cover letter, then a second AI agent reviews the work before you send it. It passed 59,000 GitHub stars today. It is not free, and the job boards it ships with are Danish.</p>
+      <div class="row"><div><span class="big">59,364</span><span class="lbl">GitHub stars</span></div><div><span class="big">69</span><span class="lbl">Applications by the author</span></div><div><span class="big">20</span><span class="lbl">First interviews from those</span></div></div></div>
+    <figure class="guide-figure"><img src="/images/news/ai-job-search.jpg" alt="ai-job-search repository trending on GitHub, October 2026" width="1200" height="630" loading="eager" decoding="async">
+      <figcaption class="mono">The repository hit 3,890 stars in 24 hours on 20 October 2026. Source: github.com.</figcaption></figure>
+    <h2>What it is</h2>
+    <p>ai-job-search is a set of commands that run inside Claude Code, Anthropic’s terminal agent. You point it at your CV and it builds a profile, searches job boards for matches, scores each posting against what you can actually do, and then drafts a tailored CV and cover letter for the ones worth applying to.</p>
+    <p>It reached 59,364 stars and 18,605 forks on 20 October 2026, adding 3,890 stars in a single day. For an open-source career tool built by one person, that is unusual attention.</p>
+
+    <h2>How the workflow runs</h2>
+    <table><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody>
+    <tr><td><code>/setup</code></td><td>Builds your profile from a CV, a documents folder, or an interview</td></tr>
+    <tr><td><code>/scrape</code></td><td>Searches job portals, removes duplicates, sorts by fit</td></tr>
+    <tr><td><code>/rank</code></td><td>Scores every new posting and returns a shortlist</td></tr>
+    <tr><td><code>/apply &lt;url&gt;</code></td><td>Drafts CV and cover letter, has a second agent review them, compiles the PDFs</td></tr>
+    <tr><td><code>/interview</code></td><td>Builds a prep pack and runs a mock interview</td></tr>
+    <tr><td><code>/upskill</code></td><td>Maps the gap between your profile and the jobs you want</td></tr>
+    </tbody></table>
+    <p>The part that makes it more than a prompt library is the review step. A second Claude agent reads the drafts with fresh context, researches the company and argues back. The first agent then revises. After that, both PDFs are compiled with LaTeX and inspected: the CV has to be exactly two pages with no orphaned job titles, and the cover letter exactly one page with the signature visible.</p>
+    <p>There is also an ATS check. The tool extracts the text layer from the finished PDF the way an applicant tracking system would read it, checks that your email survived as literal text, and scores how many of the posting’s keywords the CV actually covers. Keywords your profile cannot support stay as gaps instead of being stuffed in.</p>
+
+    <h2>The person behind it</h2>
+    <p>The author is Mads Lorentzen, a geophysicist by training. His position was cut in late 2025. He built the framework to run his own search and used it weekly.</p>
+    <p>His numbers: 69 tailored applications, 20 first interviews, one signed contract. He started as an AI engineer in June 2026.</p>
+    <p>That is a 29 percent interview rate, which is high for volume applications, and a 1.4 percent hire rate, which is normal. It is also one person’s result, not a benchmark.</p>
+
+    <h2>The four catches</h2>
+    <p><strong>It is not free.</strong> Claude Code has no free tier. You need a Claude Pro, Max or Team subscription, or API credits. Every <code>/apply</code> runs a drafting agent, a reviewing agent, several LaTeX compiles and a PDF inspection, so the cost per application is far above a single chat message. Apply to thirty jobs and the token bill is real.</p>
+    <p><strong>The job boards are Danish.</strong> The shipped search tools cover Jobindex, Jobnet, Jobbank and Jobdanmark. For the US, the repo includes a LinkedIn search tool and a freehire.me tool, both of which work anywhere. LinkedIn is explicit in the README: automated access breaks its terms of service, personal use only, keep volume low. Anything else needs <code>/add-portal</code> to build a connector for the board you use.</p>
+    <p><strong>Your personal data goes into tracked files.</strong> <code>/setup</code> writes your contact details, employment history and salary expectations into files that Git tracks. A fork of a public repo is always public, and GitHub will not make it private. The README tells you to create a private repository with this one as upstream instead. Read that section before you run setup.</p>
+    <p><strong>Setup is not one click.</strong> Python 3.10, Bun, and a LaTeX install with lualatex and xelatex. On Windows that last part is the slow one.</p>
+
+    <h2>Why this got 59,000 stars this week</h2>
+    <p>Because the job market it is built for is the one US workers are living in. Challenger, Gray &amp; Christmas counted 112,713 announced US job cuts attributed to AI through July 2026, roughly 24 percent of the 477,033 cuts announced in that period, and more than double the 54,836 AI-cited cuts in all of 2025.</p>
+    <p>The counter-evidence matters too. Goldman Sachs found AI reduced monthly payroll growth by about 16,000 jobs but added about 9,000, a net loss far smaller than the headlines suggest. PwC’s 2026 AI Jobs Barometer found headcount growing faster at the most AI-exposed companies than at the least exposed. Analysts have started calling some of the rest "AI washing", where AI is the reason given for cuts that were really about overhiring or revenue.</p>
+    <p>A tool that applies to 69 jobs is a response to that uncertainty, not a solution to it. It automates the paperwork around a search, not the search.</p>
+
+    <h2>Should you use it</h2>
+    <p>If you are applying to roles in one narrow field and your CV needs tailoring for each one, this saves the most boring hours of the week. Set up the private repo first, run <code>/setup</code> with a detailed profile, and use <code>/rank</code> before <code>/apply</code> so you are not spending tokens on jobs you would never take.</p>
+    <p>If you are applying to five jobs a month, the setup cost is higher than the saving. A CV and a cover letter written by hand will take less time than installing LaTeX.</p>
+    <p>Either way, read every word before you send it. The reviewer agent catches weak framing, not a claim that is wrong about you.</p>
+
+    <h2>Questions people ask</h2>
+    <h3>Is ai-job-search free?</h3>
+    <p>The code is MIT licensed and free. Running it needs Claude Code, which has no free tier and requires a subscription or API credits.</p>
+    <h3>Does it work for US job boards?</h3>
+    <p>Partly. The shipped portal tools are Danish. LinkedIn and freehire.me are included and work in any market. Other boards need the /add-portal command.</p>
+    <h3>Does it write fake experience?</h3>
+    <p>The README states that every claim is verified against your profile and unsupported keywords are left as gaps rather than added.</p>
+    <h2>Sources</h2><p>github.com/MadsLorentzen/ai-job-search (README and repository stats, read 20 October 2026); GitHub trending page, 20 October 2026; Challenger, Gray &amp; Christmas via HRD America, 19 October 2026; Goldman Sachs workforce research; PwC 2026 AI Jobs Barometer.</p>
+    <p class="mono" style="color:var(--muted)">Read from the primary source on 20 October 2026. Prices and terms change, so check before you commit.</p>
+    <p><a href="/news">More news from VOXA</a></p>
+  </div></section>
+</main>
+<footer><div class="wrap"><div class="foot">
+  <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">Independent AI tools and automation notes. Real prices, checked by hand. No affiliate links.</p></div>
+  <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/news">News</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul></div>
+  <div><h5 class="mono">Contact</h5><ul><li><a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a></li></ul></div>
+</div></div></footer></div></body></html>
