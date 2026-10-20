@@ -1,0 +1,39 @@
+name: Regenerate sitemap
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'sitemap.xml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sitemap:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build sitemap
+        run: python scripts/build_sitemap.py
+
+      - name: Commit if changed
+        run: |
+          if [[ -n "$(git status --porcelain sitemap.xml)" ]]; then
+            git config user.name "voxa-sitemap-bot"
+            git config user.email "voxa.hq1@gmail.com"
+            git add sitemap.xml
+            git commit -m "chore: regenerate sitemap [skip ci]"
+            git push
+          else
+            echo "No changes to sitemap.xml"
+          fi
