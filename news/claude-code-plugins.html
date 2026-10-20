@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<title>Claude Code Plugins Are Now an Official Marketplace: What to Check</title>
+<meta name="description" content="Anthropic opened a curated plugin directory for Claude Code on 17 October 2026. Plugins can bundle MCP servers, commands, agents and skills. The README says Anthropic does not control what a plugin contains. Here is how to install one safely.">
+<link rel="canonical" href="https://voxahq.in/news/claude-code-plugins">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="keywords" content="claude code plugins, claude code plugins official, claude code plugins marketplace, claude code plugins github, claude code plugins vs skills, claude code plugins list">
+<meta property="og:title" content="Claude Code Plugins Are Now an Official Marketplace: What to Check">
+<meta property="og:description" content="Anthropic opened a curated plugin directory for Claude Code on 17 October 2026. Plugins can bundle MCP servers, commands, agents and skills. The README says Anthropic does not control what a plugin contains. Here is how to install one safely.">
+<meta property="og:url" content="https://voxahq.in/news/claude-code-plugins">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/news/claude-plugins.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/css/style.css?v=20261020">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Claude Code plugins now have an official marketplace, and a security warning on the first screen","description":"Anthropic opened a curated plugin directory for Claude Code on 17 October 2026. Plugins can bundle MCP servers, commands, agents and skills. The README says Anthropic does not control what a plugin contains. Here is how to install one safely.","datePublished":"2026-10-20","dateModified":"2026-10-20","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA"},"mainEntityOfPage":"https://voxahq.in/news/claude-code-plugins","image":"https://voxahq.in/images/news/claude-plugins.jpg"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I install Claude Code plugins?","acceptedAnswer":{"@type":"Answer","text":"Run /plugin install name@claude-plugins-official inside Claude Code, or open /plugin and pick Discover to browse."}},{"@type":"Question","name":"Are Claude Code plugins safe to install?","acceptedAnswer":{"@type":"Answer","text":"They are curated, not audited. Anthropic says it does not control the MCP servers, files or software inside a plugin and cannot verify they work as intended."}},{"@type":"Question","name":"What is the difference between a Claude Code plugin and a skill?","acceptedAnswer":{"@type":"Answer","text":"A plugin can bundle skills, slash commands, agents and MCP server configuration. A skill alone is a single instruction file."}}]}</script>
+</head><body class="loading" data-scene="wave">
+<canvas id="gl" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/">VOXA</a>
+  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/guides">Guides</a><a href="/notes">Notes</a><a href="/news">News</a><a href="/about">About Us</a><a href="/contact">Contact Us</a></nav>
+  <a class="btn" href="/contact"><span>Contact</span></a>
+</header>
+<div class="page"><main>
+  <section class="page-head wrap"><span class="mono">News / Tools</span><h1>Claude Code plugins now have an official marketplace, and a security warning on the first screen</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/news">News</a><span>/</span><span>Claude Code plugins</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0"><div class="panel">
+    <p class="byline mono">By the VOXA team &middot; details from the official plugin directory README</p>
+    <p class="meta-line mono"><span>20 October 2026</span><span>6 min read</span><span>Numbers checked by hand</span></p>
+    <div class="quick"><h2>The short version</h2><p>Claude Code now has a first-party plugin directory: anthropics/claude-plugins-official. You install a plugin with one command and it can carry slash commands, agents, skills and MCP servers. Anthropic states plainly that it does not control or verify what is inside a plugin, so installing one is trusting third-party code with your machine.</p>
+      <div class="row"><div><span class="big">1</span><span class="lbl">Install command</span></div><div><span class="big">4</span><span class="lbl">Plugin components</span></div><div><span class="big">0</span><span class="lbl">Security audit by Anthropic</span></div></div></div>
+    <figure class="guide-figure"><img src="/images/news/claude-plugins.jpg" alt="Claude Code plugin marketplace directory on GitHub" width="1200" height="630" loading="eager" decoding="async">
+      <figcaption class="mono">The directory splits Anthropic-maintained and third-party plugins. Source: github.com/anthropics.</figcaption></figure>
+    <h2>What changed</h2>
+    <p>Anthropic published a curated directory of Claude Code plugins at <code>anthropics/claude-plugins-official</code>, current as of 17 October 2026. It replaces the earlier situation where plugins lived in scattered community repositories and you found them through a Discord message or a blog post.</p>
+    <p>The repository has two halves: <code>/plugins</code> for the ones Anthropic builds and maintains, and <code>/external_plugins</code> for third-party submissions from partners and the community.</p>
+
+    <h2>How to install one</h2>
+    <p>Two routes, both from inside Claude Code:</p>
+    <p><code>/plugin install {plugin-name}@claude-plugins-official</code> installs a named plugin directly. <code>/plugin</code> then Discover opens a browsable list instead, which is the better choice if you do not already know what you want.</p>
+    <p>External plugins go through a submission form and are supposed to meet quality and security standards before they appear. Anthropic does not publish what those checks are, which matters for the next section.</p>
+
+    <h2>What a plugin actually carries</h2>
+    <table><thead><tr><th>Component</th><th>What it adds</th></tr></thead><tbody>
+    <tr><td><code>plugin.json</code></td><td>Metadata. Required for every plugin</td></tr>
+    <tr><td><code>.mcp.json</code></td><td>MCP server configuration, meaning new network connections</td></tr>
+    <tr><td><code>commands/</code></td><td>Slash commands you type</td></tr>
+    <tr><td><code>agents/</code></td><td>Agent definitions that run on their own</td></tr>
+    <tr><td><code>skills/</code></td><td>Skill files that load into context</td></tr>
+    </tbody></table>
+    <p>That second row is the one to read twice. A plugin can point Claude Code at an MCP server it does not own, which means a new connection from your machine to someone else’s service, with your prompts and whatever files the agent reads.</p>
+
+    <h2>The catch, in Anthropic’s own words</h2>
+    <p>The directory README carries a warning above everything else: make sure you trust a plugin before installing it, because Anthropic does not control what MCP servers, files or other software are included in plugins, cannot verify that they work as intended, and cannot verify that they will not change later.</p>
+    <p>That is an unusually direct disclaimer for a first-party directory, and it should set your expectations. Being listed is not an audit. It is a curation decision by a company that has said it is not auditing.</p>
+    <p>The second catch is quieter. Plugin names are immutable slugs: once published, a name cannot change, because renaming it breaks every existing install with a <code>plugin-not-found</code> error. Renames are handled through a <code>renames</code> map that rewrites the old slug on your next sync. The effect is stability for you, and a directory that accumulates dead weight rather than cleaning up.</p>
+
+    <h2>Plugins versus skills, which people keep asking</h2>
+    <p>A skill is a file that teaches the agent how to do something. A plugin is a package that can contain skills plus commands, agents and servers. If all you want is a reusable instruction set, a skill folder is the smaller thing to maintain.</p>
+    <p>There is also the cost angle. Plugin and skill descriptions load into context, and the top autocomplete question about plugins right now is which ones reduce token usage rather than increase it. Installing six plugins to save time can end up costing more per session than doing the work once.</p>
+
+    <h2>If you are going to install one</h2>
+    <p>Start with <code>/plugins</code> and pick something from Anthropic’s own list before you touch external submissions. Read the plugin’s repository, not just its marketplace description. Check whether it declares an MCP server, and if it does, read which domain that server talks to.</p>
+    <p>Claude Code has no free tier, so every plugin you add is running on a paid subscription or API credits. Test one plugin for a week before adding a second.</p>
+
+    <h2>Questions people ask</h2>
+    <h3>How do I install Claude Code plugins?</h3>
+    <p>Run /plugin install name@claude-plugins-official inside Claude Code, or open /plugin and choose Discover to browse the directory.</p>
+    <h3>Are official Claude Code plugins safe?</h3>
+    <p>They are curated, not audited. Anthropic states it does not control or verify the MCP servers, files or software a plugin contains.</p>
+    <h3>What is the difference between a plugin and a skill?</h3>
+    <p>A plugin is a package that can include skills, slash commands, agents and MCP server configuration. A skill on its own is just an instruction file.</p>
+    <h2>Sources</h2><p>github.com/anthropics/claude-plugins-official (README, read 20 October 2026); Claude Code plugin documentation at code.claude.com/docs; Claude Code release notes.</p>
+    <p class="mono" style="color:var(--muted)">Read from the primary source on 20 October 2026. Prices and terms change, so check before you commit.</p>
+    <p><a href="/news/ai-job-search-59000-github-stars">Read next: the AI job search tool with 59,000 GitHub stars</a></p>
+  </div></section>
+</main>
+<footer><div class="wrap"><div class="foot">
+  <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">Independent AI tools and automation notes. Real prices, checked by hand. No affiliate links.</p></div>
+  <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/news">News</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms</a></li><li><a href="/disclaimer">Disclaimer</a></li></ul></div>
+  <div><h5 class="mono">Contact</h5><ul><li><a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a></li></ul></div>
+</div></div></footer></div></body></html>
