@@ -389,3 +389,33 @@ html.js .loader{animation:loaderHide .001s linear 5s forwards}
 .panel .scroll{overflow-x:auto;margin:1.4rem 0 1.8rem}
 .panel .scroll table{margin:0;min-width:560px}
 @media (max-width:700px){.panel td,.panel th{padding:12px 13px}.panel .price{font-size:1.12rem}}
+
+
+/* ===== LIGHT THEME (colour only, 21 Oct 2026) ===== */
+:root{
+  --bg:#ffffff; --bg2:#f5f7fb; --ink:#0b1220; --muted:#5a6472;
+  --line:rgba(11,18,32,.14);
+  --accent:#0f62fe; --accent2:#e2542a; --violet:#5b3df5;
+}
+body{background:#ffffff;color:var(--ink)}
+.veil{background:
+  radial-gradient(85% 65% at 50% 0%, rgba(255,255,255,.82), rgba(255,255,255,.96) 75%),
+  linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.86) 35%, rgba(255,255,255,.98))}
+.hero::after{background:radial-gradient(120% 90% at 50% 10%, rgba(255,255,255,.35) 30%, rgba(255,255,255,.96) 100%)}
+.nav.scrolled{background:rgba(255,255,255,.86);border-bottom:1px solid var(--line)}
+.marquee{background:var(--bg2)}
+.panel{background:#ffffff;border:1px solid var(--line);box-shadow:0 1px 2px rgba(11,18,32,.04),0 12px 32px rgba(11,18,32,.05)}
+.quick{background:linear-gradient(180deg,rgba(15,98,254,.07),rgba(91,61,245,.05));border:1px solid rgba(15,98,254,.28)}
+.card{background:#ffffff}
+.card__bg{opacity:.10}
+.table-wrap{background:#ffffff}
+.prose thead th{background:#f3f5f9}
+.prose tbody tr:hover td{background:#f8fafc}
+code{background:rgba(11,18,32,.06)}
+.btn{background:#f5f7fb}
+.btn:hover{color:#ffffff}
+.btn--solid{color:#ffffff}
+.btn--solid:hover{color:#ffffff}
+::selection{background:var(--accent);color:#ffffff}
+.foot a{color:rgba(11,18,32,.76)}
+.grain{opacity:.025}
