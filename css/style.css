@@ -424,3 +424,9 @@ code{background:rgba(11,18,32,.06) !important}
 .panel .quick .big{color:#0f62fe !important}
 .panel .quick .lbl{color:#5a6472 !important}
 .grain{opacity:.02}
+
+/* ===== light theme: crisp type ===== */
+.hero h1,.page-head h1,.sec-head h2,.stat strong,.statement p,.srv__row,.hero h1 span{text-shadow:none !important}
+.hero h1 .serif,.serif{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif !important;font-style:normal !important;font-weight:600 !important;letter-spacing:-.012em !important}
+.hero h1{font-weight:600;letter-spacing:-.012em}
+.page-head h1{font-weight:600;letter-spacing:-.012em;line-height:1.04}
