@@ -35,7 +35,7 @@ def url_for(path):
     if p == "index.html":
         return BASE + "/"
     if p.endswith("/index.html"):
-        return BASE + "/" + p[: -len("/index.html")]
+        return BASE + "/" + p[: -len("index.html")]
     if p.endswith(".html"):
         p = p[: -len(".html")]
     return BASE + "/" + p
