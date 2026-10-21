@@ -434,3 +434,14 @@ code{background:rgba(11,18,32,.06) !important}
 /* ===== hero spacing for light theme ===== */
 .hero{min-height:auto !important;align-items:center !important;padding:150px var(--pad) 72px !important}
 @media (max-width:700px){.hero{padding:120px var(--pad) 48px !important}}
+
+/* ===== readable text on white ===== */
+.panel, .panel p, .panel li, .quick p, .quick .row, .prose, .prose p, .prose li, .prose td, .prose th,
+.note-item p, .card__t, .page-head h1, .panel h1, .panel h2, .panel h3, .prose h2, .prose h3{
+  color:#0b1220 !important;
+}
+.quick p, .quick .row, .quick .lbl{color:#3f4b5a !important}
+.meta-line, .meta-line span, figcaption, .guide-figure figcaption{color:#5a6472 !important}
+.byline{color:#0f62fe !important}
+.panel a, .prose a{color:#0f62fe !important}
+.prose strong, .panel strong{color:#0b1220 !important}
