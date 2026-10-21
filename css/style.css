@@ -458,3 +458,17 @@ code{background:rgba(139,108,255,.18) !important;color:#d9ccff !important}
 .btn--solid{background:#8b6cff !important;border-color:#8b6cff !important;color:#ffffff !important}
 ::selection{background:#8b6cff;color:#ffffff}
 .grain{opacity:.03}
+
+/* ===== TEXT CONTRAST (readable on the purple background) ===== */
+body p, .panel p, .prose p, .hero p, .statement p, .srv__row p{color:rgba(255,255,255,.92) !important}
+.hero p, .hero__inner p{color:rgba(255,255,255,.86) !important}
+.panel li, .prose li, .prose td, .prose th{color:rgba(255,255,255,.88) !important}
+.meta-line, .meta-line span, figcaption, .guide-figure figcaption{color:rgba(255,255,255,.72) !important}
+.eyebrow, .eyebrow span, .mono, .kicker, .stat span, .stat small{color:rgba(255,255,255,.78) !important}
+.hero .eyebrow{border-color:rgba(255,255,255,.28) !important}
+.card__t, .note-item h2, .note-item h3{color:#ffffff !important}
+.quick p, .quick .row, .quick .lbl{color:rgba(255,255,255,.86) !important}
+.panel .quick .lbl{color:rgba(255,255,255,.7) !important}
+.foot p, .foot__bottom, .foot__bottom span{color:rgba(255,255,255,.7) !important}
+.nav__links a{color:rgba(255,255,255,.9) !important}
+.nav__links a.is-active{color:#ffffff !important}
