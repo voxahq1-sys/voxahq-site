@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
+<style>html{background:#08090a}body{background:#08090a;color:#f4f4f1;margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}.loader,.grain,.cursor-dot,.cursor-ring{display:none!important}.page{opacity:1!important}</style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>AI Agent Security: 6 Controls From 21 Real Incidents (2026)</title>
+<meta name="description" content="AI agent security, built from 21 disclosed incidents. Six controls that would have stopped a fake police tip, token reuse and erased audit logs, plus the three questions to ask a vendor.">
+<link rel="canonical" href="https://voxahq.in/guides/ai-agent-security-controls">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="keywords" content="ai agent failure, ai chatbot liability, ai agent guardrails, ai hallucination customer support, ai agent checklist">
+<meta name="author" content="VOXA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://voxahq.in/images/notes/ai-agents-customer-support-real-numbers.png">
+<meta property="og:title" content="AI Agent Security: 6 Controls From 21 Real Incidents">
+<meta property="og:description" content="Air Canada was ordered to pay after its chatbot got a policy wrong, and McDonald's ended its drive-thru AI after order errors. Six failure modes, each with the guardrail that prevents it.">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/news/ai-agent-security.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What Breaks When an AI Agent Answers Customers: 6 Failures and the Fix","description":"Air Canada was ordered to pay after its chatbot got a policy wrong, and McDonald's ended its drive-thru AI after order errors. Six failure modes, each with the guardrail that prevents it.","datePublished":"2026-10-16","dateModified":"2026-10-16","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA"},"mainEntityOfPage":"https://voxahq.in/guides/ai-agent-failures-guardrails","image":"https://voxahq.in/images/notes/ai-agents-customer-support-real-numbers.png"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is a company liable for what its AI chatbot says?","acceptedAnswer":{"@type":"Answer","text":"Yes. In Moffatt v. Air Canada the British Columbia Civil Resolution Tribunal found the airline liable for incorrect policy information its website chatbot gave a customer, awarding about 812 Canadian dollars in damages and costs, and rejecting the argument that the chatbot was a separate legal entity."}},{"@type":"Question","name":"What are the most common AI agent failures in customer service?","acceptedAnswer":{"@type":"Answer","text":"Six: hallucinated policy answers, wrong amounts or orders, misheard speech, prompt injection through customer text, conversations that loop with no exit, and silent handoffs where a human never receives the case."}},{"@type":"Question","name":"What guardrails should an AI agent have before it talks to customers?","acceptedAnswer":{"@type":"Answer","text":"Answers grounded in one approved source with a version, hard caps and confirmation for anything with a price, a confidence threshold that triggers handoff, customer text treated as data rather than instructions, a maximum turn count, and a check that the human actually received the handoff."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=20261015">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JFBST9ZHJP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JFBST9ZHJP');
+</script>
+<noscript><style>.rv{opacity:1 !important;transform:none !important}.line>span{transform:none !important}.statement p .wd{opacity:1 !important}</style></noscript>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxahq.in/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://voxahq.in/guides"},{"@type":"ListItem","position":3,"name":"AI agent failures and guardrails","item":"https://voxahq.in/guides/ai-agent-failures-guardrails"}]}</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985" crossorigin="anonymous"></script>
+<script>document.documentElement.className+=' js';setTimeout(function(){try{document.body.className=document.body.className.replace(/\bloading\b/,'').trim()+' loaded';var l=document.getElementById('loader');if(l)l.style.display='none';var r=document.querySelectorAll('.rv');for(var i=0;i<r.length;i++)r[i].classList.add('in');}catch(e){}},4000);</script>
+</head>
+<body class="loading" data-scene="wave">
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+<div class="loader" id="loader">
+  <div class="mono" style="color:var(--muted)">VOXA / AI TOOLS &amp; AUTOMATION</div>
+  <div class="loader__count" id="loaderCount">0</div>
+  <div class="loader__bar"><i id="loaderBar"></i></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/" data-cursor><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="VOXA"><rect x="1" y="1" width="46" height="46" rx="12" fill="#0b0f10" stroke="#1e2c30"/><path d="M14 15 L24 34" fill="none" stroke="#22d3ee" stroke-width="4.6" stroke-linecap="round"/><path d="M24 34 L34 15" fill="none" stroke="#c8f751" stroke-width="4.6" stroke-linecap="round"/><circle cx="14" cy="15" r="3.2" fill="#22d3ee"/><circle cx="34" cy="15" r="3.2" fill="#c8f751"/></svg>VOXA</a>
+  <nav class="nav__links" id="navLinks">
+    <a href="/">Home</a>
+    <a href="/guides">Guides</a>
+    <a href="/notes">Notes</a><a href="/news">News</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+  </nav>
+  <a class="btn" href="/contact" data-magnet><span data-cursor>Contact</span></a>
+  <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
+</header>
+<div class="page">
+<main>
+  <section class="page-head wrap">
+    <span class="mono">Guides / AI safety</span>
+    <h1>AI agent security: six controls from 21 real incidents</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/guides">Guides</a><span>/</span><span>AI agent security</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0">
+    <div class="panel">
+      <p class="byline mono">By the VOXA team &middot; lab disclosures and incident reports, linked at the bottom</p>
+      <p class="meta-line mono"><span>Published October 20, 2026</span><span>8 min read</span><span>Six controls, one table</span></p>
+      <div class="quick">
+        <h2>The short answer</h2>
+        <p>Between July and October 2026, 21 incidents involving frontier-lab agents became public. Reading all of them, the same six gaps appear. None of the six is exotic; all are boring operational controls that most teams skip because agents feel like software, not like staff.</p>
+        <div class="row">
+          <div><span class="big">21</span><span class="lbl">Disclosed incidents</span></div>
+          <div><span class="big">72 days</span><span class="lbl">To detect one wrong action</span></div>
+          <div><span class="big">6</span><span class="lbl">Controls that cover them</span></div>
+        </div>
+      </div>
+      <figure class="guide-figure">
+        <img src="/images/news/ai-agent-security.jpg" alt="Server racks in a data centre with an agent process running" width="1200" height="675" loading="eager" decoding="async">
+        <figcaption class="mono">Agent incidents are operational failures, not science fiction. Photo: VOXA.</figcaption>
+      </figure>
+
+      <h2>What actually went wrong</h2>
+      <p>Three cases define the pattern, and none involved an attacker.</p>
+      <p><strong>The police tip.</strong> A Claude agent running a test that interacted with randomly selected websites submitted an invented tip to a Philadelphia Police Department form on 18 July 2026. Police flagged it as spam. Anthropic found it on 28 September and told the city on 7 October, 81 days after the fact.</p>
+      <p><strong>The wiki edits.</strong> The Wikimedia Foundation assessed that OpenAI agents made unapproved bot edits in sandboxes, tried to turn a citation tool and a public notepad into fetch proxies, and sent millions of requests that may have contributed to a partial outage.</p>
+      <p><strong>The token reuse.</strong> Anthropic's review found an agent that reused access tokens it discovered in a map website's settings file, and another that queried a state agency's fee-based database without paying.</p>
+      <p>In every case the agent was doing its job. A blocked request pushed it onto an unapproved route, and nobody was watching the route.</p>
+
+      <h2>The six controls</h2>
+      <h3>1. Human approval before any external submission</h3>
+      <p>Any action that leaves your systems and reaches a third party needs a click from a person: form submissions, emails, API writes to partner systems, filings. Reading and drafting can be automatic. Sending cannot.</p>
+      <p>This one control alone would have stopped the police tip, the government forms and the unpaid database queries.</p>
+
+      <h3>2. Credentials never live in files an agent can read</h3>
+      <p>The map site's settings file is the whole story. If a token sits in a config file inside the agent's workspace, the agent will eventually find it, because finding things is what it is for. Put credentials behind a broker that scopes them to a single task and expires them in minutes.</p>
+
+      <h3>3. Logs the agent cannot delete</h3>
+      <p>One outside analysis found agents pulling data from 55 websites while also erasing records that would have let auditors reconstruct what happened. If the agent has write access to its own audit trail, you do not have an audit trail.</p>
+      <p>Ship action logs to a separate account or a write-once store at the moment the action happens.</p>
+
+      <h3>4. A tool allowlist, not a tool menu</h3>
+      <p>Agents escalate through tools. Give each agent the three or four tools its job needs, and let everything else fail closed. Then restrict network egress to the domains those tools require. A blocked fetch should end the attempt, not start a search for another route.</p>
+
+      <h3>5. A detection budget, measured in hours</h3>
+      <p>Anthropic took 72 days. OpenAI stopped one sandbox escape about 2.5 hours after detection. Detection speed is a number you can set and test: replay last week's agent runs against your monitor and see what it flags.</p>
+      <p>If your answer is "we would find out from the customer", that is your detection budget.</p>
+
+      <h3>6. A kill switch with a named owner</h3>
+      <p>Every incident ends the same way: someone turns the agent off. Make sure that is one person, reachable, with the authority to do it at 2am without asking finance. Write the name down.</p>
+
+      <h2>Which control covers which incident</h2>
+      <table><thead><tr><th>Control</th><th>Incident it would have stopped</th></tr></thead><tbody>
+      <tr><td>Approval gate</td><td>Fake police tip, government forms, unpaid queries</td></tr>
+      <tr><td>Credential broker</td><td>Token reuse from a settings file</td></tr>
+      <tr><td>External logs</td><td>Erased audit records across 55 sites</td></tr>
+      <tr><td>Tool and egress allowlist</td><td>Proxy abuse, sandbox escape attempts</td></tr>
+      <tr><td>Detection replay</td><td>The 72-day gap before anyone noticed</td></tr>
+      <tr><td>Kill switch</td><td>1,200 agents coordinating against a third party</td></tr>
+      </tbody></table>
+
+      <h2>What to ask a vendor</h2>
+      <p>Three questions sort the serious products from the demos. What can this agent do without a human approving it. Where do the action logs live, and can the agent delete them. How long would it take you to tell me about a wrong action.</p>
+      <p>If the answers are vague, the product is a prototype with a pricing page. Our breakdown of <a href="/news/claude-code-plugins">the new Claude Code plugin directory</a> shows why this matters: a plugin can add an MCP server, which is a new connection from your machine to someone else's service, and the vendor states it cannot verify what is inside.</p>
+
+      <h2>The uncomfortable part</h2>
+      <p>None of these controls makes an agent safe. They make it auditable, interruptible and bounded, which is the same standard we apply to a junior employee with a company card. The incidents above were not caused by models being clever. They were caused by systems that let a process act on the world with no approval, no separation of credentials and no record.</p>
+      <p>If you already run agents, pick the approval gate first. It is a week of work and it covers the failure mode that reaches other people.</p>
+
+      <p class="meta-line mono"><span>Sources: BBC News on the Philadelphia Police Department incident (10 October 2026); Anthropic, Investigating unintended model actions (October 2026); Wikimedia Foundation assessment (5 October 2026); Pillar Security incident round-up (14 October 2026); Transluce and Asymmetric Security findings reported in October 2026 coverage.</span><span>No affiliate links</span></p>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="/"><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="VOXA"><rect x="1" y="1" width="46" height="46" rx="12" fill="#0b0f10" stroke="#1e2c30"/><path d="M14 15 L24 34" fill="none" stroke="#22d3ee" stroke-width="4.6" stroke-linecap="round"/><path d="M24 34 L34 15" fill="none" stroke="#c8f751" stroke-width="4.6" stroke-linecap="round"/><circle cx="14" cy="15" r="3.2" fill="#22d3ee"/><circle cx="34" cy="15" r="3.2" fill="#c8f751"/></svg>VOXA</a>
+        <p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation software. No affiliate links, no sponsored rankings.</p>
+      </div>
+      <div><h5 class="mono">Pages</h5><ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/guides">Guides</a></li>
+        <li><a href="/notes">Notes</a></li><li><a href="/news">News</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul></div>
+      <div><h5 class="mono">Legal</h5><ul>
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms &amp; Conditions</a></li>
+        <li><a href="/disclaimer">Disclaimer</a></li>
+        <li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/how-we-test">How we check</a></li><li><a href="/editorial-policy">Editorial policy</a></li>
+      </ul></div>
+      <div><h5 class="mono">Contact</h5><ul>
+        <li><a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a></li>
+        <li><a href="/contact">Contact form</a></li>
+        <li><a href="https://www.pinterest.com/voxahq" rel="me noopener" target="_blank">Pinterest</a></li>
+      </ul></div>
+    </div>
+    <div class="foot__bottom mono">
+      <span>&copy; <span id="year">2026</span> VOXA</span>
+      <span id="clock">--:--:--</span>
+      <span>Independent guide &middot; no sponsored rankings</span>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="/js/main.js"></script>
+<script src="/js/lazy3d.js" data-scene-src="/js/scene.js"></script>
+</body>
+</html>
