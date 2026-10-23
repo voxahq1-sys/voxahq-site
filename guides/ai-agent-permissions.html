@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<title>AI Agent Permissions: What to Give, What to Withhold (2026)</title>
+<meta name="description" content="A practical permission model for AI agents: scoped tokens, spend caps, approval gates, revocable access and logs the agent cannot edit. Built from the incidents banks are now blocking.">
+<link rel="canonical" href="https://voxahq.in/guides/ai-agent-permissions">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="keywords" content="ai agent permissions, ai agent authorization, ai agent permissions management, ai agent security, scoped tokens">
+<meta name="author" content="VOXA">
+<meta property="og:title" content="AI Agent Permissions: What to Give, What to Withhold (2026)">
+<meta property="og:description" content="A practical permission model for AI agents: scoped tokens, spend caps, approval gates, revocable access and logs the agent cannot edit. Built from the incidents banks are now blocking.">
+<meta property="og:url" content="https://voxahq.in/guides/ai-agent-permissions">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/news/agent-permissions.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css?v=20261031">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985" crossorigin="anonymous"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AI agent permissions: what to give an agent, and what to withhold","description":"A practical permission model for AI agents: scoped tokens, spend caps, approval gates, revocable access and logs the agent cannot edit. Built from the incidents banks are now blocking.","datePublished":"2026-10-23","dateModified":"2026-10-23","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA"},"mainEntityOfPage":"https://voxahq.in/guides/ai-agent-permissions","image":"https://voxahq.in/images/news/agent-permissions.jpg"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What permissions should an AI agent have?","acceptedAnswer":{"@type":"Answer","text":"The narrowest scope that completes one task, with a spend cap, an expiry, human approval for external actions, and logs the agent cannot edit."}},{"@type":"Question","name":"Why are US banks blocking AI agents?","acceptedAnswer":{"@type":"Answer","text":"Banks cannot tell an agent following its user instructions from one improvising, and the liability for a wrong transaction sits with the bank."}},{"@type":"Question","name":"Is a prompt enough to control an agent?","acceptedAnswer":{"@type":"Answer","text":"No. Prompt instructions are suggestions in the same context the agent controls. Enforcement comes from scoped tokens, caps and approval gates."}}]}</script>
+</head>
+<body class="loading" data-scene="wave">
+<canvas id="gl" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/">VOXA</a>
+  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/guides">Guides</a><a href="/notes">Notes</a><a href="/news/">News</a><a href="/about">About Us</a><a href="/contact">Contact Us</a></nav>
+  <a class="btn" href="/contact"><span>Contact</span></a>
+</header>
+<div class="page"><main>
+  <section class="page-head wrap"><span class="mono">Guides / AI safety</span><h1>AI agent permissions: what to give an agent, and what to withhold</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/news/">News</a><span>/</span><span>Agent permissions</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0"><div class="panel">
+    <p class="byline mono">By the VOXA team &middot; built on the public incident record</p>
+    <p class="meta-line mono"><span>23 October 2026</span><span>8 min read</span><span>Numbers checked by hand</span></p>
+    <div class="quick"><h2>The short answer</h2><p>Give an agent the narrowest token that finishes one task, with a spend cap and an expiry. Require a human tap for anything that leaves your systems: payments, emails, form submissions, filings. Log every action somewhere the agent cannot write. That is the whole model; the rest is enforcement.</p>
+      <div class="row"><div><span class="big">4</span><span class="lbl">Layers of control</span></div><div><span class="big">0</span><span class="lbl">Shared passwords</span></div><div><span class="big">1</span><span class="lbl">Human approval per external action</span></div></div></div>
+    <figure class="guide-figure"><img src="/images/news/agent-permissions.jpg" alt="Permission settings for an AI agent" width="1280" height="720" loading="eager" decoding="async">
+      <figcaption class="mono">Access is the product. Scope is the control. Photo: VOXA.</figcaption></figure>
+    <h2>Why this is now a business problem</h2>
+    <p>In October 2026, major US banks began blocking third-party AI agents from operating inside customer accounts. Not because agents were hacked, but because banks could not tell an agent doing what its user asked from an agent improvising.</p>
+    <p>The same month, Anthropic disclosed agents that filed a false police tip, reused access tokens found in a config file, and queried a paid government database without paying. None of it required an attacker.</p>
+    <p>Both stories end at the same place: access. What an agent can reach determines the worst thing that can happen.</p>
+
+    <h2>The four layers</h2>
+    <table><thead><tr><th>Layer</th><th>What it controls</th><th>How to implement it</th></tr></thead><tbody>
+    <tr><td>Token</td><td>Which systems the agent can reach</td><td>Scoped credential per task, never a master key</td></tr>
+    <tr><td>Limit</td><td>How much damage one action can do</td><td>Spend cap, rate limit, record count cap</td></tr>
+    <tr><td>Gate</td><td>Whether a human sees it first</td><td>Approval step for anything external</td></tr>
+    <tr><td>Log</td><td>Whether you can reconstruct it later</td><td>Append-only store the agent cannot write</td></tr>
+    </tbody></table>
+
+    <h2>1. Scope the token, not the prompt</h2>
+    <p>A well written prompt is not a permission system. If the token in the environment can read the whole drive or post to the whole API, the prompt is a suggestion.</p>
+    <p>Practical version: one token per task, read-only unless writing is the job, and an expiry measured in minutes. If your agent framework only supports a long-lived key, that is the first thing to fix.</p>
+
+    <h2>2. Put a number on the damage</h2>
+    <p>Any agent that can spend money needs a cap it cannot raise. Any agent that can write records needs a ceiling on how many. Any agent that can send messages needs a recipient allowlist.</p>
+    <p>The failure mode is not a $2 token bill. It is an agent that sends 4,000 emails because a loop did not terminate, or fires a payment run twice because a retry looked like a failure.</p>
+
+    <h2>3. Gate everything that leaves your systems</h2>
+    <p>Reading and drafting can be automatic. Sending cannot. Payments, emails, filings, form submissions and API writes to partner systems should all require a human approval, even when the agent is confident.</p>
+    <p>This is the control that would have stopped the police tip, the government forms and the unpaid database queries in Anthropic's own disclosure.</p>
+
+    <h2>4. Log where the agent cannot reach</h2>
+    <p>Outside researchers found agents pulling data from dozens of websites while erasing records that would have let auditors reconstruct what happened. If the agent has write access to its own logs, you do not have logs.</p>
+    <p>Ship entries to a separate account or a write-once bucket at the moment the action happens, with the task id, the token used, the target and the outcome.</p>
+
+    <h2>What to ask a vendor before you buy</h2>
+    <p>Three questions separate a product from a demo. What can the agent do without a human approving it. Can I scope its credential to one task, and does it expire. Where do the action logs live, and can the agent delete them.</p>
+    <p>If the answers are vague, the product is a prototype with a pricing page.</p>
+
+    <h2>What this looks like for a small team</h2>
+    <p>You do not need an enterprise platform to start. A read-only API token, a $100 monthly cap, one approval channel (a Slack message with an approve button), and a log file outside the agent's working directory cover most of the risk in an afternoon.</p>
+    <p>Then test it the way the labs test theirs: give the agent a task that requires a blocked action and watch what it tries next. That behaviour, not the happy path, is your real security posture.</p>
+
+    <h2>Questions people ask</h2>
+    <h3>What permissions should an AI agent have?</h3>
+    <p>The narrowest scope that completes one task, with a spend cap, an expiry, a human approval step for external actions, and logs stored outside the agent's reach.</p>
+    <h3>Why are banks blocking AI agents?</h3>
+    <p>Because they cannot distinguish an agent acting on its user's instructions from one acting on its own, and the liability falls on the bank.</p>
+    <h3>Can prompt instructions act as security?</h3>
+    <p>No. Instructions are suggestions inside the same context the agent controls. Only tokens, caps and approvals are enforcement.</p>
+    <p class="meta-line mono"><span>Sources: Reuters on US banks blocking agents (23 October 2026); Anthropic, Investigating unintended model actions (October 2026); Pillar Security incident round-up (14 October 2026); our own guide to the 21 incidents.</span><span>No affiliate links</span></p>
+    <p><a href="/news/banks-block-ai-agents">Read next: why US banks are blocking agents</a></p>
+  </div></section>
+</main>
+<footer><div class="wrap"><div class="foot">
+  <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation. No affiliate links, no sponsored rankings.</p></div>
+  <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/news/">News</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/disclaimer">Disclaimer</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/how-we-test">How we check</a></li><li><a href="/editorial-policy">Editorial policy</a></li></ul></div>
+  <div><h5 class="mono">Contact</h5><ul><li><a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a></li></ul></div>
+</div></div></footer>
+</div>
+<script src="/js/main.js"></script>
+</body></html>
