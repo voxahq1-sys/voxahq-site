@@ -384,4 +384,22 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://voxahq.in/news/black-october-ai-hacks</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voxahq.in/news/openai-stops-live-internet-training</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voxahq.in/guides/ai-phishing-detection</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
