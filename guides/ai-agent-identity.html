@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<title>How to give an AI agent its own identity (and scope it)</title>
+<meta name="description" content="A practical five-step model for agent identity: one credential per agent, least-privilege scope, short-lived tokens, logs the agent cannot edit and a tested kill switch.">
+<link rel="canonical" href="https://voxahq.in/guides/ai-agent-identity">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="keywords" content="ai agent identity, agent credentials, least privilege ai, service account for agent, ai agent security">
+<meta name="author" content="VOXA">
+<meta property="og:title" content="How to give an AI agent its own identity, and why shared API keys break">
+<meta property="og:description" content="A practical five-step model for agent identity: one credential per agent, least-privilege scope, short-lived tokens, logs the agent cannot edit and a tested kill switch.">
+<meta property="og:url" content="https://voxahq.in/guides/ai-agent-identity">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/news/agent-identity-guide.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css?v=20261031">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985" crossorigin="anonymous"></script>
+
+
+
+
+
+<meta name="p:domain_verify" content="c3d907d27ae9b207d17f93434ffa7b52"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to give an AI agent its own identity, and why shared API keys break","datePublished":"2026-10-27T19:20:00+05:30","dateModified":"2026-10-27T19:20:00+05:30","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in/"},"mainEntityOfPage":"https://voxahq.in/guides/ai-agent-identity","description":"A practical five-step model for giving AI agents their own identity and scope."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I just use one strong key and rotate it often?","acceptedAnswer":{"@type":"Answer","text":"No. Rotation does not solve attribution. When three agents share a key you still cannot tell which one acted."}},{"@type":"Question","name":"Does this apply to no-code tools?","acceptedAnswer":{"@type":"Answer","text":"Partly. n8n, Make and Zapier store credentials per connection, so each workflow can have its own connection."}},{"@type":"Question","name":"What is the smallest useful version?","acceptedAnswer":{"@type":"Answer","text":"One agent, one connection, one scope, an expiry you set, and a tested way to switch it off."}}]}</script>
+</head>
+<body class="loading" data-scene="wave">
+<canvas id="gl" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/">VOXA</a>
+  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/guides">Guides</a><a href="/notes">Notes</a><a href="/news/">News</a><a href="/about">About Us</a><a href="/contact">Contact Us</a></nav>
+  <a class="btn" href="/contact"><span>Contact</span></a>
+</header>
+<div class="page">
+
+
+<main>
+  <section class="page-head wrap"><span class="mono">Guide</span><h1>How to give an AI agent its own identity, and why shared API keys break</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/guides/">Guides</a><span>/</span><span>Agent identity</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0"><div class="panel">
+    <p class="byline mono">By the VOXA team &middot; Based on IBM's October 2026 agent controls and 21 disclosed incidents</p>
+    <p class="meta-line mono"><span>27 October 2026</span><span>8 min read</span><span>Applies to n8n, Make, Zapier and custom agents</span></p>
+    <div class="quick"><h2>The short answer</h2><p>Give every agent its own identity, scope that identity to one job, make its credentials short-lived, log every action against the identity, and test a revocation path before you let it touch anything real. A shared API key cannot do any of those five things.</p>
+      <div class="row"><div><span class="big">5</span><span class="lbl">Steps to a governed agent</span></div><div><span class="big">1</span><span class="lbl">Identity per agent, not per team</span></div><div><span class="big">24h</span><span class="lbl">Longest credential life you should allow</span></div></div>
+    </div>
+
+    <h2>Why the shared key is the problem</h2>
+    <p>Most teams start the same way. One API key in an environment variable, used by the workflow, the agent and the nightly script. It works, so nobody changes it. Then three things happen at once.</p>
+    <p>You cannot tell which agent did what, because they all act as the same user. You cannot revoke one agent without breaking the others. And when a key leaks, every system it touched is exposed, because the key never expires and holds every scope the team ever needed.</p>
+    <p>This is why the incident reports read the way they do. The agent did not break in. It was already inside, with more access than the task required.</p>
+
+    <h2>Step 1: one identity per agent</h2>
+    <p>Create a separate credential, service account or bot user for each agent, named for the job it does: invoice-chaser, lead-responder, research-briefer. Not "automation" and not the founder's login.</p>
+    <p>Write down the owner as a person, not a team. When something goes wrong at 2am, a name matters more than a channel.</p>
+
+    <h2>Step 2: scope to the job, not to the department</h2>
+    <p>List the exact actions the agent needs. For a lead responder that is: read new form rows, write a draft, send from one mailbox, append a tag. It is not "access to Gmail" and it is not "admin on the CRM".</p>
+    <p>The test is simple. If the agent were taken over by someone hostile, what could they reach? If the answer includes payroll, start again.</p>
+
+    <h2>Step 3: make credentials short-lived</h2>
+    <p>Prefer tokens that expire in hours over tokens that expire never. Where the platform supports it, generate credentials per run rather than storing one long-lived secret. Vault 2.2, announced this week, does this for agents specifically, but the same pattern exists in every cloud: workload identity, short-lived STS tokens, rotating service credentials.</p>
+    <p>If a token must live longer, rotate it on a schedule and treat rotation as part of the job, not a quarterly chore.</p>
+
+    <h2>Step 4: log against the identity</h2>
+    <p>Every action should record four fields: which agent, which tool, which input, which outcome. Not for compliance theatre. For the first hour of an incident, when the only useful question is what the agent touched and in what order.</p>
+    <p>Keep the log somewhere the agent cannot write to. An agent that can edit its own audit trail has no audit trail.</p>
+
+    <h2>Step 5: test revocation before you need it</h2>
+    <p>Kill one credential on purpose and watch what happens. If the workflow keeps running, it is using another key you forgot about. If you cannot tell what stopped, you do not have visibility.</p>
+    <p>IBM's version of this is a kill switch inside watsonx Orchestrate, plus sandboxing so one rogue agent cannot reach another. Your version can be a single flag in a database that the runner checks at the start of every loop.</p>
+
+    <h2>The three numbers to put on the wall</h2>
+    <p><strong>Credential lifetime.</strong> The maximum time a token stays valid, in hours. If it is measured in months, that is your first project.</p>
+    <p><strong>Scope count.</strong> How many distinct permissions one agent holds. Anything above five deserves a written reason.</p>
+    <p><strong>Revocation time.</strong> How long it takes to fully cut an agent off, tested, not estimated.</p>
+
+    <h2>What this costs</h2>
+    <p>Nothing, for the pattern. Separate service accounts, narrower scopes, rotation and a log are available on the free tiers of the tools most teams already pay for.</p>
+    <p>Enterprise tooling like Vault or Orchestrate buys you discovery across clouds and one console. It does not buy you the discipline of scoping, which is the part that actually prevents incidents.</p>
+
+    <h2>Questions people ask</h2>
+    <h3>Can I just use one strong key and rotate it often?</h3>
+    <p>No. Rotation does not solve attribution. When three agents share a key, you still cannot tell which one acted.</p>
+    <h3>Does this apply to no-code tools?</h3>
+    <p>Partly. n8n, Make and Zapier all store credentials per connection, so you can give each workflow its own connection. That is the same idea with fewer knobs.</p>
+    <h3>What is the smallest useful version?</h3>
+    <p>One agent, one connection, one scope, an expiry you set, and a tested way to switch it off.</p>
+    <p class="meta-line mono"><span>Sources: IBM TechXchange announcement, 27 October 2026; Gartner agent sprawl research, April 2026; VOXA incident database.</span><span>No affiliate links</span></p>
+    <p><a href="/guides/ai-agent-permissions">Read next: what to give an agent and what to withhold</a> and <a href="/guides/ai-agent-security-controls">six controls from 21 real incidents</a>.</p>
+  </div></section>
+</main></main></main></main>
+<footer><div class="wrap"><div class="foot">
+  <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation. No affiliate links, no sponsored rankings.</p></div>
+  <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/newsletter">Newsletter</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/news/">News</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/disclaimer">Disclaimer</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/how-we-test">How we check</a></li><li><a href="/editorial-policy">Editorial policy</a></li></ul></div>
+  <div><h5 class="mono">Contact</h5><ul><li><a href="/cdn-cgi/l/email-protection#8bfde4f3eaa5e3fabacbece6eae2e7a5e8e4e6"><span class="__cf_email__" data-cfemail="96e0f9eef7b8fee7a7d6f1fbf7fffab8f5f9fb">[email&#160;protected]</span></a></li></ul></div>
+</div></div></footer>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/main.js"></script>
+</body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<title>IBM gives every AI agent an identity and a kill switch</title>
+<meta name="description" content="IBM announced agent identity, short-lived credentials, sandboxing and a kill switch across HashiCorp Vault and watsonx Orchestrate at TechXchange 2026.">
+<link rel="canonical" href="https://voxahq.in/news/ibm-agent-identity-control">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="keywords" content="ibm agent identity, hashicorp vault ai agents, ai agent governance, watsonx orchestrate, agent security">
+<meta name="author" content="VOXA">
+<meta property="og:title" content="IBM is giving every AI agent an identity, a short-lived password and a kill switch">
+<meta property="og:description" content="IBM announced agent identity, short-lived credentials, sandboxing and a kill switch across HashiCorp Vault and watsonx Orchestrate at TechXchange 2026.">
+<meta property="og:url" content="https://voxahq.in/news/ibm-agent-identity-control">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/news/ibm-agent-identity.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css?v=20261031">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985" crossorigin="anonymous"></script>
+
+
+
+
+
+<meta name="p:domain_verify" content="c3d907d27ae9b207d17f93434ffa7b52"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"IBM is giving every AI agent an identity, a short-lived password and a kill switch","datePublished":"2026-10-27T19:10:00+05:30","dateModified":"2026-10-27T19:10:00+05:30","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in/"},"mainEntityOfPage":"https://voxahq.in/news/ibm-agent-identity-control","description":"IBM announced agent identity and control for AI agents at TechXchange 2026."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this a new product or a rename?","acceptedAnswer":{"@type":"Answer","text":"Both. Agent Identity and Vault 2.2 are generally available, while discovery, sandboxing and the integration hub are in tech preview."}},{"@type":"Question","name":"Do small teams need this?","acceptedAnswer":{"@type":"Answer","text":"Not the enterprise tooling. Yes to the pattern: one identity per agent, short-lived credentials, least privilege and a tested revocation path."}},{"@type":"Question","name":"Does it fix prompt injection?","acceptedAnswer":{"@type":"Answer","text":"No. It limits the damage, because a narrow scope and a short credential life mean a successful trick reaches less."}}]}</script>
+</head>
+<body class="loading" data-scene="wave">
+<canvas id="gl" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/">VOXA</a>
+  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/guides">Guides</a><a href="/notes">Notes</a><a href="/news/">News</a><a href="/about">About Us</a><a href="/contact">Contact Us</a></nav>
+  <a class="btn" href="/contact"><span>Contact</span></a>
+</header>
+<div class="page">
+
+
+<main>
+  <section class="page-head wrap"><span class="mono">News / Agents</span><h1>IBM is giving every AI agent an identity, a short-lived password and a kill switch</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/news/">News</a><span>/</span><span>Agent identity</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0"><div class="panel">
+    <p class="byline mono">By the VOXA team &middot; IBM announcement at TechXchange, linked below</p>
+    <p class="meta-line mono"><span>27 October 2026</span><span>5 min read</span><span>Announced 27 October</span></p>
+    <div class="quick"><h2>The short answer</h2><p>At TechXchange 2026 IBM announced agent identity and control across HashiCorp Vault and watsonx Orchestrate: each agent gets its own governed identity, short-lived credentials limited to what its job needs, real-time revocation if it acts outside its permissions, sandboxing and a kill switch.</p>
+      <div class="row"><div><span class="big">150,000</span><span class="lbl">Agents per Fortune 500 firm by 2028 (Gartner)</span></div><div><span class="big">13%</span><span class="lbl">Say they have agent governance</span></div><div><span class="big">0</span><span class="lbl">Long-lived shared credentials needed</span></div></div>
+    </div>
+
+    <h2>What was announced</h2>
+    <p>Four pieces, all shipping as one story about authority.</p>
+    <p><strong>Agent identity.</strong> Every agent gets a record: who owns it, whether it is live, and what authority it has been granted. That record sits next to the credentials, so the permission and the identity cannot drift apart.</p>
+    <p><strong>Credential control.</strong> HashiCorp Vault now issues short-lived credentials to agents and can revoke a session in real time if the agent tries something outside its approved scope. Vault 2.2 adds per-agent accounts, automatic renewal and post-quantum encryption.</p>
+    <p><strong>Discovery and containment.</strong> watsonx Orchestrate can find agents built on Amazon Bedrock, Microsoft Foundry and Google Gemini, run them in isolated sandboxes, and shut any of them down with a kill switch.</p>
+    <p><strong>Cost visibility.</strong> The same console tracks each agent's model and token use, so the bill can be traced to a specific agent rather than to "AI".</p>
+
+    <h2>The number behind the launch</h2>
+    <p>Gartner expects the average Fortune 500 company to run more than 150,000 AI agents by 2028. IBM's own line is the more useful one: only 13 percent of organisations believe they have the right agent governance in place.</p>
+    <p>That gap is the product. Agents are being deployed faster than they can be verified, and the failure mode is always the same: a credential with more access than the task needs, held for longer than the task runs.</p>
+
+    <h2>Why this is the same story as the bank blocks</h2>
+    <p>Through October, US banks moved to block third party agents from operating inside customer accounts after reports of agents acting outside user instructions. Twenty one agent incidents became public between July and October across the major labs.</p>
+    <p>Nobody is arguing agents should stop. The argument is about authority: an agent should be able to prove who it is, reach only what its job requires, and lose access the moment it steps outside that line. IBM is selling exactly that, which means the market has moved from "can the agent do it" to "who approved the agent doing it".</p>
+
+    <h2>What it means if you run agents</h2>
+    <p>If your agent uses one shared API key, you cannot answer the first question an auditor asks. If the key never expires, you cannot revoke it without breaking the whole workflow. If you cannot see the agent in a list, you cannot prove it exists at all.</p>
+    <p>Start with one agent, one identity, one scope, and a revocation path you have actually tested. That is the whole checklist, and it is cheaper than the enterprise suite.</p>
+
+    <h2>Questions people ask</h2>
+    <h3>Is this a new product or a rename?</h3>
+    <p>Both. Agent Identity and Vault 2.2 are generally available; discovery, sandboxing and the integration hub are in tech preview.</p>
+    <h3>Do small teams need this?</h3>
+    <p>The enterprise tooling, no. The pattern, yes: one identity per agent, short-lived credentials, least privilege, a way to revoke.</p>
+    <h3>Does it fix prompt injection?</h3>
+    <p>No. It limits the damage. If an agent is tricked, a narrow scope and a short credential life mean the trick reaches less.</p>
+    <p class="meta-line mono"><span>Sources: IBM press release, TechXchange 2026, 27 October 2026; Gartner agent sprawl research, April 2026.</span><span>No affiliate links</span></p>
+    <p><a href="/guides/ai-agent-identity">Read next: how to give an agent its own identity</a> and <a href="/news/banks-block-ai-agents">why banks blocked third party agents</a>.</p>
+  </div></section>
+</main></main></main></main>
+<footer><div class="wrap"><div class="foot">
+  <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation. No affiliate links, no sponsored rankings.</p></div>
+  <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/newsletter">Newsletter</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/news/">News</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/disclaimer">Disclaimer</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/how-we-test">How we check</a></li><li><a href="/editorial-policy">Editorial policy</a></li></ul></div>
+  <div><h5 class="mono">Contact</h5><ul><li><a href="/cdn-cgi/l/email-protection#8bfde4f3eaa5e3fabacbece6eae2e7a5e8e4e6"><span class="__cf_email__" data-cfemail="96e0f9eef7b8fee7a7d6f1fbf7fffab8f5f9fb">[email&#160;protected]</span></a></li></ul></div>
+</div></div></footer>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/main.js"></script>
+</body></html>
