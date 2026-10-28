@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<title>AI agent access to ERP and CRM: four scopes, no admin</title>
+<meta name="description" content="How to give an AI agent access to ERP or CRM systems safely: read, draft and submit scopes, a spend ceiling, an approval gate and logs the agent cannot edit.">
+<link rel="canonical" href="https://voxahq.in/guides/ai-agent-erp-access">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="keywords" content="ai agent erp access, ai agent crm permissions, agent least privilege, ai agents for enterprise, agent approval workflow">
+<meta name="author" content="VOXA">
+<meta property="og:title" content="How to give an AI agent access to your ERP or CRM without giving it admin">
+<meta property="og:description" content="How to give an AI agent access to ERP or CRM systems safely: read, draft and submit scopes, a spend ceiling, an approval gate and logs the agent cannot edit.">
+<meta property="og:url" content="https://voxahq.in/guides/ai-agent-erp-access">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/news/agent-erp-guide.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css?v=20261031">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985" crossorigin="anonymous"></script>
+
+
+
+
+
+<meta name="p:domain_verify" content="c3d907d27ae9b207d17f93434ffa7b52"/>
+
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to give an AI agent access to your ERP or CRM without giving it admin","datePublished":"2026-10-28T10:50:00+05:30","dateModified":"2026-10-28T10:50:00+05:30","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in/"},"mainEntityOfPage":"https://voxahq.in/guides/ai-agent-erp-access","description":"A practical permission model for agents inside ERP and CRM systems."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I use one integration user for all agents?","acceptedAnswer":{"@type":"Answer","text":"No. You lose attribution and cannot revoke one agent without breaking the rest."}},{"@type":"Question","name":"What if the ERP only offers admin-level API keys?","acceptedAnswer":{"@type":"Answer","text":"Put a middleware layer in front that holds the admin key and exposes only read, draft and submit operations."}},{"@type":"Question","name":"How do I know the agent is working?","acceptedAnswer":{"@type":"Answer","text":"Pick one number before launch, such as cycle time, cost per case or hours per week. If it has not moved in four weeks, stop the agent."}}]}</script>
+</head>
+<body class="loading" data-scene="wave">
+<canvas id="gl" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/">VOXA</a>
+  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/guides">Guides</a><a href="/notes">Notes</a><a href="/news/">News</a><a href="/about">About Us</a><a href="/contact">Contact Us</a></nav>
+  <a class="btn" href="/contact"><span>Contact</span></a>
+</header>
+<div class="page">
+
+
+
+<main>
+  <section class="page-head wrap"><span class="mono">Guide</span><h1>How to give an AI agent access to your ERP or CRM without giving it admin</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/guides/">Guides</a><span>/</span><span>Agent access to business apps</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0"><div class="panel">
+    <p class="byline mono">By the VOXA team &middot; Built from the Oracle, IBM and bank announcements of October 2026</p>
+    <p class="meta-line mono"><span>28 October 2026</span><span>8 min read</span><span>Applies to Oracle, Salesforce, HubSpot, NetSuite, SAP</span></p>
+    <div class="quick"><h2>The short answer</h2><p>Give the agent a separate identity, four permissions (read, draft, submit, never approve), a spend ceiling, an approval gate for anything that leaves the company, and a log outside the agent's reach. Then test revocation before you hand it a real record.</p>
+      <div class="row"><div><span class="big">4</span><span class="lbl">Permissions an agent needs</span></div><div><span class="big">0</span><span class="lbl">Approval rights it should hold</span></div><div><span class="big">15 min</span><span class="lbl">Setup time per integration</span></div></div>
+    </div>
+
+    <h2>Why this became urgent this month</h2>
+    <p>Oracle announced Oracle AI Workspace, which runs approved workflows across finance, procurement and planning from inside ChatGPT. IBM shipped agent identity, scoped credentials and a kill switch. US banks moved to block third party agents from customer accounts.</p>
+    <p>The direction is the same in all three: agents act inside systems that already hold the money and the records. The only question that matters is what they are allowed to do once they are in.</p>
+
+    <h2>The four permissions, in plain terms</h2>
+    <p><strong>Read.</strong> The agent can see the records its job needs. An invoice triage agent reads open invoices. It does not read payroll.</p>
+    <p><strong>Draft.</strong> The agent can create a record in a draft state. A draft purchase order, a draft reply, a draft ticket note. Nothing is committed.</p>
+    <p><strong>Submit.</strong> The agent can move a draft into the queue that a human reviews. This is the permission most teams hand over too early, because it feels like the same thing as draft. It is not: submission is where the record starts moving through the business.</p>
+    <p><strong>Approve.</strong> It should not have this. Ever, in the first version. Approval is the point where money leaves, a contract binds, or a customer is told no. An agent that can approve is a policy change, not an automation.</p>
+
+    <h2>Scope by system, not by department</h2>
+    <p>Write the permissions against tables and objects, not team names. "Finance access" means nothing in an audit. "Read and draft on purchase_orders where status = open, submit to the review queue, no access to vendors.payment_details" is a sentence you can defend.</p>
+    <p>Most ERPs expose exactly this granularity in their API scopes. The reason teams do not use it is time, not capability.</p>
+
+    <h2>The spend ceiling</h2>
+    <p>Give the agent a numeric ceiling per run and per day. Not because the model is careless, but because retries are cheap and loops are not. Two dollars per run, fifty per day, is a reasonable starting range for a single workflow agent.</p>
+    <p>When the ceiling trips, the agent should stop and leave a record, not fail silently. Silent failure is how you discover the problem from the invoice.</p>
+
+    <h2>The approval gate that actually holds</h2>
+    <p>Put the gate where the action leaves the company: an email out, a payment, a contract, a public post. Internal drafts can move freely. Anything external waits for a person.</p>
+    <p>Make the approver a named person per workflow, and make the queue visible. A gate nobody owns becomes a rubber stamp within two weeks.</p>
+
+    <h2>Logs the agent cannot edit</h2>
+    <p>Four fields per action: which agent, which object, which change, which outcome. Write them to a store the agent's credentials cannot write to. If the agent can modify its own trail, the trail is decoration.</p>
+    <p>Keep the last 90 days queryable. That covers the window in which most mistakes are found, and it is small enough to afford.</p>
+
+    <h2>Revocation you have tested</h2>
+    <p>Kill one credential on purpose and watch what happens. If the workflow keeps running, it is using another key you forgot about. If you cannot tell what stopped, you do not have visibility.</p>
+    <p>The enterprise version of this is a kill switch in the orchestration console. Your version can be a flag the runner checks at the start of every loop, and a documented way to flip it.</p>
+
+    <h2>A worked example</h2>
+    <p>Invoice triage agent. Reads open invoices and their line items. Drafts a coding suggestion and a matching purchase order. Submits both to a review queue owned by the AP lead. Cannot approve, cannot pay, cannot edit vendor bank details. Ceiling: two dollars per run, thirty per day. Log to the warehouse, not to the ERP.</p>
+    <p>That agent removes the reading and matching work, which is the bulk of the time, and leaves the decision with the person who is accountable for it. It is also the version that survives an audit.</p>
+
+    <h2>Questions people ask</h2>
+    <h3>Can I use one integration user for all agents?</h3>
+    <p>No. You lose attribution, and you cannot revoke one agent without breaking the rest.</p>
+    <h3>What if the ERP only offers admin-level API keys?</h3>
+    <p>Use a middleware layer that holds the admin key and exposes only the four operations above. It is one extra service and it is worth it.</p>
+    <h3>How do I know the agent is working?</h3>
+    <p>Pick one number before launch: cycle time, cost per case, or hours per week on that task. If it does not move in four weeks, stop the agent.</p>
+    <p class="meta-line mono"><span>Sources: Oracle and OpenAI announcement, 27 October 2026; IBM TechXchange, 27 October 2026; VOXA incident database.</span><span>No affiliate links</span></p>
+    <p><a href="/guides/ai-agent-identity">Read next: how to give an agent its own identity</a> and <a href="/news/oracle-openai-chatgpt-codex">what Oracle just shipped</a>.</p>
+  </div></section>
+</main></main></main></main></main>
+<footer><div class="wrap"><div class="foot">
+  <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation. No affiliate links, no sponsored rankings.</p></div>
+  <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/newsletter">Newsletter</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/news/">News</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/disclaimer">Disclaimer</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/how-we-test">How we check</a></li><li><a href="/editorial-policy">Editorial policy</a></li></ul></div>
+  <div><h5 class="mono">Contact</h5><ul><li><a href="/cdn-cgi/l/email-protection#8bfde4f3eaa5e3fabacbece6eae2e7a5e8e4e6"><span class="__cf_email__" data-cfemail="96e0f9eef7b8fee7a7d6f1fbf7fffab8f5f9fb">[email&#160;protected]</span></a></li></ul></div>
+</div></div></footer>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/main.js"></script>
+</body></html>
