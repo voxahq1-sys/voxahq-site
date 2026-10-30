@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<title>Five AI coding tools shipped a browser you could break</title>
+<meta name="description" content="EMBRACE flaws in Cursor, Copilot, Codex, VS Code and Claude Desktop let a page run code or read files outside the project. Two had no fix on 29 October.">
+<link rel="canonical" href="https://voxahq.in/notes/embrace-ai-coding-tools">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="keywords" content="embrace flaw ai coding tools, cursor vulnerability, codex vs code fix, ai assistant browser security, workspace trust">
+<meta name="author" content="VOXA">
+<meta property="og:title" content="Five AI coding tools had a browser you could break, and two were still open on Thursday">
+<meta property="og:description" content="EMBRACE flaws in Cursor, Copilot, Codex, VS Code and Claude Desktop let a page run code or read files outside the project. Two had no fix on 29 October.">
+<meta property="og:url" content="https://voxahq.in/notes/embrace-ai-coding-tools">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/notes/embrace-ai-tools.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css?v=20261031">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985" crossorigin="anonymous"></script>
+
+
+
+
+
+<meta name="p:domain_verify" content="c3d907d27ae9b207d17f93434ffa7b52"/>
+
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Oracle put ChatGPT and Codex inside its business apps, and started buying Google chips","datePublished":"2026-10-28T10:40:00+05:30","dateModified":"2026-10-28T10:40:00+05:30","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in/"},"mainEntityOfPage":"https://voxahq.in/news/oracle-openai-chatgpt-codex","description":"Oracle and OpenAI expanded their partnership with Oracle AI Workspace and new silicon options."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Oracle AI Workspace available now?","acceptedAnswer":{"@type":"Answer","text":"Oracle describes it as in development. OpenAI access through Oracle Marketplace is available to US customers now."}},{"@type":"Question","name":"Does this replace ChatGPT Enterprise?","acceptedAnswer":{"@type":"Answer","text":"No. It is a route to OpenAI models inside Oracle applications and procurement, not a replacement for a direct agreement."}},{"@type":"Question","name":"Why does the chip lineup matter to a buyer?","acceptedAnswer":{"@type":"Answer","text":"Capacity and price. More accelerator options means less exposure to a single supplier's allocation."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Five AI coding tools had a browser you could break, and two were still open on Thursday","datePublished":"2026-10-30T18:45:00+05:30","dateModified":"2026-10-30T18:45:00+05:30","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in/"},"mainEntityOfPage":"https://voxahq.in/notes/embrace-ai-coding-tools","description":"EMBRACE flaws in Cursor, Copilot, Codex, VS Code and Claude Desktop let a page run code or read files outside the project. Two had no fix on 29 October.","image":"https://voxahq.in/images/notes/embrace-ai-tools.jpg"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which tools are affected?","acceptedAnswer":{"@type":"Answer","text":"Cursor, GitHub Copilot, OpenAI Codex, VS Code and Claude Desktop. The flaws are in the embedded browser each one uses, not in the models."}},{"@type":"Question","name":"Is there a fix?","acceptedAnswer":{"@type":"Answer","text":"Cursor, Copilot and Claude Desktop had fixes by the time the research was published. As of 29 October, Codex and VS Code did not."}},{"@type":"Question","name":"Do I need to stop using these tools?","acceptedAnswer":{"@type":"Answer","text":"No, but change the habit. Do not open untrusted repositories directly in an editor with an AI assistant attached, and do not blanket-trust folders."}},{"@type":"Question","name":"What could actually be stolen?","acceptedAnswer":{"@type":"Answer","text":"Anything readable from your user account: SSH keys, cloud credentials, environment files with API keys, and source code outside the project folder."}},{"@type":"Question","name":"Why did two vendors refuse the report?","acceptedAnswer":{"@type":"Answer","text":"Anthropic and Microsoft argued that Workspace Trust already gates the risk. The researchers disagree, since the trust prompt is exactly what a malicious project wants you to click."}}]}</script>
+</head>
+<body class="loading" data-scene="wave">
+<canvas id="gl" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/">VOXA</a>
+  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/guides">Guides</a><a href="/notes">Notes</a><a href="/news/">News</a><a href="/about">About Us</a><a href="/contact">Contact Us</a></nav>
+  <a class="btn" href="/contact"><span>Contact</span></a>
+</header>
+<div class="page">
+
+
+
+<main>
+  <section class="page-head wrap"><span class="mono">Note / Security</span><h1>Five AI coding tools had a browser you could break, and two were still open on Thursday</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/notes">Notes</a><span>/</span><span>EMBRACE flaws</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0"><div class="panel">
+    <p class="byline mono">By the VOXA team &middot; Forever Security research, reported by Hackread and Help Net Security</p>
+    <p class="meta-line mono"><span>30 October 2026</span><span>3 min read</span><span>Published 29 October</span></p>
+    <div class="quick"><h2>The short answer</h2><p>Security researchers found flaws in the browsers embedded inside five AI coding tools: Cursor, GitHub Copilot, OpenAI Codex, VS Code and Claude Desktop. A rigged web page or a local HTML file could run code, fake the address bar, or read files outside the project. As of 29 October, Codex and VS Code had no fix, so opening a malicious project in either could expose SSH keys and credentials.</p>
+      <div class="row"><div><span class="big">5</span><span class="lbl">Tools affected</span></div><div><span class="big">2</span><span class="lbl">Still unfixed on 29 Oct</span></div><div><span class="big">1 file</span><span class="lbl">Enough to read the disk</span></div></div>
+    </div>
+
+    <h2>What the flaw is</h2>
+    <p>The research, published by Forever Security and reported by Hackread and Help Net Security, names the class EMBRACE, for embedded browser trusted like a real one. The idea is simple: these tools now ship a small browser inside the editor so a model can read documentation or preview a page. That browser was treated as trusted, so a page could do things a normal web page cannot.</p>
+    <p>In Cursor, a page got attacker code to run. In Copilot, a page could show a fake address bar, which makes phishing trivial. In Codex, VS Code and Claude Desktop, a single local HTML file opened inside the tool could read files beyond the project folder, which is how SSH keys and environment files leave a machine.</p>
+
+    <h2>Why it matters to a normal developer</h2>
+    <p>Most people who use these tools do exactly what the attack needs: they clone a repository, open it, and let the assistant read the folder. If a project contains a crafted HTML file, the file is inside the trusted boundary the moment the workspace is opened.</p>
+    <p>The timing was poor. Codex and VS Code had no fix as of 29 October. Researchers reported the Codex issue to OpenAI on 27 July and the VS Code issue to Microsoft on 10 September. Anthropic and Microsoft declined the reports and pointed at Workspace Trust, the prompt that asks you to confirm you trust a folder.</p>
+
+    <h2>What to do now</h2>
+    <p>Treat a cloned repository the way you treat an email attachment. Open it in a throwaway environment first, especially if it came from a stranger or a contest. Do not click trust on a folder you have not looked inside.</p>
+    <p>If you use Codex or VS Code, pull the list of trusted projects from each machine's config and check whether any project in that list contains an HTML file you did not write. Rotate any key that was present on a machine where you opened an untrusted project.</p>
+
+    <h2>Questions people are asking</h2>
+    <div class="faq">
+      <details><summary>Which tools are affected?</summary><p>Cursor, GitHub Copilot, OpenAI Codex, VS Code and Claude Desktop. The flaws are in the embedded browser each one uses, not in the models.</p></details>
+      <details><summary>Is there a fix?</summary><p>Cursor, Copilot and Claude Desktop had fixes by the time the research was published. As of 29 October, Codex and VS Code did not.</p></details>
+      <details><summary>Do I need to stop using these tools?</summary><p>No, but change the habit. Do not open untrusted repositories directly in an editor with an AI assistant attached, and do not blanket-trust folders.</p></details>
+      <details><summary>What could actually be stolen?</summary><p>Anything readable from your user account: SSH keys, cloud credentials, environment files with API keys, and source code outside the project folder.</p></details>
+      <details><summary>Why did two vendors refuse the report?</summary><p>Anthropic and Microsoft argued that Workspace Trust already gates the risk. The researchers disagree, since the trust prompt is exactly what a malicious project wants you to click.</p></details>
+    </div>
+
+    <h2>Sources</h2>
+    <p class="mono" style="font-size:.85rem;color:var(--muted)">Forever Security, EMBRACE technical write-up, 29 October 2026 &middot; Hackread, 29 October 2026 &middot; Help Net Security, 29 October 2026.</p>
+  </div></section>
+</main>
+<footer><div class="wrap"><div class="foot">
+  <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation. No affiliate links, no sponsored rankings.</p></div>
+  <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/newsletter">Newsletter</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/news/">News</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/disclaimer">Disclaimer</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/how-we-test">How we check</a></li><li><a href="/editorial-policy">Editorial policy</a></li></ul></div>
+  <div><h5 class="mono">Contact</h5><ul><li><a href="/cdn-cgi/l/email-protection#8bfde4f3eaa5e3fabacbece6eae2e7a5e8e4e6"><span class="__cf_email__" data-cfemail="96e0f9eef7b8fee7a7d6f1fbf7fffab8f5f9fb">[email&#160;protected]</span></a></li></ul></div>
+</div></div></footer>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/main.js"></script>
+</body></html>
