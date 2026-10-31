@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<title>Silent Failure Watch: n8n alerts when a workflow stops</title>
+<meta name="description" content="A set of n8n workflows that email you when a workflow stops without an error. Self-hosted only, with a clear note on what it cannot cover.">
+<link rel="canonical" href="https://voxahq.in/picks/silent-failure-watch">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="keywords" content="n8n silent failure, n8n workflow monitoring, n8n alerts, workflow stopped alert, n8n api executions">
+<meta name="author" content="VOXA">
+<meta property="og:title" content="Silent Failure Watch: n8n alerts when a workflow stops without an error">
+<meta property="og:description" content="A set of n8n workflows that email you when a workflow stops without an error. Self-hosted only, with a clear note on what it cannot cover.">
+<meta property="og:url" content="https://voxahq.in/picks/silent-failure-watch">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/picks/silent-failure-watch.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css?v=20261031">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985" crossorigin="anonymous"></script>
+
+
+
+
+
+<meta name="p:domain_verify" content="c3d907d27ae9b207d17f93434ffa7b52"/>
+
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Oracle put ChatGPT and Codex inside its business apps, and started buying Google chips","datePublished":"2026-10-28T10:40:00+05:30","dateModified":"2026-10-28T10:40:00+05:30","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in/"},"mainEntityOfPage":"https://voxahq.in/news/oracle-openai-chatgpt-codex","description":"Oracle and OpenAI expanded their partnership with Oracle AI Workspace and new silicon options."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Oracle AI Workspace available now?","acceptedAnswer":{"@type":"Answer","text":"Oracle describes it as in development. OpenAI access through Oracle Marketplace is available to US customers now."}},{"@type":"Question","name":"Does this replace ChatGPT Enterprise?","acceptedAnswer":{"@type":"Answer","text":"No. It is a route to OpenAI models inside Oracle applications and procurement, not a replacement for a direct agreement."}},{"@type":"Question","name":"Why does the chip lineup matter to a buyer?","acceptedAnswer":{"@type":"Answer","text":"Capacity and price. More accelerator options means less exposure to a single supplier's allocation."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Silent Failure Watch: n8n alerts when a workflow stops without an error","datePublished":"2026-10-31T13:20:00+05:30","dateModified":"2026-10-31T13:20:00+05:30","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in/"},"mainEntityOfPage":"https://voxahq.in/picks/silent-failure-watch","description":"A set of n8n workflows that watch your other workflows and email you when one stops without an error. Needs self-hosted n8n with API access.","image":"https://voxahq.in/images/picks/silent-failure-watch.jpg"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need to know how to code to use this?","acceptedAnswer":{"@type":"Answer","text":"No. You import ready-made workflows and fill a settings node. But you do need to run your own n8n instance and create an API key."}},{"@type":"Question","name":"Will it work on n8n Cloud?","acceptedAnswer":{"@type":"Answer","text":"The trial will not, because Cloud blocks API access on the free trial. Paid Cloud plans expose the API, but the vendor lists Cloud as not tested. Self-hosted is the supported path."}},{"@type":"Question","name":"What happens if n8n itself goes down?","acceptedAnswer":{"@type":"Answer","text":"Nothing inside n8n can run, so no alert is sent. That is why the workflow pings an external uptime service after every check: the outside service notices when the pings stop."}},{"@type":"Question","name":"Will it spam me with emails?","acceptedAnswer":{"@type":"Answer","text":"It keeps the state of what is already open, so one problem produces one message. You get a second message only when it comes back to normal."}},{"@type":"Question","name":"Is this better than a normal uptime monitor?","acceptedAnswer":{"@type":"Answer","text":"They solve different problems. An uptime monitor checks whether a URL answers. This checks whether your workflows actually ran, which is the failure mode that usually goes unnoticed."}}]}</script>
+</head>
+<body class="loading" data-scene="wave">
+<canvas id="gl" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/">VOXA</a>
+  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/guides">Guides</a><a href="/notes">Notes</a><a href="/news/">News</a><a href="/about">About Us</a><a href="/contact">Contact Us</a></nav>
+  <a class="btn" href="/contact"><span>Contact</span></a>
+</header>
+<div class="page">
+
+
+
+<main>
+  <section class="page-head wrap"><span class="mono">Picks / Automation</span><h1>Silent Failure Watch: n8n alerts when a workflow stops without an error</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/picks">Picks</a><span>/</span><span>Silent Failure Watch</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0"><div class="panel">
+    <div class="quick" style="border-left:4px solid #6d4aff"><h2>Disclosure first</h2><p>This page contains an affiliate link. If you buy through it, we earn a commission at no extra cost to you. The vendor provided a free copy of the workflow pack, and everything below comes from reading its workflow files, its README and the vendor's emails. We have not completed a live alert test, and we say so rather than pretend otherwise.</p></div>
+    <p class="byline mono">By the VOXA team &middot; based on the workflow files, the README and the n8n documentation</p>
+    <p class="meta-line mono"><span>31 October 2026</span><span>5 min read</span><span>Category: Picks</span></p>
+    <div class="quick"><h2>The short answer</h2><p>Silent Failure Watch is a set of n8n workflows you import into your own instance. They watch your other workflows and send one plain email when something stops without throwing an error: a trigger switched off, a workflow renamed, a last run that failed, or a gap longer than the threshold you set. It needs a self-hosted n8n with API access, and it is honest about the case it cannot cover: if n8n itself is down, nothing inside n8n can warn you, so it pings an external uptime monitor instead.</p>
+      <div class="row"><div><span class="big">15 min</span><span class="lbl">Check interval</span></div><div><span class="big">3</span><span class="lbl">Workflows in the Core pack</span></div><div><span class="big">1 email</span><span class="lbl">Per new problem, not per run</span></div></div>
+    </div>
+    <h2>What it actually does</h2>
+    <p>These are ordinary n8n workflows, which is the point: you can open them and read every step before you trust them. Here is what the files do.</p>
+    <ul>
+      <li><strong>Did it run</strong> runs every 15 minutes. It asks the n8n API for each watched workflow's last execution and last successful execution, then compares that against the quiet threshold you set in a data table called <code>watch_list</code>.</li>
+      <li><strong>Count check</strong> looks at volume instead of silence, for the case where a workflow runs happily every hour and quietly processes half the records it should.</li>
+      <li><strong>Error alert</strong> is a workflow you attach as the error handler on your own workflows, so a failed execution mails you the node and the run.</li>
+      <li><strong>State is remembered</strong>, so the same open problem does not email you every 15 minutes. One message when something breaks, one when it comes back.</li>
+      <li><strong>Heartbeat</strong> is a ping to any uptime service after each check. That is the only way to notice that n8n, or the whole server, has stopped.</li>
+    </ul>
+
+    <h2>What we verified, and what we did not</h2>
+    <p>We imported the Core pack into n8n 2.45.7. It loaded cleanly: nine nodes in the error alert workflow, the settings node, the data table creation, the API calls and the mail step are all there and readable. The data table and the watch list behave as described.</p>
+    <p>We did not complete a live alert test, and the blocker is worth knowing before you buy. <strong>n8n Cloud does not allow API access on the free trial.</strong> The did-it-run workflow cannot read executions without an API key, so on a trial the import works and the first run has nothing to talk to. The vendor's position, which matches the README: self-hosted is the only setup they have tested, and n8n Cloud is listed as not tested. The n8n public API is available on paid Cloud plans, where the instance address plus <code>/api/v1</code> would be the base URL, but nobody has run these checks there yet.</p>
+    <h2>The limits worth knowing</h2>
+    <ul>
+      <li><strong>It matches workflows by name, not by ID.</strong> Rename a watched workflow and the check reports that no workflow has that name. You will hear about it, but the monitoring has to be updated by hand.</li>
+      <li><strong>Fifteen minute granularity.</strong> A quiet threshold below 15 minutes does not mean much, because that is how often the check itself runs.</li>
+      <li><strong>n8n down means silence.</strong> Nothing inside n8n runs when n8n is not running, so the heartbeat ping to an outside service is not optional if you care about the server case.</li>
+      <li><strong>Cloud backup is not a backup.</strong> The Full pack includes a nightly backup workflow that writes files to disk, and n8n's own documentation says files written on Cloud are not guaranteed to persist. Self-hosted only, if you want that piece to mean anything.</li>
+      <li><strong>An API key is broad access.</strong> The workflows need an n8n API key, which can read and change more than executions. Treat that credential as sensitive.</li>
+    </ul>
+
+    <h2>Who it is for</h2>
+    <p>You run n8n yourself, you have a handful of workflows doing real work, and you have already had the experience of noticing three days late that something stopped. The pack is the cheapest version of that alarm: three workflows, plain email, no dashboard to check.</p>
+    <p>It is not for you if you are on the n8n Cloud trial, if you want a hosted monitoring product with an app and on-call rotation, or if you only have one workflow that you check daily anyway.</p>
+    <h2>If you want it</h2>
+    <p>Three versions on the product page: a single workflow, the Core pack of three, and the Full pack of nine with the handover template. Our contact with it was the Core pack, so that is the one this page is really about. Readers of VOXA can use code <strong>VOXA20</strong> at checkout.</p>
+    <p><a class="btn" href="https://gumroad.com/a/164089187/lltue?offer_code=VOXA20" rel="sponsored nofollow noopener" target="_blank"><span>Silent Failure Watch on Gumroad</span></a></p>
+    <p class="mono" style="font-size:.85rem;color:var(--muted)">Affiliate link. We earn 70 percent of a sale made through it. The price is the same either way, and the code gives you 20 percent off.</p>
+
+    <h2>Questions people are asking</h2>
+    <div class="faq">
+      <details><summary>Do I need to know how to code to use this?</summary><p>No. You import ready-made workflows and fill a settings node. But you do need to run your own n8n instance and create an API key.</p></details>
+      <details><summary>Will it work on n8n Cloud?</summary><p>The trial will not, because Cloud blocks API access on the free trial. Paid Cloud plans expose the API, but the vendor lists Cloud as not tested. Self-hosted is the supported path.</p></details>
+      <details><summary>What happens if n8n itself goes down?</summary><p>Nothing inside n8n can run, so no alert is sent. That is why the workflow pings an external uptime service after every check: the outside service notices when the pings stop.</p></details>
+      <details><summary>Will it spam me with emails?</summary><p>It keeps the state of what is already open, so one problem produces one message. You get a second message only when it comes back to normal.</p></details>
+      <details><summary>Is this better than a normal uptime monitor?</summary><p>They solve different problems. An uptime monitor checks whether a URL answers. This checks whether your workflows actually ran, which is the failure mode that usually goes unnoticed.</p></details>
+    </div>
+  </div></section>
+</main>
+<footer><div class="wrap"><div class="foot">
+  <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation. No affiliate links, no sponsored rankings.</p></div>
+  <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/newsletter">Newsletter</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/news/">News</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/disclaimer">Disclaimer</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/how-we-test">How we check</a></li><li><a href="/editorial-policy">Editorial policy</a></li></ul></div>
+  <div><h5 class="mono">Contact</h5><ul><li><a href="/cdn-cgi/l/email-protection#8bfde4f3eaa5e3fabacbece6eae2e7a5e8e4e6"><span class="__cf_email__" data-cfemail="96e0f9eef7b8fee7a7d6f1fbf7fffab8f5f9fb">[email&#160;protected]</span></a></li></ul></div>
+</div></div></footer>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/main.js"></script>
+</body></html>
