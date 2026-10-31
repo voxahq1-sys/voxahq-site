@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<title>n8n 3.0 removes the Function node: check before December</title>
+<meta name="description" content="n8n 3.0 removes Function, Item Lists, Cron and more. Published workflows using them stop activating. Find and fix them before the December release.">
+<link rel="canonical" href="https://voxahq.in/guides/n8n-3-function-node-removal">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="keywords" content="n8n 3.0 breaking changes, n8n function node removed, n8n upgrade checklist, n8n migration report, n8n code node">
+<meta name="author" content="VOXA">
+<meta property="og:title" content="n8n 3.0 removes the Function node, and a published workflow will not activate">
+<meta property="og:description" content="n8n 3.0 removes Function, Item Lists, Cron and more. Published workflows using them stop activating. Find and fix them before the December release.">
+<meta property="og:url" content="https://voxahq.in/guides/n8n-3-function-node-removal">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/guides/n8n-3-upgrade.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css?v=20261031">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985" crossorigin="anonymous"></script>
+
+
+
+
+
+<meta name="p:domain_verify" content="c3d907d27ae9b207d17f93434ffa7b52"/>
+
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Oracle put ChatGPT and Codex inside its business apps, and started buying Google chips","datePublished":"2026-10-28T10:40:00+05:30","dateModified":"2026-10-28T10:40:00+05:30","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in/"},"mainEntityOfPage":"https://voxahq.in/news/oracle-openai-chatgpt-codex","description":"Oracle and OpenAI expanded their partnership with Oracle AI Workspace and new silicon options."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Oracle AI Workspace available now?","acceptedAnswer":{"@type":"Answer","text":"Oracle describes it as in development. OpenAI access through Oracle Marketplace is available to US customers now."}},{"@type":"Question","name":"Does this replace ChatGPT Enterprise?","acceptedAnswer":{"@type":"Answer","text":"No. It is a route to OpenAI models inside Oracle applications and procurement, not a replacement for a direct agreement."}},{"@type":"Question","name":"Why does the chip lineup matter to a buyer?","acceptedAnswer":{"@type":"Answer","text":"Capacity and price. More accelerator options means less exposure to a single supplier's allocation."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"n8n 3.0 removes the Function node, and a published workflow will not activate","datePublished":"2026-10-31T15:10:00+05:30","dateModified":"2026-10-31T15:10:00+05:30","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in/"},"mainEntityOfPage":"https://voxahq.in/guides/n8n-3-function-node-removal","description":"n8n 3.0 removes Function, Item Lists, Cron and more. Published workflows using them stop activating.","image":"https://voxahq.in/images/guides/n8n-3-upgrade.jpg"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When does the stable release land?","acceptedAnswer":{"@type":"Answer","text":"n8n says early December 2026. The beta, 3.0.0, was released on 27 October 2026. Beta users can start migrating now."}},{"@type":"Question","name":"Can I roll back after upgrading?","acceptedAnswer":{"@type":"Answer","text":"No. n8n's own guidance is that the upgrade from 2.x cannot be rolled back, which is why the Migration Report and a full backup come first."}},{"@type":"Question","name":"Will my Function nodes disappear on their own?","acceptedAnswer":{"@type":"Answer","text":"Some nodes migrate automatically, such as the AI Transform node. Function and Function Item do not. You replace those yourself before the upgrade."}},{"@type":"Question","name":"What happens if I do nothing?","acceptedAnswer":{"@type":"Answer","text":"The workflow fails when it runs, and if it is published it does not activate when 3.0 starts, so its trigger stops firing. You get no error message, which is the part that costs money."}},{"@type":"Question","name":"Does this affect n8n Cloud?","acceptedAnswer":{"@type":"Answer","text":"The node removals apply to the product, so yes. Self-hosted users also face the move to Docker-only installation and the binary data folder rename."}}]}</script>
+</head>
+<body class="loading" data-scene="wave">
+<canvas id="gl" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/">VOXA</a>
+  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/guides">Guides</a><a href="/notes">Notes</a><a href="/news/">News</a><a href="/about">About Us</a><a href="/contact">Contact Us</a></nav>
+  <a class="btn" href="/contact"><span>Contact</span></a>
+</header>
+<div class="page">
+
+
+
+<main>
+  <section class="page-head wrap"><span class="mono">Guide / Automation</span><h1>n8n 3.0 removes the Function node, and a published workflow will not activate after the upgrade</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/guides">Guides</a><span>/</span><span>n8n 3.0 upgrade check</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0"><div class="panel">
+    <p class="byline mono">By the VOXA team &middot; from the n8n 3.0 release notes and breaking changes documentation</p>
+    <p class="meta-line mono"><span>31 October 2026</span><span>6 min read</span><span>Beta 27 October, stable early December</span></p>
+    <div class="quick"><h2>The short answer</h2><p>n8n 3.0.0 shipped as a beta on 27 October and the stable release follows in early December. It removes around three dozen legacy nodes, including Function, Function Item, Item Lists, Cron and Interval. The dangerous part is written plainly in n8n's own documentation: a workflow that uses a removed node fails when it runs, and if it is published it does not activate when 3.0 starts, so its triggers stop firing. Nothing turns red. It just stops. You have weeks, not months, to find those workflows.</p>
+      <div class="row"><div><span class="big">2.39+</span><span class="lbl">Version needed for the Migration Report</span></div><div><span class="big">~36</span><span class="lbl">Legacy nodes removed</span></div><div><span class="big">Early Dec</span><span class="lbl">Stable 3.x release</span></div></div>
+    </div>
+
+    <h2>What actually changes</h2>
+    <p>3.0 is an operational release, not a feature release. n8n's own framing is breaking changes, removals and legacy cleanup. The removals that matter for most instances:</p>
+    <table>
+      <tr><th style="width:42%">Removed in 3.0</th><th>Replace it with</th></tr>
+      <tr><td>Function</td><td>Code node, Run Once for All Items</td></tr>
+      <tr><td>Function Item</td><td>Code node, Run Once for Each Item</td></tr>
+      <tr><td>Item Lists</td><td>Split Out, Aggregate, Sort, Limit, Remove Duplicates, Summarize</td></tr>
+      <tr><td>Cron, Interval</td><td>Schedule Trigger</td></tr>
+      <tr><td>HTML Extract, iCalendar, Convert to/from binary data, Read and Write Binary File</td><td>Current node versions of each</td></tr>
+    </table>
+    <p>Some of it is handled for you. The AI Transform node is migrated automatically to a Code node with the same generated JavaScript. The rest is not: you migrate it, before the upgrade.</p>
+    <p>Two more things change for self-hosters. The npm installation path goes away, so self-hosted n8n runs on Docker. And the upgrade from 2.x cannot be rolled back, which makes a backup the first step, not the last.</p>
+    <h2>The part that actually bites</h2>
+    <p>n8n's documentation is unusually direct about the failure mode, so read it twice: "Workflows that use a removed node fail when they run. If such a workflow is published, it doesn't activate when n8n 3.0 starts, so its triggers stop firing."</p>
+    <p>That is the whole problem in two sentences. On a normal day, a broken workflow shouts. It shows a red execution, it retries, it mails you. After this upgrade, the workflow is simply not active. The dashboard shows it in your list, the name is there, and nothing happens at 7am. If that workflow was sending invoices, syncing orders or posting content, you find out from a customer, not from n8n.</p>
+    <p>There is a second, quieter version of the same thing: removed settings and renamed folders. Self-hosters who rely on the old npm install path have to move to Docker, and the binary data folder changes name from <code>binaryData</code> to <code>storage</code>. An instance that starts but reads files from the wrong place is harder to notice than one that refuses to start.</p>
+
+    <h2>Ten minutes: find out which of your workflows are affected</h2>
+    <p>Do this on your 2.x instance, before you touch the upgrade.</p>
+    <ul>
+      <li><strong>Step 1. Open Settings, then Migration Report.</strong> This screen exists from 2.39 onwards and it lists the affected workflows, nodes and settings on your own instance. Save a copy of it, because it is the closest thing to a work list you will get.</li>
+      <li><strong>Step 2. If you are on an older version,</strong> upgrade to at least 2.39 first. The Migration Report is worth one small upgrade, and 2.x upgrades are reversible where 3.0 is not.</li>
+      <li><strong>Step 3. Count the node types yourself.</strong> Export your workflows through the API (<code>/api/v1/workflows</code>) or the CLI, then search the JSON for <code>n8n-nodes-base.function</code>, <code>functionItem</code>, <code>itemLists</code>, <code>n8n-nodes-base.cron</code> and <code>n8n-nodes-base.interval</code>. Every hit is a workflow to fix.</li>
+      <li><strong>Step 4. Write the list down</strong> with the workflow name, the node, and what it does. That list is your upgrade plan, and it is also your rollback argument if the upgrade goes badly.</li>
+    </ul>
+    <h2>Fixing them before the upgrade, not after</h2>
+    <p>Every replacement is mechanical once you know the mapping. The only work is the Function to Code conversion, because the code has to be pasted into a node with a different execution model.</p>
+    <ul>
+      <li><strong>Function becomes Code, Run Once for All Items.</strong> In a Function node you returned an array of items. In the Code node you return the array the same way, but the input arrives as <code>$input.all()</code> and you return an array of objects with a <code>json</code> key.</li>
+      <li><strong>Function Item becomes Code, Run Once for Each Item.</strong> Here the input is a single item, and what you return is that item's new data. If your Function Item node edited <code>item.json</code> in place, this is the closest equivalent.</li>
+      <li><strong>Item Lists becomes a small chain.</strong> Split Out, Aggregate, Sort, Limit, Remove Duplicates or Summarize, depending on which operation the old node was doing. One node becomes two or three; keep them named so the next reader understands the step.</li>
+      <li><strong>Cron and Interval become Schedule Trigger.</strong> A direct swap, and the trigger shows the next run time, which the old nodes did not.</li>
+    </ul>
+    <p>Then test each migrated workflow on 2.x before upgrading. Run it once manually, check the output shape matches what the next node expects, and only then publish. Doing this in one pass on a Friday afternoon is how people end up rolling back an upgrade that cannot be rolled back.</p>
+
+    <h2>After the upgrade, check the thing nobody checks</h2>
+    <p>Open the workflow list and look at the active toggle on every workflow, not just the ones you migrated. A workflow that lost activation looks identical to a healthy one in a screenshot. The list view is the only place where the difference shows, and only if you look.</p>
+    <p>If you run more than a handful of workflows, this is exactly the gap that monitoring tools exist to cover. It is also why n8n's own Migration Report is worth the ten minutes: it turns "I think we are fine" into a list.</p>
+
+    <h2>Questions people are asking</h2>
+    <div class="faq">
+      <details><summary>When does the stable release land?</summary><p>n8n says early December 2026. The beta, 3.0.0, was released on 27 October 2026. Beta users can start migrating now.</p></details>
+      <details><summary>Can I roll back after upgrading?</summary><p>No. n8n's own guidance is that the upgrade from 2.x cannot be rolled back, which is why the Migration Report and a full backup come first.</p></details>
+      <details><summary>Will my Function nodes disappear on their own?</summary><p>Some nodes migrate automatically, such as the AI Transform node. Function and Function Item do not. You replace those yourself before the upgrade.</p></details>
+      <details><summary>What happens if I do nothing?</summary><p>The workflow fails when it runs, and if it is published it does not activate when 3.0 starts, so its trigger stops firing. You get no error message, which is the part that costs money.</p></details>
+      <details><summary>Does this affect n8n Cloud?</summary><p>The node removals apply to the product, so yes. Self-hosted users also face the move to Docker-only installation and the binary data folder rename.</p></details>
+    </div>
+
+    <h2>Sources</h2>
+    <p class="mono" style="font-size:.85rem;color:var(--muted)">n8n blog, "Introducing n8n 3.0", 27 October 2026 &middot; n8n docs, v3.0 breaking changes &middot; n8n docs, release notes for 3.0 &middot; n8n docs, deprecated and removed nodes.</p>
+  </div></section>
+</main>
+<footer><div class="wrap"><div class="foot">
+  <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation. No affiliate links, no sponsored rankings.</p></div>
+  <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/newsletter">Newsletter</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/news/">News</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/disclaimer">Disclaimer</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/how-we-test">How we check</a></li><li><a href="/editorial-policy">Editorial policy</a></li></ul></div>
+  <div><h5 class="mono">Contact</h5><ul><li><a href="/cdn-cgi/l/email-protection#8bfde4f3eaa5e3fabacbece6eae2e7a5e8e4e6"><span class="__cf_email__" data-cfemail="96e0f9eef7b8fee7a7d6f1fbf7fffab8f5f9fb">[email&#160;protected]</span></a></li></ul></div>
+</div></div></footer>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/main.js"></script>
+</body></html>
