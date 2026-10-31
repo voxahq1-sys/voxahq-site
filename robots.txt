@@ -56,4 +56,5 @@ User-agent: YouBot
 Allow: /
 
 Sitemap: https://voxahq.in/sitemap.xml
+Sitemap: https://voxahq.in/news-sitemap.xml
 # LLM-friendly summary: https://voxahq.in/llms.txt
