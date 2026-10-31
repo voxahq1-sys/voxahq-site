@@ -66,7 +66,7 @@
     <p>These are ordinary n8n workflows, which is the point: you can open them and read every step before you trust them. Here is what the files do.</p>
     <ul>
       <li><strong>Did it run</strong> runs every 15 minutes. It asks the n8n API for each watched workflow's last execution and last successful execution, then compares that against the quiet threshold you set in a data table called <code>watch_list</code>.</li>
-      <li><strong>Count check</strong> looks at volume instead of silence, for the case where a workflow runs happily every hour and quietly processes half the records it should.</li>
+      <li><strong>Count check</strong> runs every morning at 07:00. It reads yesterday's rows at a source and at a destination, matches them on an id field (order_id in the shipped examples), and sends one message listing what is missing, extra or different, or telling you the source returned nothing. That is how it catches "the sync wrote 40 of 50 orders", once you point it at your own source and destination.</li>
       <li><strong>Error alert</strong> is a workflow you attach as the error handler on your own workflows, so a failed execution mails you the node and the run.</li>
       <li><strong>State is remembered</strong>, so the same open problem does not email you every 15 minutes. One message when something breaks, one when it comes back.</li>
       <li><strong>Heartbeat</strong> is a ping to any uptime service after each check. That is the only way to notice that n8n, or the whole server, has stopped.</li>
