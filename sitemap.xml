@@ -343,6 +343,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://voxahq.in/guides/n8n-3-function-node-removal</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://voxahq.in/guides/n8n-self-hosting-cost</loc>
     <lastmod>2026-10-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -527,11 +533,5 @@
     <lastmod>2026-10-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://voxahq.in/guides/n8n-3-function-node-removal</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
 </urlset>
