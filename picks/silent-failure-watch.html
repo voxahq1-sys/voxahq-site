@@ -72,6 +72,10 @@
       <li><strong>Heartbeat</strong> is a ping to any uptime service after each check. That is the only way to notice that n8n, or the whole server, has stopped.</li>
     </ul>
 
+    <figure style="margin:32px 0">
+      <img src="/images/picks/silent-failure-watch-email.png" alt="Alert email from Silent Failure Watch showing one workflow reported as switched off" width="1684" height="937" loading="lazy" decoding="async" style="width:100%;height:auto;border-radius:12px;border:1px solid #e3e0ee">
+      <figcaption class="mono" style="font-size:.8rem;color:var(--muted);margin-top:10px">The vendor's own test output: one email, the workflow named, and the line that explains what a heartbeat is for. n8n 2.43.6, 25 October 2026.</figcaption>
+    </figure>
     <h2>What we verified, and what we did not</h2>
     <p>We imported the Core pack into n8n 2.45.7. It loaded cleanly: nine nodes in the error alert workflow, the settings node, the data table creation, the API calls and the mail step are all there and readable. The data table and the watch list behave as described.</p>
     <p>We did not complete a live alert test, and the blocker is worth knowing before you buy. <strong>n8n Cloud does not allow API access on the free trial.</strong> The did-it-run workflow cannot read executions without an API key, so on a trial the import works and the first run has nothing to talk to. The vendor's position, which matches the README: self-hosted is the only setup they have tested, and n8n Cloud is listed as not tested. The n8n public API is available on paid Cloud plans, where the instance address plus <code>/api/v1</code> would be the base URL, but nobody has run these checks there yet.</p>
