@@ -57,8 +57,7 @@
 /news/microsoft-transcription-price-cut.html  /news/microsoft-transcription-price-cut  301
 
 # picks + news trailing slash and missing .html variants
-/picks/  /picks  301
-/picks/index.html  /picks  301
+/picks/index.html  /picks/  301
 /news  /news/  301
 /picks/silent-failure-watch.html  /picks/silent-failure-watch  301
 /picks/upgrade-watch.html  /picks/upgrade-watch  301
