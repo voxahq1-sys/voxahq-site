@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<title>Upgrade Watch: find what n8n 3.0 will break, before December</title>
+<meta name="description" content="Three n8n workflows that scan for removed nodes before the 3.0 upgrade, baseline what runs, and name anything that does not come back afterwards.">
+<link rel="canonical" href="https://voxahq.in/picks/upgrade-watch">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="keywords" content="n8n 3.0 upgrade check, n8n removed nodes scan, n8n upgrade tool, function node migration">
+<meta name="author" content="VOXA">
+<meta property="og:title" content="Upgrade Watch: three n8n workflows that find what breaks before n8n 3.0 arrives">
+<meta property="og:description" content="Three n8n workflows that scan for removed nodes before the 3.0 upgrade, baseline what runs, and name anything that does not come back afterwards.">
+<meta property="og:url" content="https://voxahq.in/picks/upgrade-watch">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/picks/upgrade-watch.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css?v=20261031">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985" crossorigin="anonymous"></script>
+
+
+
+
+
+<meta name="p:domain_verify" content="c3d907d27ae9b207d17f93434ffa7b52"/>
+
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"Oracle put ChatGPT and Codex inside its business apps, and started buying Google chips","datePublished":"2026-10-28T10:40:00+05:30","dateModified":"2026-10-28T10:40:00+05:30","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in/"},"mainEntityOfPage":"https://voxahq.in/news/oracle-openai-chatgpt-codex","description":"Oracle and OpenAI expanded their partnership with Oracle AI Workspace and new silicon options."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Oracle AI Workspace available now?","acceptedAnswer":{"@type":"Answer","text":"Oracle describes it as in development. OpenAI access through Oracle Marketplace is available to US customers now."}},{"@type":"Question","name":"Does this replace ChatGPT Enterprise?","acceptedAnswer":{"@type":"Answer","text":"No. It is a route to OpenAI models inside Oracle applications and procurement, not a replacement for a direct agreement."}},{"@type":"Question","name":"Why does the chip lineup matter to a buyer?","acceptedAnswer":{"@type":"Answer","text":"Capacity and price. More accelerator options means less exposure to a single supplier's allocation."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Upgrade Watch: three n8n workflows that find what breaks before n8n 3.0","datePublished":"2026-10-31T18:40:00+05:30","dateModified":"2026-10-31T18:40:00+05:30","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in/"},"mainEntityOfPage":"https://voxahq.in/picks/upgrade-watch","description":"Three n8n workflows that scan for removed nodes before the 3.0 upgrade, baseline what runs, and name anything that does not come back afterwards.","image":"https://voxahq.in/images/picks/upgrade-watch.jpg"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need this if I already have their Silent Failure Watch?","acceptedAnswer":{"@type":"Answer","text":"They cover different things. Silent Failure Watch watches whether workflows run. Upgrade Watch is about the 3.0 upgrade specifically: what will not start, and what did not come back afterwards. They share the same two credentials, so if one is installed the other is quicker to set up."}},{"@type":"Question","name":"Does it work on n8n Cloud?","acceptedAnswer":{"@type":"Answer","text":"The free trial cannot, because Cloud blocks API access there. Paid Cloud plans expose the API, but the vendor tested self-hosted Docker only, so treat Cloud as unverified."}},{"@type":"Question","name":"What if I have already upgraded?","acceptedAnswer":{"@type":"Answer","text":"The pre-upgrade scan is the main value and it is meant to run before. After the fact, the after-upgrade check still helps if you have a baseline, and n8n's own Migration Report lists what changed."}},{"@type":"Question","name":"How long does setup take?","acceptedAnswer":{"@type":"Answer","text":"Import three workflows, set two credentials and a few Settings values, publish two of them, run the scan by hand once. Reading the fix guide takes longer than the setup."}},{"@type":"Question","name":"Is the $129 version worth it?","acceptedAnswer":{"@type":"Answer","text":"Only if you run n8n for clients. It scans up to 30 client instances and reports per client. For one instance, the $39 tier is the whole product."}}]}</script>
+</head>
+<body class="loading" data-scene="wave">
+<canvas id="gl" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/">VOXA</a>
+  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/guides">Guides</a><a href="/notes">Notes</a><a href="/news/">News</a><a href="/about">About Us</a><a href="/contact">Contact Us</a></nav>
+  <a class="btn" href="/contact"><span>Contact</span></a>
+</header>
+<div class="page">
+
+
+
+<main>
+  <section class="page-head wrap"><span class="mono">Picks / Automation</span><h1>Upgrade Watch: three n8n workflows that find what breaks before n8n 3.0 arrives</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/picks">Picks</a><span>/</span><span>Upgrade Watch</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0"><div class="panel">
+    <p class="byline mono">By the VOXA team &middot; based on the three workflow files, the FIX-GUIDE, the RUNBOOK and the vendor's test log</p>
+    <p class="meta-line mono"><span>31 October 2026</span><span>5 min read</span><span>Category: Picks</span></p>
+    <div class="quick" style="border-left:4px solid #6d4aff"><h2>Disclosure first</h2><p>This page contains an affiliate link. If you buy through it, we earn a commission at no extra cost to you. The vendor provided a free copy of this pack. We read the workflow files and the documentation; we did not run an upgrade ourselves, and the test results below are the vendor's, reported in their LIMITS.md.</p></div>
+
+    <div class="quick"><h2>The short answer</h2><p>n8n 3.0 lands in early December and removes 37 nodes. A published workflow that still uses one does not start, so its trigger stops firing and nothing tells you. Upgrade Watch is three workflows that run inside your own n8n: a scan before the upgrade that lists every workflow you have to fix, a baseline that records how each workflow normally runs, and a check that watches for 48 hours after n8n restarts and names any workflow that did not come back. The pack ships with a fix guide for each item and a runbook for the day itself.</p>
+      <div class="row"><div><span class="big">3</span><span class="lbl">Workflows in the pack</span></div><div><span class="big">48 hrs</span><span class="lbl">Watch window after the upgrade</span></div><div><span class="big">37</span><span class="lbl">Nodes n8n 3.0 removes</span></div></div>
+    </div>
+
+    <h2>What the three workflows do</h2>
+    <ul>
+      <li><strong>Pre-upgrade scan</strong> reads every workflow through the n8n API and emails one list, in order of severity: published workflows that stop after the upgrade because they contain a removed node; workflows whose node fails when it runs on 3.0 (an AI Agent in a removed mode, the old Edit Image, Execute Workflow loading from a file or URL); workflows that call a sub-workflow with a removed node; and workflows whose behaviour changes, such as Compare Datasets or Filter with Always Output Data. When there is nothing to report it sends nothing and shows "Upgrade scan: nothing to fix".</li>
+      <li><strong>Baseline</strong> runs daily and records, per workflow, the usual gap between runs, sampled from the last 20 executions. That is what makes "late" a meaningful word after the upgrade, instead of a fixed number that fits nobody.</li>
+      <li><strong>After upgrade check</strong> starts when n8n starts, then runs every 15 minutes for 48 hours. It compares the new runs against the baseline, and names each workflow that has not come back, once.</li>
+    </ul>
+    <p>Two documents matter as much as the workflows. FIX-GUIDE.md gives the replacement for each line the scan prints, node by node. RUNBOOK.md is the upgrade day itself: stop n8n, copy the data folder, start the new image on the same folder, then read the check emails.</p>
+    <h2>What the vendor says they tested</h2>
+    <p>Their LIMITS.md is specific enough to be useful, which is rare in this category. Two clean instances, n8n 2.43.6 upgraded to the 3.0.1 pre-release in Docker, the data folder copied as a backup first, the same encryption key, mail to a local test server.</p>
+    <p>The clean upgrade: the scan said nothing to fix, the baseline recorded a one-minute gap for a one-minute workflow, and after the upgrade the workflow ran and no message was sent. With the all-clear message switched on, one message arrived saying every scheduled workflow ran.</p>
+    <p>The upgrade with problems: 16 test workflows plus the 9 Silent Failure Watch workflows and these 3, 28 published in total. The scan listed exactly the expected workflows in each section, including a published sub-workflow with a removed node and a workflow whose draft had a Cron but whose published version did not. The vendor reports 17 checks passed for the agency version on 31 October 2026.</p>
+    <p>What they did not test is written down too: the check ran every minute instead of every 15 during the test, 3.0.1 is a pre-release, and the client version was tested with two real client instances, not more.</p>
+
+    <h2>The limits worth knowing</h2>
+    <ul>
+      <li><strong>It needs a self-hosted n8n with an API key.</strong> Same requirement as n8n Cloud's paid plans and not the free trial, so the trial cannot run this.</li>
+      <li><strong>It is a list, not a migration.</strong> The scan tells you which workflows to fix and the fix guide tells you what to replace, but you still edit them by hand. n8n's own Migration Report can do some replacements for you.</li>
+      <li><strong>48 hours is the default watch window.</strong> That covers any workflow running at least every 31 hours. Weekly workflows need <code>watch_hours</code> set to 260, which the README says plainly.</li>
+      <li><strong>A clean result is not a guarantee.</strong> The scan knows removed nodes and known behaviour changes. If you changed something else on the same weekend, it will not explain that.</li>
+      <li><strong>The agency version is the Client work tier</strong> at $129: one scan across up to 30 client instances, 16 connectors tested. The $39 tier is your own n8n only.</li>
+    </ul>
+
+    <h2>Who it is for</h2>
+    <p>You self-host n8n, you have more than five or six workflows doing real work, and you are going to upgrade in December. The scan alone is worth the price if it saves you one silent week. If you have two workflows and you check them daily, the free guide on this site is enough: <a href="/guides/n8n-3-function-node-removal">n8n 3.0 removes the Function node</a>.</p>
+
+    <h2>If you want it</h2>
+    <p><a class="btn" href="https://gumroad.com/a/164089187/pbego?offer_code=VOXAU20" rel="sponsored nofollow noopener" target="_blank"><span>Upgrade Watch on Gumroad</span></a></p>
+    <p class="mono" style="font-size:.85rem;color:var(--muted)">Affiliate link. We earn 70 percent of a sale made through it. Code VOXAU20 takes 20 percent off. $39 for your own n8n, $129 for the version that scans client instances.</p>
+    <h2>Questions people are asking</h2>
+    <div class="faq">
+      <details><summary>Do I need this if I already have their Silent Failure Watch?</summary><p>They cover different things. Silent Failure Watch watches whether workflows run. Upgrade Watch is about the 3.0 upgrade specifically: what will not start, and what did not come back afterwards. They share the same two credentials, so if one is installed the other is quicker to set up.</p></details>
+      <details><summary>Does it work on n8n Cloud?</summary><p>The free trial cannot, because Cloud blocks API access there. Paid Cloud plans expose the API, but the vendor tested self-hosted Docker only, so treat Cloud as unverified.</p></details>
+      <details><summary>What if I have already upgraded?</summary><p>The pre-upgrade scan is the main value and it is meant to run before. After the fact, the after-upgrade check still helps if you have a baseline, and n8n's own Migration Report lists what changed.</p></details>
+      <details><summary>How long does setup take?</summary><p>Import three workflows, set two credentials and a few Settings values, publish two of them, run the scan by hand once. Reading the fix guide takes longer than the setup.</p></details>
+      <details><summary>Is the $129 version worth it?</summary><p>Only if you run n8n for clients. It scans up to 30 client instances and reports per client. For one instance, the $39 tier is the whole product.</p></details>
+    </div>
+
+    <h2>Sources</h2>
+    <p class="mono" style="font-size:.85rem;color:var(--muted)">Krafera Upgrade Watch: README, LIMITS.md, FIX-GUIDE.md and RUNBOOK.md from the pack, October 2026 &middot; n8n docs, v3.0 breaking changes &middot; n8n blog, "Introducing n8n 3.0", 27 October 2026.</p>
+  </div></section>
+</main>
+<footer><div class="wrap"><div class="foot">
+  <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation. No affiliate links, no sponsored rankings.</p></div>
+  <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/newsletter">Newsletter</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/news/">News</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+  <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/disclaimer">Disclaimer</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/how-we-test">How we check</a></li><li><a href="/editorial-policy">Editorial policy</a></li></ul></div>
+  <div><h5 class="mono">Contact</h5><ul><li><a href="/cdn-cgi/l/email-protection#8bfde4f3eaa5e3fabacbece6eae2e7a5e8e4e6"><span class="__cf_email__" data-cfemail="96e0f9eef7b8fee7a7d6f1fbf7fffab8f5f9fb">[email&#160;protected]</span></a></li></ul></div>
+</div></div></footer>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/main.js"></script>
+</body></html>
