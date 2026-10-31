@@ -55,3 +55,15 @@
 /news/index.html  /news/  301
 /news/tesla-roadster-250000-reservation.html  /news/tesla-roadster-250000-reservation  301
 /news/microsoft-transcription-price-cut.html  /news/microsoft-transcription-price-cut  301
+
+# picks + news trailing slash and missing .html variants
+/picks/  /picks  301
+/picks/index.html  /picks  301
+/news  /news/  301
+/picks/silent-failure-watch.html  /picks/silent-failure-watch  301
+/picks/upgrade-watch.html  /picks/upgrade-watch  301
+/affiliate-disclosure.html  /affiliate-disclosure  301
+/guides/n8n-3-function-node-removal.html  /guides/n8n-3-function-node-removal  301
+/news/cursor-claude-code-extension-backdoor.html  /news/cursor-claude-code-extension-backdoor  301
+/news/ollie-shuts-down-six-weeks-after-seed.html  /news/ollie-shuts-down-six-weeks-after-seed  301
+/notes/openai-funding-target-cut.html  /notes/openai-funding-target-cut  301
