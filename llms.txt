@@ -129,3 +129,9 @@ Every entry states the claim and the number the page is built on. All pages are 
 - [EMBRACE flaws in five AI coding tools](https://voxahq.in/notes/embrace-ai-coding-tools): Cursor, GitHub Copilot, Codex, VS Code and Claude Desktop shipped an embedded browser that a page could break. Two had no fix as of 29 October.
 - [Gemini 4 Carbon is restricted to selected cyber defenders](https://voxahq.in/notes/gemini-4-carbon-security): A security-focused model scoring 88.2 percent on SEC-bench Pro, released to a subset of defenders with the US government testing it. No public signup.
 : User counts measure adoption, not payoff. The useful number in the same announcement was a research task that fell from two to four days to 15 to 20 minutes of preparation.
+
+## New this week
+- [Best AI tools for product descriptions](https://voxahq.in/guides/best-ai-tools-for-product-descriptions): Rytr $9, ChatGPT $20, Jasper $59, Shopify Magic included
+- [Best AI tools for email newsletters](https://voxahq.in/guides/best-ai-tools-for-email-newsletters): Kit free to 10,000, beehiiv $39, Ghost $18
+- [Kit vs beehiiv free plans](https://voxahq.in/notes/kit-vs-beehiiv-free-plans): what each free tier allows
+- [Rytr vs Jasper](https://voxahq.in/notes/rytr-vs-jasper-price): $9 vs $59 per seat
