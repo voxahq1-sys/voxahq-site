@@ -61,6 +61,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://voxahq.in/news/australia-ai-content-labelling</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://voxahq.in/news/banks-block-ai-agents</loc>
     <lastmod>2026-10-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -153,6 +159,12 @@
   <url>
     <loc>https://voxahq.in/news/rws-acolad-translation-consolidation</loc>
     <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voxahq.in/news/suse-ai-layoffs-190-jobs</loc>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -367,6 +379,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://voxahq.in/guides/how-to-tell-if-text-is-ai-generated</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://voxahq.in/guides/is-descript-free</loc>
     <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -423,6 +441,12 @@
   <url>
     <loc>https://voxahq.in/notes/ai-agents-customer-support-real-numbers</loc>
     <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://voxahq.in/notes/ai-layoffs-not-about-ai</loc>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
