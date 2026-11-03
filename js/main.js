@@ -276,3 +276,35 @@
     '<a class="btn" href="/start"><span>Get the brief</span></a></div>';
   page.insertBefore(d, foot);
 })();
+
+
+/* ---------- footer social links ---------- */
+(function () {
+  var foot = document.querySelector('footer .foot');
+  if (!foot || document.querySelector('.vx-social')) return;
+  var col = foot.firstElementChild;
+  if (!col) return;
+  var links = [
+    ['Instagram', 'https://www.instagram.com/voxahq.in/', '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>'],
+    ['YouTube', 'https://www.youtube.com/channel/UC0g1ZJmWyHnwCJBLl19FRkQ', '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4a2.5 2.5 0 0 0-1.8 1.8A26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15.2V8.8l6 3.2-6 3.2Z"/></svg>'],
+    ['LinkedIn', 'https://www.linkedin.com/in/voxa-hq-8a337a446/', '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05a4.2 4.2 0 0 1 3.75-2.05C20.4 8.65 22 10.6 22 14.1V21h-4v-6.2c0-1.5-.5-2.5-1.9-2.5-1.2 0-1.9.8-2.2 1.6-.1.3-.1.7-.1 1.1V21H9V9Z"/></svg>'],
+    ['X', 'https://x.com/Voxahqai', '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.3l-4.9-6.4L6.3 22H3l7.3-8.4L3 2h6.5l4.4 5.9L18.9 2Zm-1.1 18h1.7L7.3 3.7H5.5L17.8 20Z"/></svg>']
+  ];
+  var wrap = document.createElement('div');
+  wrap.className = 'vx-social';
+  wrap.style.cssText = 'display:flex;gap:14px;margin-top:18px';
+  links.forEach(function (l) {
+    var a = document.createElement('a');
+    a.href = l[1];
+    a.target = '_blank';
+    a.rel = 'me noopener';
+    a.setAttribute('aria-label', l[0]);
+    a.title = l[0];
+    a.style.cssText = 'display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.16);border-radius:9px;color:inherit;opacity:.75;transition:opacity .2s,border-color .2s';
+    a.innerHTML = l[2];
+    a.addEventListener('mouseenter', function () { a.style.opacity = '1'; a.style.borderColor = 'rgba(255,255,255,.4)'; });
+    a.addEventListener('mouseleave', function () { a.style.opacity = '.75'; a.style.borderColor = 'rgba(255,255,255,.16)'; });
+    wrap.appendChild(a);
+  });
+  col.appendChild(wrap);
+})();
