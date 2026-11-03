@@ -308,3 +308,53 @@
   });
   col.appendChild(wrap);
 })();
+
+
+/* ---------- article share bar ---------- */
+(function () {
+  var path = location.pathname;
+  var isArticle = /^\/(news|guides|notes)\/.+/.test(path) && !/\/(index\.html)?$/.test(path);
+  if (!isArticle) return;
+  if (document.querySelector('.vx-share')) return;
+  var quick = document.querySelector('.quick');
+  if (!quick) return;
+  var url = location.origin + path;
+  var title = (document.querySelector('h1') || {}).innerText || document.title;
+  var items = [
+    ['WhatsApp', 'https://wa.me/?text=' + encodeURIComponent(title + ' ' + url), '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-4-4.5-4.2-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.7 1.1 1.5 1.8 1 .9 1.8 1.2 2 1.3.2.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l2 .9c.2.1.4.1.4.2.1.2.1.9-.1 1.5Z"/></svg>'],
+    ['X', 'https://x.com/intent/tweet?text=' + encodeURIComponent(title) + '&url=' + encodeURIComponent(url), '<svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.3l-4.9-6.4L6.3 22H3l7.3-8.4L3 2h6.5l4.4 5.9L18.9 2Z"/></svg>'],
+    ['LinkedIn', 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url), '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05a4.2 4.2 0 0 1 3.75-2.05C20.4 8.65 22 10.6 22 14.1V21h-4v-6.2c0-1.5-.5-2.5-1.9-2.5-1.2 0-1.9.8-2.2 1.6-.1.3-.1.7-.1 1.1V21H9V9Z"/></svg>']
+  ];
+  var bar = document.createElement('div');
+  bar.className = 'vx-share';
+  bar.style.cssText = 'display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 22px';
+  var lab = document.createElement('span');
+  lab.className = 'mono';
+  lab.style.cssText = 'font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.55';
+  lab.textContent = 'Share';
+  bar.appendChild(lab);
+  function mk(label, href, icon) {
+    var a = document.createElement('a');
+    a.href = href; a.target = '_blank'; a.rel = 'noopener';
+    a.setAttribute('aria-label', 'Share on ' + label);
+    a.style.cssText = 'display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border:1px solid rgba(255,255,255,.16);border-radius:999px;font-size:13px;color:inherit;opacity:.8;text-decoration:none';
+    a.innerHTML = icon + '<span>' + label + '</span>';
+    a.addEventListener('mouseenter', function(){ a.style.opacity='1'; a.style.borderColor='rgba(255,255,255,.4)'; });
+    a.addEventListener('mouseleave', function(){ a.style.opacity='.8'; a.style.borderColor='rgba(255,255,255,.16)'; });
+    return a;
+  }
+  items.forEach(function (it) { bar.appendChild(mk(it[0], it[1], it[2])); });
+  var copy = document.createElement('button');
+  copy.type = 'button';
+  copy.setAttribute('aria-label', 'Copy link');
+  copy.style.cssText = 'display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border:1px solid rgba(255,255,255,.16);border-radius:999px;font-size:13px;background:none;color:inherit;opacity:.8;cursor:pointer;font-family:inherit';
+  copy.innerHTML = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M15 5H6a2 2 0 0 0-2 2v9"/></svg><span>Copy link</span>';
+  copy.addEventListener('click', function () {
+    var t = url;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(function(){ copy.querySelector('span').textContent = 'Copied'; setTimeout(function(){ copy.querySelector('span').textContent = 'Copy link'; }, 1800); });
+    }
+  });
+  bar.appendChild(copy);
+  quick.parentNode.insertBefore(bar, quick);
+})();
