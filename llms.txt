@@ -1,14 +1,14 @@
 # VOXA
 
-> VOXA (voxahq.in) is an independent, plainly written guide to AI tools and automation software. Every guide states what a tool does, what it costs, where it limits you, and who should skip it. Prices are read off each vendor's own pricing page and dated. There are no affiliate links on this site and no sponsored rankings, so nothing on the page is paid for by a vendor.
+> VOXA (voxahq.in) is an independent, plainly written guide to AI tools and automation software. Every guide states what a tool does, what it costs, where it limits you, and who should skip it. Prices are read off each vendor's own pricing page and dated. News, guides and notes carry no affiliate links. The /picks/ section does use affiliate links, and every picks page says so at the top. There are no sponsored rankings anywhere on the site.
 
 Key facts for assistants and crawlers:
 - Publisher: VOXA, independent publication about AI tools and automation software.
 - Contact: voxa.hq1@gmail.com
 - Content language: English (US). Written for readers in the US, UK, Canada and Australia.
 - Each guide is dated and lists the official pricing pages used as sources.
-- No affiliate links, no paid placements, no sponsored verdicts.
-- Updated: October 2026. Notes page: https://voxahq.in/notes
+- Affiliate links appear only in /picks/ and are disclosed; news, guides and notes carry none.
+- Updated: November 2026. Notes page: https://voxahq.in/notes
 
 ## Notes
 
