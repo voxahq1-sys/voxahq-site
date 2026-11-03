@@ -135,3 +135,8 @@ Every entry states the claim and the number the page is built on. All pages are 
 - [Best AI tools for email newsletters](https://voxahq.in/guides/best-ai-tools-for-email-newsletters): Kit free to 10,000, beehiiv $39, Ghost $18
 - [Kit vs beehiiv free plans](https://voxahq.in/notes/kit-vs-beehiiv-free-plans): what each free tier allows
 - [Rytr vs Jasper](https://voxahq.in/notes/rytr-vs-jasper-price): $9 vs $59 per seat
+
+## 3 November 2026
+
+- [SUSE cuts 190 jobs and names AI as the reason](https://voxahq.in/news/suse-ai-layoffs-190-jobs): SUSE told staff on 2 November it would cut about 10% of a 1,900-person workforce, around 190 roles, with the CEO citing automation and AI. Affected staff are told by 4 November. The memo gives no measured productivity gain.
+- [84% of Australians want AI content labelled by law](https://voxahq.in/news/australia-ai-content-labelling): Deloitte's 2026 Media & Entertainment report found three in four Australians say AI content makes it harder to know what is real, 84% want mandatory labelling, and 71% would stop using a platform that did not disclose it.
