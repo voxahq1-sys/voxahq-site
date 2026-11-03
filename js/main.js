@@ -268,9 +268,9 @@
   if (!page || !foot) return;
   var d = document.createElement('section');
   d.className = 'wrap vx-sub';
-  d.style.cssText = 'padding:8px 0 56px';
-  d.innerHTML = '<div style="border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:28px 26px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:space-between">' +
-    '<div style="max-width:60ch"><p class="mono" style="margin:0 0 8px;letter-spacing:.14em;font-size:11px;text-transform:uppercase;opacity:.6">Weekly brief</p>' +
+  d.style.cssText = 'padding:0 0 48px';
+  d.innerHTML = '<div style="border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:26px 26px;background:rgba(255,255,255,.04);display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:space-between">' +
+    '<div style="max-width:60ch"><p class="mono" style="margin:0 0 8px;letter-spacing:.14em;font-size:11px;text-transform:uppercase;opacity:.65">Weekly brief</p>' +
     '<h3 style="margin:0 0 6px;font-size:22px;line-height:1.25">One email a week: what changed in AI tools, and what it costs.</h3>' +
     '<p style="margin:0;opacity:.7">No hype, no sponsored picks. Unsubscribe in one click.</p></div>' +
     '<a class="btn" href="/start"><span>Get the brief</span></a></div>';
