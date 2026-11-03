@@ -255,3 +255,24 @@
   setClock();
   setInterval(setClock, 1000);
 })();
+
+
+/* ---------- newsletter CTA (injected on article pages) ---------- */
+(function () {
+  var path = location.pathname;
+  var isArticle = /^\/(news|guides|notes)\/.+/.test(path) && !/\/(index\.html)?$/.test(path);
+  if (!isArticle) return;
+  if (document.querySelector('.vx-sub')) return;
+  var page = document.querySelector('.page');
+  var foot = document.querySelector('footer');
+  if (!page || !foot) return;
+  var d = document.createElement('section');
+  d.className = 'wrap vx-sub';
+  d.style.cssText = 'padding:8px 0 56px';
+  d.innerHTML = '<div style="border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:28px 26px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:space-between">' +
+    '<div style="max-width:60ch"><p class="mono" style="margin:0 0 8px;letter-spacing:.14em;font-size:11px;text-transform:uppercase;opacity:.6">Weekly brief</p>' +
+    '<h3 style="margin:0 0 6px;font-size:22px;line-height:1.25">One email a week: what changed in AI tools, and what it costs.</h3>' +
+    '<p style="margin:0;opacity:.7">No hype, no sponsored picks. Unsubscribe in one click.</p></div>' +
+    '<a class="btn" href="/start"><span>Get the brief</span></a></div>';
+  page.insertBefore(d, foot);
+})();
