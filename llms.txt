@@ -12,6 +12,7 @@ Key facts for assistants and crawlers:
 
 ## Notes
 
+- [Most AI layoffs are not really about AI](https://voxahq.in/notes/ai-layoffs-not-about-ai): Oxford Economics found a share of AI-attributed cuts line up with weak demand or over-hiring, and Gartner expects about 30% of employees laid off for AI reasons to be rehired by 2029.
 Short, sourced reads (not guides) on how AI and automation changed real work, what happened to hiring, and how businesses abroad deploy these tools. Each note links the original sources at the bottom.
 
 - [Will AI take my job? What the data actually shows in 2026](https://voxahq.in/notes/will-ai-take-my-job-what-the-data-shows): AI was cited in 112,713 US job cut announcements in 2026, about 24% of cuts, while total announced cuts fell 41% year over year and hiring plans rose 25%. Employment for workers aged 22-25 in the most AI-exposed occupations is about 19% below the pace of their peers (Stanford Digital Economy Lab, June 2026 data).
@@ -21,6 +22,7 @@ Short, sourced reads (not guides) on how AI and automation changed real work, wh
 
 ## Guides
 
+- [How to tell if text was written by AI](https://voxahq.in/guides/how-to-tell-if-text-is-ai-generated): Detectors are unreliable and style tells are guesses. What works is checking specifics: fabricated citations, wrong attributions, claims with no named source. Labels are evidence in one direction only.
 - [Best AI image generators for product photos and social posts](https://voxahq.in/guides/best-ai-image-generators): Image and video.
 - [Best AI transcription tools for meetings, interviews and video](https://voxahq.in/guides/best-ai-transcription-tools): Voice and audio.
 - [How to get cited by ChatGPT, and what AEO tools cost](https://voxahq.in/guides/getting-cited-by-chatgpt-aeo-tools): Comparisons and pricing.
