@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<title>What school AI detectors actually measure (and get wrong)</title>
+<meta name="description" content="AI detectors score style, not authorship. They misfire on second-language writers, short answers and edited text, and miss rough machine drafts entirely.">
+<link rel="canonical" href="https://voxahq.in/notes/school-ai-detectors">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="keywords" content="school AI detectors, AI detector false positives, Turnitin AI detection, academic integrity AI">
+<meta name="author" content="VOXA">
+<meta property="og:title" content="What school AI detectors actually measure (and get wrong)">
+<meta property="og:description" content="AI detectors score style, not authorship. They misfire on second-language writers, short answers and edited text, and miss rough machine drafts entirely.">
+<meta property="og:url" content="https://voxahq.in/notes/school-ai-detectors">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/notes/ai-detectors.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/css/style.css?v=20261031">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985" crossorigin="anonymous"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What school AI detectors actually measure","datePublished":"2026-11-04T12:00:00+05:30","dateModified":"2026-11-04T12:00:00+05:30","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in/"},"mainEntityOfPage":"https://voxahq.in/notes/school-ai-detectors","description":"AI detectors score style, not authorship. They misfire on second-language writers, short answers and edited text, and miss rough machine drafts entirely.","image":"https://voxahq.in/images/notes/ai-detectors.jpg"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are AI detectors accurate enough to punish a student?","acceptedAnswer":{"@type":"Answer","text":"No. They return a probability based on style, and the score changes with editing, language background and text length. A single score is not evidence that a specific student used AI."}},{"@type":"Question","name":"Why do detectors flag non-native English writers?","acceptedAnswer":{"@type":"Answer","text":"Simpler, more regular sentence structures are common in second-language writing and also common in machine text, so classifiers trained on both tend to score that style higher."}},{"@type":"Question","name":"Can a student beat a detector?","acceptedAnswer":{"@type":"Answer","text":"Often, by producing a rougher draft or rewriting output. That is the point: the tools measure style, so style changes move the score without changing who wrote the work."}}]}</script>
+</head>
+<body class="loading" data-scene="monolith">
+<canvas id="gl" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div>
+<div class="loader" id="loader"><div class="mono" style="color:var(--muted)">VOXA / AI TOOLS &amp; AUTOMATION</div><div class="loader__count" id="loaderCount">0</div><div class="loader__bar"><i id="loaderBar"></i></div></div>
+<div class="grain" aria-hidden="true"></div><div class="progress" id="progress" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/">VOXA</a>
+  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/about">About Us</a><a href="/guides">Guides</a><a href="/notes" class="is-active">Notes</a><a href="/news/">News</a><a href="/picks/">Picks</a><a href="/contact">Contact Us</a></nav>
+  <a class="btn" href="/contact"><span>Contact</span></a>
+</header>
+<div class="page">
+<main>
+  <section class="page-head wrap"><span class="mono">Note / Education</span><h1>What school AI detectors actually measure</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/notes/">Notes</a><span>/</span><span>AI detectors</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0"><div class="panel">
+    <p class="byline mono">By the VOXA team &middot; notes on detection research and school policy</p>
+    <p class="meta-line mono"><span>4 November 2026</span><span>4 min read</span><span>Analysis</span></p>
+    <figure class="guide-figure"><img src="/images/notes/ai-detectors.jpg" alt="Teacher reviewing essays at a desk" width="1200" height="675" loading="lazy" decoding="async"></figure>
+    
+    <div class="quick"><h2>The short version</h2><p>School AI detectors do not detect AI. They score text against patterns and report a probability, and that score moves when a human edits the text, when a student writes in a second language, or when the essay is short. The research literature has found both false positives and false negatives at rates that should make any disciplinary decision built on a single score unsafe.</p></div>
+
+    <h2>What the tool actually does</h2>
+    <p>Every detector on the market is a statistical classifier. It was trained on text labelled as human or machine, and it learned features of that training set: sentence length variance, word frequency, punctuation habits, the predictability of each next word. At run time it compares the essay to those patterns and returns a number.</p>
+    <p>That number is not evidence of authorship. It is evidence that the text resembles the machine-written examples more than the human-written ones in that particular training set. Change the training set and the same essay scores differently.</p>
+
+    <h2>Where it breaks</h2>
+    <ul>
+      <li><strong>Second-language writers.</strong> Students writing in English as a second language use simpler, more regular sentence structures. The same regularity appears in machine text, which is why this group has been flagged at higher rates in published testing.</li>
+      <li><strong>Short answers.</strong> A 150-word paragraph gives the classifier very little to work with. Short submissions produce the most confident wrong answers.</li>
+      <li><strong>Editing.</strong> Run an AI draft through a human rewrite and the score usually drops, without the content changing. The detector is reacting to style, not to provenance.</li>
+      <li><strong>Formulaic writing.</strong> Lab reports, legal memos and five-paragraph essays are taught as patterns. Learning the pattern makes your writing look more machine-like.</li>
+      <li><strong>False negatives.</strong> A student who prompts a model for a rough, uneven, error-containing draft can score as human. The tools are as weak in that direction, and that direction gets no headlines.</li>
+    </ul>
+
+    <h2>What schools are actually buying</h2>
+    <p>A number and a dashboard. The vendor reports a confidence score, the school treats it as a finding, and the burden lands on the student to prove a negative, which is close to impossible. Several universities have stopped publishing detector results for exactly that reason, and others now require a human review before any accusation.</p>
+    <p>The honest framing for a policy is: a detector can start a conversation, not end one. It can prompt a teacher to ask about the process, look at drafts, or set an in-class version of the task. It cannot establish that a specific student cheated.</p>
+
+    <h2>What to do instead</h2>
+    <p>Assess the process, not just the product. Drafts with timestamps, in-class writing, oral defence of a submitted argument, and version history in a document all carry more signal than a probability score. None of them are fooled by a rewrite.</p>
+    <p>If a school does use a detector anyway, three rules keep it fair: never act on a single score, always show the student the evidence, and always offer a path to demonstrate the work, such as a short oral explanation. Those three rules would prevent most of the cases that end up in the news.</p>
+    <p>The wider point is that detection is a symptom of assessment design. When the only artefact is a finished essay produced at home, every tool in the chain is guessing. When the process is visible, the guessing stops mattering.</p>
+    <div class="prose" style="margin-top:28px"><h2>Related</h2><ul>
+      <li><a href="/news/google-schools-ai-or-no-search">Google tells schools: ban AI and you lose Search too</a></li>
+      <li><a href="/guides/how-to-tell-if-text-is-ai-generated">How to tell if text was written by AI</a></li>
+      <li><a href="/guides/best-ai-tools-for-studying">Best AI tools for studying</a></li>
+    </ul></div>
+  </div></section>
+</main>
+<footer><div class="wrap"><div class="foot">
+      <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent, plainly written guide to AI tools and automation. News and guides carry no affiliate links; Picks does, and says so on every page.</p></div>
+      <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/newsletter">Newsletter</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/news/">News</a></li><li><a href="/picks/">Picks</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+      <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/disclaimer">Disclaimer</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/affiliate-disclosure">Affiliate Disclosure</a></li><li><a href="/how-we-test">How we check</a></li><li><a href="/editorial-policy">Editorial policy</a></li></ul></div>
+      <div><h5 class="mono">Contact</h5><ul><li><a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a></li><li><a href="/contact">Contact form</a></li></ul></div>
+    </div><div class="foot__bottom mono"><span>&copy; 2026 VOXA</span><span>Independent guide &middot; no sponsored rankings</span></div></div></footer>
+</div>
+<script src="/js/main.js"></script>
+</body></html>
