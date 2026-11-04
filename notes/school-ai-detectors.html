@@ -21,7 +21,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="stylesheet" href="/css/style.css?v=20261031">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985" crossorigin="anonymous"></script>
+<script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985";s.async=true;s.crossOrigin="anonymous";document.head.appendChild(s);},1500);});</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What school AI detectors actually measure","datePublished":"2026-11-04T12:00:00+05:30","dateModified":"2026-11-04T12:00:00+05:30","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in/"},"mainEntityOfPage":"https://voxahq.in/notes/school-ai-detectors","description":"AI detectors score style, not authorship. They misfire on second-language writers, short answers and edited text, and miss rough machine drafts entirely.","image":"https://voxahq.in/images/notes/ai-detectors.jpg"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are AI detectors accurate enough to punish a student?","acceptedAnswer":{"@type":"Answer","text":"No. They return a probability based on style, and the score changes with editing, language background and text length. A single score is not evidence that a specific student used AI."}},{"@type":"Question","name":"Why do detectors flag non-native English writers?","acceptedAnswer":{"@type":"Answer","text":"Simpler, more regular sentence structures are common in second-language writing and also common in machine text, so classifiers trained on both tend to score that style higher."}},{"@type":"Question","name":"Can a student beat a detector?","acceptedAnswer":{"@type":"Answer","text":"Often, by producing a rougher draft or rewriting output. That is the point: the tools measure style, so style changes move the score without changing who wrote the work."}}]}</script>
 </head>
@@ -42,7 +42,7 @@
   <section class="wrap" style="padding-top:0"><div class="panel">
     <p class="byline mono">By the VOXA team &middot; notes on detection research and school policy</p>
     <p class="meta-line mono"><span>4 November 2026</span><span>4 min read</span><span>Analysis</span></p>
-    <figure class="guide-figure"><img src="/images/notes/ai-detectors.jpg" alt="Teacher reviewing essays at a desk" width="1200" height="675" loading="lazy" decoding="async"></figure>
+    <figure class="guide-figure"><img src="/images/notes/ai-detectors.jpg" alt="Teacher reviewing essays at a desk" width="1200" height="675" loading="eager" fetchpriority="high" decoding="async"></figure>
     
     <div class="quick"><h2>The short version</h2><p>School AI detectors do not detect AI. They score text against patterns and report a probability, and that score moves when a human edits the text, when a student writes in a second language, or when the essay is short. The research literature has found both false positives and false negatives at rates that should make any disciplinary decision built on a single score unsafe.</p></div>
 
