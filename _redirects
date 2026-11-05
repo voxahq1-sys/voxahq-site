@@ -76,3 +76,10 @@
 /notes/elevenlabs-free-plan-credits.html  /notes/elevenlabs-free-plan-credits  301
 /notes/ai-voice-cost-per-minute.html  /notes/ai-voice-cost-per-minute  301
 /news/rws-acolad-translation-consolidation.html  /news/rws-acolad-translation-consolidation  301
+# 404 fixes: legacy image path still requested by Google, iOS icon probes, sitemap index probe
+/images/news/rws-acolad-shutdown.jpg  /images/news/rws-acolad.jpg  301
+/apple-touch-icon-precomposed.png  /apple-touch-icon.png  301
+/apple-touch-icon-120x120.png  /apple-touch-icon.png  301
+/apple-touch-icon-152x152.png  /apple-touch-icon.png  301
+/sitemap_index.xml  /sitemap.xml  301
+/sitemap-index.xml  /sitemap.xml  301
