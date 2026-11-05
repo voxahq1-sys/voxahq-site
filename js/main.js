@@ -7,30 +7,11 @@
   function q(s, c) { return (c || d).querySelector(s); }
   function qa(s, c) { return Array.prototype.slice.call((c || d).querySelectorAll(s)); }
 
-  /* ---------- loader (first visit in a session only) ---------- */
-  var countEl = q('#loaderCount');
-  var barEl = q('#loaderBar');
-  var pct = 0;
-  var firstVisit = true;
-  try {
-    firstVisit = !sessionStorage.getItem('voxa_seen');
-    sessionStorage.setItem('voxa_seen', '1');
-  } catch (e) { firstVisit = true; }
-  function done() {
-    d.body.classList.remove('loading');
-    d.body.classList.add('loaded');
-    setTimeout(function () { var l = q('#loader'); if (l && l.parentNode) l.parentNode.removeChild(l); }, 1200);
-  }
-  function tick() {
-    pct = Math.min(100, pct + 3 + Math.random() * 6);
-    if (countEl) countEl.textContent = String(Math.floor(pct));
-    if (barEl) barEl.style.width = pct + '%';
-    if (pct < 100) { setTimeout(tick, 30); } else { setTimeout(done, 350); }
-  }
-  if (reduced || !firstVisit) { done(); } else { setTimeout(tick, 120); }
-  setTimeout(function () { if (d.body.classList.contains('loading')) done(); }, 4000);
-
-  /* ---------- hero line stagger ---------- */
+  /* ---------- loader: removed, paint immediately ---------- */
+  d.body.classList.remove('loading');
+  d.body.classList.add('loaded');
+  (function () { var l = d.getElementById('loader'); if (l && l.parentNode) l.parentNode.removeChild(l); })();
+/* ---------- hero line stagger ---------- */
   qa('.line > span').forEach(function (el, i) {
     el.style.transitionDelay = (0.15 + i * 0.12) + 's';
   });
