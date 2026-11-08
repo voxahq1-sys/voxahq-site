@@ -11,94 +11,134 @@
 <meta property="og:image" content="https://voxahq.in/images/aeo/aeo-kit-cover.png">
 <meta property="og:type" content="product">
 <link rel="icon" href="/favicon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;600&display=swap');
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{--ink:#070b14;--panel:#0d1424;--line:rgba(255,255,255,.10);--mut:#9aa8bd;--cy:#4cc9f0;--vi:#7c5cff}
-  html{scroll-behavior:smooth}
-  body{background:var(--ink);color:#eef2f7;font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--mut)}
-  header{display:flex;align-items:center;justify-content:space-between;padding:28px 0;gap:16px}
-  .brand{font-weight:800;letter-spacing:-.02em;font-size:20px}
-  .brand span{color:var(--cy)}
-  .topcta{border:1px solid var(--line);padding:10px 18px;border-radius:999px;color:#eef2f7;text-decoration:none;font-size:14px;font-weight:600;white-space:nowrap}
-  .hero{position:relative;padding:48px 0 72px;overflow:hidden}
-  .hero:before{content:"";position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(76,201,240,.16),transparent 62%);top:-400px;right:-260px;pointer-events:none}
-  .hero:after{content:"";position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,255,.14),transparent 66%);bottom:-400px;left:-240px;pointer-events:none}
-  .badge{display:inline-block;border:1px solid rgba(76,201,240,.5);color:var(--cy);border-radius:999px;padding:8px 16px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
-  h1{font-size:62px;line-height:1.05;letter-spacing:-.03em;font-weight:800;margin:26px 0 20px;position:relative}
-  h1 em{font-style:normal;background:linear-gradient(90deg,var(--cy),var(--vi));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .lede{font-size:20px;color:var(--mut);max-width:620px}
-  .hero-actions{display:flex;gap:14px;align-items:center;margin-top:34px;flex-wrap:wrap}
-  .btn{background:var(--cy);color:#04121b;font-weight:700;padding:16px 28px;border-radius:12px;text-decoration:none;font-size:16px;display:inline-block}
-  .btn.ghost{background:transparent;color:#eef2f7;border:1px solid var(--line)}
-  .fine{font-size:13px;color:var(--mut);margin-top:14px}
-  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
-  .hero-grid>*{min-width:0}
-  img{max-width:100%;height:auto;display:block}
-  .cover{width:100%;border-radius:18px;border:1px solid var(--line);box-shadow:0 40px 90px rgba(0,0,0,.55);display:block}
-  section{padding:72px 0;border-top:1px solid var(--line)}
-  h2{font-size:33px;letter-spacing:-.02em;line-height:1.16;margin-bottom:16px;font-weight:800;max-width:760px}
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
-  .card h3{font-size:17px;margin-bottom:8px;font-weight:700}
-  .card p{color:var(--mut);font-size:15px}
-  .card .n{font-family:'JetBrains Mono',monospace;color:var(--cy);font-size:12px;letter-spacing:.14em;margin-bottom:12px}
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
-  .panel{border-radius:16px;padding:22px;border:1px solid var(--line);background:var(--panel)}
-  .panel.bad{border-left:3px solid #ff6b6b}
-  .panel.good{border-left:3px solid #4ade80}
-  pre{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.75;color:#c9d6e6;overflow-x:auto;margin-top:12px;white-space:pre-wrap}
-  .k{color:var(--cy)}.s{color:#9be3a8}.p{color:#c3a6ff}
-  ul.check{list-style:none;margin-top:22px;display:grid;gap:12px}
-  ul.check li{display:flex;gap:12px;color:#dbe3ee;font-size:16px}
-  ul.check li:before{content:"+";color:var(--cy);font-weight:700}
-  ul.no li:before{content:"-";color:#ff8080}
-  .price{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-  .pricebox{background:linear-gradient(160deg,rgba(76,201,240,.10),rgba(124,92,255,.10));border:1px solid var(--line);border-radius:20px;padding:32px}
-  .amount{font-size:54px;font-weight:800;letter-spacing:-.03em}
-  .amount small{font-size:16px;color:var(--mut);font-weight:500;letter-spacing:0}
-  .pricebox ul{list-style:none;margin:20px 0 24px;display:grid;gap:10px;font-size:15px;color:#dbe3ee}
-  .pricebox ul li:before{content:"✓";color:var(--cy);margin-right:10px}
-  details{border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:12px;background:var(--panel)}
-  summary{cursor:pointer;font-weight:600;font-size:16px}
-  details p{color:var(--mut);margin-top:12px;font-size:15px}
-  footer{border-top:1px solid var(--line);padding:36px 0;color:var(--mut);font-size:14px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-  footer a{color:var(--mut)}
-  @media(max-width:900px){.hero-grid,.grid3,.split,.price{grid-template-columns:1fr}h1{font-size:40px}h2{font-size:26px}section{padding:56px 0}}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#05070d;--panel:rgba(255,255,255,.03);--line:rgba(255,255,255,.09);--mut:#8f9cb2;--cy:#4cc9f0;--vi:#8b5cf6;--lime:#a3e635}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#eef2f7;font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.mesh{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(60% 50% at 78% 6%,rgba(76,201,240,.16),transparent 70%),radial-gradient(50% 45% at 8% 24%,rgba(139,92,246,.14),transparent 72%),radial-gradient(45% 40% at 50% 100%,rgba(76,201,240,.07),transparent 70%)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.mono{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+nav{position:sticky;top:0;z-index:40;backdrop-filter:blur(14px);background:rgba(5,7,13,.6);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:15px 0;gap:20px}
+.logo{font-weight:800;letter-spacing:-.03em;font-size:19px;display:flex;align-items:center;gap:9px;text-decoration:none;color:#fff}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--cy);box-shadow:0 0 18px var(--cy);animation:pulse 2.6s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+.logo b{color:var(--cy)}
+.nav-links{display:flex;gap:26px;font-size:14px;color:#a9b6c9}
+.nav-links a{color:inherit;text-decoration:none}.nav-links a:hover{color:#fff}
+.nav-cta{background:#fff;color:#05070d;font-weight:700;padding:10px 18px;border-radius:10px;text-decoration:none;font-size:14px;white-space:nowrap}
+.hero{padding:62px 0 56px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center}
+.hero-grid>*{min-width:0}
+.pill{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(76,201,240,.35);background:rgba(76,201,240,.07);color:#bdeaf7;border-radius:999px;padding:7px 15px;font-size:12.5px}
+.pill i{width:6px;height:6px;border-radius:50%;background:var(--lime);display:block;box-shadow:0 0 10px var(--lime)}
+h1{font-size:57px;line-height:1.06;letter-spacing:-.035em;font-weight:800;margin:22px 0 18px}
+.grad{background:linear-gradient(96deg,var(--cy),#7dd3fc 40%,var(--vi));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:19px;color:#a6b3c7;max-width:560px}
+.cta-row{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap;align-items:center}
+.btn{background:linear-gradient(180deg,#7fe0ff,#4cc9f0);color:#03121a;font-weight:700;padding:15px 26px;border-radius:12px;text-decoration:none;font-size:15.5px;box-shadow:0 10px 30px rgba(76,201,240,.22);display:inline-block}
+.btn.ghost{background:transparent;color:#eef2f7;border:1px solid var(--line);box-shadow:none}
+.micro{display:flex;gap:18px;margin-top:18px;font-size:13px;color:var(--mut);flex-wrap:wrap}
+.micro span{display:flex;align-items:center;gap:7px}
+.micro span:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--cy);display:block}
+.stage{position:relative;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:radial-gradient(120% 100% at 50% 0%,rgba(76,201,240,.10),rgba(5,7,13,.6) 60%);box-shadow:0 40px 100px rgba(0,0,0,.6);aspect-ratio:1/0.92}
+#graph{display:block;width:100%;height:100%}
+.stage-tag{position:absolute;left:18px;bottom:16px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7e90a8}
+.stage-tag b{color:var(--cy);font-weight:500}
+section{padding:84px 0;position:relative;z-index:1}
+.eye{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.eye:before{content:"";width:26px;height:1px;background:var(--cy)}
+h2{font-size:38px;line-height:1.14;letter-spacing:-.025em;font-weight:800;max-width:730px}
+.sub{color:var(--mut);font-size:17px;margin-top:14px;max-width:620px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:transform .25s,border-color .25s,background .25s}
+.card:hover{transform:translateY(-3px);border-color:rgba(76,201,240,.38);background:rgba(76,201,240,.04)}
+.card .n{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.14em;color:var(--cy);margin-bottom:14px}
+.card h3{font-size:17.5px;font-weight:700;margin-bottom:8px}
+.card p{color:var(--mut);font-size:14.5px}
+.tabs{display:inline-flex;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:999px;padding:4px;margin-top:26px}
+.tabs button{background:none;border:0;color:var(--mut);font:inherit;font-size:14px;font-weight:600;padding:8px 20px;border-radius:999px;cursor:pointer}
+.tabs button.on{background:#fff;color:#05070d}
+.pane{display:none;margin-top:18px}.pane.on{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.box{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(14,22,38,.85),rgba(8,12,22,.9));overflow:hidden}
+.box .ph{padding:12px 18px;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
+.ph.bad{color:#ff9a9a}.ph.good{color:#9ae6a8}
+pre{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.85;color:#c6d4e6;padding:20px;overflow-x:auto;white-space:pre-wrap}
+.k{color:var(--cy)}.s{color:#9ae6a8}.p{color:#c9b3ff}.c{color:#4e5f75}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:34px}
+.checks ul{list-style:none;display:grid;gap:12px;margin-top:16px}
+.checks li{display:flex;gap:12px;color:#dbe3ee;font-size:15.5px}
+.checks li:before{content:"+";color:var(--cy);font-weight:700}
+.checks .no li:before{content:"-";color:#ff8080}
+.price{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.pbox{background:linear-gradient(160deg,rgba(76,201,240,.12),rgba(139,92,246,.12));border:1px solid var(--line);border-radius:20px;padding:32px;position:relative;overflow:hidden}
+.amount{font-size:54px;font-weight:800;letter-spacing:-.03em}
+.amount small{font-size:15px;color:var(--mut);font-weight:500}
+.pbox ul{list-style:none;margin:20px 0 24px;display:grid;gap:10px;font-size:15px;color:#dbe3ee}
+.pbox li:before{content:"✓";color:var(--cy);margin-right:10px}
+details{border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:12px;background:var(--panel)}
+summary{cursor:pointer;font-weight:600;font-size:16px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";float:right;color:var(--cy);font-weight:700}
+details[open] summary:after{content:"-"}
+details p{color:var(--mut);margin-top:12px;font-size:15px}
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--mut);font-size:14px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;position:relative;z-index:1}
+footer a{color:var(--mut)}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:920px){.hero-grid,.cards,.checks,.price{grid-template-columns:1fr}h1{font-size:40px}h2{font-size:27px}section{padding:58px 0}.nav-links{display:none}.stage{aspect-ratio:1/0.8}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="brand">AEO<span>KIT</span></div>
-    <a class="topcta" href="#buy">Get the kit, $29</a>
-  </header>
+<div class="mesh"></div>
 
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="/aeo-kit"><span class="dot"></span>AEO<b>KIT</b></a>
+    <div class="nav-links">
+      <a href="#problem">Why</a>
+      <a href="#inside">Inside</a>
+      <a href="#look">Before / after</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="nav-cta" data-buy href="#buy">Get the kit, $29</a>
+  </div>
+</nav>
+
+<div class="wrap">
   <div class="hero">
     <div class="hero-grid">
       <div>
-        <span class="badge">Built for people who publish</span>
-        <h1>Your page reads fine.<br>To a <em>machine</em>, it says nothing.</h1>
-        <p class="lede">ChatGPT, Perplexity and Google's AI answers look for structure: what the page is, who wrote it, when it was published. Most sites leave all four blank. This kit is the fix, in one zip.</p>
-        <div class="hero-actions">
-          <a class="btn" href="#buy">Get the kit, $29</a>
-          <a class="btn ghost" href="#inside">What is inside</a>
+        <span class="pill"><i></i>For people who publish, not developers</span>
+        <h1>Your page reads fine.<br>To a <span class="grad">machine</span>, it says nothing.</h1>
+        <p class="lede">ChatGPT, Perplexity and Google's AI answers look for structure: what the page is, who wrote it, when it was published. Most sites leave all four blank.</p>
+        <div class="cta-row">
+          <a class="btn" data-buy href="#buy">Get the kit, $29</a>
+          <a class="btn ghost" href="#inside">See what is inside</a>
         </div>
-        <p class="fine">One-time payment. Instant download. 14-day refund.</p>
+        <div class="micro"><span>One-time payment</span><span>Instant download</span><span>14-day refund</span></div>
       </div>
-      <div><img class="cover" src="/images/aeo/aeo-kit-cover.png" alt="AEO Kit cover" width="1600" height="1200"></div>
+      <div>
+        <div class="stage">
+          <canvas id="graph"></canvas>
+          <div class="stage-tag">your page, <b>as a crawler sees it</b></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <section id="problem">
   <div class="wrap">
-    <p class="mono">The problem</p>
+    <div class="eye"><span class="mono">The problem</span></div>
     <h2>A crawler cannot guess what your page is about</h2>
-    <p class="lede">A person reads the headline and knows. A crawler gets an HTML file with no author, no date, no description, and often a robots.txt that blocks it at the door. The content is there. The meaning is not.</p>
-    <div class="grid3">
+    <p class="sub">A person reads the headline and knows. A crawler gets an HTML file with no author, no date, no description, and often a robots.txt that blocks it at the door.</p>
+    <div class="cards">
       <div class="card"><div class="n">01</div><h3>No structure</h3><p>Without schema there is no machine-readable answer to "what is this page, and what question does it answer".</p></div>
       <div class="card"><div class="n">02</div><h3>Blocked by default</h3><p>Many robots.txt files, often copied from a template, quietly disallow the crawlers that matter.</p></div>
       <div class="card"><div class="n">03</div><h3>Slow discovery</h3><p>A new page can wait days before a search engine notices it. An IndexNow ping takes the wait out of it.</p></div>
@@ -108,41 +148,57 @@
 
 <section id="inside">
   <div class="wrap">
-    <p class="mono">What is inside</p>
-    <h2>Everything is a file you paste once</h2>
-    <div class="grid3">
+    <div class="eye"><span class="mono">What is inside</span></div>
+    <h2>Six files. Paste once, per template.</h2>
+    <p class="sub">Everything ships as plain text or HTML. No account, no dashboard, no monthly fee.</p>
+    <div class="cards">
       <div class="card"><div class="n">01</div><h3>Six schema templates</h3><p>Article, FAQ, News, ItemList, Organization and HowTo. Each block is ready to paste into the head of a page.</p></div>
       <div class="card"><div class="n">02</div><h3>llms.txt starter</h3><p>A short map of your site for language models, with your five most important pages named.</p></div>
-      <div class="card"><div class="n">03</div><h3>robots.txt rules</h3><p>Allow rules for GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot and Google-Extended. One paste, whole site.</p></div>
-      <div class="card"><div class="n">04</div><h3>IndexNow script</h3><p>Thirty lines that tell Bing about a new page the same day. Node, no dependencies, works on Windows and Linux.</p></div>
+      <div class="card"><div class="n">03</div><h3>robots.txt rules</h3><p>Allow rules for GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot and Google-Extended.</p></div>
+      <div class="card"><div class="n">04</div><h3>IndexNow script</h3><p>Thirty lines that tell Bing about a new page the same day. Node, no dependencies, Windows and Linux.</p></div>
       <div class="card"><div class="n">05</div><h3>20-point checklist</h3><p>The check to run before you publish, ordered by what actually affects indexing.</p></div>
-      <div class="card"><div class="n">06</div><h3>Setup guide</h3><p>Eight pages, with separate paths for plain HTML, WordPress and Shopify. Plus a before and after example.</p></div>
+      <div class="card"><div class="n">06</div><h3>Setup guide</h3><p>Eight pages, with separate paths for plain HTML, WordPress and Shopify, plus a worked example.</p></div>
     </div>
   </div>
 </section>
 
 <section id="look">
   <div class="wrap">
-    <p class="mono">What it changes</p>
+    <div class="eye"><span class="mono">What changes</span></div>
     <h2>The same page, before and after</h2>
-    <div class="split">
-      <div class="panel bad">
-        <p class="mono" style="color:#ff8f8f">Before</p>
-        <pre>&lt;title&gt;Our post&lt;/title&gt;
-&lt;h1&gt;Pricing&lt;/h1&gt;
-&lt;p&gt;We looked at the plans...&lt;/p&gt;
+    <div class="tabs" role="tablist">
+      <button class="on" data-tab="before">Before</button>
+      <button data-tab="after">After</button>
+    </div>
+    <div class="pane on" id="pane-before">
+      <div class="box">
+        <div class="ph bad">what the crawler gets</div>
+<pre>&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Our post&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Pricing&lt;/h1&gt;
+  &lt;p&gt;We looked at the plans and here is what we found...&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 
-<span style="color:#5b6b82">no author, no date,
-no description, no schema</span></pre>
+<span class="c">no author, no date, no description, no schema</span></pre>
       </div>
-      <div class="panel good">
-        <p class="mono" style="color:#86e6a8">After</p>
-        <pre>&lt;title&gt;Notion pricing in 2026: what each plan costs&lt;/title&gt;
-&lt;meta name="description" content="Plan by plan."&gt;
+    </div>
+    <div class="pane" id="pane-after">
+      <div class="box">
+        <div class="ph good">what the crawler gets</div>
+<pre>&lt;title&gt;Notion pricing in 2026: what each plan actually costs&lt;/title&gt;
+&lt;meta name="description" content="Plan by plan, with the limits that bite first."&gt;
 &lt;script type="application/ld+json"&gt;
-{ <span class="k">"@type"</span>: <span class="s">"Article"</span>,
-  <span class="k">"author"</span>: {<span class="k">"name"</span>:<span class="s">"You"</span>},
-  <span class="k">"datePublished"</span>: <span class="s">"2026-11-07"</span> }
+{
+  <span class="k">"@context"</span>: <span class="s">"https://schema.org"</span>,
+  <span class="k">"@type"</span>: <span class="s">"Article"</span>,
+  <span class="k">"headline"</span>: <span class="s">"Notion pricing in 2026"</span>,
+  <span class="k">"datePublished"</span>: <span class="s">"2026-11-07"</span>,
+  <span class="k">"author"</span>: { <span class="k">"@type"</span>: <span class="s">"Person"</span>, <span class="k">"name"</span>: <span class="s">"Your Name"</span> }
+}
 &lt;/script&gt;</pre>
       </div>
     </div>
@@ -151,20 +207,20 @@ no description, no schema</span></pre>
 
 <section id="fit">
   <div class="wrap">
-    <div class="split">
+    <div class="checks">
       <div>
-        <p class="mono">Who it is for</p>
-        <ul class="check">
+        <div class="eye"><span class="mono">Who it is for</span></div>
+        <ul>
           <li>You publish pages and want them read by machines as well as people</li>
           <li>You can paste a line into a file and save it</li>
           <li>You are on plain HTML, WordPress or Shopify</li>
-          <li>You would rather own a file than rent another monthly tool</li>
+          <li>You would rather own a file than rent another tool</li>
         </ul>
       </div>
-      <div>
-        <p class="mono">Who it is not for</p>
-        <ul class="check no">
-          <li>Anyone expecting a ranking guarantee. No file can sell you one</li>
+      <div class="no">
+        <div class="eye"><span class="mono">Who it is not for</span></div>
+        <ul>
+          <li>Anyone expecting a ranking guarantee. No file sells one</li>
           <li>Sites with no content yet. Structure helps answers, it does not create them</li>
           <li>Teams that need someone else to install it</li>
         </ul>
@@ -172,17 +228,16 @@ no description, no schema</span></pre>
     </div>
   </div>
 </section>
-
 <section id="buy">
   <div class="wrap">
     <div class="price">
       <div>
-        <p class="mono">Price</p>
-        <h2 style="margin-bottom:10px">One payment. No subscription.</h2>
-        <p class="lede">You get the zip immediately after checkout. Future updates to the kit are free, and you get them by email.</p>
-        <p class="fine">Payments are handled by Lemon Squeezy, which also handles sales tax. Card and wallet accepted.</p>
+        <div class="eye"><span class="mono">Price</span></div>
+        <h2 style="margin-bottom:12px">One payment. No subscription.</h2>
+        <p class="sub">The zip arrives right after checkout. Updates to the kit are free, and you get them by email.</p>
+        <p class="sub" style="font-size:14px;margin-top:16px">Payments run through Lemon Squeezy, which also handles sales tax. Card and wallet accepted.</p>
       </div>
-      <div class="pricebox">
+      <div class="pbox">
         <div class="amount">$29 <small>one time</small></div>
         <ul>
           <li>Six schema templates</li>
@@ -192,8 +247,8 @@ no description, no schema</span></pre>
           <li>8-page setup guide</li>
           <li>Free updates</li>
         </ul>
-        <a class="btn" data-buy href="https://voxahqstore.lemonsqueezy.com/buy/aeo-kit" style="width:100%;text-align:center">Get the kit</a>
-        <p class="fine" style="text-align:center">14-day refund, no questions.</p>
+        <a class="btn" data-buy href="#" style="width:100%;text-align:center">Get the kit</a>
+        <p class="sub" style="font-size:13px;text-align:center;margin-top:12px">14-day refund, no questions.</p>
       </div>
     </div>
   </div>
@@ -201,11 +256,11 @@ no description, no schema</span></pre>
 
 <section id="faq">
   <div class="wrap">
-    <p class="mono">Questions</p>
-    <h2>Before you buy</h2>
+    <div class="eye"><span class="mono">Questions</span></div>
+    <h2 style="margin-bottom:26px">Before you buy</h2>
     <details><summary>Does this guarantee I will be cited by ChatGPT?</summary><p>No, and nobody can promise that. What the kit does is remove the reasons a crawler skips your page: missing structure, missing author, missing dates, blocked access. Whether a page gets quoted still depends on whether it answers a question better than the page next to it.</p></details>
     <details><summary>I am not technical. Can I use it?</summary><p>If you can open a file, paste a block of text and save it, yes. The guide has a separate section for plain HTML, WordPress and Shopify, and every file carries a comment saying where it goes.</p></details>
-    <details><summary>Does it work with WordPress plugins that already add schema?</summary><p>Yes, with one rule: only one Article block per page. If your plugin already adds one, skip the Article template and use the FAQ one instead. The guide explains how to check.</p></details>
+    <details><summary>Does it work with plugins that already add schema?</summary><p>Yes, with one rule: only one Article block per page. If your plugin already adds one, skip the Article template and use the FAQ one instead. The guide explains how to check.</p></details>
     <details><summary>Will it break my site?</summary><p>These are additions inside the head of a page, not a theme change. Remove the block and the page is exactly as it was. Keep a copy of any file before editing it.</p></details>
     <details><summary>What if it does not help?</summary><p>Ask for a refund within 14 days by replying to your receipt. You keep the files.</p></details>
   </div>
@@ -218,21 +273,121 @@ no description, no schema</span></pre>
   </footer>
 </div>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "AEO Kit",
-  "description": "Six JSON-LD schema templates, llms.txt, robots.txt crawler rules, an IndexNow script, a 20-point checklist and an 8-page setup guide.",
-  "brand": { "@type": "Brand", "name": "VOXA" },
-  "offers": {
-    "@type": "Offer",
-    "price": "29.00",
-    "priceCurrency": "USD",
-    "availability": "https://schema.org/InStock",
-    "url": "https://voxahq.in/aeo-kit"
+<script>
+// 3D automation graph: nodes drifting on a rotating shell, edges where they are close.
+(function () {
+  var cv = document.getElementById('graph');
+  if (!cv) return;
+  var ctx = cv.getContext('2d');
+  var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var N = 54, nodes = [], t = 0;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize() {
+    var r = cv.parentElement.getBoundingClientRect();
+    W = r.width; H = r.height;
+    cv.width = W * DPR; cv.height = H * DPR;
+    cv.style.width = W + 'px'; cv.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
   }
-}
+
+  function build() {
+    nodes = [];
+    for (var i = 0; i < N; i++) {
+      var u = Math.random(), v = Math.random();
+      var theta = 2 * Math.PI * u;
+      var phi = Math.acos(2 * v - 1);
+      var rad = 0.72 + Math.random() * 0.28;
+      nodes.push({
+        x: rad * Math.sin(phi) * Math.cos(theta),
+        y: rad * Math.cos(phi) * 0.78,
+        z: rad * Math.sin(phi) * Math.sin(theta),
+        r: 1.8 + Math.random() * 2.4,
+        sp: 0.4 + Math.random() * 0.9
+      });
+    }
+  }
+
+  function project(p, ry, rx) {
+    var cosY = Math.cos(ry), sinY = Math.sin(ry);
+    var x = p.x * cosY - p.z * sinY;
+    var z = p.x * sinY + p.z * cosY;
+    var cosX = Math.cos(rx), sinX = Math.sin(rx);
+    var y = p.y * cosX - z * sinX;
+    var z2 = p.y * sinX + z * cosX;
+    var scale = 0.92 * Math.min(W, H) / (z2 + 2.1);
+    return { x: W / 2 + x * scale, y: H / 2 + y * scale, z: z2, s: scale };
+  }
+
+  function frame() {
+    t += reduce ? 0 : 0.0035;
+    ctx.clearRect(0, 0, W, H);
+    var ry = t * 1.1, rx = Math.sin(t * 0.7) * 0.28;
+    var pts = nodes.map(function (n) {
+      var wob = Math.sin(t * n.sp * 2 + n.x * 4) * 0.012;
+      return project({ x: n.x + wob, y: n.y + wob, z: n.z - wob }, ry, rx);
+    });
+
+    for (var i = 0; i < pts.length; i++) {
+      for (var j = i + 1; j < pts.length; j++) {
+        var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+        var d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 92) {
+          var a = (1 - d / 92) * 0.5;
+          ctx.strokeStyle = 'rgba(76,201,240,' + a.toFixed(3) + ')';
+          ctx.lineWidth = 0.7;
+          ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y); ctx.stroke();
+        }
+      }
+    }
+
+    for (var k = 0; k < pts.length; k++) {
+      var p = pts[k], depth = (p.z + 1.2) / 2.4;
+      var rad = nodes[k].r * (0.7 + depth * 0.9);
+      var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, rad * 5);
+      g.addColorStop(0, 'rgba(163,230,53,' + (0.55 * (1 - depth) + 0.18).toFixed(3) + ')');
+      g.addColorStop(0.35, 'rgba(76,201,240,' + (0.32 * (1 - depth) + 0.1).toFixed(3) + ')');
+      g.addColorStop(1, 'rgba(76,201,240,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(p.x, p.y, rad * 5, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = 'rgba(235,250,255,' + (0.35 + depth * 0.6).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(p.x, p.y, rad, 0, Math.PI * 2); ctx.fill();
+    }
+    requestAnimationFrame(frame);
+  }
+
+  resize(); build(); frame();
+  window.addEventListener('resize', function () { resize(); });
+})();
+
+// before / after tabs
+document.querySelectorAll('.tabs button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.querySelectorAll('.tabs button').forEach(function (x) { x.classList.remove('on'); });
+    b.classList.add('on');
+    document.querySelectorAll('.pane').forEach(function (p) { p.classList.remove('on'); });
+    var target = document.getElementById('pane-' + b.dataset.tab);
+    if (target) target.classList.add('on');
+  });
+});
+
+// scroll reveal
+(function () {
+  var els = document.querySelectorAll('section .wrap > *');
+  els.forEach(function (e) { e.classList.add('reveal'); });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(function (e) { io.observe(e); });
+})();
+
+// buy buttons point at one place
+(function () {
+  var BUY = 'https://voxahqstore.lemonsqueezy.com';
+  document.querySelectorAll('[data-buy]').forEach(function (a) {
+    if (a.getAttribute('href') === '#' || a.getAttribute('href') === '#buy') a.setAttribute('href', BUY);
+  });
+})();
 </script>
 </body>
 </html>
