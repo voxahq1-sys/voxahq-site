@@ -205,6 +205,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://voxahq.in/aeo-kit/</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://voxahq.in/affiliate-disclosure</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
