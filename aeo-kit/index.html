@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AEO Kit: make your pages readable to AI crawlers</title>
+<meta name="description" content="Six schema templates, llms.txt, crawler rules and an IndexNow script. A $29 kit for site owners who want AI search engines to read their pages properly.">
+<link rel="canonical" href="https://voxahq.in/aeo-kit">
+<meta property="og:title" content="AEO Kit: make your pages readable to AI crawlers">
+<meta property="og:description" content="Six schema templates, llms.txt, crawler rules and an IndexNow script. Copy, paste, done.">
+<meta property="og:image" content="https://voxahq.in/images/aeo/aeo-kit-cover.png">
+<meta property="og:type" content="product">
+<link rel="icon" href="/favicon-192.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--ink:#070b14;--panel:#0d1424;--line:rgba(255,255,255,.10);--mut:#9aa8bd;--cy:#4cc9f0;--vi:#7c5cff}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:#eef2f7;font-family:Inter,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--mut)}
+  header{display:flex;align-items:center;justify-content:space-between;padding:28px 0;gap:16px}
+  .brand{font-weight:800;letter-spacing:-.02em;font-size:20px}
+  .brand span{color:var(--cy)}
+  .topcta{border:1px solid var(--line);padding:10px 18px;border-radius:999px;color:#eef2f7;text-decoration:none;font-size:14px;font-weight:600;white-space:nowrap}
+  .hero{position:relative;padding:48px 0 72px;overflow:hidden}
+  .hero:before{content:"";position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(76,201,240,.16),transparent 62%);top:-400px;right:-260px;pointer-events:none}
+  .hero:after{content:"";position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,255,.14),transparent 66%);bottom:-400px;left:-240px;pointer-events:none}
+  .badge{display:inline-block;border:1px solid rgba(76,201,240,.5);color:var(--cy);border-radius:999px;padding:8px 16px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+  h1{font-size:62px;line-height:1.05;letter-spacing:-.03em;font-weight:800;margin:26px 0 20px;position:relative}
+  h1 em{font-style:normal;background:linear-gradient(90deg,var(--cy),var(--vi));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:20px;color:var(--mut);max-width:620px}
+  .hero-actions{display:flex;gap:14px;align-items:center;margin-top:34px;flex-wrap:wrap}
+  .btn{background:var(--cy);color:#04121b;font-weight:700;padding:16px 28px;border-radius:12px;text-decoration:none;font-size:16px;display:inline-block}
+  .btn.ghost{background:transparent;color:#eef2f7;border:1px solid var(--line)}
+  .fine{font-size:13px;color:var(--mut);margin-top:14px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+  .hero-grid>*{min-width:0}
+  img{max-width:100%;height:auto;display:block}
+  .cover{width:100%;border-radius:18px;border:1px solid var(--line);box-shadow:0 40px 90px rgba(0,0,0,.55);display:block}
+  section{padding:72px 0;border-top:1px solid var(--line)}
+  h2{font-size:33px;letter-spacing:-.02em;line-height:1.16;margin-bottom:16px;font-weight:800;max-width:760px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+  .card h3{font-size:17px;margin-bottom:8px;font-weight:700}
+  .card p{color:var(--mut);font-size:15px}
+  .card .n{font-family:'JetBrains Mono',monospace;color:var(--cy);font-size:12px;letter-spacing:.14em;margin-bottom:12px}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+  .panel{border-radius:16px;padding:22px;border:1px solid var(--line);background:var(--panel)}
+  .panel.bad{border-left:3px solid #ff6b6b}
+  .panel.good{border-left:3px solid #4ade80}
+  pre{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.75;color:#c9d6e6;overflow-x:auto;margin-top:12px;white-space:pre-wrap}
+  .k{color:var(--cy)}.s{color:#9be3a8}.p{color:#c3a6ff}
+  ul.check{list-style:none;margin-top:22px;display:grid;gap:12px}
+  ul.check li{display:flex;gap:12px;color:#dbe3ee;font-size:16px}
+  ul.check li:before{content:"+";color:var(--cy);font-weight:700}
+  ul.no li:before{content:"-";color:#ff8080}
+  .price{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .pricebox{background:linear-gradient(160deg,rgba(76,201,240,.10),rgba(124,92,255,.10));border:1px solid var(--line);border-radius:20px;padding:32px}
+  .amount{font-size:54px;font-weight:800;letter-spacing:-.03em}
+  .amount small{font-size:16px;color:var(--mut);font-weight:500;letter-spacing:0}
+  .pricebox ul{list-style:none;margin:20px 0 24px;display:grid;gap:10px;font-size:15px;color:#dbe3ee}
+  .pricebox ul li:before{content:"✓";color:var(--cy);margin-right:10px}
+  details{border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:12px;background:var(--panel)}
+  summary{cursor:pointer;font-weight:600;font-size:16px}
+  details p{color:var(--mut);margin-top:12px;font-size:15px}
+  footer{border-top:1px solid var(--line);padding:36px 0;color:var(--mut);font-size:14px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer a{color:var(--mut)}
+  @media(max-width:900px){.hero-grid,.grid3,.split,.price{grid-template-columns:1fr}h1{font-size:40px}h2{font-size:26px}section{padding:56px 0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">AEO<span>KIT</span></div>
+    <a class="topcta" href="#buy">Get the kit, $29</a>
+  </header>
+
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <span class="badge">Built for people who publish</span>
+        <h1>Your page reads fine.<br>To a <em>machine</em>, it says nothing.</h1>
+        <p class="lede">ChatGPT, Perplexity and Google's AI answers look for structure: what the page is, who wrote it, when it was published. Most sites leave all four blank. This kit is the fix, in one zip.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#buy">Get the kit, $29</a>
+          <a class="btn ghost" href="#inside">What is inside</a>
+        </div>
+        <p class="fine">One-time payment. Instant download. 14-day refund.</p>
+      </div>
+      <div><img class="cover" src="/images/aeo/aeo-kit-cover.png" alt="AEO Kit cover" width="1600" height="1200"></div>
+    </div>
+  </div>
+</div>
+
+<section id="problem">
+  <div class="wrap">
+    <p class="mono">The problem</p>
+    <h2>A crawler cannot guess what your page is about</h2>
+    <p class="lede">A person reads the headline and knows. A crawler gets an HTML file with no author, no date, no description, and often a robots.txt that blocks it at the door. The content is there. The meaning is not.</p>
+    <div class="grid3">
+      <div class="card"><div class="n">01</div><h3>No structure</h3><p>Without schema there is no machine-readable answer to "what is this page, and what question does it answer".</p></div>
+      <div class="card"><div class="n">02</div><h3>Blocked by default</h3><p>Many robots.txt files, often copied from a template, quietly disallow the crawlers that matter.</p></div>
+      <div class="card"><div class="n">03</div><h3>Slow discovery</h3><p>A new page can wait days before a search engine notices it. An IndexNow ping takes the wait out of it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="inside">
+  <div class="wrap">
+    <p class="mono">What is inside</p>
+    <h2>Everything is a file you paste once</h2>
+    <div class="grid3">
+      <div class="card"><div class="n">01</div><h3>Six schema templates</h3><p>Article, FAQ, News, ItemList, Organization and HowTo. Each block is ready to paste into the head of a page.</p></div>
+      <div class="card"><div class="n">02</div><h3>llms.txt starter</h3><p>A short map of your site for language models, with your five most important pages named.</p></div>
+      <div class="card"><div class="n">03</div><h3>robots.txt rules</h3><p>Allow rules for GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot and Google-Extended. One paste, whole site.</p></div>
+      <div class="card"><div class="n">04</div><h3>IndexNow script</h3><p>Thirty lines that tell Bing about a new page the same day. Node, no dependencies, works on Windows and Linux.</p></div>
+      <div class="card"><div class="n">05</div><h3>20-point checklist</h3><p>The check to run before you publish, ordered by what actually affects indexing.</p></div>
+      <div class="card"><div class="n">06</div><h3>Setup guide</h3><p>Eight pages, with separate paths for plain HTML, WordPress and Shopify. Plus a before and after example.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="look">
+  <div class="wrap">
+    <p class="mono">What it changes</p>
+    <h2>The same page, before and after</h2>
+    <div class="split">
+      <div class="panel bad">
+        <p class="mono" style="color:#ff8f8f">Before</p>
+        <pre>&lt;title&gt;Our post&lt;/title&gt;
+&lt;h1&gt;Pricing&lt;/h1&gt;
+&lt;p&gt;We looked at the plans...&lt;/p&gt;
+
+<span style="color:#5b6b82">no author, no date,
+no description, no schema</span></pre>
+      </div>
+      <div class="panel good">
+        <p class="mono" style="color:#86e6a8">After</p>
+        <pre>&lt;title&gt;Notion pricing in 2026: what each plan costs&lt;/title&gt;
+&lt;meta name="description" content="Plan by plan."&gt;
+&lt;script type="application/ld+json"&gt;
+{ <span class="k">"@type"</span>: <span class="s">"Article"</span>,
+  <span class="k">"author"</span>: {<span class="k">"name"</span>:<span class="s">"You"</span>},
+  <span class="k">"datePublished"</span>: <span class="s">"2026-11-07"</span> }
+&lt;/script&gt;</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fit">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="mono">Who it is for</p>
+        <ul class="check">
+          <li>You publish pages and want them read by machines as well as people</li>
+          <li>You can paste a line into a file and save it</li>
+          <li>You are on plain HTML, WordPress or Shopify</li>
+          <li>You would rather own a file than rent another monthly tool</li>
+        </ul>
+      </div>
+      <div>
+        <p class="mono">Who it is not for</p>
+        <ul class="check no">
+          <li>Anyone expecting a ranking guarantee. No file can sell you one</li>
+          <li>Sites with no content yet. Structure helps answers, it does not create them</li>
+          <li>Teams that need someone else to install it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="buy">
+  <div class="wrap">
+    <div class="price">
+      <div>
+        <p class="mono">Price</p>
+        <h2 style="margin-bottom:10px">One payment. No subscription.</h2>
+        <p class="lede">You get the zip immediately after checkout. Future updates to the kit are free, and you get them by email.</p>
+        <p class="fine">Payments are handled by Lemon Squeezy, which also handles sales tax. Card and wallet accepted.</p>
+      </div>
+      <div class="pricebox">
+        <div class="amount">$29 <small>one time</small></div>
+        <ul>
+          <li>Six schema templates</li>
+          <li>llms.txt and robots.txt files</li>
+          <li>IndexNow script</li>
+          <li>20-point checklist</li>
+          <li>8-page setup guide</li>
+          <li>Free updates</li>
+        </ul>
+        <a class="btn" data-buy href="https://voxahqstore.lemonsqueezy.com/buy/aeo-kit" style="width:100%;text-align:center">Get the kit</a>
+        <p class="fine" style="text-align:center">14-day refund, no questions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="mono">Questions</p>
+    <h2>Before you buy</h2>
+    <details><summary>Does this guarantee I will be cited by ChatGPT?</summary><p>No, and nobody can promise that. What the kit does is remove the reasons a crawler skips your page: missing structure, missing author, missing dates, blocked access. Whether a page gets quoted still depends on whether it answers a question better than the page next to it.</p></details>
+    <details><summary>I am not technical. Can I use it?</summary><p>If you can open a file, paste a block of text and save it, yes. The guide has a separate section for plain HTML, WordPress and Shopify, and every file carries a comment saying where it goes.</p></details>
+    <details><summary>Does it work with WordPress plugins that already add schema?</summary><p>Yes, with one rule: only one Article block per page. If your plugin already adds one, skip the Article template and use the FAQ one instead. The guide explains how to check.</p></details>
+    <details><summary>Will it break my site?</summary><p>These are additions inside the head of a page, not a theme change. Remove the block and the page is exactly as it was. Keep a copy of any file before editing it.</p></details>
+    <details><summary>What if it does not help?</summary><p>Ask for a refund within 14 days by replying to your receipt. You keep the files.</p></details>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <div>VOXA. Build notes and tool costs at <a href="https://voxahq.in">voxahq.in</a></div>
+    <div><a href="https://voxahq.in/affiliate-disclosure">Disclosure</a> &nbsp; <a href="mailto:voxa.hq1@gmail.com">Contact</a></div>
+  </footer>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "AEO Kit",
+  "description": "Six JSON-LD schema templates, llms.txt, robots.txt crawler rules, an IndexNow script, a 20-point checklist and an 8-page setup guide.",
+  "brand": { "@type": "Brand", "name": "VOXA" },
+  "offers": {
+    "@type": "Offer",
+    "price": "29.00",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://voxahq.in/aeo-kit"
+  }
+}
+</script>
+</body>
+</html>
