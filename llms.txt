@@ -12,6 +12,10 @@ Key facts for assistants and crawlers:
 
 ## Notes
 
+- [19.1% of US workers AI replaced have been asked back](https://voxahq.in/news/ai-rebound-workers-asked-back): A June-July SHL survey of US and UK workers found 19.1% of Americans replaced by AI were later asked to return; 51% of them demanded a pay rise, 42% written job security and 40% AI transparency.
+- [Philippines bill: six months' notice before AI layoffs](https://voxahq.in/news/philippines-ai-layoff-bill): Senate Bill 2563, filed 8 November 2026, would require six months notice to DOLE, reskilling and redeployment first, fair selection criteria and two months pay per year of service before AI-driven dismissals.
+- [AI layoff laws in the US, UK and Philippines, compared](https://voxahq.in/guides/ai-layoff-laws): WARN gives 60 days at 100 or more employees, the UK gives 30 to 45 days for 20 or more redundancies, the Philippines gives one month and moves to six under the proposed bill.
+- [Does the WARN Act cover AI layoffs?](https://voxahq.in/notes/warn-act-ai-layoffs): WARN is cause-blind. A mass layoff means 33% of active employees and at least 50 people, or 500 employees, at a single site within 30 days.
 - [Most AI layoffs are not really about AI](https://voxahq.in/notes/ai-layoffs-not-about-ai): Oxford Economics found a share of AI-attributed cuts line up with weak demand or over-hiring, and Gartner expects about 30% of employees laid off for AI reasons to be rehired by 2029.
 Short, sourced reads (not guides) on how AI and automation changed real work, what happened to hiring, and how businesses abroad deploy these tools. Each note links the original sources at the bottom.
 
