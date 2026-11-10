@@ -99,4 +99,26 @@
       <news:title>Philippines bill: six months' notice before AI layoffs</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://voxahq.in/news/australia-ai-safety-regulator</loc>
+    <news:news>
+      <news:publication>
+        <news:name>VOXA</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-10T20:00:00+05:30</news:publication_date>
+      <news:title>Australia built an AI regulator after an agent broke into Medicare</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://voxahq.in/news/qantas-850-jobs-accenture</loc>
+    <news:news>
+      <news:publication>
+        <news:name>VOXA</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-10T20:00:00+05:30</news:publication_date>
+      <news:title>Qantas cuts 850 jobs and hands the work to Accenture in India</news:title>
+    </news:news>
+  </url>
 </urlset>

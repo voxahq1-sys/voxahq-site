@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
+<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
+<title>Your n8n workflow stopped 3 days ago. Nobody noticed.</title>
+<meta name="description" content="n8n only alerts on thrown errors, so a workflow that returns nothing runs green for days. Here is the 20-minute setup that catches silent failures.">
+<link rel="canonical" href="https://voxahq.in/guides/n8n-workflow-silent-failure">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="keywords" content="n8n workflow monitoring, n8n silent failure, n8n error workflow, n8n alerts, n8n heartbeat">
+<meta name="author" content="VOXA">
+<meta property="og:title" content="Your n8n workflow stopped 3 days ago. Nobody noticed.">
+<meta property="og:description" content="n8n only alerts on thrown errors, so a workflow that returns nothing runs green for days. Here is the 20-minute setup that catches silent failures.">
+<meta property="og:url" content="https://voxahq.in/guides/n8n-workflow-silent-failure">
+<meta property="og:site_name" content="VOXA">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://voxahq.in/images/guides/n8n-silent-failure.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css?v=20261031">
+<script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985";s.async=true;s.crossOrigin="anonymous";document.head.appendChild(s);},1500);});</script>
+
+
+
+
+
+<meta name="p:domain_verify" content="c3d907d27ae9b207d17f93434ffa7b52"/>
+
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Your n8n workflow stopped 3 days ago. Nobody noticed.",
+  "description": "n8n only alerts on thrown errors, so a workflow that returns nothing runs green for days. Here is the 20-minute setup that catches silent failures.",
+  "datePublished": "2026-11-10T20:00:00+05:30",
+  "dateModified": "2026-11-10T20:00:00+05:30",
+  "author": {
+    "@type": "Organization",
+    "name": "VOXA"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "VOXA",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://voxahq.in/favicon-192.png"
+    }
+  },
+  "image": [
+    "https://voxahq.in/images/guides/n8n-silent-failure.jpg"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://voxahq.in/guides/n8n-workflow-silent-failure"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does n8n not alert on empty output?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because an empty result is not an error. n8n reports failures at the node level, and a node that returns zero items has done what it was asked. The check has to be deliberate - usually an IF node plus a Code node that throws."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is an error workflow in n8n?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A separate workflow with an Error Trigger node that runs when another workflow fails. Set it once in each workflow's settings and every thrown error gets routed there."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I catch a workflow that stopped running?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "With a heartbeat: a scheduled workflow that reads the last execution time of your critical workflows and throws when a run is overdue. Nothing inside a dead workflow can report on itself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a paid workflow for this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The five steps above cover the main failure modes. The paid pack saves the setup time and covers the edge cases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does Silent Failure Watch cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "$13, with the code VOXA20 applied at checkout. We earn a commission on that link."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body class="loading" data-scene="monolith">
+<canvas id="gl" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div>
+<div class="loader" id="loader"><div class="mono" style="color:var(--muted)">VOXA / AI TOOLS &amp; AUTOMATION</div><div class="loader__count" id="loaderCount">0</div><div class="loader__bar"><i id="loaderBar"></i></div></div>
+<div class="grain" aria-hidden="true"></div><div class="progress" id="progress" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="/">VOXA</a>
+  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/about">About Us</a><a href="/guides" class="is-active">Guides</a><a href="/notes">Notes</a><a href="/news/">News</a><a href="/picks/">Picks</a><a href="/contact">Contact Us</a></nav>
+  <a class="btn" href="/contact"><span>Contact</span></a>
+</header>
+<div class="page">
+<main>
+  <section class="page-head wrap"><span class="mono">Guide / Automation</span><h1>Your n8n workflow stopped 3 days ago. Nobody noticed.</h1>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/guides">Guides</a><span>/</span><span>n8n silent failures</span></div>
+  </section>
+  <section class="wrap" style="padding-top:0"><div class="panel">
+    <p class="byline mono">By the VOXA team &middot; n8n error workflows and execution history, checked November 2026</p>
+    <p class="meta-line mono"><span>10 November 2026</span><span>9 min read</span></p>
+    <figure class="guide-figure"><img src="/images/guides/n8n-silent-failure.jpg" alt="n8n workflow monitoring: catching a silent failure before a client does" width="1200" height="675" loading="lazy" decoding="async"></figure>
+
+    <div class="quick" style="border-left:4px solid #6d4aff"><h2>Disclosure first</h2><p>This guide links to Silent Failure Watch, an n8n workflow we use and earn a commission on if you buy it. It is not required reading: the free method below is roughly 20 minutes of setup and catches most of the same failures. The paid workflow exists for people who would rather import something than build it.</p></div>
+    <div class="quick"><h2>The short answer</h2><p>An n8n workflow fails silently when it finishes without an error but produces nothing useful: a node returns an empty item, a credential expires, an API answers with a 200 and an error body, or a schedule never fires. n8n only alerts you when a node throws. To catch the rest, add a check inside the workflow that fails on purpose when the output is empty, and point an error workflow at it - because a workflow that throws is the only kind n8n will tell you about.</p></div>
+
+    <h2>Why "it didn't error" is not the same as "it ran"</h2>
+    <p>n8n is honest about crashes and quiet about everything else. If an HTTP Request node gets a 500, the execution turns red and your error workflow fires. If the same node gets a 200 with <code>{"data": []}</code>, the workflow goes green, the next node runs on an empty item, and the run is recorded as a success.</p>
+    <p>That is the failure mode that costs people money. A lead-sync workflow that sends zero leads looks identical to a day with no leads. An invoice reminder that finds no invoices looks like a quiet week. The execution history shows green ticks, and nobody looks at the output.</p>
+
+    <h2>The four silent failures worth building against</h2>
+    <p><strong>1. The empty result that is treated as success.</strong> The API worked, it just had nothing for you. Your node returns <code>[]</code>, the loop below it skips, the run ends clean. Fix: an IF node that checks for empty output and routes to a node that throws a deliberate error.</p>
+    <p><strong>2. The credential that quietly expired.</strong> OAuth tokens age out. When they do, some APIs return 401 and n8n fails loudly - and some return an empty payload with a 200. Fix: a monthly test call to a known endpoint, with a failure path.</p>
+    <p><strong>3. The schedule that never fired.</strong> A workflow set to run every hour in a timezone that shifted, or an instance that restarted and lost its schedule, produces no executions at all. No executions is not an error, so nothing alerts. Fix: a separate "heartbeat" workflow that checks the last execution time of the critical workflows and alerts if a run is overdue.</p>
+    <p><strong>4. The rate limit that returned success.</strong> Some APIs answer 200 with a partial or throttled body. Your workflow processes what it got and reports success. Fix: compare the count you received against the count you expected, and throw if the difference is large.</p>
+
+    <h2>The free setup, step by step</h2>
+    <p>This is the method I would build before buying anything. It takes about twenty minutes per workflow, and it is the part that actually catches failures.</p>
+    <ol>
+      <li><strong>Create an error workflow.</strong> A separate workflow with an Error Trigger node, wired to Slack, email or a Telegram bot. Set it as the Error Workflow in the settings of every critical workflow. Now any thrown error reaches you.</li>
+      <li><strong>Add a validation node before anything important.</strong> After your data node, add an IF node that checks the item count. If it is zero, route to a Code node with <code>throw new Error('No items returned from source')</code>. A thrown error hits your error workflow, which is the whole point.</li>
+      <li><strong>Add a heartbeat workflow.</strong> A schedule trigger that runs every 30 minutes and calls the n8n API to ask for the last execution of each critical workflow. If the newest successful run is older than expected, throw. This catches scheduled workflows that stopped without failing.</li>
+      <li><strong>Log a row you can count.</strong> Write one row per run to a Google Sheet or a database table with a timestamp. If the row count for yesterday is zero, you find out from the data rather than from a client email.</li>
+      <li><strong>Alert on the first failure, not the third.</strong> One failure is a signal; three is an outage. Send the alert on the first.</li>
+    </ol>
+
+    <h2>What a purpose-built workflow adds</h2>
+    <p>The steps above are the mechanism. What they do not give you is the operational detail: which workflows matter most, what "expected volume" looks like on a Sunday, and how to phrase the alert so the person receiving it knows what to do at 2am rather than just that something is broken.</p>
+    <p>Silent Failure Watch is a small workflow pack built for that gap - it covers the four failure modes above, with the validation and heartbeat patterns already wired, so you import it and point it at the workflows you care about. If you would rather build the same thing yourself, the twenty-minute version above catches most of it. The honest difference is time, not capability.</p>
+    <p><a href="https://gumroad.com/a/164089187/lltue?offer_code=VOXA20">Silent Failure Watch on Gumroad</a> - $13 with the code VOXA20, which takes something off at checkout. It is ours to recommend, and we earn a commission if you buy.</p>
+
+    <h2>What to monitor first</h2>
+    <p>Not everything needs a heartbeat. Start with the workflows where a silent day costs money or trust: anything that sends client-facing email, anything that creates invoices or orders, anything that feeds a report someone makes decisions from, and anything that pulls data you would not notice was missing until month-end.</p>
+    <p>Everything else can wait for the error trigger. The failure you care about is the one a customer notices before you do.</p>
+
+    <h2>Questions people ask</h2>
+    <details><summary>Why does n8n not alert on empty output?</summary><p>Because an empty result is not an error. n8n reports failures at the node level, and a node that returns zero items has done what it was asked. The check has to be deliberate - usually an IF node plus a Code node that throws.</p></details>
+    <details><summary>What is an error workflow in n8n?</summary><p>A separate workflow with an Error Trigger node that runs when another workflow fails. Set it once in each workflow's settings and every thrown error gets routed there.</p></details>
+    <details><summary>How do I catch a workflow that stopped running?</summary><p>With a heartbeat: a scheduled workflow that reads the last execution time of your critical workflows and throws when a run is overdue. Nothing inside a dead workflow can report on itself.</p></details>
+    <details><summary>Do I need a paid workflow for this?</summary><p>No. The five steps above cover the main failure modes. The paid pack saves the setup time and covers the edge cases.</p></details>
+    <details><summary>How much does Silent Failure Watch cost?</summary><p>$13, with the code VOXA20 applied at checkout. We earn a commission on that link.</p></details>
+
+    <div class="prose" style="margin-top:28px;border-top:1px solid rgba(255,255,255,.1);padding-top:18px">
+      <p class="mono" style="opacity:.7">Read next</p>
+      <a href="/picks/silent-failure-watch">Silent Failure Watch: n8n alerts when a workflow stops</a> &nbsp;&middot;&nbsp; <a href="/guides/elevenlabs-settings">Why your AI voice sounds robotic</a>
+    </div>
+  </div></section>
+</main>
+<footer><div class="wrap"><div class="foot">
+      <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent guide to AI tools and automation.</p></div>
+      <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/newsletter">Newsletter</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/news/">News</a></li><li><a href="/picks/">Picks</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+      <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/disclaimer">Disclaimer</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/affiliate-disclosure">Affiliate Disclosure</a></li><li><a href="/editorial-policy">Editorial policy</a></li></ul></div>
+      <div><h5 class="mono">Contact</h5><ul><li><a href="/cdn-cgi/l/email-protection#4a3c25322b64223b7b0a2d272b232664292527"><span class="__cf_email__" data-cfemail="2c5a43544d02445d1d6c4b414d4540024f4341">[email&#160;protected]</span></a></li><li><a href="/contact">Contact form</a></li></ul></div>
+    </div><div class="foot__bottom mono"><span>&copy; 2026 VOXA</span><span>Independent guide</span></div></div></footer>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/main.js"></script>
+</body></html>
