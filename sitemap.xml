@@ -20,7 +20,7 @@
   </url>
   <url>
     <loc>https://voxahq.in/notes</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -541,6 +541,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://voxahq.in/notes/ai-tool-pricing-index</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://voxahq.in/notes/ai-voice-cost-per-minute</loc>
     <lastmod>2026-11-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -755,11 +761,5 @@
     <lastmod>2026-11-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://voxahq.in/notes/ai-tool-pricing-index</loc>
-    <lastmod>2026-11-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
 </urlset>
