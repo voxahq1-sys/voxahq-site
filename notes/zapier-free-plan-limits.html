@@ -55,7 +55,7 @@
   <section class="wrap" style="padding-top:0">
     <div class="panel">
       <p class="byline mono">By the VOXA team &middot; limits from Zapier’s own pricing page</p>
-      <p class="meta-line mono"><span>Published October 19, 2026</span><span>4 min read</span></p>
+      <p class="meta-line mono"><span>Published October 19, 2026 &middot; re-checked November 10, 2026</span><span>4 min read</span></p>
       <div class="quick">
         <h2>The short answer</h2>
         <p>Free is $0 a month, includes Zaps, Tables and Forms, and allows 100 tasks a month. The limit that breaks first is not tasks, it is steps: free Zaps can only be two steps, so anything that needs a filter, a formatter and a third action cannot run.</p>
@@ -88,8 +88,29 @@
       <h2>When to pay, and when to move elsewhere</h2>
       <p>Pay when you have a workflow you already know works by hand and it needs more than two steps. Do not pay to experiment. And if the workflow only touches one app, check whether that app has the automation built in, which is usually free.</p>
       <p>For the wider comparison across Zapier, Make and n8n, see <a href="/guides/zapier-vs-make-vs-n8n-for-ai-automation">Zapier vs Make vs n8n</a>. If you are costing a whole stack rather than one tool, start from <a href="/guides/ai-tool-stack-cost">what an AI tool stack costs</a>.</p>
+      <h2>What is not on the free plan</h2>
+      <p>The free page lists the inclusions, so it is easier to read the exclusions. These sit behind Professional, from $19.99 a month:</p>
+      <ul>
+        <li><strong>Multi-step Zaps.</strong> Free is trigger plus one action, and that is the whole Zap.</li>
+        <li><strong>Premium apps.</strong> Professional unlocks "unlimited premium apps". Free is limited to the standard set, so a workflow that depends on a premium integration will not run at all.</li>
+        <li><strong>Webhooks.</strong> No custom webhook triggers or actions on free, which rules out anything built around your own endpoint.</li>
+        <li><strong>Filters and paths.</strong> Branching logic is a paid feature, so a single Zap cannot say "if this, do that".</li>
+        <li><strong>Support.</strong> Email and live chat support are listed on Professional.</li>
+      </ul>
+
+      <h2>What happens when you hit 100 tasks</h2>
+      <p>Zapier stops running the Zap rather than charging you. Tasks reset at the start of your billing month, so the practical effect is that your automation goes quiet for part of the month and then starts working again, which is worse than a bill because nothing tells you it stopped. If a Zap is tied to something you would notice, like a client enquiry, watch the task counter in the dashboard rather than the Zap's own status.</p>
+
+      <h2>Does Zapier have a free trial?</h2>
+      <p>The free plan is not a trial. It is free forever, with the 100-task and two-step limits permanently attached. The paid plans are the ones offered on a trial basis, which matters if you want to test multi-step Zaps before committing: you are testing the paid tier with a time limit, not upgrading the free one.</p>
+
+      <h2>How to stay on free and still get three steps</h2>
+      <p>Two honest options, both of which cost time rather than money.</p>
+      <p><strong>Move the logic into the app.</strong> If your trigger app can format the data, filter it, or send a second copy, do that there and let Zapier do one action. A form that already writes to a sheet does not need a Zap to do it.</p>
+      <p><strong>Use a tool where steps are not metered.</strong> Self-hosted n8n has no task count and no step limit; you pay in server time and setup instead. If your workflow is busy rather than complex, that trade is usually the right one - see <a href="/guides/n8n-workflow-silent-failure">what breaks when an n8n workflow stops quietly</a> before you move, because the monitoring work is not free either.</p>
+
       <h2>Sources</h2>
-      <p>Zapier pricing page (zapier.com/pricing), read 19 October 2026. Free plan task allowance, two-step limit and the $19.99 Professional starting price are from that page.</p>
+      <p>Zapier pricing page (zapier.com/pricing), read 19 October 2026 and re-read 10 November 2026. Free plan task allowance (100 a month), the two-step limit, the included Zap/Tables/Forms line and the $19.99 Professional starting price are from that page. Feature split between free and Professional is from the same page's comparison list.</p>
       <p class="mono" style="color:var(--muted)">Prices and plan limits read from the vendor's own pricing page on 19 October 2026. Vendors change pricing without notice, so check before you pay.</p>
           <div class="prose" style="margin-top:28px">
         <h2>Related</h2>
