@@ -8,13 +8,13 @@
   </url>
   <url>
     <loc>https://voxahq.in/guides</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://voxahq.in/news/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -69,6 +69,12 @@
   <url>
     <loc>https://voxahq.in/news/australia-ai-content-labelling</loc>
     <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voxahq.in/news/australia-ai-safety-regulator</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -177,6 +183,12 @@
   <url>
     <loc>https://voxahq.in/news/philippines-ai-layoff-bill</loc>
     <lastmod>2026-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://voxahq.in/news/qantas-850-jobs-accenture</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -433,6 +445,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://voxahq.in/guides/elevenlabs-settings</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://voxahq.in/guides/getting-cited-by-chatgpt-aeo-tools</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -471,6 +489,12 @@
   <url>
     <loc>https://voxahq.in/guides/n8n-self-hosting-cost</loc>
     <lastmod>2026-11-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://voxahq.in/guides/n8n-workflow-silent-failure</loc>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -725,29 +749,5 @@
     <lastmod>2026-11-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://voxahq.in/news/australia-ai-safety-regulator</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://voxahq.in/news/qantas-850-jobs-accenture</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://voxahq.in/guides/n8n-workflow-silent-failure</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://voxahq.in/guides/elevenlabs-settings</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
 </urlset>
