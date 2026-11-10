@@ -339,3 +339,18 @@
   bar.appendChild(copy);
   quick.parentNode.insertBefore(bar, quick);
 })();
+
+/* GA4 - covers pages built without the inline Google tag */
+(function () {
+  try {
+    if (window.gtag) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'G-JFBST9ZHJP');
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JFBST9ZHJP';
+    (document.head || document.documentElement).appendChild(s);
+  } catch (e) {}
+})();
