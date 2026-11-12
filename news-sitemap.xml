@@ -121,4 +121,15 @@
       <news:title>Qantas cuts 850 jobs and hands the work to Accenture in India</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://voxahq.in/news/kimberly-powell-nvidia-report</loc>
+    <news:news>
+      <news:publication>
+        <news:name>VOXA</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-11T19:30:00+05:30</news:publication_date>
+      <news:title>NVIDIA shares fall 7% after report on CEO and healthcare chief</news:title>
+    </news:news>
+  </url>
 </urlset>
