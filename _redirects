@@ -52,16 +52,10 @@
 /guides/buffer-pricing-per-channel.html  /guides/buffer-pricing-per-channel  301
 /notes/zapier-free-plan-limits.html  /notes/zapier-free-plan-limits  301
 /notes/wave-free-plan-what-it-includes.html  /notes/wave-free-plan-what-it-includes  301
-/news/index.html  /news/  301
-/news/tesla-roadster-250000-reservation.html  /news/tesla-roadster-250000-reservation  301
-/news/microsoft-transcription-price-cut.html  /news/microsoft-transcription-price-cut  301
 
 # picks + news trailing slash and missing .html variants
-/news  /news/  301
 /affiliate-disclosure.html  /affiliate-disclosure  301
 /guides/n8n-3-function-node-removal.html  /guides/n8n-3-function-node-removal  301
-/news/cursor-claude-code-extension-backdoor.html  /news/cursor-claude-code-extension-backdoor  301
-/news/ollie-shuts-down-six-weeks-after-seed.html  /news/ollie-shuts-down-six-weeks-after-seed  301
 /notes/openai-funding-target-cut.html  /notes/openai-funding-target-cut  301
 /guides/best-ai-tools-for-product-descriptions.html  /guides/best-ai-tools-for-product-descriptions  301
 /guides/best-ai-tools-for-email-newsletters.html  /guides/best-ai-tools-for-email-newsletters  301
@@ -71,22 +65,17 @@
 /guides/best-ai-tools-with-a-free-plan.html  /guides/best-ai-tools-with-a-free-plan  301
 /notes/elevenlabs-free-plan-credits.html  /notes/elevenlabs-free-plan-credits  301
 /notes/ai-voice-cost-per-minute.html  /notes/ai-voice-cost-per-minute  301
-/news/rws-acolad-translation-consolidation.html  /news/rws-acolad-translation-consolidation  301
 # 404 fixes: legacy image path still requested by Google, iOS icon probes, sitemap index probe
-/images/news/rws-acolad-shutdown.jpg  /images/news/rws-acolad.jpg  301
 /apple-touch-icon-precomposed.png  /apple-touch-icon.png  301
 /apple-touch-icon-120x120.png  /apple-touch-icon.png  301
 /apple-touch-icon-152x152.png  /apple-touch-icon.png  301
 /sitemap_index.xml  /sitemap.xml  301
 /sitemap-index.xml  /sitemap.xml  301
-/news/ai-agents-stopped-telling-humans  /news/rogue-ai-agents-2026  301
 # deploy trigger
-/news/australia-ai-safety-regulator.html  /news/australia-ai-safety-regulator  301
-/news/qantas-850-jobs-accenture.html  /news/qantas-850-jobs-accenture  301
 /guides/n8n-workflow-silent-failure.html  /guides/n8n-workflow-silent-failure  301
 /guides/elevenlabs-settings.html  /guides/elevenlabs-settings  301
 /guides/elevenlabs-black-friday.html  /guides/elevenlabs-black-friday  301
 /notes/ai-tool-pricing-index.html  /notes/ai-tool-pricing-index  301
-/news/kimberly-powell-nvidia-report.html  /news/kimberly-powell-nvidia-report  301
 
 /picks/*  /  301
+/news/*  /guides/  301

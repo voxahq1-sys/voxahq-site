@@ -35,12 +35,12 @@
 <canvas id="gl" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>
 <header class="nav" id="nav">
   <a class="brand" href="/">VOXA</a>
-  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/about">About Us</a><a href="/guides" class="is-active">Guides</a><a href="/notes">Notes</a><a href="/news/">News</a><a href="/contact">Contact Us</a></nav>
+  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/about">About Us</a><a href="/guides" class="is-active">Guides</a><a href="/notes">Notes</a>News<a href="/contact">Contact Us</a></nav>
   <a class="btn" href="/contact"><span>Contact</span></a>
 </header>
 <div class="page"><main>
   <section class="page-head wrap"><span class="mono">Guides / AI safety</span><h1>AI agent permissions: what to give an agent, and what to withhold</h1>
-    <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/news/">News</a><span>/</span><span>Agent permissions</span></div>
+    <div class="crumbs mono"><a href="/">Home</a><span>/</span>News<span>/</span><span>Agent permissions</span></div>
   </section>
   <section class="wrap" style="padding-top:0"><div class="panel">
     <p class="byline mono">By the VOXA team &middot; built on the public incident record</p>
@@ -86,7 +86,7 @@
     <p>You do not need an enterprise platform to start. A read-only API token, a $100 monthly cap, one approval channel (a Slack message with an approve button), and a log file outside the agent's working directory cover most of the risk in an afternoon.</p>
     <p>Then test it the way the labs test theirs: give the agent a task that requires a blocked action and watch what it tries next. That behaviour, not the happy path, is your real security posture.</p>
 
-    <p><strong>Read next:</strong> <a href="/news/banks-block-ai-agents">why US banks are blocking agents</a>, and <a href="/news/rogue-ai-agents-2026">the 21 incidents behind these controls</a>.</p>
+    <p><strong>Read next:</strong> why US banks are blocking agents, and the 21 incidents behind these controls.</p>
     <h2>Questions people ask</h2>
     <h3>What permissions should an AI agent have?</h3>
     <p>The narrowest scope that completes one task, with a spend cap, an expiry, a human approval step for external actions, and logs stored outside the agent's reach.</p>
@@ -95,14 +95,14 @@
     <h3>Can prompt instructions act as security?</h3>
     <p>No. Instructions are suggestions inside the same context the agent controls. Only tokens, caps and approvals are enforcement.</p>
     <p class="meta-line mono"><span>Sources: Reuters on US banks blocking agents (23 October 2026); Anthropic, Investigating unintended model actions (October 2026); Pillar Security incident round-up (14 October 2026); our own guide to the 21 incidents.</span></p>
-    <p><a href="/news/banks-block-ai-agents">Read next: why US banks are blocking agents</a></p>
+    <p>Read next: why US banks are blocking agents</p>
         <div class="prose" style="margin-top:28px">
         <h2>Related</h2>
         <ul>
-        <li><a href="/news/claude-code-plugins">Anthropic opened a Claude Code plugin store, and the first thing on</a></li>
-        <li><a href="/news/black-october-ai-hacks">Black October: AI found a hole in the software behind most of the</a></li>
-        <li><a href="/news/openai-stops-live-internet-training">OpenAI will stop training its models on the live internet, and that</a></li>
-        <li><a href="/news/ibm-agent-identity-control">IBM now gives every agent its own identity</a></li>
+        <li>Anthropic opened a Claude Code plugin store, and the first thing on</li>
+        <li>Black October: AI found a hole in the software behind most of the</li>
+        <li>OpenAI will stop training its models on the live internet, and that</li>
+        <li>IBM now gives every agent its own identity</li>
         <li><a href="/guides/ai-agent-erp-access">Four scopes for agents inside ERP and CRM</a></li>
         <li><a href="/picks/">Tools we recommend, with the affiliate links disclosed</a></li>
         </ul>
@@ -111,7 +111,7 @@
 </main>
 <footer><div class="wrap"><div class="foot">
       <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent guide to AI tools and automation.</p></div>
-      <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/newsletter">Newsletter</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/news/">News</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
+      <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/newsletter">Newsletter</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li>News</li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
       <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/disclaimer">Disclaimer</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/affiliate-disclosure">Affiliate Disclosure</a></li><li><a href="/editorial-policy">Editorial policy</a></li></ul></div>
       <div><h5 class="mono">Contact</h5><ul><li><a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a></li><li><a href="/contact">Contact form</a></li></ul></div>
     </div><div class="foot__bottom mono"><span>&copy; 2026 VOXA</span><span>Independent guide</span></div></div></footer>
