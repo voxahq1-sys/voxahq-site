@@ -57,10 +57,7 @@
 /news/microsoft-transcription-price-cut.html  /news/microsoft-transcription-price-cut  301
 
 # picks + news trailing slash and missing .html variants
-/picks/index.html  /picks/  301
 /news  /news/  301
-/picks/silent-failure-watch.html  /picks/silent-failure-watch  301
-/picks/upgrade-watch.html  /picks/upgrade-watch  301
 /affiliate-disclosure.html  /affiliate-disclosure  301
 /guides/n8n-3-function-node-removal.html  /guides/n8n-3-function-node-removal  301
 /news/cursor-claude-code-extension-backdoor.html  /news/cursor-claude-code-extension-backdoor  301
@@ -70,7 +67,6 @@
 /guides/best-ai-tools-for-email-newsletters.html  /guides/best-ai-tools-for-email-newsletters  301
 /notes/kit-vs-beehiiv-free-plans.html  /notes/kit-vs-beehiiv-free-plans  301
 /notes/rytr-vs-jasper-price.html  /notes/rytr-vs-jasper-price  301
-/picks/elevenlabs.html  /picks/elevenlabs  301
 /guides/best-ai-voice-generators.html  /guides/best-ai-voice-generators  301
 /guides/best-ai-tools-with-a-free-plan.html  /guides/best-ai-tools-with-a-free-plan  301
 /notes/elevenlabs-free-plan-credits.html  /notes/elevenlabs-free-plan-credits  301
@@ -85,7 +81,6 @@
 /sitemap-index.xml  /sitemap.xml  301
 /news/ai-agents-stopped-telling-humans  /news/rogue-ai-agents-2026  301
 # deploy trigger
-/picks/aeo-kit.html  /picks/aeo-kit  301
 /news/australia-ai-safety-regulator.html  /news/australia-ai-safety-regulator  301
 /news/qantas-850-jobs-accenture.html  /news/qantas-850-jobs-accenture  301
 /guides/n8n-workflow-silent-failure.html  /guides/n8n-workflow-silent-failure  301
@@ -93,3 +88,5 @@
 /guides/elevenlabs-black-friday.html  /guides/elevenlabs-black-friday  301
 /notes/ai-tool-pricing-index.html  /notes/ai-tool-pricing-index  301
 /news/kimberly-powell-nvidia-report.html  /news/kimberly-powell-nvidia-report  301
+
+/picks/*  /  301

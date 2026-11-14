@@ -685,36 +685,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://voxahq.in/picks/</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://voxahq.in/picks/aeo-kit</loc>
-    <lastmod>2026-11-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://voxahq.in/picks/elevenlabs</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://voxahq.in/picks/silent-failure-watch</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://voxahq.in/picks/upgrade-watch</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://voxahq.in/about</loc>
     <lastmod>2026-11-05</lastmod>
     <changefreq>monthly</changefreq>
