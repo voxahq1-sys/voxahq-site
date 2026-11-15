@@ -80,7 +80,13 @@
     <p>That behaviour is not specific to Function. A test upgrade from 2.43.6 to the 3.0.1 pre-release, run by Krafera, the vendor behind the n8n monitoring pack we reviewed in <a href="/guides/n8n-workflow-silent-failure">our n8n monitoring guide</a>, covered four of the removed node types: Function, Function Item, Cron and Interval. All four workflows stayed published and none of them ran. The Function and Function Item ones still displayed an active trigger, the Cron and Interval ones displayed none, and the n8n log said "Workflow cannot run on this instance". The other 33 nodes on the removal list were not tested one by one, so the safe reading is the one in the docs: any removed node stops the workflow activating.</p>
     <p>There is a second, quieter version of the same thing: removed settings and renamed folders. Self-hosters who rely on the old npm install path have to move to Docker, and the binary data folder changes name from <code>binaryData</code> to <code>storage</code>. An instance that starts but reads files from the wrong place is harder to notice than one that refuses to start.</p>
 
-    <h2>Ten minutes: find out which of your workflows are affected</h2>
+    
+<div class="ad-slot" style="margin:32px 0;text-align:center;min-height:0">
+  <!-- VOXA In-article responsive -->
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7479341864813985" data-ad-slot="2822366111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<h2>Ten minutes: find out which of your workflows are affected</h2>
     <p>Do this on your 2.x instance, before you touch the upgrade.</p>
     <ul>
       <li><strong>Step 1. Open Settings, then Migration Report.</strong> This screen exists from 2.39 onwards and it lists the affected workflows, nodes and settings on your own instance. Save a copy of it, because it is the closest thing to a work list you will get.</li>

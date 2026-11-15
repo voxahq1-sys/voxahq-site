@@ -74,7 +74,13 @@
     <p>Write the permissions against tables and objects, not team names. "Finance access" means nothing in an audit. "Read and draft on purchase_orders where status = open, submit to the review queue, no access to vendors.payment_details" is a sentence you can defend.</p>
     <p>Most ERPs expose exactly this granularity in their API scopes. The reason teams do not use it is time, not capability.</p>
 
-    <h2>The spend ceiling</h2>
+    
+<div class="ad-slot" style="margin:32px 0;text-align:center;min-height:0">
+  <!-- VOXA In-article responsive -->
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7479341864813985" data-ad-slot="2822366111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<h2>The spend ceiling</h2>
     <p>Give the agent a numeric ceiling per run and per day. Not because the model is careless, but because retries are cheap and loops are not. Two dollars per run, fifty per day, is a reasonable starting range for a single workflow agent.</p>
     <p>When the ceiling trips, the agent should stop and leave a record, not fail silently. Silent failure is how you discover the problem from the invoice.</p>
 

@@ -145,7 +145,13 @@
     <p><strong>3. The schedule that never fired.</strong> A workflow set to run every hour in a timezone that shifted, or an instance that restarted and lost its schedule, produces no executions at all. No executions is not an error, so nothing alerts. Fix: a separate "heartbeat" workflow that checks the last execution time of the critical workflows and alerts if a run is overdue.</p>
     <p><strong>4. The rate limit that returned success.</strong> Some APIs answer 200 with a partial or throttled body. Your workflow processes what it got and reports success. Fix: compare the count you received against the count you expected, and throw if the difference is large.</p>
 
-    <h2>The free setup, step by step</h2>
+    
+<div class="ad-slot" style="margin:32px 0;text-align:center;min-height:0">
+  <!-- VOXA In-article responsive -->
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7479341864813985" data-ad-slot="2822366111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<h2>The free setup, step by step</h2>
     <p>This is the method I would build before buying anything. It takes about twenty minutes per workflow, and it is the part that actually catches failures.</p>
     <ol>
       <li><strong>Create an error workflow.</strong> A separate workflow with an Error Trigger node, wired to Slack, email or a Telegram bot. Set it as the Error Workflow in the settings of every critical workflow. Now any thrown error reaches you.</li>

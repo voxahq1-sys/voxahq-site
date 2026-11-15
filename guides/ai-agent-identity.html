@@ -70,7 +70,13 @@
     <p>List the exact actions the agent needs. For a lead responder that is: read new form rows, write a draft, send from one mailbox, append a tag. It is not "access to Gmail" and it is not "admin on the CRM".</p>
     <p>The test is simple. If the agent were taken over by someone hostile, what could they reach? If the answer includes payroll, start again.</p>
 
-    <h2>Step 3: make credentials short-lived</h2>
+    
+<div class="ad-slot" style="margin:32px 0;text-align:center;min-height:0">
+  <!-- VOXA In-article responsive -->
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7479341864813985" data-ad-slot="2822366111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<h2>Step 3: make credentials short-lived</h2>
     <p>Prefer tokens that expire in hours over tokens that expire never. Where the platform supports it, generate credentials per run rather than storing one long-lived secret. Vault 2.2, announced this week, does this for agents specifically, but the same pattern exists in every cloud: workload identity, short-lived STS tokens, rotating service credentials.</p>
     <p>If a token must live longer, rotate it on a schedule and treat rotation as part of the job, not a quarterly chore.</p>
 
