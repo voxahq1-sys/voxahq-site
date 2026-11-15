@@ -484,12 +484,9 @@ body.menu-open header .btn{display:none !important}
 .card__thumb{position:relative;inset:auto;width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;z-index:3;opacity:1;filter:none;flex:0 0 auto;border-bottom:1px solid rgba(244,244,241,.10)}
 .card__body{flex:1 1 auto;height:auto;justify-content:space-between;gap:20px}
 @media (min-width:901px){ .card__thumb{aspect-ratio:16/9} }
-/* guide cards v4: image + caption, gradient removed */
-.card{display:flex;flex-direction:column;height:auto;background:#0e0f12;border:1px solid rgba(244,244,241,.12)}
-.card__bg,.card__noise{display:none !important}
-.card__thumb{position:relative;inset:auto;width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;z-index:1;opacity:1;filter:none;flex:0 0 auto;border-bottom:1px solid rgba(244,244,241,.10);transition:transform .6s var(--ease)}
-.card:hover .card__thumb{transform:scale(1.02)}
-.card__body{flex:1 1 auto;height:auto;justify-content:flex-start;gap:12px;padding:16px 18px 18px}
-.card__tag{align-self:flex-start;padding:5px 11px;font-size:.66rem;letter-spacing:.08em;border:1px solid rgba(244,244,241,.22);background:transparent;backdrop-filter:none;border-radius:100px}
-.card__t{font-size:1.02rem !important;line-height:1.4 !important;font-weight:600 !important;letter-spacing:0 !important;color:var(--ink)}
-.card__pl{position:static !important;margin-top:2px;font-size:.7rem;opacity:.55;letter-spacing:.1em;text-transform:uppercase}
+
+/* guide cards v5: drop the cut-off READ label, keep the caption clean */
+.card{overflow:hidden}
+.card__pl{display:none !important}
+.card__body{padding-bottom:20px}
+.card__t{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
