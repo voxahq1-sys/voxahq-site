@@ -479,3 +479,7 @@ body p, .panel p, .prose p, .hero p, .statement p, .srv__row p{color:rgba(255,25
 /* lock the document scrollbar while the menu is open */
 html:has(body.menu-open){overflow:hidden}
 body.menu-open header .btn{display:none !important}
+
+/* guide card thumbnails */
+.card__thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:.42;filter:saturate(.95) contrast(1.02);transition:transform .8s var(--ease),opacity .4s}
+.card:hover .card__thumb{transform:scale(1.05);opacity:.5}
