@@ -479,3 +479,12 @@ body p, .panel p, .prose p, .hero p, .statement p, .srv__row p{color:rgba(255,25
 /* lock the document scrollbar while the menu is open */
 html:has(body.menu-open){overflow:hidden}
 body.menu-open header .btn{display:none !important}
+
+/* guide listing cards with thumbnails */
+.gcard{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#0e0f12;transition:border-color .4s,transform .5s var(--ease);text-decoration:none}
+.gcard:hover{border-color:rgba(200,247,81,.5);transform:translateY(-2px)}
+.gcard__img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#0a0a0c}
+.gcard__body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:10px}
+.gcard__tag{align-self:flex-start;padding:5px 11px;border:1px solid rgba(244,244,241,.22);border-radius:100px;font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.gcard__t{margin:0;font-size:1rem;line-height:1.4;font-weight:600;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media (max-width:720px){ .gcard__t{font-size:.95rem} }
