@@ -472,11 +472,16 @@ body p, .panel p, .prose p, .hero p, .statement p, .srv__row p{color:rgba(255,25
 .foot p, .foot__bottom, .foot__bottom span{color:rgba(255,255,255,.7) !important}
 .nav__links a{color:rgba(255,255,255,.9) !important}
 .nav__links a.is-active{color:#ffffff !important}
-
-/* --- mobile menu fixes (16 Nov 2026): lock scroll, full-bleed overlay, visible bars --- */
+/* --- mobile menu fixes v2 (16 Nov 2026) --- */
 @media (max-width:900px){
-  body.menu-open{overflow:hidden;height:100vh;touch-action:none}
+  html.menu-open, body.menu-open{overflow:hidden}
+  body.menu-open header{backdrop-filter:none;-webkit-backdrop-filter:none}
   .burger i{height:2px;width:22px;border-radius:2px}
-  .nav__links.open{width:100vw;max-width:100vw;padding:0 22px;overflow-y:auto;box-sizing:border-box}
-  .nav__links.open a{font-size:1.12rem;padding:8px 0;color:var(--ink)}
+  .nav__links.open{
+    display:flex;position:fixed;top:0;left:0;right:0;bottom:auto;
+    width:100vw;max-width:100vw;height:100vh;height:100dvh;
+    flex-direction:column;justify-content:center;align-items:center;gap:26px;
+    background:rgba(8,9,10,.98);padding:0 22px;box-sizing:border-box;overflow-y:auto;z-index:10000;
+  }
+  .nav__links.open a{font-size:1.15rem;color:var(--ink)}
 }
