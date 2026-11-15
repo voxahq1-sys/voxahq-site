@@ -475,3 +475,7 @@ body p, .panel p, .prose p, .hero p, .statement p, .srv__row p{color:rgba(255,25
 
 /* mobile menu final override */
 @media (max-width:900px){ .nav__links.open{background:#08090a !important} }
+
+/* lock the document scrollbar while the menu is open */
+html:has(body.menu-open){overflow:hidden}
+body.menu-open header .btn{display:none !important}
