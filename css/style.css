@@ -479,14 +479,3 @@ body p, .panel p, .prose p, .hero p, .statement p, .srv__row p{color:rgba(255,25
 /* lock the document scrollbar while the menu is open */
 html:has(body.menu-open){overflow:hidden}
 body.menu-open header .btn{display:none !important}
-/* guide card thumbnails v2: image on top, text below */
-.card{display:flex;flex-direction:column}
-.card__thumb{position:relative;inset:auto;width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;z-index:3;opacity:1;filter:none;flex:0 0 auto;border-bottom:1px solid rgba(244,244,241,.10)}
-.card__body{flex:1 1 auto;height:auto;justify-content:space-between;gap:20px}
-@media (min-width:901px){ .card__thumb{aspect-ratio:16/9} }
-
-/* guide cards v5: drop the cut-off READ label, keep the caption clean */
-.card{overflow:hidden}
-.card__pl{display:none !important}
-.card__body{padding-bottom:20px}
-.card__t{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
