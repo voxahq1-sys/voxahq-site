@@ -130,7 +130,7 @@
   <section class="wrap" style="padding-top:0"><div class="panel">
     <p class="byline mono">By Raghav Walia &middot; n8n error workflows and execution history, checked November 2026</p>
     <p class="meta-line mono"><span>10 November 2026</span><span>9 min read</span></p>
-    <figure class="guide-figure"><img fetchpriority="high" src="/images/guides/n8n-silent-failure.jpg" alt="n8n workflow monitoring: catching a silent failure before a client does" width="1200" height="675" decoding="async"></figure>
+    <figure class="guide-figure"><img src="/images/guides/n8n-workflow-silent-failure.jpg" alt="Your n8n workflow stopped 3 days ago. Nobody noticed." width="1200" height="675" fetchpriority="high" decoding="async"></figure>
 
     <div class="quick" style="border-left:4px solid #6d4aff"><h2>Disclosure first</h2><p>This guide links to Silent Failure Watch, an n8n workflow we use and earn a commission on if you buy it. It is not required reading: the free method below is roughly 20 minutes of setup and catches most of the same failures. The paid workflow exists for people who would rather import something than build it.</p></div>
     <div class="quick"><h2>The short answer</h2><p>An n8n workflow fails silently when it finishes without an error but produces nothing useful: a node returns an empty item, a credential expires, an API answers with a 200 and an error body, or a schedule never fires. n8n only alerts you when a node throws. To catch the rest, add a check inside the workflow that fails on purpose when the output is empty, and point an error workflow at it - because a workflow that throws is the only kind n8n will tell you about.</p></div>
