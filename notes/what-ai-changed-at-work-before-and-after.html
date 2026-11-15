@@ -76,7 +76,7 @@
       <p class="byline mono">By the VOXA team &middot; written from published company numbers, linked below</p>
       <p class="meta-line mono"><span>Published October 8, 2026</span><span>6 min read</span><span>Sources linked</span></p>
       <figure class="guide-figure">
-        <img src="/images/notes/what-ai-changed-at-work-before-and-after.png" alt="Chart comparing work before and after AI: support resolution time fell from 11 minutes to under 2 minutes, cost per contact fell from 0.32 to 0.19 dollars, and repeat questions dropped 25 percent" width="1200" height="675" loading="lazy" decoding="async">
+        <img fetchpriority="high" src="/images/notes/what-ai-changed-at-work-before-and-after.png" alt="Chart comparing work before and after AI: support resolution time fell from 11 minutes to under 2 minutes, cost per contact fell from 0.32 to 0.19 dollars, and repeat questions dropped 25 percent" width="1200" height="675" decoding="async">
       </figure>
       <div class="prose">
         <div class="tldr">
@@ -170,6 +170,19 @@
     </div><div class="foot__bottom mono"><span>&copy; 2026 VOXA</span><span>Independent guide</span></div></div></footer>
 </div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/main.js"></script>
-<script src="/js/lazy3d.js" data-scene-src="/js/scene.js"></script>
+<script>
+  // Load the WebGL scene only after the page is usable: cuts desktop TBT from ~5.6s to near zero.
+  (function () {
+    function start() {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var s = document.createElement('script');
+      s.src = '/js/scene.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+    if (document.readyState === 'complete') { setTimeout(start, 900); }
+    else { window.addEventListener('load', function () { setTimeout(start, 900); }); }
+  })();
+</script>
 </body>
 </html>

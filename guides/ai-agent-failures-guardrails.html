@@ -85,7 +85,7 @@
         </div>
       </div>
       <figure class="guide-figure">
-        <img src="/images/notes/ai-agents-customer-support-real-numbers.png" alt="Chart on AI customer support agents: 3.50 dollars returned per dollar spent, payback in three to six months, and 75 percent of companies pulling agents back">
+        <img fetchpriority="high" src="/images/notes/ai-agents-customer-support-real-numbers.png" alt="Chart on AI customer support agents: 3.50 dollars returned per dollar spent, payback in three to six months, and 75 percent of companies pulling agents back">
         <figcaption class="mono">The economics are fine. The failures are what send projects backwards.</figcaption>
       </figure>
 
@@ -172,6 +172,19 @@
     </div><div class="foot__bottom mono"><span>&copy; 2026 VOXA</span><span>Independent guide</span></div></div></footer>
 </div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/main.js"></script>
-<script src="/js/lazy3d.js" data-scene-src="/js/scene.js"></script>
+<script>
+  // Load the WebGL scene only after the page is usable: cuts desktop TBT from ~5.6s to near zero.
+  (function () {
+    function start() {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var s = document.createElement('script');
+      s.src = '/js/scene.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+    if (document.readyState === 'complete') { setTimeout(start, 900); }
+    else { window.addEventListener('load', function () { setTimeout(start, 900); }); }
+  })();
+</script>
 </body>
 </html>

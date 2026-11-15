@@ -64,7 +64,7 @@
 <div class="page">
 <main> <section class="page-head wrap"> <span class="mono">Notes</span> <h1>AI at work, <em class="serif">in the real world</em></h1> <div class="crumbs mono"><a href="/">Home</a><span>/</span><span>Notes</span></div> <p style="max-width:62ch;color:var(--muted);margin-top:22px">Notes are shorter than the guides. Every note covers one thing AI or automation changed, with the company numbers and the original sources linked at the bottom. </p> </section> <section class="wrap" style="padding-top:10px"> <div class="note-list">
       <article class="note-item rv">
-        <a class="note-item__fig" href="/notes/ai-tool-pricing-index"><img src="/images/notes/ai-tool-pricing-index.jpg" alt="AI tool pricing index for 2026" width="1200" height="675" loading="lazy" decoding="async"></a>
+        <a class="note-item__fig" href="/notes/ai-tool-pricing-index"><img fetchpriority="high" src="/images/notes/ai-tool-pricing-index.jpg" alt="AI tool pricing index for 2026" width="1200" height="675" decoding="async"></a>
         <div><p class="meta-line mono" style="margin:0 0 10px"><span>November 11, 2026</span><span>8 min read</span></p>
           <h3><a href="/notes/ai-tool-pricing-index">AI tool pricing index: what nine tools actually cost</a></h3>
           <p>Every price read from the vendor's own page, with the date. Plus the three we could not read, and why.</p></div>
@@ -87,6 +87,19 @@
 <footer><div class="wrap"><div class="foot"> <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent guide to AI tools and automation.</p></div> <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/newsletter">Newsletter</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div> <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/disclaimer">Disclaimer</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/affiliate-disclosure">Affiliate Disclosure</a></li><li><a href="/editorial-policy">Editorial policy</a></li></ul></div> <div><h5 class="mono">Contact</h5><ul><li><a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a></li><li><a href="/contact">Contact form</a></li></ul></div> </div><div class="foot__bottom mono"><span>&copy; 2026 VOXA</span><span>Independent guide</span></div></div></footer>
 </div>
 <script src="js/main.js"></script>
-<script src="js/lazy3d.js" data-scene-src="js/scene.js"></script>
+<script>
+  // Load the WebGL scene only after the page is usable: cuts desktop TBT from ~5.6s to near zero.
+  (function () {
+    function start() {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var s = document.createElement('script');
+      s.src = '/js/scene.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+    if (document.readyState === 'complete') { setTimeout(start, 900); }
+    else { window.addEventListener('load', function () { setTimeout(start, 900); }); }
+  })();
+</script>
 </body>
 </html>

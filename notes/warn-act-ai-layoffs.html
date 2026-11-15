@@ -139,7 +139,7 @@
   <section class="wrap" style="padding-top:0"><div class="panel">
     <p class="byline mono">By the VOXA team &middot; WARN Act regulations at 20 CFR Part 639, Cal SB 951</p>
     <p class="meta-line mono"><span>9 November 2026</span><span>6 min read</span></p>
-    <figure class="guide-figure"><img src="/images/notes/warn-act-ai.jpg" alt="WARN Act thresholds for AI layoffs, 60 days notice and 100 employees" width="1200" height="675" loading="lazy" decoding="async"></figure>
+    <figure class="guide-figure"><img fetchpriority="high" src="/images/notes/warn-act-ai.jpg" alt="WARN Act thresholds for AI layoffs, 60 days notice and 100 employees" width="1200" height="675" decoding="async"></figure>
 
     <div class="quick"><h2>The short answer</h2><p>Yes, the WARN Act covers AI layoffs, because it never asks why the jobs went. It asks how many and where. If an employer with 100 or more employees cuts at least 33 per cent of the active workforce (and at least 50 people) at one site inside a 30-day window, or cuts 500 or more, it owes 60 days' written notice. If the AI cut is smaller than that, WARN is silent and the only rules that apply are the contract and state law.</p></div>
 
@@ -210,6 +210,19 @@
     </div><div class="foot__bottom mono"><span>&copy; 2026 VOXA</span><span>Independent guide</span></div></div></footer>
 </div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/main.js"></script>
-<script src="/js/lazy3d.js" data-scene-src="/js/scene.js"></script>
+<script>
+  // Load the WebGL scene only after the page is usable: cuts desktop TBT from ~5.6s to near zero.
+  (function () {
+    function start() {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var s = document.createElement('script');
+      s.src = '/js/scene.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+    if (document.readyState === 'complete') { setTimeout(start, 900); }
+    else { window.addEventListener('load', function () { setTimeout(start, 900); }); }
+  })();
+</script>
 </body>
 </html>

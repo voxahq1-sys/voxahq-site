@@ -84,7 +84,7 @@
         </div>
       </div>
       <figure class="guide-figure">
-        <img src="/images/news/ai-cost-per-task.jpg" alt="Team reviewing AI API usage and cost per task" width="1200" height="675" loading="eager" decoding="async">
+        <img fetchpriority="high" src="/images/news/ai-cost-per-task.jpg" alt="Team reviewing AI API usage and cost per task" width="1200" height="675" loading="eager" decoding="async">
         <figcaption class="mono">The unit that matters is the finished task, not the token. Photo: VOXA.</figcaption>
       </figure>
 
@@ -160,6 +160,19 @@
     </div><div class="foot__bottom mono"><span>&copy; 2026 VOXA</span><span>Independent guide</span></div></div></footer>
 </div>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/main.js"></script>
-<script src="/js/lazy3d.js" data-scene-src="/js/scene.js"></script>
+<script>
+  // Load the WebGL scene only after the page is usable: cuts desktop TBT from ~5.6s to near zero.
+  (function () {
+    function start() {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var s = document.createElement('script');
+      s.src = '/js/scene.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+    if (document.readyState === 'complete') { setTimeout(start, 900); }
+    else { window.addEventListener('load', function () { setTimeout(start, 900); }); }
+  })();
+</script>
 </body>
 </html>

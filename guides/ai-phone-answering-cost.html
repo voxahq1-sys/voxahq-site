@@ -86,7 +86,7 @@
     <div class="crumbs mono"><a href="/">Home</a><span>/</span><a href="/guides">Guides</a><span>/</span><span>AI phone answering cost</span></div>
 
     <figure class="guide-figure rv" style="margin:26px 0">
-      <img src="/images/guides/ai-phone-answering-cost.png" alt="Chart comparing the monthly cost of answering 42 calls a month: Rosie 49 dollars, RingCentral AI 62 dollars after overage, Ruby human answering 395 dollars" width="1200" height="675" loading="lazy" style="width:100%;height:auto;border-radius:14px">
+      <img fetchpriority="high" src="/images/guides/ai-phone-answering-cost.png" alt="Chart comparing the monthly cost of answering 42 calls a month: Rosie 49 dollars, RingCentral AI 62 dollars after overage, Ruby human answering 395 dollars" width="1200" height="675" style="width:100%;height:auto;border-radius:14px">
       <figcaption class="mono" style="color:var(--muted);font-size:.78rem;margin-top:10px">Priced on each provider own page, September and October 2026</figcaption>
     </figure>
 
@@ -189,6 +189,19 @@
 </div><!-- /page -->
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/main.js"></script>
-<script src="/js/lazy3d.js" data-scene-src="/js/scene.js"></script>
+<script>
+  // Load the WebGL scene only after the page is usable: cuts desktop TBT from ~5.6s to near zero.
+  (function () {
+    function start() {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var s = document.createElement('script');
+      s.src = '/js/scene.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+    if (document.readyState === 'complete') { setTimeout(start, 900); }
+    else { window.addEventListener('load', function () { setTimeout(start, 900); }); }
+  })();
+</script>
 </body>
 </html>
