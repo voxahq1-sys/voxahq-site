@@ -472,8 +472,3 @@ body p, .panel p, .prose p, .hero p, .statement p, .srv__row p{color:rgba(255,25
 .foot p, .foot__bottom, .foot__bottom span{color:rgba(255,255,255,.7) !important}
 .nav__links a{color:rgba(255,255,255,.9) !important}
 .nav__links a.is-active{color:#ffffff !important}
-
-@media (max-width:900px){
-  body.menu-open header .btn{display:none}
-  .nav__links.open{overscroll-behavior:contain}
-}
