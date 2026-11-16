@@ -109,10 +109,10 @@ footer a{color:var(--mut)}
   "url": "https://voxahq.in/aeo-kit/",
   "offers": {
     "@type": "Offer",
-    "url": "https://voxahqstore.lemonsqueezy.com",
+    "url": "https://voxahq.in/aeo-kit/",
     "price": "29.00",
     "priceCurrency": "USD",
-    "availability": "https://schema.org/PreOrder",
+    "availability": "https://schema.org/InStock",
     "hasMerchantReturnPolicy": {
       "@type": "MerchantReturnPolicy",
       "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
@@ -269,7 +269,7 @@ footer a{color:var(--mut)}
     </div>
   </div>
 </section>
-<section id="buy">
+<section id="buy"><p class="mono" style="margin:0 0 14px;font-size:.78rem;opacity:.75">Checkout is moving off Lemon Squeezy (they are winding down). Email me and I will send a payment link the same day.</p>>
   <div class="wrap">
     <div class="price">
       <div>
@@ -288,7 +288,7 @@ footer a{color:var(--mut)}
           <li>8-page setup guide</li>
           <li>Free updates</li>
         </ul>
-        <a class="btn" data-buy href="https://voxahqstore.lemonsqueezy.com" target="_blank" rel="noopener" style="width:100%;text-align:center">Get the kit</a>
+        <a class="btn" data-buy href="mailto:voxa.hq1@gmail.com?subject=AEO%20Kit%20(%2429)%20-%20payment%20link" data-buy="email" target="_blank" rel="noopener" style="width:100%;text-align:center">Get the kit, $29 - email to buy</a>
         <p class="sub" style="font-size:12.5px;text-align:center;margin-top:10px;opacity:.75">Checkout opens the moment Lemon Squeezy finishes the seller review. If the store says it is not active yet, that review is still running - the kit itself is finished.</p>
         <p class="sub" style="font-size:13px;text-align:center;margin-top:12px">All sales are final. This is an instant download, so there is nothing to send back.</p>
         <p class="sub" style="font-size:13px;text-align:center;margin-top:10px">Or buy it on <a href="https://contra.com/products/aMrjrcTV-aeo-kit-get-your-pages-read-by-chat-gpt-and-perplexity" target="_blank" rel="noopener">Contra</a> - card, Apple Pay or Google Pay, same $29.</p>
@@ -426,7 +426,7 @@ document.querySelectorAll('.tabs button').forEach(function (b) {
 
 // buy buttons point at one place
 (function () {
-  var BUY = 'https://voxahqstore.lemonsqueezy.com';
+  var BUY = 'mailto:voxa.hq1@gmail.com?subject=AEO%20Kit';
   document.querySelectorAll('[data-buy]').forEach(function (a) {
     if (a.getAttribute('href') === '#' || a.getAttribute('href') === '#buy') a.setAttribute('href', BUY);
   });
