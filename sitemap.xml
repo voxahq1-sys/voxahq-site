@@ -349,6 +349,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://voxahq.in/notes/chatgpt-free-plan-two-years</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://voxahq.in/notes/does-self-hosting-n8n-cost-money</loc>
     <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -540,5 +546,4 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-  <url><loc>https://voxahq.in/notes/chatgpt-free-plan-two-years</loc><lastmod>2026-11-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
