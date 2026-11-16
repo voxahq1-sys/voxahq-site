@@ -79,3 +79,5 @@
 
 /picks/*  /  301
 /news/*  /guides/  301
+/tests/index.html  /tests/  301
+/tests/chatgpt-free-vs-claude-free.html  /tests/chatgpt-free-vs-claude-free  301
