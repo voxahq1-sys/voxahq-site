@@ -1,142 +1,159 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VOXA — AI tools index, SEO services and free AI audit</title>
+<title>VOXA — AI tool pricing, SEO services and a free AI audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#101418;--muted:#5b6570;--line:#e6e2da;--bg:#fbfaf7;--card:#ffffff;--accent:#0e7c66;--accent-soft:#e6f4f0;--warm:#f3efe8}
+:root{--ink:#0F1729;--ink2:#4A5568;--bg:#FDFDFC;--bg2:#F6F5F3;--bg3:#FBFAF9;--line:#DAD4C8;--acc:#0E7C66;--acc2:#12A183;--accsoft:#E7F5F1}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,"Segoe UI",Inter,Arial,sans-serif}
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-a{color:inherit;text-decoration:none}
-.topbar{background:var(--ink);color:#fff;font-size:13px;padding:9px 0;text-align:center;letter-spacing:.2px}
-.topbar b{color:#7fe3c8}
-nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-.nav{display:flex;align-items:center;gap:28px;height:68px}
-.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:19px;letter-spacing:-.4px}
-.logo span{width:26px;height:26px;border-radius:8px;background:var(--accent);display:inline-block}
-.nav .links{display:flex;gap:22px;font-size:14.5px;color:var(--muted);font-weight:500}
-.nav .right{margin-left:auto;display:flex;gap:10px;align-items:center}
-.btn{border-radius:10px;padding:10px 16px;font-weight:650;font-size:14.5px;display:inline-block}
-.btn.primary{background:var(--accent);color:#fff}
-.btn.ghost{border:1px solid var(--line);background:#fff}
-.hero{padding:64px 0 40px;text-align:center}
-.pill{display:inline-flex;gap:8px;align-items:center;background:var(--accent-soft);color:#0a5c4c;font-size:13px;font-weight:650;padding:7px 14px;border-radius:999px}
-h1{font-size:56px;line-height:1.06;letter-spacing:-1.8px;margin:20px auto 18px;max-width:900px;font-weight:800}
-h1 em{font-style:normal;color:var(--accent)}
-.lede{color:var(--muted);font-size:18px;max-width:640px;margin:0 auto 28px}
-.search{display:flex;gap:10px;max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:0 2px 10px rgba(16,20,24,.04)}
-.search input{flex:1;border:0;outline:0;padding:10px 12px;font-size:15.5px;background:transparent}
-.search button{border:0}
-.trust{margin-top:26px;font-size:13px;color:var(--muted);letter-spacing:.3px}
-.toolsGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px;margin-top:22px}
-.tcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;transition:.15s}
-.tcard:hover{border-color:#cfc9bd;box-shadow:0 6px 18px rgba(16,20,24,.06)}
-.tcard .ph{width:38px;height:38px;border-radius:10px;background:var(--warm);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--accent);margin-bottom:12px}
-.tcard h4{font-size:15.5px;margin-bottom:4px}
-.tcard p{font-size:13px;color:var(--muted);margin-bottom:10px}
-.tag{font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:999px;background:var(--accent-soft);color:#0a5c4c}
-.tag.paid{background:#fdf1e6;color:#96601c}
-section{padding:56px 0}
-.sechead{display:flex;align-items:end;justify-content:space-between;margin-bottom:8px}
-h2{font-size:34px;letter-spacing:-1px;font-weight:800}
-.sub{color:var(--muted);font-size:15.5px;margin-top:6px}
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
-.plan{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;position:relative}
-.plan.pop{border:2px solid var(--accent);box-shadow:0 10px 30px rgba(14,124,102,.10)}
-.plan .badge{position:absolute;top:-11px;left:24px;background:var(--accent);color:#fff;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px}
-.plan h3{font-size:16px;margin-bottom:6px}
-.price{font-size:38px;font-weight:800;letter-spacing:-1.4px;margin:8px 0 2px}
-.price small{font-size:14px;font-weight:600;color:var(--muted)}
-.plan ul{list-style:none;margin:16px 0 20px;display:grid;gap:9px;font-size:14px;color:#2b333b}
-.plan li:before{content:"✓";color:var(--accent);font-weight:800;margin-right:8px}
-.services{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:24px}
-.svc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px}
-.svc h3{font-size:20px;margin-bottom:8px;letter-spacing:-.4px}
-.svc .price{font-size:26px;margin:10px 0}
-.svc.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
-.svc.dark p{color:#b9c2cc}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
-.step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
-.step b{display:block;color:var(--accent);font-size:12px;letter-spacing:1px;margin-bottom:8px}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-.chip{font-size:13px;font-weight:600;color:#3a444d;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px}
-footer{background:#fff;border-top:1px solid var(--line);padding:40px 0;margin-top:40px;color:var(--muted);font-size:14px}
-.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px}
-footer h5{color:var(--ink);font-size:13px;letter-spacing:.6px;text-transform:uppercase;margin-bottom:10px}
-footer a{display:block;margin-bottom:7px}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.hd{font-family:"Plus Jakarta Sans",Inter,sans-serif;font-weight:700;letter-spacing:-1.4px}
+/* HERO */
+.hero{position:relative;background:linear-gradient(135deg,#12A183 0%,#0E7C66 55%,#0B5F52 100%);color:#fff;overflow:hidden}
+.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(900px 380px at 50% 118%,rgba(253,253,252,.98),rgba(253,253,252,0) 70%)}
+.nav{height:96px;display:flex;align-items:center;gap:36px;position:relative;z-index:2}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Plus Jakarta Sans";font-weight:800;font-size:21px;letter-spacing:-.5px;color:#fff}
+.logo i{width:28px;height:28px;border-radius:9px;background:#fff;display:inline-block;position:relative}
+.logo i:after{content:"";position:absolute;inset:7px;border-radius:4px;background:var(--acc)}
+.navlinks{display:flex;gap:26px;font-size:15px;color:rgba(255,255,255,.85);font-weight:500}
+.navright{margin-left:auto;display:flex;align-items:center;gap:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;font-size:14px;font-weight:500;padding:10px 16px;transition:.15s}
+.btn.white{background:#fff;color:var(--ink)}
+.btn.outline{border:1px solid rgba(255,255,255,.5);color:#fff}
+.btn.solid{background:var(--acc);color:#fff}
+.btn.big{font-size:16px;padding:14px 24px;border-radius:12px}
+.heroin{position:relative;z-index:2;text-align:center;padding:56px 0 120px}
+h1{font-family:"Plus Jakarta Sans";font-size:72px;line-height:1.0;font-weight:700;letter-spacing:-1.8px;max-width:940px;margin:0 auto 24px}
+h1 u{text-decoration:none;color:#C9F3E6}
+.herosub{font-size:19px;color:rgba(255,255,255,.9);max-width:620px;margin:0 auto 34px}
+.herobtns{display:flex;gap:12px;justify-content:center}
+.trusted{margin-top:64px;font-size:12.5px;letter-spacing:1.4px;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.logos{display:flex;gap:26px;justify-content:center;margin-top:16px;flex-wrap:wrap;font-weight:600;font-size:15px;color:rgba(255,255,255,.92)}
+/* SECTIONS */
+section{position:relative}
+.section{padding:88px 0}
+.section.alt{background:var(--bg3)}
+.section.grad{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--acc);margin-bottom:14px}
+h2{font-family:"Plus Jakarta Sans";font-size:44px;line-height:1.12;letter-spacing:-1.3px;font-weight:700;max-width:760px}
+.sub{color:var(--ink2);font-size:17px;margin-top:14px;max-width:640px}
+.center{text-align:center}
+.center h2,.center .sub{margin-left:auto;margin-right:auto}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+.card{background:var(--bg);border:.66px solid var(--line);border-radius:12px;padding:24px}
+.card h3{font-family:"Plus Jakarta Sans";font-size:19px;font-weight:700;letter-spacing:-.4px;margin-bottom:8px}
+.card p{color:var(--ink2);font-size:14.5px}
+.ic{width:40px;height:40px;border-radius:10px;background:var(--accsoft);display:flex;align-items:center;justify-content:center;color:var(--acc);font-weight:800;margin-bottom:16px}
+/* PLANS */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.plan{background:#fff;border:.66px solid var(--line);border-radius:12px;padding:28px;position:relative}
+.plan.pop{border:1.5px solid var(--acc);box-shadow:0 12px 34px rgba(14,124,102,.12)}
+.plan .badge{position:absolute;top:-12px;left:24px;background:var(--acc);color:#fff;font-size:11px;font-weight:700;letter-spacing:.6px;padding:5px 11px;border-radius:999px}
+.plan h3{font-size:15px;font-weight:600;color:var(--ink2);letter-spacing:0}
+.price{font-family:"Plus Jakarta Sans";font-size:40px;font-weight:700;letter-spacing:-1.6px;margin:10px 0 2px}
+.price small{font-size:14px;font-weight:500;color:var(--ink2)}
+.plan ul{list-style:none;margin:20px 0 24px;display:grid;gap:10px;font-size:14px}
+.plan li:before{content:"✓";color:var(--acc);font-weight:800;margin-right:9px}
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px}
+.step{background:var(--bg);border:.66px solid var(--line);border-radius:12px;padding:24px}
+.step b{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:999px;background:var(--acc);color:#fff;font-size:14px;margin-bottom:14px}
+.step h4{font-family:"Plus Jakarta Sans";font-size:16px;margin-bottom:6px}
+.step p{font-size:14px;color:var(--ink2)}
+/* SERVICE */
+.svc{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:44px}
+.svcbox{border:.66px solid var(--line);border-radius:12px;padding:32px;background:#fff}
+.svcbox.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.svcbox.dark p{color:#B9C2CC}
+.svcbox h3{font-family:"Plus Jakarta Sans";font-size:24px;letter-spacing:-.8px;margin-bottom:10px}
+/* CTA */
+.cta{background:var(--acc);color:#fff;text-align:center;padding:80px 0}
+.cta h2{color:#fff;margin:0 auto 18px}
+.cta p{color:rgba(255,255,255,.88);margin-bottom:28px}
+footer{background:#fff;border-top:.66px solid var(--line);padding:56px 0;font-size:14px;color:var(--ink2)}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:28px}
+footer h5{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink);margin-bottom:12px}
+footer a{display:block;margin-bottom:8px}
+@media(max-width:900px){h1{font-size:44px;letter-spacing:-1px}h2{font-size:32px}.grid3,.plans,.steps,.svc,.fgrid{grid-template-columns:1fr}.navlinks{display:none}}
 </style></head><body>
-<div class="topbar">Free AI audit for your website — <b>48-hour report, no card needed</b> &nbsp;→&nbsp; Get the audit</div>
-<nav><div class="wrap nav">
-  <div class="logo"><span></span>VOXA</div>
-  <div class="links"><a>AI Tools</a><a>Categories</a><a>Services</a><a>Pricing</a><a>Contact</a></div>
-  <div class="right"><a class="btn ghost">Sign in</a><a class="btn primary">Get the free audit</a></div>
-</div></nav>
-
-<div class="hero wrap">
-  <div class="pill">● 60 tools checked, prices dated</div>
-  <h1>Know what an AI tool costs <em>before</em> you pay for it</h1>
-  <p class="lede">Every tool page shows the real price, the free-plan limit and the point where it breaks — plus the SEO and audit services we run for clients.</p>
-  <div class="search"><input placeholder="Search a tool, e.g. ChatGPT, Claude, n8n"><button class="btn primary">Search</button></div>
-  <div class="trust">Works with the tools you already use &nbsp;·&nbsp; ChatGPT · Claude · Gemini · n8n · Zapier · ElevenLabs</div>
+<div class="hero">
+  <div class="wrap"><div class="nav">
+    <a class="logo"><i></i>VOXA</a>
+    <div class="navlinks"><a>AI Tools</a><a>Categories</a><a>Services</a><a>Pricing</a><a>Contact</a></div>
+    <div class="navright"><a class="btn outline">Sign in</a><a class="btn white">Get the free audit</a></div>
+  </div></div>
+  <div class="wrap heroin">
+    <h1 class="hd">Know what an AI tool <u>costs</u> before you pay for it</h1>
+    <p class="herosub">Every tool page shows the real price, the free-plan limit and the point where it breaks. Plus the SEO work and audits we run for clients.</p>
+    <div class="herobtns"><a class="btn white big">Get the free AI audit</a><a class="btn outline big">Browse 60 tools</a></div>
+    <div class="trusted">Prices checked against</div>
+    <div class="logos"><span>ChatGPT</span><span>Claude</span><span>Gemini</span><span>n8n</span><span>Zapier</span><span>ElevenLabs</span></div>
+  </div>
 </div>
 
-<section class="wrap" style="padding-top:20px">
-  <div class="sechead"><div><h2>Start with a plan</h2><div class="sub">Free audit first. Pay only when the report shows what is broken.</div></div></div>
-  <div class="plans">
-    <div class="plan"><h3>Free AI audit</h3><div class="price">₹0</div><div class="sub">48-hour report</div>
-      <ul><li>Technical crawl of 50 pages</li><li>Schema and indexing check</li><li>3 fixes, ranked by impact</li></ul>
-      <a class="btn ghost" style="width:100%;text-align:center">Get the audit</a></div>
-    <div class="plan pop"><div class="badge">MOST PICKED</div><h3>Monthly</h3><div class="price">₹1,999<small>/mo</small></div><div class="sub">for one site</div>
-      <ul><li>Everything in the free audit</li><li>Monthly fix list + re-check</li><li>Tool-price pages built for you</li><li>Email support in 24h</li></ul>
-      <a class="btn primary" style="width:100%;text-align:center">Start monthly</a></div>
-    <div class="plan"><h3>Yearly</h3><div class="price">₹19,999<small>/yr</small></div><div class="sub">2 months free</div>
+<section class="section"><div class="wrap center">
+  <div class="eyebrow">Plans</div>
+  <h2 class="hd">Start free. Pay when the report shows what is broken.</h2>
+  <p class="sub">The audit is free and takes 48 hours. The plans are for people who want it fixed.</p>
+  <div class="plans" style="text-align:left">
+    <div class="plan"><h3>Free AI audit</h3><div class="price">₹0</div><div class="sub" style="font-size:14px;margin-top:0">48-hour report</div>
+      <ul><li>Crawl of 50 pages</li><li>Schema and indexing check</li><li>3 fixes ranked by impact</li></ul>
+      <a class="btn solid" style="width:100%">Get the audit</a></div>
+    <div class="plan pop"><div class="badge">MOST PICKED</div><h3>Monthly</h3><div class="price">₹1,999<small>/mo</small></div><div class="sub" style="font-size:14px;margin-top:0">one site</div>
+      <ul><li>Everything in the free audit</li><li>Monthly fix list and re-check</li><li>Tool-price pages built for you</li><li>Email support in 24h</li></ul>
+      <a class="btn solid" style="width:100%">Start monthly</a></div>
+    <div class="plan"><h3>Yearly</h3><div class="price">₹19,999<small>/yr</small></div><div class="sub" style="font-size:14px;margin-top:0">2 months free</div>
       <ul><li>Everything in Monthly</li><li>Quarterly strategy call</li><li>Priority queue</li></ul>
-      <a class="btn ghost" style="width:100%;text-align:center">Start yearly</a></div>
+      <a class="btn solid" style="width:100%">Start yearly</a></div>
   </div>
-</section>
+</div></section>
 
-<section class="wrap" style="padding-top:24px">
-  <div class="sechead"><div><h2>Browse the tools</h2><div class="sub">Every card opens a page with dated pricing and free-plan limits.</div></div><a class="btn ghost">All 60 tools</a></div>
-  <div class="chips"><span class="chip">Chat assistants</span><span class="chip">Writing</span><span class="chip">Image</span><span class="chip">Video</span><span class="chip">Coding</span><span class="chip">Automation</span><span class="chip">Audio</span></div>
-  <div class="toolsGrid">
-    <div class="tcard"><div class="ph">C</div><h4>ChatGPT</h4><p>Free plan, limits, price of Plus</p><span class="tag">FREE TIER</span></div>
-    <div class="tcard"><div class="ph">Cl</div><h4>Claude</h4><p>Free vs Pro, message caps</p><span class="tag">FREE TIER</span></div>
-    <div class="tcard"><div class="ph">G</div><h4>Gemini</h4><p>Free tier and what breaks</p><span class="tag">FREE TIER</span></div>
-    <div class="tcard"><div class="ph">N</div><h4>n8n</h4><p>Self-host cost vs cloud</p><span class="tag paid">PAID</span></div>
-    <div class="tcard"><div class="ph">E</div><h4>ElevenLabs</h4><p>Character limits per plan</p><span class="tag paid">PAID</span></div>
-    <div class="tcard"><div class="ph">Z</div><h4>Zapier</h4><p>Task limits on free</p><span class="tag">FREE TIER</span></div>
+<section class="section grad"><div class="wrap">
+  <div class="eyebrow">Directory</div>
+  <h2 class="hd">Everything you need to price a tool</h2>
+  <p class="sub">One page per tool, built the same way, updated with the date we checked it.</p>
+  <div class="grid3">
+    <div class="card"><div class="ic">₹</div><h3>Dated pricing</h3><p>Every price carries the day we read it, so you never quote a stale number.</p></div>
+    <div class="card"><div class="ic">F</div><h3>Free-plan limits</h3><p>What the free tier actually gives you, and which limit you hit first.</p></div>
+    <div class="card"><div class="ic">↔</div><h3>Alternatives</h3><p>Cheaper or better options on the same page, with the trade-off named.</p></div>
   </div>
-</section>
+</div></section>
 
-<section class="wrap">
-  <div class="sechead"><div><h2>What we do for clients</h2><div class="sub">The same checks we run on this site, run on yours.</div></div></div>
-  <div class="services">
-    <div class="svc">
-      <h3>Full SEO service</h3>
-      <p class="sub">Technical fixes, keyword mapping, page builds and internal linking. Monthly retainer, one site.</p>
+<section class="section alt"><div class="wrap center">
+  <div class="eyebrow">Free audit</div>
+  <h2 class="hd">Get your free audit in 48 hours</h2>
+  <p class="sub">No call, no pitch until the report is in your inbox.</p>
+  <div class="steps" style="text-align:left">
+    <div class="step"><b>1</b><h4>Send your URL</h4><p>One field, plus an email where the report should land.</p></div>
+    <div class="step"><b>2</b><h4>We crawl the site</h4><p>Schema, indexing, speed and the pages that are missing.</p></div>
+    <div class="step"><b>3</b><h4>You get the report</h4><p>Three fixes, ranked by what will move traffic first.</p></div>
+    <div class="step"><b>4</b><h4>Fix it with us</h4><p>Only if you want to. The report is yours either way.</p></div>
+  </div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="eyebrow">Services</div>
+  <h2 class="hd">What we run for clients</h2>
+  <div class="svc">
+    <div class="svcbox"><h3>Full SEO service</h3><p>Technical fixes, keyword mapping, page builds and internal linking. One site, monthly.</p>
       <div class="price">₹15,000<small>/mo</small></div>
-      <ul style="list-style:none;display:grid;gap:8px;font-size:14px"><li>✓ Full technical audit and fixes</li><li>✓ 8 pages a month, written and shipped</li><li>✓ Schema, indexing, Search Console work</li></ul>
-      <a class="btn primary" style="margin-top:18px">Book a call</a>
-    </div>
-    <div class="svc dark">
-      <h3>Free AI audit</h3>
-      <p class="sub">Send your URL. In 48 hours you get a report with what is broken and what to fix first.</p>
+      <ul style="list-style:none;display:grid;gap:10px;font-size:14px;margin-top:18px"><li>✓ Full technical audit and fixes</li><li>✓ 8 pages a month, written and shipped</li><li>✓ Schema, indexing, Search Console work</li></ul>
+      <a class="btn solid" style="margin-top:22px">Book a call</a></div>
+    <div class="svcbox dark"><h3>Free AI audit</h3><p>Send your URL. In 48 hours you get what is broken and what to fix first.</p>
       <div class="price">₹0</div>
-      <a class="btn primary" style="margin-top:10px">Start the audit</a>
-    </div>
+      <a class="btn white" style="margin-top:18px">Start the audit</a></div>
   </div>
-</section>
+</div></section>
 
-<section class="wrap">
-  <div class="sechead"><div><h2>How the audit works</h2><div class="sub">No calls, no pitch until the report is in your inbox.</div></div></div>
-  <div class="steps">
-    <div class="step"><b>STEP 1</b>Send your URL and email.</div>
-    <div class="step"><b>STEP 2</b>We crawl, check schema, speed and indexing.</div>
-    <div class="step"><b>STEP 3</b>You get a 48-hour report with 3 ranked fixes.</div>
-    <div class="step"><b>STEP 4</b>If you want it done, pick a plan.</div>
-  </div>
-</section>
+<section class="cta"><div class="wrap">
+  <h2 class="hd">Ready to fix what the audit finds?</h2>
+  <p>Send one URL. Get the report in 48 hours.</p>
+  <a class="btn white big">Get the free AI audit</a>
+</div></section>
 
 <footer><div class="wrap fgrid">
-  <div><div class="logo" style="margin-bottom:10px"><span></span>VOXA</div><div>AI tool pricing, checked and dated. SEO services for small sites.</div></div>
+  <div><div class="logo" style="color:var(--ink);margin-bottom:12px"><i></i>VOXA</div><div>AI tool pricing, checked and dated. SEO services for small sites.</div></div>
   <div><h5>Directory</h5><a>All tools</a><a>Free tools</a><a>Categories</a></div>
   <div><h5>Services</h5><a>Full SEO</a><a>Free AI audit</a><a>Pricing</a></div>
   <div><h5>Company</h5><a>About</a><a>Contact</a><a>Privacy</a></div>
