@@ -1,158 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
-<style>html{background:#ffffff}body{background:#ffffff;color:#1d1e20;font-family:'Manrope',system-ui,sans-serif;margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}.loader,.grain,.cursor-dot,.cursor-ring{display:none!important}.page{opacity:1!important}</style>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="google-site-verification" content="iqkJi4R8vUH9mXFH8NmXFpLjehdxMaZZ2Iw6jM2A83Y" />
-<link rel="canonical" href="https://voxahq.in/contact">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="keywords" content="contact VOXA, AI tool question, correction request">
-<meta name="author" content="VOXA">
-<meta property="og:image" content="https://voxahq.in/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="VOXA: AI tools, minus the hype">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Contact Us — VOXA">
-<meta name="twitter:description" content="Contact VOXA about AI tools, automation workflows, corrections or a topic you want covered.">
-<meta name="twitter:image" content="https://voxahq.in/og-image.png">
-
-<title>Contact VOXA: Questions, Corrections, Tool Requests</title>
-<meta name="description" content="Tell us which AI tool to test, flag a price we got wrong, or ask a question. We read every message at voxa.hq1@gmail.com and reply within two working days.">
-<meta property="og:title" content="Contact Us — VOXA">
-<meta property="og:description" content="Contact VOXA about AI tools, automation workflows, corrections or a topic you want covered.">
-<meta property="og:site_name" content="VOXA">
-<meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/style.css?v=20261031">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JFBST9ZHJP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-JFBST9ZHJP');
-</script>
-<noscript><style>.rv{opacity:1 !important;transform:none !important}.line>span{transform:none !important}.statement p .wd{opacity:1 !important}</style></noscript>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Contact VOXA","url":"https://voxahq.in/contact"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"VOXA","url":"https://voxahq.in/","email":"voxa.hq1@gmail.com","contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"voxa.hq1@gmail.com","availableLanguage":"English"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://voxahq.in/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://voxahq.in/contact"}]}</script>
-<script>window.addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985";s.async=true;s.crossOrigin="anonymous";document.head.appendChild(s);},1500);});</script>
-<script>document.documentElement.className+=' js';setTimeout(function(){try{document.body.className=document.body.className.replace(/\bloading\b/,'').trim()+' loaded';var l=document.getElementById('loader');if(l)l.style.display='none';var r=document.querySelectorAll('.rv');for(var i=0;i<r.length;i++)r[i].classList.add('in');}catch(e){}},4000);</script>
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta name="p:domain_verify" content="c3d907d27ae9b207d17f93434ffa7b52"/>
-</head>
-<body class="loading" data-scene="wave">
-
-<canvas id="gl" aria-hidden="true"></canvas>
-<div class="veil" aria-hidden="true"></div>
-
-<div class="loader" id="loader">
-  <div class="mono" style="color:var(--muted)">VOXA / AI TOOLS &amp; AUTOMATION</div>
-  <div class="loader__count" id="loaderCount">0</div>
-  <div class="loader__bar"><i id="loaderBar"></i></div>
-</div>
-
-<div class="grain" aria-hidden="true"></div>
-<div class="progress" id="progress" aria-hidden="true"></div>
-<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
-
-<header class="nav" id="nav">
-  <a class="brand" href="/" data-cursor><svg class="mark" viewBox="0 0 48 48" role="img" aria-label="VOXA"><rect x="1" y="1" width="46" height="46" rx="12" fill="#0b0f10" stroke="#1e2c30"/><path d="M14 15 L24 34" fill="none" stroke="#22d3ee" stroke-width="4.6" stroke-linecap="round"/><path d="M24 34 L34 15" fill="none" stroke="#c8f751" stroke-width="4.6" stroke-linecap="round"/><circle cx="14" cy="15" r="3.2" fill="#22d3ee"/><circle cx="34" cy="15" r="3.2" fill="#c8f751"/></svg>VOXA</a>
-  <nav class="nav__links" id="navLinks"><a href="/">Home</a><a href="/about">About Us</a><a href="/guides">Guides</a><a href="/notes">Notes</a><a href="/tests">Tests</a><a href="/contact" class="is-active">Contact Us</a></nav>
-  <a class="btn" href="/contact" data-magnet><span data-cursor>Contact</span></a>
-  <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
-</header>
-
-<div class="page">
-<main>
-
-  <section class="page-head wrap">
-    <span class="mono">Contact Us</span>
-    <h1>Talk to <em class="serif">us</em></h1>
-    <div class="crumbs mono"><a href="/">Home</a><span>/</span><span>Contact Us</span></div>
-  </section>
-
-  <section class="wrap" style="padding-top:0">
-    <div class="two">
-      <!-- CONTENT SLOT: the form works as a layout. Connect it to an inbox or form service to receive messages. -->
-      <form class="panel" id="contactForm" data-contact-form action="https://formsubmit.co/voxa.hq1@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="New message from the VOXA website">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://voxahq.in/contact?sent=1">
-        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0" aria-hidden="true">
-        <h2 style="font-size:clamp(20px,2.4vw,28px);font-weight:500;letter-spacing:-.03em;margin-bottom:8px">Send us a message</h2>
-        <p style="color:var(--muted);font-size:.9rem;margin-bottom:22px">Tool question, correction, or a topic you want covered. We read everything.</p>
-        <div class="field"><label for="cf-name">Your name</label><input id="cf-name" name="name" type="text" placeholder="Full name" autocomplete="name" required></div>
-        <div class="field"><label for="cf-email">Email address</label><input id="cf-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required></div>
-        <div class="field"><label for="cf-subject">Which AI tool or task is it about?</label><input id="cf-subject" name="subject" type="text" placeholder="e.g. comparing two AI writing tools"></div>
-        <div class="field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" rows="6" placeholder="Tell us what you are trying to do, what you have tried, and what went wrong"></textarea></div>
-        <button class="magnet" type="submit" id="contactSubmit" data-magnet data-cursor>Send message &rarr;</button>
-        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-        <p class="form-note">Messages land in our inbox at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dea8b1a6bff0b6afef9eb9b3bfb7b2f0bdb1b3">[email&#160;protected]</a>. If the form does not go through, your mail app opens with the message ready, or write to us directly.</p>
-      </form>
-
-      <div class="panel">
-        <h5 class="mono" style="color:var(--muted);margin-bottom:18px">Direct</h5>
-        <div class="info-list">
-          <div><b>Email</b><span><a href="/cdn-cgi/l/email-protection#a2d4cddac38ccad393e2c5cfc3cbce8cc1cdcf"><span class="__cf_email__" data-cfemail="4c3a23342d62243d7d0c2b212d2520622f2321">[email&#160;protected]</span></a></span></div>
-          <div><b>Response time</b><span>Usually within two working days</span></div>
-          <div><b>Corrections</b><span>Send the page link and we will fix it</span></div>
-          <div><b>Tool suggestions</b><span>Name the tool and the task</span></div>
-        </div>
-        <p style="color:var(--muted);font-size:.86rem;margin-top:22px">We do not sell products, take orders or handle refunds for any software mentioned on this site. For billing or access problems, contact the tool's own support.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="wrap" style="padding-top:0">
-    <div class="sec-head">
-      <h2>Legal <em class="serif" style="text-transform:none">pages</em></h2>
-      <span class="mono">Linked in the footer on every page</span>
-    </div>
-    <div class="legal-links">
-      <a class="btn" href="/privacy-policy">Privacy Policy</a>
-      <a class="btn" href="/terms">Terms &amp; Conditions</a>
-      <a class="btn" href="/disclaimer">Disclaimer</a>
-      <a class="btn" href="/cookie-policy">Cookie Policy</a>
-    </div>
-  </section>
-
-</main>
-
-<footer><div class="wrap"><div class="foot">
-      <div><a class="brand" href="/">VOXA</a><p style="color:var(--muted);max-width:34ch;margin-top:14px">An independent guide to AI tools and automation.</p></div>
-      <div><h5 class="mono">Pages</h5><ul><li><a href="/">Home</a></li><li><a href="/newsletter">Newsletter</a></li><li><a href="/guides">Guides</a></li><li><a href="/notes">Notes</a></li><li><a href="/tests">Tests</a></li><li><a href="/about">About Us</a></li><li><a href="/contact">Contact Us</a></li></ul></div>
-      <div><h5 class="mono">Legal</h5><ul><li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="/disclaimer">Disclaimer</a></li><li><a href="/cookie-policy">Cookie Policy</a></li><li><a href="/affiliate-disclosure">Affiliate Disclosure</a></li><li><a href="/editorial-policy">Editorial policy</a></li></ul></div>
-      <div><h5 class="mono">Contact</h5><ul><li><a href="/cdn-cgi/l/email-protection#6d1b02150c43051c5c2d0a000c0401430e0200"><span class="__cf_email__" data-cfemail="43352c3b226d2b327203242e222a2f6d202c2e">[email&#160;protected]</span></a></li><li><a href="/contact">Contact form</a></li></ul></div>
-    </div><div class="foot__bottom mono"><span>&copy; 2026 VOXA</span><span>Independent guide</span></div></div></footer>
-</div><!-- /page -->
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/main.js"></script>
-<script>
-  // Load the WebGL scene only after the page is usable: cuts desktop TBT from ~5.6s to near zero.
-  (function () {
-    function start() {
-      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var s = document.createElement('script');
-      s.src = '/js/scene.js';
-      s.async = true;
-      document.body.appendChild(s);
-    }
-    if (document.readyState === 'complete') { setTimeout(start, 900); }
-    else { window.addEventListener('load', function () { setTimeout(start, 900); }); }
-  })();
-</script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact VOXA — SEO work, audits and corrections</title><meta name="description" content="Email VOXA about SEO work, a free audit, or a correction on any page.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>:root{--ink:#0F1729;--ink2:#4A5568;--bg:#FDFDFC;--bg2:#F6F5F3;--bg3:#FBFAF9;--line:#DAD4C8;--acc:#0E7C66;--acc2:#12A183;--accsoft:#E7F5F1}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.hd{font-family:"Plus Jakarta Sans",Inter,sans-serif;font-weight:700;letter-spacing:-1.4px}
+.navbar{background:var(--acc);position:sticky;top:0;z-index:50}
+.nav{height:80px;display:flex;align-items:center;gap:34px}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Plus Jakarta Sans";font-weight:800;font-size:20px;color:#fff}
+.logo i{width:26px;height:26px;border-radius:8px;background:#fff;position:relative;display:inline-block}
+.logo i:after{content:"";position:absolute;inset:6px;border-radius:4px;background:var(--acc)}
+.navlinks{display:flex;gap:24px;font-size:15px;color:rgba(255,255,255,.9);font-weight:500}
+.navlinks a:hover{color:#fff}
+.navright{margin-left:auto;display:flex;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;font-size:14px;font-weight:500;padding:10px 16px}
+.btn.white{background:#fff;color:var(--ink)}
+.btn.outline{border:1px solid rgba(255,255,255,.55);color:#fff}
+.btn.solid{background:var(--acc);color:#fff}
+.btn.big{font-size:16px;padding:14px 24px;border-radius:12px}
+.hero{background:linear-gradient(135deg,#12A183 0%,#0E7C66 55%,#0B5F52 100%);color:#fff;padding:64px 0 88px;text-align:center}
+h1{font-family:"Plus Jakarta Sans";font-size:60px;line-height:1.03;font-weight:700;letter-spacing:-1.8px;max-width:900px;margin:0 auto 22px}
+h1 u{text-decoration:none;color:#C9F3E6}
+.herosub{font-size:18px;color:rgba(255,255,255,.9);max-width:620px;margin:0 auto 30px}
+section{padding:72px 0}
+.section.alt{background:var(--bg3)}
+.section.grad{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
+h2{font-family:"Plus Jakarta Sans";font-size:40px;line-height:1.14;letter-spacing:-1.2px;font-weight:700;max-width:760px}
+.sub{color:var(--ink2);font-size:16.5px;margin-top:12px;max-width:660px}
+.center{text-align:center}.center h2,.center .sub{margin-left:auto;margin-right:auto}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
+.card{background:var(--bg);border:.66px solid var(--line);border-radius:12px;padding:24px}
+.card h3{font-family:"Plus Jakarta Sans";font-size:18px;font-weight:700;letter-spacing:-.3px;margin-bottom:8px}
+.card p{color:var(--ink2);font-size:14.5px}
+.ic{width:38px;height:38px;border-radius:10px;background:var(--accsoft);display:flex;align-items:center;justify-content:center;color:var(--acc);font-weight:800;margin-bottom:14px}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.plan{background:#fff;border:.66px solid var(--line);border-radius:12px;padding:26px;position:relative}
+.plan.pop{border:1.5px solid var(--acc);box-shadow:0 12px 34px rgba(14,124,102,.12)}
+.badge{position:absolute;top:-12px;left:22px;background:var(--acc);color:#fff;font-size:11px;font-weight:700;letter-spacing:.6px;padding:5px 11px;border-radius:999px}
+.price{font-family:"Plus Jakarta Sans";font-size:38px;font-weight:700;letter-spacing:-1.5px;margin:8px 0 2px}
+.price small{font-size:14px;font-weight:500;color:var(--ink2)}
+.plan ul,.ticks{list-style:none;margin:18px 0 22px;display:grid;gap:9px;font-size:14px}
+.plan li:before,.ticks li:before{content:"✓";color:var(--acc);font-weight:800;margin-right:8px}
+.step{background:var(--bg);border:.66px solid var(--line);border-radius:12px;padding:22px}
+.step b{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:999px;background:var(--acc);color:#fff;font-size:14px;margin-bottom:12px}
+.step h4{font-family:"Plus Jakarta Sans";font-size:15.5px;margin-bottom:6px}
+.step p{font-size:13.5px;color:var(--ink2)}
+.cta{background:var(--acc);color:#fff;text-align:center;padding:72px 0}
+.cta h2{color:#fff;margin:0 auto 14px}.cta p{color:rgba(255,255,255,.9);margin-bottom:26px}
+footer{background:#fff;border-top:.66px solid var(--line);padding:52px 0;font-size:14px;color:var(--ink2)}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:26px}
+footer h5{font-size:12px;letter-spacing:1.1px;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+footer a{display:block;margin-bottom:7px}
+.toolgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.tool{background:#fff;border:.66px solid var(--line);border-radius:12px;padding:20px;display:block}
+.tool:hover{border-color:var(--acc);box-shadow:0 8px 24px rgba(14,124,102,.08)}
+.tool .ph{width:40px;height:40px;border-radius:10px;background:var(--accsoft);color:var(--acc);display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:12px}
+.tool h3{font-size:16px;margin-bottom:4px;font-family:"Plus Jakarta Sans"}
+.tool p{font-size:13.5px;color:var(--ink2)}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--accsoft);color:#0A5C4C;margin-top:10px}
+.aboutgrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:center;margin-top:8px}
+.portrait{width:100%;border-radius:14px;border:.66px solid var(--line);background:#fff}
+@media(max-width:900px){h1{font-size:38px}h2{font-size:28px}.grid3,.grid4,.plans,.toolgrid,.fgrid,.aboutgrid{grid-template-columns:1fr}.navlinks{display:none}.navright .outline{display:none}}</style></head><body><div class="navbar"><div class="wrap nav">
+<a class="logo" href="/"><i></i>VOXA</a>
+<div class="navlinks"><a href="/tools">AI Tools</a><a href="/pricing">Pricing</a><a href="/services/seo">SEO Service</a><a href="/services/ai-audit">Free Audit</a><a href="/about">About</a><a href="/contact">Contact</a></div>
+<div class="navright"><a class="btn outline" href="/about">About us</a><a class="btn white" href="/services/ai-audit">Get the free audit</a></div>
+</div></div><div class="hero" style="padding:52px 0 60px"><div class="wrap"><h1 class="hd" style="font-size:50px">Contact</h1>
+<p class="herosub">One inbox, read by me. Audits, SEO work, or a correction on a page.</p></div></div>
+<section><div class="wrap" style="max-width:720px">
+<div class="card"><h3>Email</h3><p style="font-size:16px;margin-top:6px"><b>voxa.hq1@gmail.com</b></p><p style="margin-top:10px">Replies within one working day. For an audit request, use the <a href="/services/ai-audit" style="color:var(--acc);font-weight:600">audit form</a> so the URL lands in the right queue.</p></div>
+<div class="card" style="margin-top:18px"><h3>Corrections</h3><p style="margin-top:6px">If a price on any tool page is wrong, send the page and the number you saw. Corrections get fixed the same day and the check date is updated.</p></div>
+<div class="card" style="margin-top:18px"><h3>SEO work</h3><p style="margin-top:6px">Send the site and one line on what is not working. I reply with whether it is a fit before any call.</p></div>
+</div></section><footer><div class="wrap fgrid">
+<div><div class="logo" style="color:var(--ink);margin-bottom:10px"><i></i>VOXA</div><div>AI tool pricing, checked and dated. SEO services and audits for small sites, run from India.</div></div>
+<div><h5>Directory</h5><a href="/tools">All tools</a><a href="/tools">Free tools</a><a href="/tools">Categories</a></div>
+<div><h5>Services</h5><a href="/services/seo">Full SEO</a><a href="/services/ai-audit">Free AI audit</a><a href="/pricing">Pricing</a></div>
+<div><h5>Company</h5><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/editorial-policy">Editorial policy</a></div>
+</div><div class="wrap" style="margin-top:28px;font-size:13px;color:#7A8797">© 2026 VOXA · voxahq.in · Prices last checked 17 November 2026</div></footer></body></html>
