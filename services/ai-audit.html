@@ -108,4 +108,25 @@ footer a{display:block;margin-bottom:7px}
 <div><h5>Directory</h5><a href="/tools">All tools</a><a href="/tools">Free tools</a><a href="/tools">Categories</a></div>
 <div><h5>Services</h5><a href="/services/seo">Full SEO</a><a href="/services/ai-audit">Free AI audit</a><a href="/pricing">Pricing</a></div>
 <div><h5>Company</h5><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/editorial-policy">Editorial policy</a></div>
-</div><div class="wrap" style="margin-top:28px;font-size:13px;color:#7A8797">© 2026 VOXA · voxahq.in · Prices last checked 17 November 2026</div></footer></body></html>
+</div><div class="wrap" style="margin-top:28px;font-size:13px;color:#7A8797">© 2026 VOXA · voxahq.in · Prices last checked 17 November 2026</div></footer><script>
+document.addEventListener('submit', function(e){
+  var f = e.target;
+  if (f && f.action && f.action.indexOf('formsubmit.co') > -1) {
+    try {
+      if (window.gtag) {
+        gtag('event','audit_request',{form:'free_ai_audit',page_location:location.pathname});
+        gtag('event','generate_lead',{currency:'USD',value:0});
+      }
+    } catch(err){}
+  }
+}, true);
+document.addEventListener('click', function(e){
+  var a = e.target.closest ? e.target.closest('a') : null;
+  if (!a) return;
+  var h = a.getAttribute('href') || '';
+  if (h.indexOf('/services/ai-audit') === 0 && location.pathname.indexOf('ai-audit') === -1) {
+    try { if (window.gtag) gtag('event','audit_cta_click',{link_text:(a.textContent||'').trim().slice(0,40)}); } catch(err){}
+  }
+}, true);
+</script>
+</body></html>
