@@ -87,3 +87,7 @@
 /guides/*  /tools  301
 /notes  /tools  301
 /notes/*  /tools  301
+
+# old news section fully removed
+/news  /tools  301
+/news/*  /tools  301
