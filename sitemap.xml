@@ -487,6 +487,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://voxahq.in/preview-home</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://voxahq.in/tests/</loc>
     <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
