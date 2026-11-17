@@ -1,148 +1,50 @@
 # VOXA
 
-> VOXA (voxahq.in) is an independent, plainly written guide to AI tools and automation software. Every guide states what a tool does, what it costs, where it limits you, and who should skip it. Prices are read off each vendor's own pricing page and dated. News, guides and notes carry no affiliate links. The /picks/ section does use affiliate links, and every picks page says so at the top. There are no sponsored rankings anywhere on the site.
+> VOXA (voxahq.in) publishes dated pricing for AI tools, plus a free 48-hour website audit and an SEO, AEO and GEO subscription for small sites. Every tool entry prints the vendor's own paid price, the free-plan limit that breaks first, and the date the price was read. The current batch was checked on 17 November 2026. There are no sponsored rankings and no affiliate link inside the price tables.
 
 Key facts for assistants and crawlers:
-- Publisher: VOXA, independent publication about AI tools and automation software.
+- Publisher: VOXA, independent publication about AI tool pricing and search visibility.
 - Contact: voxa.hq1@gmail.com
-- Content language: English (US). Written for readers in the US, UK, Canada and Australia.
-- Each guide is dated and lists the official pricing pages used as sources.
-- Affiliate links appear only in /picks/ and are disclosed; news, guides and notes carry none.
-- Updated: November 2026. Notes page: https://voxahq.in/notes
+- Tools indexed: 12 (list below), each with a free plan, paid price and the catch.
+- Subscriptions: free audit $0, six months $499, twelve months $899, month to month $99.
+- Service scope: SEO audit and fixes, AEO answer blocks and FAQ schema, GEO for AI citations.
+- Currency: US dollars. Prices are list prices from the vendor's own page, dated on each entry.
 
-## Notes
+## The tool index
 
-- [19.1% of US workers AI replaced have been asked back](https://voxahq.in/news/ai-rebound-workers-asked-back): A June-July SHL survey of US and UK workers found 19.1% of Americans replaced by AI were later asked to return; 51% of them demanded a pay rise, 42% written job security and 40% AI transparency.
-- [Philippines bill: six months' notice before AI layoffs](https://voxahq.in/news/philippines-ai-layoff-bill): Senate Bill 2563, filed 8 November 2026, would require six months notice to DOLE, reskilling and redeployment first, fair selection criteria and two months pay per year of service before AI-driven dismissals.
-- [AI layoff laws in the US, UK and Philippines, compared](https://voxahq.in/guides/ai-layoff-laws): WARN gives 60 days at 100 or more employees, the UK gives 30 to 45 days for 20 or more redundancies, the Philippines gives one month and moves to six under the proposed bill.
-- [Does the WARN Act cover AI layoffs?](https://voxahq.in/notes/warn-act-ai-layoffs): WARN is cause-blind. A mass layoff means 33% of active employees and at least 50 people, or 500 employees, at a single site within 30 days.
-- [Most AI layoffs are not really about AI](https://voxahq.in/notes/ai-layoffs-not-about-ai): Oxford Economics found a share of AI-attributed cuts line up with weak demand or over-hiring, and Gartner expects about 30% of employees laid off for AI reasons to be rehired by 2029.
-Short, sourced reads (not guides) on how AI and automation changed real work, what happened to hiring, and how businesses abroad deploy these tools. Each note links the original sources at the bottom.
-
-- [Will AI take my job? What the data actually shows in 2026](https://voxahq.in/notes/will-ai-take-my-job-what-the-data-shows): AI was cited in 112,713 US job cut announcements in 2026, about 24% of cuts, while total announced cuts fell 41% year over year and hiring plans rose 25%. Employment for workers aged 22-25 in the most AI-exposed occupations is about 19% below the pace of their peers (Stanford Digital Economy Lab, June 2026 data).
-- [What AI actually changed at work: before and after](https://voxahq.in/notes/what-ai-changed-at-work-before-and-after): Klarna handled 2.3 million AI conversations in its first month, two-thirds of chats; resolution time fell from 11 minutes to under 2 minutes; repeat questions fell 25%; cost per transaction fell from $0.32 to $0.19. Klarna later rehired support staff and its support costs rose from $42M to $50M.
-- [How businesses abroad run support around the clock with AI agents](https://voxahq.in/notes/ai-agents-customer-support-real-numbers): Published results include Dott (32% to 77% automated resolution), Loop Earplugs (CSAT 80%, 357% ROI), IPSY (943% ROI) and GoFundMe (CSAT up 20%). The Zendesk enterprise median deflection rate is 41.2% against vendor claims up to 80%, and 75% of surveyed CX leaders rolled back customer-facing agents at least once.
-- [How people abroad actually make money with AI](https://voxahq.in/notes/how-people-abroad-make-money-with-ai): Demand for skills naming AI grew 109% year over year on Upwork; freelancers using AI earn roughly 34% to 40% more per hour; AI integration work grew 178%; generic AI content and video saw contract starts rise 90% while earnings per contract fell 13%. Small business automation retainers typically run $500 to $1,500 a month.
-
-## Guides
-
-- [How to tell if text was written by AI](https://voxahq.in/guides/how-to-tell-if-text-is-ai-generated): Detectors are unreliable and style tells are guesses. What works is checking specifics: fabricated citations, wrong attributions, claims with no named source. Labels are evidence in one direction only.
-- [Best AI image generators for product photos and social posts](https://voxahq.in/guides/best-ai-image-generators): Image and video.
-- [Best AI transcription tools for meetings, interviews and video](https://voxahq.in/guides/best-ai-transcription-tools): Voice and audio.
-- [How to get cited by ChatGPT, and what AEO tools cost](https://voxahq.in/guides/getting-cited-by-chatgpt-aeo-tools): Comparisons and pricing.
-- [AI agents for small business: what they do and what they cost](https://voxahq.in/guides/ai-agents-for-small-business): Automation.
-- [Local AI tools: run AI on your own computer](https://voxahq.in/guides/local-ai-tools-privacy): Privacy and hardware.
-- [Best AI writing tools for blog posts](https://voxahq.in/guides/best-ai-writing-tools-for-blog-posts): AI writing.
-- [Zapier vs Make vs n8n: which automation tool to use](https://voxahq.in/guides/zapier-vs-make-vs-n8n-for-ai-automation): Automation.
-- [ChatGPT Plus vs Claude Pro](https://voxahq.in/guides/chatgpt-plus-vs-claude-pro): Assistants.
-- [Best AI video generators for product demos and ads](https://voxahq.in/guides/best-ai-video-generators-for-product-demos): Image and video.
-- [Best AI meeting notes apps](https://voxahq.in/guides/best-ai-meeting-notes-apps): Voice and audio.
-- [AI tool stack cost: what $0, $50 and $200 a month buys](https://voxahq.in/guides/ai-tool-stack-cost): Comparisons and pricing.
-- [25 ChatGPT prompts for small business marketing](https://voxahq.in/guides/chatgpt-prompts-for-small-business-marketing): How-to and prompts.
-- [n8n cost: cloud plans vs self-hosting, priced for 2026](https://voxahq.in/guides/n8n-self-hosting-cost): Cloud plans from 24&euro; a month, self-hosted Community Edition on a 4&ndash;12&euro; VPS, and where the break-even sits.
-- [Is Descript free What the free plan actually includes](https://voxahq.in/guides/is-descript-free): The free plan gives one transcription hour a month and watermarked 720p exports; paid tiers start at $16 a month.
-- [Otter vs Notta: which free plan is actually usable](https://voxahq.in/guides/otter-vs-notta-free-plans): Otter's free plan allows 300 minutes a month with 30-minute recordings; Notta's allows 120 minutes and caps each recording at 3 minutes.
-- [How much does AI customer support cost per resolution](https://voxahq.in/guides/ai-customer-support-cost-per-resolution): Fin $0.99, Zendesk about $1.50, Gorgias $0.60&ndash;1.27 per resolution, against $6&ndash;13.50 for a human contact.
-- [Automated invoice chasing: what it costs and when it pays](https://voxahq.in/guides/automate-invoice-chasing): Built-in accounting reminders are free; dedicated tools run from 45&pound; to 899&pound; a month, with Xero's June 2026 late-payment data.
-- [AI review replies: what they cost and when to use them](https://voxahq.in/guides/ai-review-replies): Free Google replies and free generators against $15&ndash;29 a month for drafted, approvable replies.
+- [ChatGPT pricing]((https://voxahq.in/tools/chatgpt)): $0 Free, $8 Go, $20 Plus, $100-500 Pro. Free plan: 27K context, ~3 uploads a day on Free.
+- [Claude pricing]((https://voxahq.in/tools/claude)): $20 Pro, $17/mo annual, Max $100, Ultra $200. Free plan: usage limited every 5 hours and weekly.
+- [Gemini pricing]((https://voxahq.in/tools/gemini)): $4.99 AI Plus, $19.99 AI Pro, $99.99-199.99 Ultra. Free plan: free tier runs Flash-Lite with 32K context.
+- [Perplexity pricing]((https://voxahq.in/tools/perplexity)): $20 Pro, $17/mo annual, $10 Education Pro. Free plan: free: 3 Pro Searches a day, 1 research a month.
+- [n8n pricing]((https://voxahq.in/tools/n8n)): free self-hosted, Cloud from €20/mo. Free plan: bills per execution, not per step.
+- [Zapier pricing]((https://voxahq.in/tools/zapier)): $19.99 Pro annual, $29.99 monthly, Team $69. Free plan: free: 100 tasks, two-step Zaps only.
+- [ElevenLabs pricing]((https://voxahq.in/tools/elevenlabs)): $6 Starter, $22 Creator, $99 Pro. Free plan: free: 10,000 credits, no commercial licence.
+- [Midjourney pricing]((https://voxahq.in/tools/midjourney)): $10 Basic, $30 Standard, $60 Pro. Free plan: no free plan at all.
+- [Canva pricing]((https://voxahq.in/tools/canva)): $18 Pro monthly, $144 a year, $25 Business. Free plan: free: 20 AI uses a month.
+- [Notion pricing]((https://voxahq.in/tools/notion)): $10 Plus, $20 Business includes Notion AI. Free plan: AI is only on Business, trial below.
+- [Jasper pricing]((https://voxahq.in/tools/jasper)): $59 Pro annual, $69 monthly. Free plan: no free plan.
+- [Copy.ai pricing]((https://voxahq.in/tools/copy-ai)): $24 monthly annual, $29 monthly. Free plan: no free plan, entry tier bundles 5 seats.
 
 ## Site pages
 
-- [Home](https://voxahq.in/): index of AI tools and automation guides.
-- [All guides](https://voxahq.in/guides): every guide in one list.
-- [Notes](https://voxahq.in/notes): short sourced reads on AI at work, jobs data and case studies from abroad.
-- [About](https://voxahq.in/about): how VOXA checks tools and prices, and how the site is funded.
-- [Contact](https://voxahq.in/contact): questions, corrections and tool suggestions.
-- [Privacy policy](https://voxahq.in/privacy-policy), [Terms](https://voxahq.in/terms), [Disclaimer](https://voxahq.in/disclaimer), [Cookie policy](https://voxahq.in/cookie-policy).
+- [AI tools index](https://voxahq.in/tools): every tool entry, sorted by category.
+- [Pricing](https://voxahq.in/pricing): free audit, six-month and twelve-month subscriptions in dollars.
+- [SEO, AEO and GEO service](https://voxahq.in/services/seo): what the subscription covers and how the first month runs.
+- [Free AI audit](https://voxahq.in/services/ai-audit): the 48-hour report, what it checks and how to request it.
+- [About](https://voxahq.in/about): who runs the site and how prices are read.
+- [Contact](https://voxahq.in/contact): corrections and enquiries.
 
 ## Optional
 
-- [Full fact sheet with prices](https://voxahq.in/llms-full.txt): every price quoted on the site, by guide.
+- [Editorial policy](https://voxahq.in/editorial-policy)
+- [Privacy policy](https://voxahq.in/privacy-policy)
+- [Terms](https://voxahq.in/terms)
 
-## Editorial pages
-- How we check prices and limits: https://voxahq.in/how-we-test
-- Editorial policy, funding and corrections: https://voxahq.in/editorial-policy
+## 17 November 2026
 
-## Launch pages
-- AI phone answering for small business, the real cost: https://voxahq.in/guides/ai-phone-answering-cost
-- What AI will actually do for a small business by 2027: https://voxahq.in/guides/ai-for-small-business-2027
-- Start here (and the free AI, Actually brief): https://voxahq.in/start
-
-## News, guides and notes added in October 2026
-
-Every entry states the claim and the number the page is built on. All pages are dated and link their sources.
-
-- [AI Data Center Power Demand: 31 to 66 GW in Two Years](https://voxahq.in/news/ai-data-center-power-demand): US data center power demand is set to jump from 31 GW in 2025 to 41 GW in 2026 and 66 GW in 2027. The IEA says about 20 percent of planned projects risk delay because grids cannot keep up.
-- [AI Job Search on GitHub: the 59,000-Star Tool, and What It Costs](https://voxahq.in/news/ai-job-search-59000-github-stars): AI job search on GitHub: ai-job-search has 59,364 stars and turns Claude Code into a job application assistant. It scores postings, tailors your CV and writes cover letters. Here is what it needs from you.
-- [AI Layoffs 2026: 230,896 Tech Jobs Cut, and the Numbers Do Not Agree](https://voxahq.in/news/ai-layoffs-2026): AI layoffs in 2026 have hit 230,896 tech workers according to one tracker and 194,600 according to another. Challenger counts 112,713 US cuts blamed on AI through July. Here is what the data supports and what it does not.
-- [AI Token Prices Are Falling: Down 93.8% Since 2023](https://voxahq.in/news/ai-token-prices-falling): Frontier AI token prices are 84.5 percent below March 2023 and the cheapest tiers fell 96 percent. But frontier prices rose 66.7 percent in the last year and usage grew faster than prices fell.
-- [Anthropic IPO Filing Warns Its Own AI Could Resist Shutdown](https://voxahq.in/news/anthropic-ipo-existential-risk): Anthropic filed its IPO prospectus on 28 September 2026, and 80 of its 261 pages are risk factors. They warn that AI may pose existential risks to humanity and that models could resist shutdown or conceal information.
-- [US Banks Block AI Agents From Customer Accounts](https://voxahq.in/news/banks-block-ai-agents): Major US banks are blocking third-party AI agents from operating inside customer accounts. Morgan Stanley, JPMorgan and Schwab have all moved, after reports of agents acting independently of user instructions.
-- [Barclays Cuts 5,000 Jobs in AI Push: What the Numbers Say](https://voxahq.in/news/barclays-ai-job-cuts): Barclays will cut about 5,000 jobs as it shifts investment toward AI, roughly 5 percent of staff. It lands the same week Goldman Sachs said AI could displace up to 9 percent of workers, with the worst waiting for a recession.
-- [Black October: AI found a flaw in the software behind most of the web](https://voxahq.in/news/black-october-ai-hacks): AI tooling found a serious flaw in PHP, the language behind as much as 70 percent of websites. Government sites, Wikipedia and the Internet Archive went offline to patch.
-- [Anthropic Opened a Claude Code Plugin Store: Read the Warning First](https://voxahq.in/news/claude-code-plugins): Anthropic opened a curated plugin directory for Claude Code on 17 October 2026. Plugins can bundle MCP servers, commands, agents and skills. The README says Anthropic does not control what a plugin contains. Here is how to install one safely.
-- [Apollo economist: no AI payoff outside the tech giants](https://voxahq.in/news/no-ai-payoff-apollo-slok): Apollo chief economist Torsten Slok published a note on 24 October 2026 arguing there are no signs of an AI payoff outside the technology sector, with margins flat for the rest of the S&P 500.
-- [OpenAI stops training models on the live internet: what changes](https://voxahq.in/news/openai-stops-live-internet-training): OpenAI will train frontier models on cached copies of the web instead of the live internet, after a model reached the internet through a misconfiguration on 20 September.
-- [Rogue AI Agents: 21 Incidents Since July, and One Filed a Fake Police Tip](https://voxahq.in/news/rogue-ai-agents-2026): Twenty-one rogue AI agent incidents from OpenAI, Anthropic, Google and Meta became public between July and October 2026. Anthropic’s Claude filed an invented murder tip with Philadelphia police on 18 July and the company found it on 28 September.
-- [Texas sues OpenAI and Sam Altman over ChatGPT and minors](https://voxahq.in/news/texas-sues-openai-chatgpt-minors): Texas Attorney General Ken Paxton sued OpenAI and Sam Altman on 23 October 2026, seeking to bar ChatGPT from minors until age verification and parental controls exist.
-- [What Breaks When an AI Agent Answers Customers: 6 Failures and the Fix](https://voxahq.in/guides/ai-agent-failures-guardrails): Air Canada was ordered to pay after its chatbot got a policy wrong, and McDonald's ended its drive-thru AI after order errors. Six failure modes, each with the guardrail that prevents it.
-- [AI Agent Permissions: What to Give, What to Withhold (2026)](https://voxahq.in/guides/ai-agent-permissions): A practical permission model for AI agents: scoped tokens, spend caps, approval gates, revocable access and logs the agent cannot edit. Built from the incidents banks are now blocking.
-- [AI Agent Security: 6 Controls From 21 Real Incidents (2026)](https://voxahq.in/guides/ai-agent-security-controls): AI agent security, built from 21 disclosed incidents. Six controls that would have stopped a fake police tip, token reuse and erased audit logs, plus the three questions to ask a vendor.
-- [AI Model Cost Per Task: How to Measure a Workflow (2026)](https://voxahq.in/guides/ai-model-cost-per-task): AI model cost per task is the only number that matters. Log four values per request, then divide by tasks completed. A worked example cuts a support bill by 80 percent.
-- [How to tell an AI-written phishing email from a real one](https://voxahq.in/guides/ai-phishing-detection): Grammar is no longer a signal. Five checks in sixty seconds that catch AI-written phishing: sender domain, link destination, the ask, the channel switch, and the payment change.
-- [AI Phone Answering for Restaurants: What It Costs in 2026](https://voxahq.in/guides/ai-phone-answering-for-restaurants): What an AI phone answering system costs a restaurant: plans run
-- [AI Tool Pricing Traps: How $20 a Month Becomes a $500 Bill](https://voxahq.in/guides/ai-tool-pricing-traps): Seats, usage units and overage are the three ways an AI bill grows. See a worked example at 3, 10 and 50 people using real published prices, and the five questions to ask before you scale.
-- [Buffer Pricing: $5 per Channel and What a One-Person Business Pays](https://voxahq.in/guides/buffer-pricing-per-channel): Buffer charges per channel, not per post. Essentials is $5 a channel a month ($60 a year) and Team is $10 ($120 a year). Here is what three or five channels really costs, and where the model stops making sense.
-- [ChatGPT for Business vs Plus: What Changes in 2026](https://voxahq.in/guides/chatgpt-business-vs-plus): ChatGPT Business costs
-- [Local Whisper vs Cloud Transcription: The Real Cost per Hour](https://voxahq.in/guides/local-whisper-vs-cloud-transcription): Cloud transcription costs <meta name=
-- [Zoho Books Pricing in India: All Five Plans, Compared (2026)](https://voxahq.in/guides/zoho-books-pricing-india): Zoho Books in India runs from ₹749 to ₹7,999 per organisation a month depending on plan and billing. Here is every plan, the per-user and per-location add-ons, and where the bill grows.
-- [Does Self-Hosting n8n Cost Money? The Real Bill in 2026](https://voxahq.in/notes/does-self-hosting-n8n-cost-money): The n8n Community Edition has no licence fee, so self-hosting costs only the server: about 4 to 12 euros a month for a VPS, plus your own time. Here is the full bill, and when the paid plans are cheaper.
-- [Goldman Says AI Could Displace 9% of Workers. Read the Second Half.](https://voxahq.in/notes/goldman-9-percent-ai-jobs): Goldman Sachs puts AI-driven displacement at up to 9 percent of workers, and says the hit probably waits for the next recession. That timing clause changes what the number means.
-- [n8n Cloud Pricing in India: The Rupee Maths (2026)](https://voxahq.in/notes/n8n-cloud-pricing-india): n8n Cloud starts at 24 euros a month, about Rs 2,557 at 106.53 rupees to the euro, and rises to 800 euros, about Rs 85,223, at 40,000 executions. Here is what each plan means for a setup in India, and when a small VPS beats it.
-- [n8n Community Edition vs n8n Cloud: The Break-Even, Worked Out](https://voxahq.in/notes/n8n-community-vs-cloud): n8n Cloud starts at 24 euros for 2,500 executions and reaches 800 euros at 40,000. The Community Edition has no licence fee, so self-hosting costs the VPS: 4 to 12 euros. Here is where the lines cross.
-- [Wave’s $0 Plan: Unlimited Invoices, 2.9% + $0.60 per Card Payment](https://voxahq.in/notes/wave-free-plan-what-it-includes): Wave’s Starter plan is $0 a month with unlimited estimates and invoices, receipts and accounting records. The money moves to payment processing at 2.9% + $0.60 per credit card transaction. Pro is $19 a month or $190 a year.
-- [Why Your AI Bill Rises While Token Prices Fall (2026)](https://voxahq.in/notes/why-ai-bill-rises): Cheaper tokens do not mean a cheaper bill. Agents read hundreds of thousands of tokens per task, so cost per task is what you should track. Here is why the invoice grows.
-- [Zapier’s Free Plan: 100 Tasks a Month and the Two-Step Limit](https://voxahq.in/notes/zapier-free-plan-limits): Zapier’s free plan is $0 forever with 100 tasks a month and unlimited Zaps. The real limit is that Zaps can only have two steps, which blocks most useful workflows. Here is what counts as a task and when $19.99 is worth it.
-- [Newsletter: AI, Actually by VOXA](https://voxahq.in/newsletter): AI, Actually is VOXA's weekly email: the two or three AI stories that moved something that week, with the numbers, plus links to the full pieces.
-
-## 27 October 2026
-
-- [Microsoft is offering buyouts to 60,000 people while it spends $50 billion a quarter on AI](https://voxahq.in/news/microsoft-60000-buyouts-ai): Microsoft opened a voluntary exit offer to around 60,000 staff, 27 percent of its workforce, across the US, Canada, India and the UK. Capital spending passed 50 billion dollars a quarter and free cash flow fell 23 percent.
-- [IBM is giving every AI agent an identity, a short-lived password and a kill switch](https://voxahq.in/news/ibm-agent-identity-control): IBM announced agent identity, short-lived credentials with real-time revocation, sandboxing and a kill switch across HashiCorp Vault 2.2 and watsonx Orchestrate. Gartner expects 150,000 agents per Fortune 500 firm by 2028 and only 13 percent say they have governance.
-- [How to give an AI agent its own identity](https://voxahq.in/guides/ai-agent-identity): Five steps: one identity per agent, scope to the job, short-lived credentials, logs the agent cannot edit, and a tested revocation path. Includes the three numbers to track: credential lifetime, scope count, revocation time.
-- [Microsoft's 60,000 buyouts: read the eligibility line](https://voxahq.in/notes/microsoft-60000-buyouts-explained): Eligible is not the same as leaving. In April more than 30 percent of eligible staff accepted, and that take-up rate is the number to watch for the December decision.
-
-## 28 October 2026
-
-- [New York banned AI chatbots from pretending to be a person](https://voxahq.in/news/new-york-ai-chatbot-law): Governor Hochul signed a law banning chatbots from claiming to be human, using flattery to engage minors, or discussing self-harm with under-18s. Age verification is required, with at least one non-ID option, and age data must be deleted. Penalties reach 25,000 dollars per violation.
-- [Oracle put ChatGPT and Codex inside its business apps](https://voxahq.in/news/oracle-openai-chatgpt-codex): Oracle AI Workspace runs approved finance, procurement and planning workflows inside ChatGPT. Oracle reports 130,000 active ChatGPT users and 95,000 Codex users, and OCI is adding Google TPUs, OpenAI silicon and Cerebras.
-- [How to give an AI agent access to your ERP or CRM without admin](https://voxahq.in/guides/ai-agent-erp-access): Four permissions: read, draft, submit and never approve. Plus a spend ceiling per run, an approval gate before anything leaves the company, logs the agent cannot edit, and a tested revocation path.
-- [130,000 ChatGPT users inside one company](https://voxahq.in/notes/oracle-130000-chatgpt-users)
-- [Google put ads inside AI Mode in 10 more countries](https://voxahq.in/news/google-ai-mode-ads-expansion): Ads in AI Mode reached Australia, Canada, India, Kenya, Malaysia, New Zealand, Nigeria, Pakistan, the Philippines and Singapore on 28 October, plus multiturn ads in the US. Search ad revenue growth fell to 12 percent from 17 percent the quarter before.
-- [Z.AI GLM-5.3 finished 3 of 13 cyberattacks in a test lab](https://voxahq.in/news/zai-glm-53-cyberattack-test): An Irregular evaluation found the model completed full multi-stage attack chains in a simulation and repeatedly ignored instructions. It trailed leading US models in the same tests.
-- [How to find every AI subscription you pay for](https://voxahq.in/guides/ai-subscription-audit): Find charges in three places, group tools by job, catch the API and subscription overlap, decide monthly versus annual, and downgrade before cancelling.
-- [Reddit says Google AI Mode sends it no traffic](https://voxahq.in/news/reddit-ai-mode-no-traffic): Search referrals fell by more than a million a week on average in October, shares dropped 18 percent, and Reddit will require sign-ins for most content.
-- [Amazon and Intel deepen AI spending fears](https://voxahq.in/news/amazon-intel-ai-spending-fears): Nasdaq futures fell more than 2 percent on 30 October after Amazon signalled more AI spending and Intel warned of cash burn. Alphabet lost about 500 billion dollars in market value this week.
-- [How to check whether AI search is eating your traffic](https://voxahq.in/guides/ai-search-traffic-drop): Read impressions against clicks in Search Console, split brand from non-brand, find pages that held position while losing clicks, and give it six weeks before calling it a trend.
-- [Cursor marketplace served a tampered Claude Code extension](https://voxahq.in/news/cursor-claude-code-extension-backdoor): Versions 2.1.312 and 2.1.313 were live for about 11 hours on 29 October, affecting up to 5,000 users. The payload added an SSH key named svc-telemetry, opened a reverse tunnel and installed persistence.
-- [Ollie shuts down six weeks after a $7.5 million seed](https://voxahq.in/news/ollie-shuts-down-six-weeks-after-seed): The privacy-first family assistant announced on 30 October that it closes on 6 November. It raised a Khosla-led seed in September and held SOC 2.
-- [OpenAI cut its funding target to $20 billion](https://voxahq.in/notes/openai-funding-target-cut): The FT reported on 30 October that the round shrank from up to $30 billion, four days after the valuation came down from $1.4 trillion to $1.25 trillion.
-- [n8n 3.0 removes the Function node](https://voxahq.in/guides/n8n-3-function-node-removal): n8n 3.0 stable lands early December and removes Function, Function Item, Item Lists, Cron and Interval. A published workflow using a removed node does not activate, so its trigger stops firing with no error. Start with the Migration Report from 2.39.
-- [Affiliate disclosure](https://voxahq.in/affiliate-disclosure): Affiliate links appear only in the Picks section, disclosed at the top of every page and marked sponsored. News, guides and notes carry none.
-- [Silent Failure Watch for n8n, reviewed](https://voxahq.in/picks/silent-failure-watch): Three n8n workflows that read executions through the n8n API and email when a watched workflow goes quiet. Affiliate page, tested only to import stage; n8n Cloud trial blocks API access.
-- [Upgrade Watch for n8n 3.0, reviewed](https://voxahq.in/picks/upgrade-watch): Three workflows that scan for removed nodes before the upgrade, baseline normal run gaps, and name any workflow that does not come back in 48 hours. Affiliate page, read from the files, not run by us.
-- [Picks index](https://voxahq.in/picks): Tools with affiliate disclosures stated on every page, kept separate from news coverage.
-- [EMBRACE flaws in five AI coding tools](https://voxahq.in/notes/embrace-ai-coding-tools): Cursor, GitHub Copilot, Codex, VS Code and Claude Desktop shipped an embedded browser that a page could break. Two had no fix as of 29 October.
-- [Gemini 4 Carbon is restricted to selected cyber defenders](https://voxahq.in/notes/gemini-4-carbon-security): A security-focused model scoring 88.2 percent on SEC-bench Pro, released to a subset of defenders with the US government testing it. No public signup.
-: User counts measure adoption, not payoff. The useful number in the same announcement was a research task that fell from two to four days to 15 to 20 minutes of preparation.
-
-## New this week
-- [Best AI tools for product descriptions](https://voxahq.in/guides/best-ai-tools-for-product-descriptions): Rytr $9, ChatGPT $20, Jasper $59, Shopify Magic included
-- [Best AI tools for email newsletters](https://voxahq.in/guides/best-ai-tools-for-email-newsletters): Kit free to 10,000, beehiiv $39, Ghost $18
-- [Kit vs beehiiv free plans](https://voxahq.in/notes/kit-vs-beehiiv-free-plans): what each free tier allows
-- [Rytr vs Jasper](https://voxahq.in/notes/rytr-vs-jasper-price): $9 vs $59 per seat
-
-## 3 November 2026
-
-- [SUSE cuts 190 jobs and names AI as the reason](https://voxahq.in/news/suse-ai-layoffs-190-jobs): SUSE told staff on 2 November it would cut about 10% of a 1,900-person workforce, around 190 roles, with the CEO citing automation and AI. Affected staff are told by 4 November. The memo gives no measured productivity gain.
-- [84% of Australians want AI content labelled by law](https://voxahq.in/news/australia-ai-content-labelling): Deloitte's 2026 Media & Entertainment report found three in four Australians say AI content makes it harder to know what is real, 84% want mandatory labelling, and 71% would stop using a platform that did not disclose it.
+- [The free plan is not the product](https://voxahq.in/tools): free tiers are the paid plan with one working part removed, and which part is removed tells you who the plan is for.
+- [ChatGPT free gives about 3 uploads a day](https://voxahq.in/tools/chatgpt): unlimited text chats on the free plan, but uploads, images and a 27K token context are metered.
+- [Zapier free is two-step only](https://voxahq.in/tools/zapier): 100 tasks a month and no multi-step workflows, which is paid from $19.99.
+- [n8n bills per execution, not per step](https://voxahq.in/tools/n8n): self-hosted is free and unmetered; Cloud starts at €20 a month for 2,500 executions.
+- [ElevenLabs free cannot be used commercially](https://voxahq.in/tools/elevenlabs): 10,000 credits a month with no licence; commercial use starts at $6.
+- [Notion AI is only on Business](https://voxahq.in/tools/notion): Plus at $10 still gets a trial, not the agent.
