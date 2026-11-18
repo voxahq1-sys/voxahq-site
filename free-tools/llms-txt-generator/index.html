@@ -187,10 +187,9 @@ function build(){
   var out = '# ' + name + '\n\n';
   if (desc) out += '> ' + desc + '\n\n';
   if (contact) out += 'Contact: ' + contact + '\n\n';
-  if (core.length) out += core.join('\n') + '\n\n';
+  if (core.length) out += '## Pages\n\n' + core.join('\n') + '\n\n';
   if (extra.length) out += '## Optional\n\n' + extra.join('\n') + '\n';
   if (!core.length && !extra.length) out += 'Add at least one page on the left to build the file.\n';
-  if (url) out += '\nSource: ' + url + '\n';
   document.getElementById('lxOut').textContent = out;
 }
 document.getElementById('lxAdd').addEventListener('click', function(){ addRow('','','',false); });
