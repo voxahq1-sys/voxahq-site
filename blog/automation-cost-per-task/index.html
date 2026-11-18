@@ -75,12 +75,13 @@ footer a{display:block;margin-bottom:7px}
 <meta property="og:type" content="website"><meta property="og:title" content="n8n vs Zapier vs Make"><meta property="og:url" content="https://voxahq.in/blog/automation-cost-per-task/"><meta name="twitter:card" content="summary_large_image">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JFBST9ZHJP"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JFBST9ZHJP');</script>
-<script>window.addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');s.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985";s.async=true;s.crossOrigin="anonymous";document.head.appendChild(s);},1500);});</script>
+<meta name="google-adsense-account" content="ca-pub-7479341864813985">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7479341864813985" crossorigin="anonymous"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"VOXA","url":"https://voxahq.in"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"n8n vs Zapier vs Make: What Each Automation Actually Costs Per Task","description":"Zapier bills per task, Make per operation, n8n per execution. The same workflow can cost $19 a month on one and $200 on another. Here is the arithmetic.","image":"https://voxahq.in/blog-images/automation-cost-per-task.jpg","datePublished":"2026-11-18","dateModified":"2026-11-18","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxahq.in/blog/automation-cost-per-task/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"n8n vs Zapier vs Make: What Each Automation Actually Costs Per Task","description":"Zapier bills per task, Make per operation, n8n per execution. The same workflow can cost $19 a month on one and $200 on another. Here is the arithmetic.","image":"https://voxahq.in/blog-images/automation-cost-per-task.jpg","datePublished":"2026-11-18","dateModified":"2026-11-19","author":{"@type":"Organization","name":"VOXA"},"publisher":{"@type":"Organization","name":"VOXA","url":"https://voxahq.in"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://voxahq.in/blog/automation-cost-per-task/"}}</script>
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"><meta name="author" content="VOXA"><meta name="publisher" content="VOXA"><meta name="keywords" content="ai tools pricing index, ai tools list, free ai tools, ai tool cost comparison"><meta property="og:site_name" content="VOXA"><meta property="og:locale" content="en_US"><meta property="og:description" content="Zapier bills per task, Make per operation, n8n per execution. The same workflow can cost $19 a month on one and $200 on another. Here is the arithmetic."><meta property="og:image" content="https://voxahq.in/og-image.png"><meta property="og:image:alt" content="AI Tools Pricing Index 2026: Free Plans and Paid Prices"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:title" content="AI Tools Pricing Index 2026: Free Plans and Paid Prices"><meta name="twitter:description" content="Twelve AI tools compared by price: free-plan limits, paid tiers and the catch. Every figure dated 17 November 2026, with cheaper alternatives named."><meta name="twitter:image" content="https://voxahq.in/og-image.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="alternate" type="application/rss+xml" title="VOXA" href="/sitemap.xml"></head><body><div class="navbar"><div class="wrap nav">
 <a class="logo" href="/"><i></i>VOXA</a>
-<div class="navlinks"><a href="/tools">AI Tools</a><a href="/pricing">Pricing</a><div class="navdrop"><a href="/services">Services ▾</a><div class="navdrop__menu"><a href="/services/seo-aeo-geo">SEO + AEO + GEO</a><a href="/services/website">Website development</a></div></div><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a></div>
+<div class="navlinks"><a href="/tools">AI Tools</a><a href="/pricing">Pricing</a><div class="navdrop"><a href="/services">Services ▾</a><div class="navdrop__menu"><a href="/services/seo-aeo-geo">SEO + AEO + GEO</a><a href="/services/website">Website development</a></div></div><a href="/about">About</a><a href="/contact">Contact</a></div>
 <div class="navright"><a class="btn outline" href="/signin">Sign in</a><a class="btn white" href="/services/ai-audit">Get the free audit</a></div>
 </div></div><style>
 .bwrap{max-width:1200px;margin:0 auto;padding:0 32px}
@@ -150,13 +151,57 @@ footer a{display:block;margin-bottom:7px}
 <li><strong>Anything with high volume and a fixed shape:</strong> self-host and write down who is on call. If nobody is, do not self-host.</li>
 <li><strong>Workflow that touches money or legal deadlines:</strong> whichever platform gives you run history and alerts you will actually read.</li>
 </ul>
+
+<h2>What each platform counts, in detail</h2>
+<p>The label on the pricing page is the least useful part of the comparison. What matters is what triggers a billable unit.</p>
+<ul>
+<li><strong>Zapier:</strong> every action step that runs successfully. A trigger that fires but a filter that blocks it costs nothing; a step that runs and then fails still counts.</li>
+<li><strong>Make:</strong> every module operation, including the ones inside a router branch that do nothing useful. Loops multiply fast.</li>
+<li><strong>n8n:</strong> one execution per workflow run, regardless of node count. A 40-node workflow costs the same as a 2-node one.</li>
+</ul>
+<p>This is why a "cheap" plan can produce a four-figure annual bill: five steps at 3,000 runs a month is 15,000 tasks, and that is not an entry tier anywhere that bills per step.</p>
+<h2>The hidden multipliers</h2>
+<p>Three patterns blow up a bill long before volume does.</p>
+<p><strong>Polling.</strong> A workflow that checks an inbox every five minutes runs 8,640 times a month before it has done anything. Webhooks fire only when something happens. If the platform charges per operation, polling is a subscription to doing nothing.</p>
+<p><strong>Retries.</strong> A flaky API that fails twice and succeeds on the third attempt is three billable operations on a per-operation platform. Over a month that is a silent 30% surcharge.</p>
+<p><strong>Loops.</strong> Processing a list of 50 items inside one run is one execution on n8n and 50 operations almost everywhere else. Order-processing and line-item workflows are exactly this shape.</p>
+<h2>What migration really costs</h2>
+<p>Workflows do not port. The logic is tied to each platform's node names, error handling and data shapes, so moving a mature workflow is a rebuild with the original as a reference.</p>
+<p>The practical rule: choose the meter you can live with at three times current volume, because that is where a growing business lands within a year. Moving later costs more than the subscription difference ever saved.</p>
+<h2>When paying more is the right answer</h2>
+<p>There is a real case for the expensive option: a platform that gives you run history, alerts, versioned changes and a support line is buying you the operations work you cannot do yourself. A one-person business with no server skills should pay the premium and spend the saved weekends selling.</p>
+<p>The reverse is equally true. An agency running client workflows with high volume and predictable shapes should self-host, hire the half-day-a-month it takes to keep the instance healthy, and put the difference into delivery.</p>
+<h2>A worked monthly comparison</h2>
+<p>Assume 600 runs a month, five steps per run, one retry in ten.</p>
+<ul>
+<li><strong>Per-step platform:</strong> 3,000 steps plus roughly 300 retry steps, so about 3,300 billable units. That sits in a mid tier, not the entry plan.</li>
+<li><strong>Per-operation platform:</strong> 600 runs times the modules that actually execute, closer to 3,600, because routers and error branches each count.</li>
+<li><strong>Per-execution platform:</strong> 600 executions. Entry tier, or a $5 virtual server if self-hosted.</li>
+</ul>
+<p>The gap at this volume is a coffee a week. At 6,000 runs it is a car payment. That is the only reason the meter matters: it is invisible now and obvious later.</p>
+
+<h2>Where the free tiers actually stop</h2>
+<p>Free tiers are sized for a demo, not a business. They usually allow a few hundred operations a month, one active workflow on some plans, and a polling interval measured in minutes rather than seconds.</p>
+<p>The trap is not the limit itself, it is that hitting it does not stop the workflow cleanly. Sometimes runs queue, sometimes they fail silently, and the first sign is a client asking why nothing happened. Put a monthly check on the counter, not a hope.</p>
+<h2>Error handling decides the real cost</h2>
+<p>Every workflow fails eventually: an API changes a field name, a token expires, a record is missing. What matters is what the platform does next. A retry that succeeds is a few cents. A failure that nobody sees is a customer who never got an answer.</p>
+<p>Cheap platforms charge less and tell you less. Count the cost of a missed run, not just the subscription: for a booking flow, one silent failure can cost more than a year of the more expensive plan.</p>
+<h2>Where AI nodes fit in the bill</h2>
+<p>Modern platforms bill AI steps differently, often as premium operations or via your own API key. A workflow that summarises a document on every run can cost more in model credits than in platform fees.</p>
+<p>Two habits keep that sane. Cache the output when the input has not changed, and route the cheap cases to a cheap model. Most business text does not need the largest model, and the difference in a monthly bill is often a factor of ten.</p>
+<h2>Choosing the meter you can explain</h2>
+<p>If you cannot explain your platform's billing unit in one sentence, you cannot forecast it, and you will be surprised in the worst month. Pick the platform whose meter you understand, even if the headline price is a little higher.</p>
+<p>Then write the number on a sticky note: current monthly runs, current bill, and the volume where the next tier starts. That single note prevents the most common automation mistake, which is discovering the cost curve only after the workflow became critical.</p>
+<h2>The test before you commit</h2>
+<p>Build the ugliest version of the workflow on two platforms and run it for a week with real data. Count the billable units yourself, in a spreadsheet, rather than trusting the dashboard summary.</p>
+<p>A week of that answers more than any comparison page: which editor you actually enjoy, where the errors come from, and what a month of real volume will cost. The platform you keep is the one whose bill you could explain to an accountant without opening the docs.</p>
 <div class="verdict"><p><strong>Verdict:</strong> price the workflow, not the plan. Count the steps in your busiest flow, multiply by monthly runs, and compare that number across platforms. Most people choose the tool with the friendliest editor and then discover the meter eighteen months later, when the flow is too embedded to move.</p></div>
 <h2>Questions people ask</h2>
 <h3>Can I move a workflow later?</h3>
 <p>Badly. Flows are rebuilt, not exported, between platforms. That is another reason to run the arithmetic before you build, not after.</p>
 <h3>Do free tiers survive real use?</h3>
 <p>Rarely. Free tiers are sized for testing, and the limits reset monthly in a way that hides how close you are until you hit them. Our <a href="/tools/zapier">Zapier</a> and <a href="/tools/n8n">n8n</a> pages carry the current limits with the date we checked them.</p>
-<p style="margin-top:32px"><strong>Related:</strong> <a href="/blog/ai-agents-small-business/">which jobs an AI agent should actually do</a>, and the <a href="/tools">full AI pricing index</a>.</p>
+<p style="margin-top:32px"><strong>Related:</strong> <a href="/blog/ai-agents-small-business">which jobs an AI agent should actually do</a>, and the <a href="/tools">full AI pricing index</a>.</p>
   <div style="margin-top:40px;padding-top:24px;border-top:.66px solid var(--line);display:flex;gap:12px;flex-wrap:wrap">
     <a class="btn solid" href="/services/seo-aeo-geo">See the SEO plans</a>
     <a class="btn" style="border:.66px solid var(--line)" href="/blog">More articles</a>
