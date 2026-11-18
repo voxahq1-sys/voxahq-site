@@ -155,7 +155,7 @@ function render(){
       '<input type="number" min="0" max="500" value="'+state[t.s].seats+'" data-tool="'+t.s+'" data-kind="seats" aria-label="'+t.n+' seats">'+
       '</div>';
   }).join('');
-  list.querySelectorAll('select').forEach(function(el){ el.addEventListener('change', function(){ state[el.dataset.tool].plan = el.value; calc(); }); });
+  list.querySelectorAll('select').forEach(function(el){ el.addEventListener('change', function(){ var tool = el.dataset.tool; state[tool].plan = el.value; var t = null; for (var i=0;i<TOOLS.length;i++){ if (TOOLS[i].s===tool) t = TOOLS[i]; } if (t && priceOf(t, el.value) > 0 && state[tool].seats === 0){ state[tool].seats = 1; var inp = list.querySelector('input[data-tool="'+tool+'"]'); if (inp) inp.value = 1; } calc(); }); });
   list.querySelectorAll('input').forEach(function(el){ el.addEventListener('input', function(){ state[el.dataset.tool].seats = Math.max(0, Math.min(500, parseInt(el.value||'0',10)||0)); calc(); }); });
 }
 function calc(){
@@ -179,7 +179,15 @@ function calc(){
   if (picked.some(function(x){ return x.n==='Notion' && x.plan.indexOf('Plus')===0; })) notes.push('Notion Plus does not include Notion AI. AI starts on the Business plan at $20.');
   if (monthly > 120) notes.push('Above $120 a month, the next saving is consolidation, not a discount: one assistant, one automation tool, one design tool.');
   if (!paid) notes.push('Nothing paid yet. This is the cheapest stack there is.');
+  var idle = [];
+  TOOLS.forEach(function(t){ if (priceOf(t, state[t.s].plan) > 0 && state[t.s].seats === 0) idle.push(t.n); });
+  if (idle.length) notes.unshift(idle.length + ' tool' + (idle.length>1?'s':'') + ' on a paid plan but 0 seats, so not counted: ' + idle.join(', ') + '. <button type="button" id="ctIdleBtn" style="background:none;border:0;padding:0;color:#0E7C66;font-weight:800;cursor:pointer;text-decoration:underline;font-family:inherit;font-size:inherit">Count them</button>');
   document.getElementById('ctNotes').innerHTML = notes.map(function(n){ return '<div class="ct-note">'+n+'</div>'; }).join('');
+  var ib = document.getElementById('ctIdleBtn');
+  if (ib) ib.addEventListener('click', function(){
+    TOOLS.forEach(function(t){ if (priceOf(t, state[t.s].plan) > 0 && state[t.s].seats === 0) state[t.s].seats = 1; });
+    render(); calc();
+  });
 }
 document.getElementById('ctReset').addEventListener('click', function(){
   TOOLS.forEach(function(t){ state[t.s] = {plan: t.plans[0][0], seats: 0}; });
