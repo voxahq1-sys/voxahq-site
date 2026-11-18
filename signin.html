@@ -130,20 +130,15 @@ footer a{display:block;margin-bottom:7px}
     document.getElementById('voxaSignin').style.display='none';
     box.scrollIntoView({block:'center'});
   }
+  var FORM='https://docs.google.com/forms/d/e/1FAIpQLSeDOt71Ui5ZoVNh1NBF5DKHS8JSfGjJKLDtB4DBmFB9mvD-Aw/formResponse';
   function sendLead(email,name){
     try{
-      var f=document.createElement('form');
-      f.action='https://formsubmit.co/voxa.hq1@gmail.com';
-      f.method='POST';
-      f.target='voxaLead';
-      f.style.display='none';
-      var fields={email:email,name:name||'',source:'Google sign in',came_from:location.pathname,signed_at:new Date().toISOString(),_subject:'VOXA Google sign in',_captcha:'false',_template:'table'};
-      Object.keys(fields).forEach(function(k){
-        var i=document.createElement('input'); i.type='hidden'; i.name=k; i.value=fields[k]; f.appendChild(i);
-      });
-      document.body.appendChild(f);
-      f.submit();
-      setTimeout(function(){ if(f.parentNode){ f.parentNode.removeChild(f); } },5000);
+      var body=new URLSearchParams();
+      body.append('entry.1078049591', email);
+      body.append('entry.1706795174', name||'');
+      body.append('entry.1445935986', 'Google sign in');
+      body.append('entry.1952628616', new Date().toISOString());
+      fetch(FORM,{method:'POST',mode:'no-cors',body:body,keepalive:true});
     }catch(e){}
     if(window.gtag){ gtag('event','sign_in_google',{method:'Google'}); }
   }
