@@ -131,12 +131,12 @@ footer a{display:block;margin-bottom:7px}
     box.scrollIntoView({block:'center'});
   }
   var FORM='https://docs.google.com/forms/d/e/1FAIpQLSeDOt71Ui5ZoVNh1NBF5DKHS8JSfGjJKLDtB4DBmFB9mvD-Aw/formResponse';
-  function sendLead(email,name){
+  function sendLead(email,name,src){
     try{
       var body=new URLSearchParams();
       body.append('entry.520639671', email);
       body.append('entry.1782783469', name||'');
-      body.append('entry.1925978835', 'Google sign in');
+      body.append('entry.1925978835', src||'Google sign in');
       body.append('entry.1343955721', new Date().toISOString());
       fetch(FORM,{method:'POST',mode:'no-cors',body:body,keepalive:true});
     }catch(e){}
@@ -168,6 +168,14 @@ footer a{display:block;margin-bottom:7px}
   if(f){
     document.getElementById('cameFrom').value=location.pathname;
     document.getElementById('signedAt').value=new Date().toISOString();
+    f.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var em=(f.querySelector('input[name=email]').value||'').trim();
+      var nm=(f.querySelector('input[name=name]').value||'').trim();
+      if(!em || em.indexOf('@')<0){ return; }
+      sendLead(em,nm,'Email sign in');
+      showIn(nm,em);
+    });
   }
 })();
 </script><footer><div class="wrap fgrid">
