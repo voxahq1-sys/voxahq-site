@@ -3,8 +3,8 @@
   <url>
     <loc>https://voxahq.in/</loc>
     <lastmod>2026-11-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://voxahq.in/affiliate-disclosure</loc>
@@ -167,11 +167,5 @@
     <lastmod>2026-11-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-  </url>
-<url>
-    <loc>https://voxahq.in/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
   </url>
 </urlset>
