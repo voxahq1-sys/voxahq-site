@@ -134,10 +134,10 @@ footer a{display:block;margin-bottom:7px}
   function sendLead(email,name){
     try{
       var body=new URLSearchParams();
-      body.append('entry.1078049591', email);
-      body.append('entry.1706795174', name||'');
-      body.append('entry.1445935986', 'Google sign in');
-      body.append('entry.1952628616', new Date().toISOString());
+      body.append('entry.520639671', email);
+      body.append('entry.1782783469', name||'');
+      body.append('entry.1925978835', 'Google sign in');
+      body.append('entry.1343955721', new Date().toISOString());
       fetch(FORM,{method:'POST',mode:'no-cors',body:body,keepalive:true});
     }catch(e){}
     if(window.gtag){ gtag('event','sign_in_google',{method:'Google'}); }
