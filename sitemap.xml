@@ -73,6 +73,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://voxahq.in/free-tools/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://voxahq.in/free-tools/ai-cost-calculator/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://voxahq.in/free-tools/llms-txt-generator/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://voxahq.in/pricing</loc>
     <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
