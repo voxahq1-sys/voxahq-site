@@ -91,3 +91,8 @@
 # old news section fully removed
 /news  /tools  301
 /news/*  /tools  301
+# old service pages removed (Nov 2026 restructure)
+/services/seo  /services/seo-aeo-geo  301
+/services/seo.html  /services/seo-aeo-geo  301
+/services/site-fix  /services  301
+/services/site-fix.html  /services  301
