@@ -1,6 +1,5 @@
-<!doctype html><html lang="en"><head>
-<meta name="robots" content="noindex,follow"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sign in to VOXA: your AI pricing digest</title><meta name="description" content="Sign in to VOXA with your email: the weekly AI pricing digest, price-drop alerts and the tool limits we track. No password needed.">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sign in to VOXA: Weekly AI Pricing Digest</title><meta name="description" content="Sign in with one click using Google, or just your email. Every Friday: the AI pricing changes that actually moved, each figure dated.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <style>:root{--ink:#0F1729;--ink2:#4A5568;--bg:#FDFDFC;--bg2:#F6F5F3;--bg3:#FBFAF9;--line:#DAD4C8;--acc:#0E7C66;--acc2:#12A183;--accsoft:#E7F5F1}
@@ -82,28 +81,95 @@ footer a{display:block;margin-bottom:7px}
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"><meta name="author" content="VOXA"><meta name="publisher" content="VOXA"><meta name="keywords" content="ai tools pricing index, ai tools list, free ai tools, ai tool cost comparison"><meta property="og:site_name" content="VOXA"><meta property="og:locale" content="en_US"><meta property="og:description" content="Twelve AI tools compared by price: free-plan limits, paid tiers and the catch. Every figure dated 17 November 2026, with cheaper alternatives named."><meta property="og:image" content="https://voxahq.in/og-image.png"><meta property="og:image:alt" content="AI Tools Pricing Index 2026: Free Plans and Paid Prices"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:title" content="AI Tools Pricing Index 2026: Free Plans and Paid Prices"><meta name="twitter:description" content="Twelve AI tools compared by price: free-plan limits, paid tiers and the catch. Every figure dated 17 November 2026, with cheaper alternatives named."><meta name="twitter:image" content="https://voxahq.in/og-image.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="alternate" type="application/rss+xml" title="VOXA" href="/sitemap.xml"></head><body><div class="navbar"><div class="wrap nav">
 <a class="logo" href="/"><i></i>VOXA</a>
 <div class="navlinks"><a href="/tools">AI Tools</a><a href="/pricing">Pricing</a><div class="navdrop"><a href="/services">Services ▾</a><div class="navdrop__menu"><a href="/services/seo-aeo-geo">SEO + AEO + GEO</a><a href="/services/website">Website development</a></div></div><a href="/about">About</a><a href="/contact">Contact</a></div>
-<div class="navright"><a class="btn outline" href="/about">About us</a></div>
-</div></div></div></div><div class="hero" style="padding:56px 0 40px"><div class="wrap"><h1 class="hd" style="font-size:46px">Sign in to VOXA</h1>
-<p class="herosub">Email only, no password. You get the weekly pricing digest, price-drop alerts, and the tool limits we track.</p></div></div>
-<section><div class="wrap" style="max-width:640px">
+<div class="navright"><a class="btn outline" href="/signin">Sign in</a><a class="btn white" href="/services/ai-audit">Get the free audit</a></div>
+</div></div><style>
+.gbtn{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 18px;border-radius:999px;border:.66px solid var(--line);background:#fff;font-family:'Plus Jakarta Sans',Inter,sans-serif;font-weight:700;font-size:16px;color:var(--ink);cursor:pointer;transition:box-shadow .15s,border-color .15s}
+.gbtn:hover{border-color:#c9c3b6;box-shadow:0 2px 10px rgba(15,23,41,.07)}
+.gbtn svg{flex:0 0 20px}
+.divider{display:flex;align-items:center;gap:14px;margin:18px 0 6px;color:var(--ink2);font-size:13px}
+.divider:before,.divider:after{content:"";flex:1;height:.66px;background:var(--line)}
+.signedin{display:none;background:var(--accsoft);border:.66px solid var(--acc);border-radius:12px;padding:18px;text-align:center}
+</style>
+<div class="hero" style="padding:52px 0 30px"><div class="wrap"><h1 class="hd" style="font-size:44px">Sign in to VOXA</h1>
+<p class="herosub">One email a week: the AI pricing changes that actually moved, every figure dated. No password needed.</p></div></div>
+<section><div class="wrap" style="max-width:640px;padding-bottom:60px">
+<div id="signedin" class="signedin">
+  <p style="font-weight:800;font-size:18px" id="siHello">You are in.</p>
+  <p style="margin-top:8px;color:var(--ink2);font-size:14px" id="siNote">The next digest comes on Friday. Check your inbox for the welcome letter.</p>
+</div>
 <form id="voxaSignin" action="https://formsubmit.co/voxa.hq1@gmail.com" method="POST" style="display:grid;gap:14px;background:#fff;border:.66px solid var(--line);border-radius:12px;padding:26px">
   <input type="hidden" name="_subject" value="VOXA sign in (new lead)">
   <input type="hidden" name="came_from" id="cameFrom" value="">
   <input type="hidden" name="signed_at" id="signedAt" value="">
+  <button type="button" class="gbtn" id="googleBtn">
+    <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+    Sign in with Google
+  </button>
+  <div class="divider">Or continue with</div>
   <label style="font-size:14px;font-weight:600">Email<input name="email" type="email" required placeholder="you@company.com" style="width:100%;margin-top:6px;padding:12px 14px;border:.66px solid var(--line);border-radius:10px;font-size:15px"></label>
   <label style="font-size:14px;font-weight:600">First name<input name="name" placeholder="Raghav" style="width:100%;margin-top:6px;padding:12px 14px;border:.66px solid var(--line);border-radius:10px;font-size:15px"></label>
   <button class="btn solid big" type="submit" style="margin-top:6px;border:0;cursor:pointer">Sign in with email</button>
-  <p style="font-size:13px;color:var(--ink2);margin:0">One email a week. No spam, unsubscribe any time. We never sell your address.</p>
+  <p style="font-size:13px;color:var(--ink2);margin:0">One email a week. No spam, unsubscribe any time. We never sell your address. By signing in you agree to our <a href="/terms" style="color:var(--acc)">Terms</a> and <a href="/privacy-policy" style="color:var(--acc)">Privacy Policy</a>.</p>
 </form>
 <div class="card" style="margin-top:20px"><h3>What you get</h3>
-<p style="margin-top:8px">The weekly digest: the two or three AI pricing changes that actually moved, with the date we checked each one.</p>
-<p style="margin-top:8px">Price-drop alerts: when a tool you follow changes its free-plan limit or its paid tier.</p>
-<p style="margin-top:8px">No account fee. VOXA is free to read, and stays free.</p></div>
-</div></section><footer><div class="wrap fgrid">
+  <p style="margin-top:8px">The weekly digest: the two or three AI pricing changes that actually moved, with the date we checked each one.</p>
+  <p style="margin-top:8px">Price-drop alerts: when a tool you follow changes its free-plan limit or its paid tier.</p>
+  <p style="margin-top:8px">No account fee. No password. Unsubscribe in one click.</p></div>
+</div></section>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+(function(){
+  var CLIENT_ID='522937084979-m785pqhs63qbtnjbgs821t2q3n3mmo2v.apps.googleusercontent.com';
+  var btn=document.getElementById('googleBtn');
+  function showIn(name,email){
+    var box=document.getElementById('signedin');
+    document.getElementById('siHello').textContent = name ? ('You are in, '+name+'.') : 'You are in.';
+    document.getElementById('siNote').textContent = 'We sent the welcome letter to '+email+'. The next digest comes on Friday.';
+    box.style.display='block';
+    document.getElementById('voxaSignin').style.display='none';
+    box.scrollIntoView({block:'center'});
+  }
+  function sendLead(email,name){
+    try{
+      fetch('https://formsubmit.co/ajax/voxa.hq1@gmail.com',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({email:email,name:name||'',source:'Google sign in',came_from:location.pathname,signed_at:new Date().toISOString()})
+      });
+    }catch(e){}
+    if(window.gtag){ gtag('event','sign_in_google',{method:'Google'}); }
+  }
+  btn.addEventListener('click',function(){
+    if(!(window.google && google.accounts && google.accounts.oauth2)){
+      window.location.href='https://accounts.google.com/o/oauth2/v2/auth?client_id='+CLIENT_ID+'&redirect_uri='+encodeURIComponent(location.origin+'/signin')+'&response_type=token&scope=openid%20email%20profile&prompt=select_account';
+      return;
+    }
+    var tc=google.accounts.oauth2.initTokenClient({
+      client_id:CLIENT_ID,
+      scope:'openid email profile',
+      callback:function(resp){
+        if(!resp || !resp.access_token){ return; }
+        fetch('https://www.googleapis.com/oauth2/v3/userinfo',{headers:{Authorization:'Bearer '+resp.access_token}})
+          .then(function(r){return r.json();})
+          .then(function(u){
+            if(!u || !u.email){ return; }
+            sendLead(u.email, u.given_name||'');
+            showIn(u.given_name||'', u.email);
+          })
+          .catch(function(){});
+      }
+    });
+    tc.requestAccessToken();
+  });
+  var f=document.getElementById('voxaSignin');
+  if(f){
+    document.getElementById('cameFrom').value=location.pathname;
+    document.getElementById('signedAt').value=new Date().toISOString();
+  }
+})();
+</script><footer><div class="wrap fgrid">
 <div><div class="logo" style="color:var(--ink);margin-bottom:10px"><img src="/favicon-48.png" alt="VOXA logo" width="26" height="26" loading="lazy" decoding="async" style="border-radius:8px">VOXA</div><div>AI tool pricing, checked and dated. SEO, AI visibility and websites for small businesses, run from India.</div></div>
 <div><h5>Directory</h5><a href="/tools">All tools</a><a href="/tools">Free tools</a><a href="/tools">Categories</a></div>
 <div><h5>Services</h5><a href="/services/seo-aeo-geo">SEO + AEO + GEO</a><a href="/services/website">Website development</a><a href="/services/ai-audit">Free AI audit</a><a href="/pricing">Pricing</a></div>
 <div><h5>Company</h5><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy-policy">Privacy</a><a href="/editorial-policy">Editorial policy</a></div>
-</div><div class="wrap" style="margin-top:28px;font-size:13px;color:#7A8797">© 2026 VOXA · voxahq.in · Prices last checked 17 November 2026</div><div class="wrap"><div class="vx-social"><a href="https://www.instagram.com/voxahq.in" target="_blank" rel="noopener me" aria-label="VOXA on Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM17.5 6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg></a><a href="https://whatsapp.com/channel/0029VbDqXNRJpe8aLFOs8a0O" target="_blank" rel="noopener me" aria-label="VOXA on WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.64.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.06 0 1.21.88 2.38 1 2.55.12.17 1.72 2.63 4.17 3.69.58.25 1.04.4 1.4.51.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29Z"/></svg></a><a href="https://www.linkedin.com/in/voxa-hq-8a337a446/" target="_blank" rel="noopener me" aria-label="VOXA on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4v11H3v-11Zm7 0h3.8v1.5h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76v5.69h-4v-5.05c0-1.2-.02-2.75-1.7-2.75-1.7 0-1.96 1.3-1.96 2.66v5.14h-4v-11Z"/></svg></a><a href="https://x.com/Voxahqai" target="_blank" rel="noopener me" aria-label="VOXA on X" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.53 3h3.2l-6.99 7.99L22 21h-6.3l-4.4-5.76L6.3 21H3.1l7.35-8.4L2.5 3h6.44l4.05 5.35L17.53 3Zm-1.1 16.2h1.77L7.63 4.72H5.73L16.43 19.2Z"/></svg></a></div></div></footer><script>
-(function(){var f=document.getElementById("voxaSignin");if(!f)return;var cf=document.getElementById("cameFrom"),sa=document.getElementById("signedAt");if(cf)cf.value=document.referrer||"direct";if(sa)sa.value=new Date().toISOString();f.addEventListener("submit",function(){if(window.gtag)gtag("event","sign_in_submit",{method:"email_form"});});})();
-</script></body></html>
+</div><div class="wrap" style="margin-top:28px;font-size:13px;color:#7A8797">© 2026 VOXA · voxahq.in · Prices last checked 17 November 2026</div><div class="wrap"><div class="vx-social"><a href="https://www.instagram.com/voxahq.in" target="_blank" rel="noopener me" aria-label="VOXA on Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5ZM17.5 6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg></a><a href="https://whatsapp.com/channel/0029VbDqXNRJpe8aLFOs8a0O" target="_blank" rel="noopener me" aria-label="VOXA on WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.64.81-.79.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.06 0 1.21.88 2.38 1 2.55.12.17 1.72 2.63 4.17 3.69.58.25 1.04.4 1.4.51.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.11-.23-.17-.48-.29Z"/></svg></a><a href="https://www.linkedin.com/in/voxa-hq-8a337a446/" target="_blank" rel="noopener me" aria-label="VOXA on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4v11H3v-11Zm7 0h3.8v1.5h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76v5.69h-4v-5.05c0-1.2-.02-2.75-1.7-2.75-1.7 0-1.96 1.3-1.96 2.66v5.14h-4v-11Z"/></svg></a><a href="https://x.com/Voxahqai" target="_blank" rel="noopener me" aria-label="VOXA on X" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.53 3h3.2l-6.99 7.99L22 21h-6.3l-4.4-5.76L6.3 21H3.1l7.35-8.4L2.5 3h6.44l4.05 5.35L17.53 3Zm-1.1 16.2h1.77L7.63 4.72H5.73L16.43 19.2Z"/></svg></a></div></div></footer></body></html>
