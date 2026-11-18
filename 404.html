@@ -3,7 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="p:domain_verify" content="2326c45e695d1e2779fd2dcb5c547ad3"/>
-<style>html{background:#ffffff}body{background:#ffffff;color:#1d1e20;font-family:'Manrope',system-ui,sans-serif;margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif}.loader,.grain,.cursor-dot,.cursor-ring{display:none!important}.page{opacity:1!important}.vx-social{display:flex;gap:10px;margin:22px 0 4px}.vx-social a{width:36px;height:36px;border-radius:10px;border:1px solid rgba(15,23,41,.14);display:flex;align-items:center;justify-content:center;color:#4A5568;transition:.15s}.vx-social a:hover{border-color:#0E7C66;color:#0E7C66;background:#E7F5F1}.vx-social svg{width:17px;height:17px;fill:currentColor}</style>
+<style>:root{--ink:#0F1729;--ink2:#4A5568;--bg:#FDFDFC;--bg2:#F6F5F3;--bg3:#FBFAF9;--line:#DAD4C8;--acc:#0E7C66;--acc2:#12A183;--accsoft:#E7F5F1}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.hd{font-family:"Plus Jakarta Sans",Inter,sans-serif;font-weight:700;letter-spacing:-1.4px}
+.navbar{background:var(--acc);position:sticky;top:0;z-index:50}
+.nav{height:80px;display:flex;align-items:center;gap:34px}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Plus Jakarta Sans";font-weight:800;font-size:20px;color:#fff}
+.logo i{width:26px;height:26px;border-radius:8px;background:#fff;position:relative;display:inline-block}
+.logo i:after{content:"";position:absolute;inset:6px;border-radius:4px;background:var(--acc)}
+.navlinks{display:flex;gap:24px;font-size:15px;color:rgba(255,255,255,.9);font-weight:500}
+.navlinks a:hover{color:#fff}
+.navright{margin-left:auto;display:flex;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;font-size:14px;font-weight:500;padding:10px 16px}
+.btn.white{background:#fff;color:var(--ink)}
+.btn.outline{border:1px solid rgba(255,255,255,.55);color:#fff}
+.btn.solid{background:var(--acc);color:#fff}
+.btn.big{font-size:16px;padding:14px 24px;border-radius:12px}
+.hero{background:linear-gradient(135deg,#12A183 0%,#0E7C66 55%,#0B5F52 100%);color:#fff;padding:64px 0 88px;text-align:center}
+h1{font-family:"Plus Jakarta Sans";font-size:60px;line-height:1.03;font-weight:700;letter-spacing:-1.8px;max-width:900px;margin:0 auto 22px}
+h1 u{text-decoration:none;color:#C9F3E6}
+.herosub{font-size:18px;color:rgba(255,255,255,.9);max-width:620px;margin:0 auto 30px}
+section{padding:72px 0}
+.section.alt{background:var(--bg3)}
+.section.grad{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.eyebrow{font-size:12.5px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--acc);margin-bottom:12px}
+h2{font-family:"Plus Jakarta Sans";font-size:40px;line-height:1.14;letter-spacing:-1.2px;font-weight:700;max-width:760px}
+.sub{color:var(--ink2);font-size:16.5px;margin-top:12px;max-width:660px}
+.center{text-align:center}.center h2,.center .sub{margin-left:auto;margin-right:auto}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
+.card{background:var(--bg);border:.66px solid var(--line);border-radius:12px;padding:24px}
+.card h3{font-family:"Plus Jakarta Sans";font-size:18px;font-weight:700;letter-spacing:-.3px;margin-bottom:8px}
+.card p{color:var(--ink2);font-size:14.5px}
+.ic{width:38px;height:38px;border-radius:10px;background:var(--accsoft);display:flex;align-items:center;justify-content:center;color:var(--acc);font-weight:800;margin-bottom:14px}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.plan{background:#fff;border:.66px solid var(--line);border-radius:12px;padding:26px;position:relative}
+.plan.pop{border:1.5px solid var(--acc);box-shadow:0 12px 34px rgba(14,124,102,.12)}
+.badge{position:absolute;top:-12px;left:22px;background:var(--acc);color:#fff;font-size:11px;font-weight:700;letter-spacing:.6px;padding:5px 11px;border-radius:999px}
+.price{font-family:"Plus Jakarta Sans";font-size:38px;font-weight:700;letter-spacing:-1.5px;margin:8px 0 2px}
+.price small{font-size:14px;font-weight:500;color:var(--ink2)}
+.plan ul,.ticks{list-style:none;margin:18px 0 22px;display:grid;gap:9px;font-size:14px}
+.plan li:before,.ticks li:before{content:"✓";color:var(--acc);font-weight:800;margin-right:8px}
+.step{background:var(--bg);border:.66px solid var(--line);border-radius:12px;padding:22px}
+.step b{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:999px;background:var(--acc);color:#fff;font-size:14px;margin-bottom:12px}
+.step h4{font-family:"Plus Jakarta Sans";font-size:15.5px;margin-bottom:6px}
+.step p{font-size:13.5px;color:var(--ink2)}
+.cta{background:var(--acc);color:#fff;text-align:center;padding:72px 0}
+.cta h2{color:#fff;margin:0 auto 14px}.cta p{color:rgba(255,255,255,.9);margin-bottom:26px}
+footer{background:#fff;border-top:.66px solid var(--line);padding:52px 0;font-size:14px;color:var(--ink2)}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:26px}
+footer h5{font-size:12px;letter-spacing:1.1px;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+footer a{display:block;margin-bottom:7px}
+.toolgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.tool{background:#fff;border:.66px solid var(--line);border-radius:12px;padding:20px;display:block}
+.tool:hover{border-color:var(--acc);box-shadow:0 8px 24px rgba(14,124,102,.08)}
+.tool .ph{width:40px;height:40px;border-radius:10px;background:var(--accsoft);color:var(--acc);display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:12px}
+.tool h3{font-size:16px;margin-bottom:4px;font-family:"Plus Jakarta Sans"}
+.tool p{font-size:13.5px;color:var(--ink2)}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--accsoft);color:#0A5C4C;margin-top:10px}
+.aboutgrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:center;margin-top:8px}
+.portrait{width:100%;border-radius:14px;border:.66px solid var(--line);background:#fff}
+@media(max-width:900px){h1{font-size:38px}h2{font-size:28px}.grid3,.grid4,.plans,.toolgrid,.fgrid,.aboutgrid{grid-template-columns:1fr}.navlinks{display:none}.navright .outline{display:none}}.ph img{width:24px;height:24px;object-fit:contain;display:block}.vx-social{display:flex;gap:10px;margin:22px 0 4px}.vx-social a{width:36px;height:36px;border-radius:10px;border:1px solid rgba(15,23,41,.14);display:flex;align-items:center;justify-content:center;color:#4A5568;transition:.15s}.vx-social a:hover{border-color:#0E7C66;color:#0E7C66;background:#E7F5F1}.vx-social svg{width:17px;height:17px;fill:currentColor}@media(max-width:900px){.nav{height:auto;min-height:64px;flex-wrap:wrap;padding:10px 0 0;gap:12px}.navlinks{display:flex;order:9;width:100%;overflow-x:auto;gap:20px;font-size:14.5px;padding:10px 0 12px;scrollbar-width:none}.navlinks::-webkit-scrollbar{display:none}.navlinks a{white-space:nowrap}.navright{margin-left:auto}.hero{padding:34px 0 44px}h1{font-size:32px!important}h2{font-size:26px}.wrap{padding:0 18px}}.navdrop{position:relative;display:inline-block}
+.navdrop>a{display:inline-flex;align-items:center;gap:6px}
+.navdrop__menu{position:absolute;top:calc(100% + 10px);left:0;min-width:250px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 34px rgba(15,23,41,.14);padding:8px;display:none;z-index:80}
+.navdrop:hover .navdrop__menu,.navdrop:focus-within .navdrop__menu{display:block}
+.navdrop__menu a{display:block;padding:11px 13px;border-radius:9px;color:var(--ink);font-size:14.5px;font-weight:600;white-space:nowrap}
+.navdrop__menu a:hover{background:var(--bg2);color:var(--acc)}
+@media(max-width:900px){.navdrop__menu{position:static;box-shadow:none;border:0;padding:4px 0 0;min-width:0;background:transparent}.navdrop__menu a{color:rgba(255,255,255,.85);padding:6px 0}.navdrop:hover .navdrop__menu{display:none}}.navdrop__menu{top:100%!important;border-top:10px solid transparent!important;background-clip:padding-box!important}</style>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Page not found | VOXA</title>
 <meta name="robots" content="noindex, follow">
