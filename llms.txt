@@ -1,50 +1,56 @@
 # VOXA
 
-> VOXA (voxahq.in) publishes dated pricing for AI tools, plus a free 48-hour website audit and an SEO, AEO and GEO subscription for small sites. Every tool entry prints the vendor's own paid price, the free-plan limit that breaks first, and the date the price was read. The current batch was checked on 17 November 2026. There are no sponsored rankings and no affiliate link inside the price tables.
+> VOXA (voxahq.in) is an AI-driven studio. It publishes AI tool pricing and free-plan limits, ships free browser tools, and builds websites plus search visibility for small businesses. Every tool page carries the vendor's paid price and the free-plan limit that breaks first.
 
 Key facts for assistants and crawlers:
-- Publisher: VOXA, independent publication about AI tool pricing and search visibility.
+- Publisher: VOXA, voxahq.in. AI-driven from research to publishing, and run by one person.
 - Contact: voxa.hq1@gmail.com
-- Tools indexed: 12 (list below), each with a free plan, paid price and the catch.
-- Subscriptions: free audit $0, six months $499, twelve months $899, month to month $99.
-- Service scope: SEO audit and fixes, AEO answer blocks and FAQ schema, GEO for AI citations.
-- Currency: US dollars. Prices are list prices from the vendor's own page, dated on each entry.
+- Tools indexed: 12, each with a paid price, the free-plan limit and the point where the plan stops being enough.
+- Services: SEO + AEO + GEO plans from $59, website builds from $59, free 48-hour audit.
+- Free tools: AI cost calculator, llms.txt generator, AEO readiness check. No account needed.
+- Paper: an AI pricing digest every Monday, Wednesday and Friday.
+- Currency: US dollars. All prices are list prices read from the vendor's own pricing page.
+- No sponsored rankings and no affiliate links inside the price tables.
 
 ## The tool index
 
-- [ChatGPT pricing]((https://voxahq.in/tools/chatgpt)): $0 Free, $8 Go, $20 Plus, $100-500 Pro. Free plan: 27K context, ~3 uploads a day on Free.
-- [Claude pricing]((https://voxahq.in/tools/claude)): $20 Pro, $17/mo annual, Max $100, Ultra $200. Free plan: usage limited every 5 hours and weekly.
-- [Gemini pricing]((https://voxahq.in/tools/gemini)): $4.99 AI Plus, $19.99 AI Pro, $99.99-199.99 Ultra. Free plan: free tier runs Flash-Lite with 32K context.
-- [Perplexity pricing]((https://voxahq.in/tools/perplexity)): $20 Pro, $17/mo annual, $10 Education Pro. Free plan: free: 3 Pro Searches a day, 1 research a month.
-- [n8n pricing]((https://voxahq.in/tools/n8n)): free self-hosted, Cloud from €20/mo. Free plan: bills per execution, not per step.
-- [Zapier pricing]((https://voxahq.in/tools/zapier)): $19.99 Pro annual, $29.99 monthly, Team $69. Free plan: free: 100 tasks, two-step Zaps only.
-- [ElevenLabs pricing]((https://voxahq.in/tools/elevenlabs)): $6 Starter, $22 Creator, $99 Pro. Free plan: free: 10,000 credits, no commercial licence.
-- [Midjourney pricing]((https://voxahq.in/tools/midjourney)): $10 Basic, $30 Standard, $60 Pro. Free plan: no free plan at all.
-- [Canva pricing]((https://voxahq.in/tools/canva)): $18 Pro monthly, $144 a year, $25 Business. Free plan: free: 20 AI uses a month.
-- [Notion pricing]((https://voxahq.in/tools/notion)): $10 Plus, $20 Business includes Notion AI. Free plan: AI is only on Business, trial below.
-- [Jasper pricing]((https://voxahq.in/tools/jasper)): $59 Pro annual, $69 monthly. Free plan: no free plan.
-- [Copy.ai pricing]((https://voxahq.in/tools/copy-ai)): $24 monthly annual, $29 monthly. Free plan: no free plan, entry tier bundles 5 seats.
+- [ChatGPT pricing](https://voxahq.in/tools/chatgpt): Free $0, Go $8, Plus $20, Pro from $100. Free plan: limited context, a few uploads a day.
+- [Claude pricing](https://voxahq.in/tools/claude): Free $0, Pro $20 monthly or $17 a month billed yearly, Max $100. Free plan: limited usage every five hours and every week.
+- [Gemini pricing](https://voxahq.in/tools/gemini): AI Plus $4.99, AI Pro $19.99, Ultra higher. Free plan runs the lighter model.
+- [Perplexity pricing](https://voxahq.in/tools/perplexity): Pro $20, $17 a month on annual. Free plan: a few Pro searches a day.
+- [n8n pricing](https://voxahq.in/tools/n8n): free self-hosted, cloud paid. Bills per execution, not per step.
+- [Zapier pricing](https://voxahq.in/tools/zapier): Professional from $19.99 a month on annual, Team higher. Free plan: 100 tasks, two-step Zaps.
+- [ElevenLabs pricing](https://voxahq.in/tools/elevenlabs): Starter $6, Creator $22, Pro $99. Free plan: 10,000 credits, no commercial licence.
+- [Midjourney pricing](https://voxahq.in/tools/midjourney): Basic $10, Standard $30, Pro $60. No free plan.
+- [Canva pricing](https://voxahq.in/tools/canva): Pro $18 a month or $144 a year, Business $25. Free plan: 20 AI uses a month.
+- [Notion pricing](https://voxahq.in/tools/notion): Plus $10, Business $20 with Notion AI. AI is not on the free plan.
+- [Jasper pricing](https://voxahq.in/tools/jasper): Pro $59 a month on annual, $69 monthly. No free plan.
+- [Copy.ai pricing](https://voxahq.in/tools/copy-ai): $24 a month on annual, $29 monthly. No free plan, entry tier bundles seats.
 
-## Site pages
+## Services
 
-- [AI tools index](https://voxahq.in/tools): every tool entry, sorted by category.
-- [Pricing](https://voxahq.in/pricing): free audit, six-month and twelve-month subscriptions in dollars.
-- [SEO, AEO and GEO service](https://voxahq.in/services/seo): what the subscription covers and how the first month runs.
-- [Free AI audit](https://voxahq.in/services/ai-audit): the 48-hour report, what it checks and how to request it.
-- [About](https://voxahq.in/about): who runs the site and how prices are read.
-- [Contact](https://voxahq.in/contact): corrections and enquiries.
+- [Services hub](https://voxahq.in/services): what VOXA runs for clients, one-off prices, no retainers.
+- [SEO, AEO and GEO](https://voxahq.in/services/seo-aeo-geo): technical fixes, answer-first pages, schema, and tracking where a brand appears in AI answers. Plans from $59.
+- [Website development](https://voxahq.in/services/website): landing page $59, business site $119, WordPress $179.
+- [Free AI audit](https://voxahq.in/services/ai-audit): a 48-hour report with three ranked fixes, no call required.
 
-## Optional
+## Free tools
 
-- [Editorial policy](https://voxahq.in/editorial-policy)
-- [Privacy policy](https://voxahq.in/privacy-policy)
-- [Terms](https://voxahq.in/terms)
+- [Free tools hub](https://voxahq.in/free-tools): all three, free, no account.
+- [AI cost calculator](https://voxahq.in/free-tools/ai-cost-calculator): add up a stack in dollars, monthly and yearly.
+- [llms.txt generator](https://voxahq.in/free-tools/llms-txt-generator): build the file AI crawlers read.
+- [AEO readiness check](https://voxahq.in/free-tools/aeo-checklist): score a page on the items an AI answer needs to quote it.
 
-## 17 November 2026
+## Blog
 
-- [The free plan is not the product](https://voxahq.in/tools): free tiers are the paid plan with one working part removed, and which part is removed tells you who the plan is for.
-- [ChatGPT free gives about 3 uploads a day](https://voxahq.in/tools/chatgpt): unlimited text chats on the free plan, but uploads, images and a 27K token context are metered.
-- [Zapier free is two-step only](https://voxahq.in/tools/zapier): 100 tasks a month and no multi-step workflows, which is paid from $19.99.
-- [n8n bills per execution, not per step](https://voxahq.in/tools/n8n): self-hosted is free and unmetered; Cloud starts at €20 a month for 2,500 executions.
-- [ElevenLabs free cannot be used commercially](https://voxahq.in/tools/elevenlabs): 10,000 credits a month with no licence; commercial use starts at $6.
-- [Notion AI is only on Business](https://voxahq.in/tools/notion): Plus at $10 still gets a trial, not the agent.
+- [Blog hub](https://voxahq.in/blog)
+- Technology: [The AI Free Tier Is Shrinking: What Five Tools Changed in 2026](https://voxahq.in/blog/ai-free-tier-shrinking), [AI Agents for Small Business](https://voxahq.in/blog/ai-agents-small-business), [n8n vs Zapier vs Make cost per task](https://voxahq.in/blog/automation-cost-per-task)
+- Marketing: [How to Market a Small Business on $200 a Month](https://voxahq.in/blog/marketing-on-200-dollars), [Where US small businesses get leads](https://voxahq.in/blog/local-lead-generation), [Cold email in 2026](https://voxahq.in/blog/cold-email-first-client)
+- Business and money: [How to Use Business Money](https://voxahq.in/blog/business-money-order), [Why most US restaurants fail](https://voxahq.in/blog/restaurant-failure-numbers), [$10,000 to start a business in the US](https://voxahq.in/blog/ten-thousand-start)
+
+## Company
+
+- [About VOXA](https://voxahq.in/about): the studio, the founder and the editorial rules.
+- [Contact](https://voxahq.in/contact): corrections, audits and enquiries.
+- [Sign in](https://voxahq.in/signin): the free pack plus the Mon, Wed, Fri paper.
+- [Editorial policy](https://voxahq.in/editorial-policy), [Privacy policy](https://voxahq.in/privacy-policy), [Terms](https://voxahq.in/terms), [Disclaimer](https://voxahq.in/disclaimer), [Cookie policy](https://voxahq.in/cookie-policy), [Affiliate disclosure](https://voxahq.in/affiliate-disclosure)
