@@ -129,7 +129,7 @@ footer a{display:block;margin-bottom:7px}
   function showIn(name,email){
     var box=document.getElementById('signedin');
     document.getElementById('siHello').textContent = name ? ('You are in, '+name+'.') : 'You are in.';
-    document.getElementById('siNote').textContent = 'We sent the welcome letter to '+email+'. The next issue lands Monday morning.';
+    var _d=new Date(),_next=new Date(_d.getTime());for(var _k=0;_k<7;_k++){_next=new Date(_d.getTime()+_k*864e5);var _w=_next.getDay();if(_w===1||_w===3||_w===5)break;}var _dn=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][_next.getDay()];var _tmrw=_next.toDateString()===new Date(_d.getTime()+864e5).toDateString();document.getElementById('siNote').textContent = 'We sent the welcome letter to '+email+'. The next issue lands '+(_tmrw?'tomorrow, ':'')+_dn+' morning.';
     box.style.display='block';
     document.getElementById('voxaSignin').style.display='none';
     box.scrollIntoView({block:'center'});
