@@ -57,3 +57,7 @@ Allow: /
 
 Sitemap: https://voxahq.in/sitemap.xml
 # LLM-friendly summary: https://voxahq.in/llms.txt
+
+# Cloudflare internal paths
+User-agent: *
+Disallow: /cdn-cgi/
