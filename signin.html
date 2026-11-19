@@ -93,7 +93,7 @@ footer a{display:block;margin-bottom:7px}
 .signedin{display:none;background:var(--accsoft);border:.66px solid var(--acc);border-radius:12px;padding:18px;text-align:center}
 </style>
 <div class="hero" style="padding:52px 0 30px"><div class="wrap"><h1 class="hd" style="font-size:44px">Sign in to VOXA</h1>
-<p class="herosub">One email a week: the AI pricing changes that actually moved, every figure dated. No password needed.</p></div></div>
+<p class="herosub">Email only, no password. The Free Stack pack lands instantly, then the AI pricing paper three mornings a week.</p></div></div>
 <section><div class="wrap" style="max-width:640px;padding-bottom:60px">
 <div id="signedin" class="signedin">
   <p style="font-weight:800;font-size:18px" id="siHello">You are in.</p>
@@ -113,7 +113,7 @@ footer a{display:block;margin-bottom:7px}
   <label style="font-size:14px;font-weight:600">Email<input name="email" type="email" required placeholder="you@company.com" style="width:100%;margin-top:6px;padding:12px 14px;border:.66px solid var(--line);border-radius:10px;font-size:15px"></label>
   <label style="font-size:14px;font-weight:600">First name<input name="name" placeholder="Raghav" style="width:100%;margin-top:6px;padding:12px 14px;border:.66px solid var(--line);border-radius:10px;font-size:15px"></label>
   <button class="btn solid big" type="submit" style="margin-top:6px;border:0;cursor:pointer">Sign in with email</button>
-  <p style="font-size:13px;color:var(--ink2);margin:0">You get the Free Stack Pack (PDF) straight away: what people pay for, and the free version that does the same job. One email a week after that. No spam, unsubscribe any time. By signing in you agree to our <a href="/terms" style="color:var(--acc)">Terms</a> and <a href="/privacy-policy" style="color:var(--acc)">Privacy Policy</a>.</p>
+  <p style="font-size:13px;color:var(--ink2);margin:0">You get the Free Stack Pack (PDF) straight away, then the paper three mornings a week: Monday, Wednesday and Friday. No spam, unsubscribe any time. By signing in you agree to our <a href="/terms" style="color:var(--acc)">Terms</a> and <a href="/privacy-policy" style="color:var(--acc)">Privacy Policy</a>.</p>
 </form>
 <div class="card" style="margin-top:20px"><h3>What you get</h3>
   <p style="margin-top:8px">The weekly digest: the two or three AI pricing changes that actually moved, with the point where it breaks.</p>
@@ -129,7 +129,7 @@ footer a{display:block;margin-bottom:7px}
   function showIn(name,email){
     var box=document.getElementById('signedin');
     document.getElementById('siHello').textContent = name ? ('You are in, '+name+'.') : 'You are in.';
-    document.getElementById('siNote').textContent = 'We sent the welcome letter to '+email+'. The next digest comes on Friday.';
+    document.getElementById('siNote').textContent = 'We sent the welcome letter to '+email+'. The next issue lands Monday morning.';
     box.style.display='block';
     document.getElementById('voxaSignin').style.display='none';
     box.scrollIntoView({block:'center'});
