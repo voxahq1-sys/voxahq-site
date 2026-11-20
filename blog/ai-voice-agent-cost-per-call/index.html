@@ -128,7 +128,7 @@ footer a{display:block;margin-bottom:7px}
 <div class="posthero"><img src="/blog-images/ai-voice-agent-cost-per-call.jpg" alt="A customer service agent wearing a headset answering calls at a desk" width="1600" height="900">
   <div class="posthero__grad"></div>
   <div class="posthero__body"><div class="bwrap"><span class="bpill">Technology</span><h1>AI Voice Agents for Small Business: What an Answering Bot Costs Per Call in 2026</h1> <div class="bmeta">20 November 2026 · 9 min read · VOXA editorial</div></div></div></div>
-<p class="lede">A missed call is the cheapest lead a small business ever loses. The caller wanted a quote, got voicemail, and dialled the next name on the list. AI phone agents exist to answer those calls, and in 2026 they cost less per minute than most owners assume. The problem is that nobody sells them by the minute in a way you can compare.</p>
+<article class="postbody"><p class="lede">A missed call is the cheapest lead a small business ever loses. The caller wanted a quote, got voicemail, and dialled the next name on the list. AI phone agents exist to answer those calls, and in 2026 they cost less per minute than most owners assume. The problem is that nobody sells them by the minute in a way you can compare.</p>
 <div class="answerbox"><p><strong>The short answer:</strong> a voice agent runs about <strong>$0.03 to $0.09 a minute on Vapi</strong> once you add the speech, model and phone line together, and <strong>$0.07 to $0.31 a minute on Retell</strong>. A three-minute call therefore costs between 12 and 93 cents. The platform is never the expensive part. The setup and the minutes you waste on calls it cannot close are.</p></div>
 
 <h2>Why per-minute pricing hides the real bill</h2>
@@ -144,6 +144,7 @@ footer a{display:block;margin-bottom:7px}
 <li><strong>Phone line:</strong> Twilio at $0.008 per minute, or Telnyx at $0.00814 per minute</li>
 </ul>
 <p>There is no platform fee on the usage plan. You start with $5 in free credits and pay only for minutes that run. If you want more support and concurrency, Core is <strong>$29 a month</strong> with 5 phone numbers, 10 concurrent calls and 30 days of raw data. Pro is <strong>$999 a month minimum</strong> and then 10% of the Vapi hosting fee, which only makes sense once you are running real volume.</p>
+<h3>What the three lines add up to</h3>
 <p>Add the cheapest sensible stack together and you get $0.0095 plus $0.0077 plus $0.0146, which is $0.0318 a minute. Add the phone line and it is $0.0398. Call it <strong>4 cents a minute</strong>.</p>
 
 <h2>Retell: one range, four components inside it</h2>
@@ -158,6 +159,7 @@ footer a{display:block;margin-bottom:7px}
 <p>Cheap voice plus cheap model lands you near the bottom of that range. A premium ElevenLabs voice with a heavier model lands you near the top. Neither number is wrong. They just describe different products.</p>
 
 <h2>The three-minute call, costed three ways</h2>
+<h3>One call, four ways</h3>
 <p>Take the call every small business gets: someone asks about price, wants to know if you cover their area, and books a time.</p>
 <ul>
 <li><strong>Vapi, cheapest stack:</strong> $0.12 per call</li>
@@ -169,10 +171,13 @@ footer a{display:block;margin-bottom:7px}
 
 <h2>What a human costs for the same three minutes</h2>
 <p>Do the honest version of this comparison, because vendors do not. A person is not paid per call. At $18 an hour for a part-time receptionist covering 20 hours a week, you are paying <strong>$1,560 a month</strong> before tax, and that person answers every call in those hours, including the four-minute ones and the ones that go nowhere.</p>
-<p>Per answered call, if they handle 12 calls an hour, the wage share is $1.50. The AI agent at 12 to 93 cents is cheaper per call at every single tier. What the person gives you that the agent does not is judgement on the twentieth odd question of the day, and that is what you are really buying.</p>
+<p>Per answered call, if they handle 12 calls an hour, the wage share is $1.50. The AI agent at 12 to 93 cents is cheaper per call at every single tier.</p>
+<p>What the person gives you that the agent does not is judgement on the twentieth odd question of the day, and that is what you are really buying.</p>
 
 <h2>The number that decides it: how many calls you miss</h2>
-<p>Before any of this matters, count your missed calls for one week. Most owners guess, and the guess is low. If you miss 30 calls a week, an agent pays for itself the first time it books one job worth more than $72. If you miss four calls a week, you are spending $72 to solve a $20 problem.</p>
+<h3>Count before you buy</h3>
+<p>Before any of this matters, count your missed calls for one week. Most owners guess, and the guess is low. If you miss 30 calls a week, an agent pays for itself the first time it books one job worth more than $72.</p>
+<p>If you miss four calls a week, you are spending $72 to solve a $20 problem.</p>
 <p>Retell and Vapi both charge for minutes, not calls, so a week of 30 three-minute calls is 90 minutes. That is under $4 on the cheapest stack. The monthly plan only starts to matter once you are past a few hundred calls.</p>
 
 <h2>Where the cost quietly grows</h2>
@@ -184,7 +189,8 @@ footer a{display:block;margin-bottom:7px}
 </ul>
 
 <h2>The setup work nobody budgets for</h2>
-<p>The minutes are cheap. The build is not. A voice agent that sounds human needs a written script with branches, a list of questions it must never guess at, a transfer rule, and a calendar that actually accepts bookings. Expect a day of work for a simple inbound receptionist and a week for anything with qualification logic.</p>
+<p>The minutes are cheap. The build is not. A voice agent that sounds human needs a written script with branches, a list of questions it must never guess at, a transfer rule, and a calendar that actually accepts bookings.</p>
+<p>Expect a day of work for a simple inbound receptionist and a week for anything with qualification logic.</p>
 <p>If you skip the script, you get an agent that says "I can help with that" and then does not. That is worse than voicemail, because the caller believes a person will call back.</p>
 
 <h2>When an AI agent is cheaper than a person</h2>
@@ -204,7 +210,8 @@ footer a{display:block;margin-bottom:7px}
 </ul>
 
 <h2>What the vendor pages do not say</h2>
-<p>Two gaps are worth naming. First, neither page publishes one final all-in per-call figure, because there is no single one. The range is the product. Second, the model component is where your bill actually moves: on Vapi the intelligence model alone ranges from $0.0077 to $0.0452 a minute, which is a six times spread on the same call.</p>
+<p>Two gaps are worth naming. First, neither page publishes one final all-in per-call figure, because there is no single one. The range is the product. Second, the model component is where your bill actually moves: on Vapi the intelligence model alone ranges from $0.0077 to $0.</p>
+<p>0452 a minute, which is a six times spread on the same call.</p>
 <p>We could not read Synthflow's pricing table from a plain fetch, because the page renders prices client side. Treat any comparison that quotes it without saying so as second hand.</p>
 
 <h2>A five-step test before you pay for a month</h2>
@@ -217,17 +224,33 @@ footer a{display:block;margin-bottom:7px}
 </ol>
 
 <h2>If you only miss five calls a week</h2>
-<p>Do not buy a voice agent yet. Turn on a missed-call text back, add your hours to your Google profile, and put a booking link on the voicemail. That costs nothing and covers most of the gap. Come back to the agent when the log shows forty missed calls and two of them asked for a quote.</p>
+<p>Do not buy a voice agent yet. Turn on a missed-call text back, add your hours to your Google profile, and put a booking link on the voicemail. That costs nothing and covers most of the gap.</p>
+<p>Come back to the agent when the log shows forty missed calls and two of them asked for a quote.</p>
 
 
 <h2>The transfer trap</h2>
-<p>A transfer feels free because the AI stops talking. It is not. The agent bills the minutes before the handoff, the human bills from the moment they pick up, and the caller spends the gap listening to hold music wondering if the call dropped. Every transfer you design should have a stated condition, like "price above $2,000" or "existing customer with an open job", and a named person on the other end during business hours.</p>
+<p>A transfer feels free because the AI stops talking. It is not. The agent bills the minutes before the handoff, the human bills from the moment they pick up, and the caller spends the gap listening to hold music wondering if the call dropped.</p>
+<p>Every transfer you design should have a stated condition, like "price above $2,000" or "existing customer with an open job", and a named person on the other end during business hours.</p>
 
 <h2>What a good agent sounds like</h2>
-<p>Short sentences. It says the business name in the first three seconds. It asks one question at a time. It admits what it does not know and offers the transfer instead of guessing. It never repeats the caller's full sentence back to them. If your test call sounds like a call centre reading a script, the problem is the script, not the model.</p>
-<h2>Verdict</h2>
-<p>At 12 to 93 cents for a three-minute call, the technology is not the expensive part of the decision. The expensive part is building one that does not embarrass you, and paying for it on a volume you do not have. Count the missed calls first. If the number is above thirty a week, a Vapi stack at 4 cents a minute will pay for itself in a month. If it is under ten, fix your voicemail instead.</p>
-<p>If you are still deciding whether the tool belongs in the stack at all, run your current monthly spend through the <a href="/free-tools/ai-cost-calculator">AI cost calculator</a> first, then read <a href="/blog/ai-free-tier-shrinking/">what changed in AI pricing this year</a> so you are not budgeting against a number that moved.</p><section class="section alt" id="faq"><div class="wrap" style="max-width:860px"><div class="eyebrow">Questions</div><h2 class="hd">Questions people ask</h2><details style="border-bottom:.66px solid var(--line);padding:16px 0"><summary style="cursor:pointer;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;font-size:17px">How much does an AI phone agent cost per call?</summary><p style="margin-top:10px;color:var(--ink2);font-size:16px;line-height:1.7">About 12 to 93 cents for a three-minute call. The low end is a cheap speech-to-text, model and voice with a Twilio line. The high end is a premium ElevenLabs voice on Retell.</p></details><details style="border-bottom:.66px solid var(--line);padding:16px 0"><summary style="cursor:pointer;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;font-size:17px">Is Vapi or Retell cheaper?</summary><p style="margin-top:10px;color:var(--ink2);font-size:16px;line-height:1.7">Vapi publishes component prices that add up to roughly 4 cents a minute on the cheapest stack. Retell quotes a single all-in range of $0.07 to $0.31 a minute. Neither is wrong, they package the same four parts differently.</p></details><details style="border-bottom:.66px solid var(--line);padding:16px 0"><summary style="cursor:pointer;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;font-size:17px">Is an AI receptionist cheaper than hiring someone?</summary><p style="margin-top:10px;color:var(--ink2);font-size:16px;line-height:1.7">Per call, yes. At $18 an hour and 12 calls an hour, a person carries about $1.50 of wage per call against 12 to 93 cents for the agent. But a person is paid for the shift, not the call, so the comparison only holds if you actually have calls to answer.</p></details><details style="border-bottom:.66px solid var(--line);padding:16px 0"><summary style="cursor:pointer;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;font-size:17px">Do I need a separate phone number?</summary><p style="margin-top:10px;color:var(--ink2);font-size:16px;line-height:1.7">Yes. Both platforms connect through a phone line, and Vapi charges $10 per extra line per month beyond the numbers included in your plan.</p></details><details style="border-bottom:.66px solid var(--line);padding:16px 0"><summary style="cursor:pointer;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;font-size:17px">What if I only miss a few calls a week?</summary><p style="margin-top:10px;color:var(--ink2);font-size:16px;line-height:1.7">Do not buy an agent yet. Turn on a missed-call text back, put your hours on your Google profile and add a booking link to the voicemail. Revisit when the log shows around 40 missed calls a month.</p></details></div></section> <footer><div class="wrap fgrid">
+<p>Short sentences. It says the business name in the first three seconds. It asks one question at a time. It admits what it does not know and offers the transfer instead of guessing. It never repeats the caller's full sentence back to them.</p>
+<p>If your test call sounds like a call centre reading a script, the problem is the script, not the model.</p>
+<div class="verdict"><p><strong>Verdict:</strong> At 12 to 93 cents for a three-minute call, the technology is not the expensive part of the decision. The expensive part is building one that does not embarrass you, and paying for it on a volume you do not have. Count the missed calls first. If the number is above thirty a week, a Vapi stack at 4 cents a minute will pay for itself in a month. If it is under ten, fix your voicemail instead.</p></div>
+<h2>Questions people ask</h2><h3>How much does an AI phone agent cost per call?</h3>
+<p>About 12 to 93 cents for a three-minute call. The low end is a cheap speech-to-text, model and voice with a Twilio line. The high end is a premium ElevenLabs voice on Retell.</p>
+<h3>Is Vapi or Retell cheaper?</h3>
+<p>Vapi publishes component prices that add up to roughly 4 cents a minute on the cheapest stack. Retell quotes a single all-in range of $0.07 to $0.31 a minute. Neither is wrong, they package the same four parts differently.</p>
+<h3>Is an AI receptionist cheaper than hiring someone?</h3>
+<p>Per call, yes. At $18 an hour and 12 calls an hour, a person carries about $1.50 of wage per call against 12 to 93 cents for the agent. But a person is paid for the shift, not the call, so the comparison only holds if you actually have calls to answer.</p>
+<h3>Do I need a separate phone number?</h3>
+<p>Yes. Both platforms connect through a phone line, and Vapi charges $10 per extra line per month beyond the numbers included in your plan.</p>
+<h3>What if I only miss a few calls a week?</h3>
+<p>Do not buy an agent yet. Turn on a missed-call text back, put your hours on your Google profile and add a booking link to the voicemail. Revisit when the log shows around 40 missed calls a month.</p>
+<p style="margin-top:32px"><strong>Related:</strong> <a href="/blog/automation-cost-per-task">what each automation actually costs per task</a>, and the <a href="/free-tools/ai-cost-calculator">AI cost calculator</a> for your current stack.</p>
+<div style="margin-top:40px;padding-top:24px;border-top:.66px solid var(--line);display:flex;gap:12px;flex-wrap:wrap">
+    <a class="btn solid" href="/services/ai-audit">Get the free audit</a>
+    <a class="btn" style="border:.66px solid var(--line)" href="/blog">More articles</a>
+  </div></article> <footer><div class="wrap fgrid">
   <div>
     <div class="logo" style="color:var(--ink);margin-bottom:12px"><img src="/favicon-48.png" alt="VOXA logo" width="26" height="26" loading="lazy" decoding="async" style="border-radius:8px">VOXA</div>
     <a href="mailto:voxa.hq1@gmail.com" style="display:inline-block;font-weight:600;color:var(--acc);margin-bottom:14px">voxa.hq1@gmail.com</a>
