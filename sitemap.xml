@@ -157,13 +157,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://voxahq.in/preflight-info/</loc>
+    <loc>https://voxahq.in/preflight/</loc>
     <lastmod>2026-11-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://voxahq.in/preflight/</loc>
+    <loc>https://voxahq.in/preflight/app/</loc>
     <lastmod>2026-11-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
