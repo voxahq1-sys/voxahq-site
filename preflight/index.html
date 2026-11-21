@@ -82,7 +82,7 @@ const RULES = [
   {id:'miracle', sev:'warn', cat:'Exaggerated language', re:/(miracle|magic|breakthrough|revolutionary|secret|hack)/i, why:'Sensational language falls under exaggerated claims and often triggers manual review.', fix:'Replace with a plain functional benefit.'},
   {id:'superlative', sev:'warn', cat:'Superlative', re:/(#1|number one|best|strongest|most powerful|world'?s)/i, why:'Unqualified superlatives invite a substantiation request.', fix:'Say what it is better at, with a number.'},
   {id:'urgency', sev:'warn', cat:'Fake urgency', re:/(today only|last chance|only \d+ left|act now|expires tonight)/i, why:'Urgency is allowed but repeated scarcity in health ads raises scrutiny.', fix:'Keep one honest deadline, remove the rest.'},
-  {id:'disease-name', sev:'warn', cat:'Condition named on the page', re:/(diabetes|cancer|insomnia|arthritis|psoriasis|thyroid|hypertension|depression)/i, why:'Naming a condition anywhere in the copy invites a deeper review, even when the sentence is neutral.', fix:'Use the symptom or the benefit instead of the diagnosis.'},
+  {id:'disease-name', sev:'info', cat:'Condition named on the page', re:/(diabetes|cancer|insomnia|arthritis|psoriasis|thyroid|hypertension|depression)/i, why:'Naming a condition anywhere in the copy invites a deeper review, even when the sentence is neutral.', fix:'Use the symptom or the benefit instead of the diagnosis.'},
   {id:'testimonial', sev:'warn', cat:'Testimonial result', re:/(i lost|my results|it worked for me|changed my life)/i, why:'Personal results need a clear disclaimer and must be plausible.', fix:'Add "results vary" and keep the claim modest.'},
   {id:'money-back', sev:'warn', cat:'Refund promise', re:/(money back|refund guaranteed|free trial bottle)/i, why:'Refunds are fine, but pairing them with results reads as a guarantee.', fix:'State the refund policy separately from the outcome.'},
   {id:'health-18', sev:'info', cat:'Age targeting', re:/(weight loss|dietary supplement|slimming)/i, why:'Health and weight products must be targeted to 18 and over.', fix:'Set the minimum age to 18+ in the ad set.'},
@@ -99,6 +99,8 @@ const RULES = [
   ,{id:'all-caps', sev:'warn', cat:'All capitals', re:/(\b[A-Z]{5,}\b.*){3,}/, why:'Shouting copy reads as low quality and lowers delivery even when it passes review.', fix:'Use sentence case.'}
   ,{id:'exclamations', sev:'info', cat:'Punctuation', re:/(!.*){3,}/, why:'Three or more exclamation marks is the classic spam signal.', fix:'Keep one.'}
   ,{id:'click-here', sev:'info', cat:'Weak CTA', re:/(click here|tap here|swipe up)/i, why:'Generic CTAs underperform and add no information.', fix:'Name the action: "See the ingredient list".'}
+  ,{id:'personal-attr-2', sev:'block', cat:'Personal attributes', re:/(struggling with|suffering from|do you have|battling|tired of being)\s+(\w+\s+){0,2}(diabetes|cancer|insomnia|anxiety|depression|arthritis|psoriasis|thyroid|bloating|inflammation|pain|acne|migraine|overweight|fat|sleep|stress)/i, why:'Copy that asserts something about the viewer health or body is prohibited, even as a question.', fix:'Talk about the product, not the reader.'}
+  ,{id:'debt-2', sev:'block', cat:'Debt relief claim', re:/(erase|wipe out|eliminate|kill|clear)\s+(your\s+)?(credit card\s+|student\s+|medical\s+)?debt/i, why:'Promising to erase debt is a restricted financial claim.', fix:'Say debt consolidation options and route to a licensed provider.'}
 ];
 function scanText(text) {
   const out = [];
