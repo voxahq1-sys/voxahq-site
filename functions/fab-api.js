@@ -1,6 +1,6 @@
-// FabConvert ledger API. Requires a signed-in session; data is scoped to the account.
-function json(o, s = 200) {
-  return new Response(JSON.stringify(o), { status: s, headers: { 'content-type': 'application/json', 'cache-control': 'no-store' } });
+// FabConvert ledger: sessions, dedupe-safe records, refunds subtracted.
+function json(o, s = 200, extra = {}) {
+  return new Response(JSON.stringify(o), { status: s, headers: { 'content-type': 'application/json', 'cache-control': 'no-store', ...extra } });
 }
 function secret(env) { return env.FABCONVERT_SECRET || env.RESEND_API_KEY || ''; }
 async function hmac(key, msg) {
@@ -40,7 +40,7 @@ export async function onRequestGet(context) {
   if (!email) return json({ ok: false, signedIn: false, error: 'Sign in first.' }, 401);
   const w = await wsFor(env, email);
   const conv = [];
-  for (const k of (await listAll(env, 'w:' + w + ':p:')).slice(-400)) {
+  for (const k of (await listAll(env, 'w:' + w + ':p:')).slice(-500)) {
     const v = await env.PASSPORT.get(k);
     if (v) { try { conv.push(JSON.parse(v)); } catch (e) {} }
   }
@@ -49,17 +49,22 @@ export async function onRequestGet(context) {
     const v = await env.PASSPORT.get(k);
     if (v) { try { spend.push(JSON.parse(v)); } catch (e) {} }
   }
-  const revenue = conv.reduce((a, c) => a + (Number(c.payout) || 0), 0);
+  const sales = conv.filter(c => c.status !== 'refund' && c.status !== 'lead');
+  const refunds = conv.filter(c => c.status === 'refund');
+  const gross = sales.reduce((a, c) => a + (Number(c.payout) || 0), 0);
+  const reversed = refunds.reduce((a, c) => a + (Number(c.payout) || 0), 0);
+  const revenue = gross - reversed;
   const cost = spend.reduce((a, s) => a + (Number(s.amount) || 0), 0);
   return json({
     ok: true, email, ws: w,
     summary: {
-      conversions: conv.length,
+      conversions: sales.length,
+      refunds: refunds.length,
       revenue: Math.round(revenue * 100) / 100,
       spend: Math.round(cost * 100) / 100,
       profit: Math.round((revenue - cost) * 100) / 100,
       roi: cost > 0 ? Math.round(((revenue - cost) / cost) * 100) : null,
-      epc: conv.length > 0 ? Math.round((revenue / conv.length) * 100) / 100 : 0
+      epc: sales.length > 0 ? Math.round((revenue / sales.length) * 100) / 100 : 0
     },
     conversions: conv.sort((a, b) => b.ts - a.ts).slice(0, 100),
     spend: spend.sort((a, b) => b.ts - a.ts).slice(0, 50)

@@ -42,7 +42,7 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--
 @media(max-width:640px){.stats{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
 </style></head><body>
 <header><div class="wrap"><a class="brand" href="/fabconvert">FabConvert</a><span class="chip">Profit tracking</span>
-<nav><a href="/fabconvert">Overview</a><a href="/preflight/app/">Compliance check</a><span id="who" style="color:#9FE3CF"></span><button id="out">Sign out</button></nav></div></header>
+<nav><a href="/fabconvert">Overview</a><a href="/preflight/app/">Compliance check</a><a href="/fabconvert/postback-docs">Postback docs</a><span id="who" style="color:#9FE3CF"></span><button id="out">Sign out</button></nav></div></header>
 <main><div class="wrap">
 <h1>The number after the click.</h1>
 <p class="sub">Send every conversion here with one postback URL. Add what you spent. Net profit, ROI and revenue per conversion, private to your account.</p>
@@ -103,17 +103,17 @@ function load(){
     document.getElementById('em').textContent=j.email;
     document.getElementById('who').textContent=j.email;
     WS=j.ws;
-    document.getElementById('pburl').textContent='https://voxahq.in/pb?w='+j.ws+'&cid={clickid}&payout={payout}&offer={offer}';
+    document.getElementById('pburl').textContent='https://voxahq.in/pb?w='+j.ws+'&cid={clickid}&payout={payout}&offer={offer}&txid={transaction_id}&status=sale';
     var s=j.summary;
     document.getElementById('s-rev').textContent=money(s.revenue);
     document.getElementById('s-spend').textContent=money(s.spend);
     var p=document.getElementById('s-profit'); p.textContent=money(s.profit); p.className=s.profit>=0?'pos':'neg';
     document.getElementById('s-roi').textContent=s.roi===null?'-':(s.roi+'%');
     document.getElementById('s-epc').textContent=money(s.epc);
-    document.getElementById('s-conv').textContent=s.conversions;
-    var hv='<table><thead><tr><th>When</th><th>Click id</th><th>Offer</th><th>Payout</th></tr></thead><tbody>';
-    if(j.conversions.length){ j.conversions.forEach(function(c){ hv+='<tr><td>'+when(c.ts)+'</td><td>'+c.cid+'</td><td>'+(c.offer||'-')+'</td><td>'+money(c.payout)+'</td></tr>'; }); }
-    else { hv+='<tr><td colspan="4" style="color:#4A5568">No conversions yet. Send a test sale above.</td></tr>'; }
+    document.getElementById('s-conv').textContent=s.conversions + (s.refunds ? ' (' + s.refunds + ' refunded)' : '');
+    var hv='<table><thead><tr><th>When</th><th>Click id</th><th>Offer</th><th>Payout</th><th>Status</th></tr></thead><tbody>';
+    if(j.conversions.length){ j.conversions.forEach(function(c){ hv+='<tr><td>'+when(c.ts)+'</td><td>'+c.cid+'</td><td>'+(c.offer||'-')+'</td><td>'+money(c.payout)+'</td><td>'+(c.status==='refund'?'<span style="color:#B42318">refund</span>':(c.status||'sale'))+'</td></tr>'; }); }
+    else { hv+='<tr><td colspan="5" style="color:#4A5568">No conversions yet. Send a test sale above.</td></tr>'; }
     document.getElementById('convs').innerHTML=hv+'</tbody></table>';
     var hs='<table><thead><tr><th>When</th><th>Label</th><th>Amount</th></tr></thead><tbody>';
     if(j.spend.length){ j.spend.forEach(function(c){ hs+='<tr><td>'+when(c.ts)+'</td><td>'+(c.label||'-')+'</td><td>'+money(c.amount)+'</td></tr>'; }); }
