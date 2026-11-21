@@ -232,7 +232,7 @@ document.getElementById('go').addEventListener('click', function () {
     var h = '<div class="verdict ' + (reds ? 'v-red' : (ambers ? 'v-amber' : 'v-green')) + '"><b>' + reds + ' of ' + lastRows.length + ' cannot launch</b><span>' + ambers + ' to fix, ' + greens + ' clear</span></div>';
     h += '<table class="bulk"><thead><tr><th>#</th><th>Ad</th><th>Verdict</th><th>Top issue</th></tr></thead><tbody>';
     lastRows.forEach(function (r, i) {
-      h += '<tr><td>' + (i + 1) + '</td><td class="bulkrow" title="' + r.line.replace(/"/g, '&quot;') + '">' + r.line.replace(/</g, '&lt;') + '</td><td class="v-' + r.verdict + '">' + (r.verdict === 'red' ? 'DO NOT LAUNCH' : r.verdict === 'amber' ? 'FIX' : 'CLEAR') + '</td><td>' + (r.top ? r.top.cat : '-') + '</td></tr>';
+      h += '<tr><td>' + (i + 1) + '</td><td class="bulkrow" title="' + r.line.replace(/"/g, '&quot;') + '">' + r.line.replace(/</g, '&lt;') + '</td><td class="c-' + r.verdict + '">' + (r.verdict === 'red' ? 'DO NOT LAUNCH' : r.verdict === 'amber' ? 'FIX' : 'CLEAR') + '</td><td>' + (r.top ? r.top.cat : '-') + '</td></tr>';
     });
     h += '</tbody></table><a class="dl" id="csv" href="#">Download the results as CSV</a>';
     document.getElementById('bulkout').innerHTML = h;
