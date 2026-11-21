@@ -74,7 +74,12 @@ footer b{color:var(--ink)}
   <div class="card">
     <label for="copy">Ad copy (headline, primary text, description)</label>
     <textarea id="copy" placeholder="Clinically proven to cure insomnia in 7 days. Guaranteed results."></textarea>
-    <label for="img">Text inside the image or video (optional)</label>
+    <label for="img">Text inside the image or video</label>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
+      <input type="file" id="imgFile" accept="image/*" style="border:0;padding:0;width:auto;font-size:13.5px">
+      <button type="button" id="ocrBtn" class="ghost" style="margin-left:0">Read the text from the image</button>
+      <span id="ocrStatus" class="hint" style="margin:0"></span>
+    </div>
     <textarea id="img" style="min-height:60px" placeholder="LOSE 20LBS IN 2 WEEKS"></textarea>
     <div class="row">
       <div><label for="url">Landing page URL (optional)</label><input id="url" placeholder="https://example.com/offer"></div>
@@ -257,4 +262,32 @@ document.getElementById('savelib').addEventListener('click',function(){
 document.getElementById('rev').value = localStorage.getItem('pf_reviewer')||'';
 document.getElementById('rev').addEventListener('change',function(){ localStorage.setItem('pf_reviewer', this.value); });
 renderLog();
+
+document.getElementById('ocrBtn').addEventListener('click', function () {
+  var f = document.getElementById('imgFile').files[0];
+  var st = document.getElementById('ocrStatus');
+  if (!f) { st.textContent = 'Pick an image first.'; return; }
+  var btn = this;
+  btn.disabled = true;
+  st.textContent = 'Loading the reader (first time takes a few seconds)...';
+  function run() {
+    st.textContent = 'Reading the text...';
+    var url = URL.createObjectURL(f);
+    window.Tesseract.recognize(url, 'eng', { logger: function (m) { if (m.status === 'recognizing text') st.textContent = 'Reading the text... ' + Math.round(m.progress * 100) + '%'; } })
+      .then(function (out) {
+        var txt = out.data.text.replace(/\n+/g, ' ').trim();
+        document.getElementById('img').value = txt;
+        st.textContent = txt ? 'Read ' + txt.length + ' characters. Edit it if the reader missed something.' : 'No text found in that image.';
+        btn.disabled = false;
+        URL.revokeObjectURL(url);
+      })
+      .catch(function () { st.textContent = 'Could not read that image. Type the text instead.'; btn.disabled = false; });
+  }
+  if (window.Tesseract) { run(); return; }
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
+  s.onload = run;
+  s.onerror = function () { st.textContent = 'The reader could not load. Type the text instead.'; btn.disabled = false; };
+  document.head.appendChild(s);
+});
 </script></body></html>
