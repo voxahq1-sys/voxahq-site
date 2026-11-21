@@ -1,6 +1,28 @@
-// FabConvert ledger API, scoped by workspace key: /fab-api?w=KEY
-function json(o, s = 200) { return new Response(JSON.stringify(o), { status: s, headers: { 'content-type': 'application/json', 'cache-control': 'no-store', 'access-control-allow-origin': '*' } }); }
-function keyOf(raw) { return String(raw || '').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 40); }
+// FabConvert ledger API. Requires a signed-in session; data is scoped to the account.
+function json(o, s = 200) {
+  return new Response(JSON.stringify(o), { status: s, headers: { 'content-type': 'application/json', 'cache-control': 'no-store' } });
+}
+function secret(env) { return env.FABCONVERT_SECRET || env.RESEND_API_KEY || ''; }
+async function hmac(key, msg) {
+  const k = await crypto.subtle.importKey('raw', new TextEncoder().encode(key), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const sig = await crypto.subtle.sign('HMAC', k, new TextEncoder().encode(msg));
+  return btoa(String.fromCharCode(...new Uint8Array(sig))).replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_');
+}
+async function wsFor(env, email) { return (await hmac(secret(env), 'ws:' + email)).slice(0, 18); }
+function cookieOf(request) {
+  const c = request.headers.get('cookie') || '';
+  const m = c.match(/(?:^|; )fc_session=([^;]+)/);
+  return m ? m[1] : '';
+}
+async function session(request, env) {
+  const raw = cookieOf(request);
+  if (!raw) return null;
+  const i = raw.lastIndexOf('.');
+  if (i < 1) return null;
+  const email = decodeURIComponent(raw.slice(0, i)), sig = raw.slice(i + 1);
+  const want = await hmac(secret(env), 's:' + email);
+  return sig === want ? email : null;
+}
 async function listAll(env, prefix) {
   let cursor; const out = [];
   for (let i = 0; i < 10; i++) {
@@ -13,9 +35,10 @@ async function listAll(env, prefix) {
 }
 export async function onRequestGet(context) {
   const { request, env } = context;
-  if (!env.PASSPORT) return json({ ok: false, error: 'Storage is not configured yet.' }, 500);
-  const w = keyOf(new URL(request.url).searchParams.get('w'));
-  if (!w) return json({ ok: false, error: 'Missing workspace key.' }, 400);
+  if (!env.PASSPORT) return json({ ok: false, error: 'Storage is not configured.' }, 500);
+  const email = await session(request, env);
+  if (!email) return json({ ok: false, signedIn: false, error: 'Sign in first.' }, 401);
+  const w = await wsFor(env, email);
   const conv = [];
   for (const k of (await listAll(env, 'w:' + w + ':p:')).slice(-400)) {
     const v = await env.PASSPORT.get(k);
@@ -29,7 +52,7 @@ export async function onRequestGet(context) {
   const revenue = conv.reduce((a, c) => a + (Number(c.payout) || 0), 0);
   const cost = spend.reduce((a, s) => a + (Number(s.amount) || 0), 0);
   return json({
-    ok: true,
+    ok: true, email, ws: w,
     summary: {
       conversions: conv.length,
       revenue: Math.round(revenue * 100) / 100,
@@ -44,15 +67,17 @@ export async function onRequestGet(context) {
 }
 export async function onRequestPost(context) {
   const { request, env } = context;
-  if (!env.PASSPORT) return json({ ok: false, error: 'Storage is not configured yet.' }, 500);
+  if (!env.PASSPORT) return json({ ok: false, error: 'Storage is not configured.' }, 500);
+  const email = await session(request, env);
+  if (!email) return json({ ok: false, signedIn: false, error: 'Sign in first.' }, 401);
+  const w = await wsFor(env, email);
   let b = {};
   try { b = await request.json(); } catch (e) { return json({ ok: false, error: 'Send JSON.' }, 400); }
-  const w = keyOf(b.w);
-  if (!w) return json({ ok: false, error: 'Missing workspace key.' }, 400);
-  if (b.action === 'clear') {
+  if (b.action === 'clear' || b.action === 'delete') {
     const keys = [...(await listAll(env, 'w:' + w + ':p:')), ...(await listAll(env, 'w:' + w + ':s:'))];
     for (const k of keys) await env.PASSPORT.delete(k);
-    return json({ ok: true, removed: keys.length });
+    const headers = b.action === 'delete' ? { 'set-cookie': 'fc_session=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0' } : {};
+    return json({ ok: true, removed: keys.length, deleted: b.action === 'delete' }, 200, headers);
   }
   const amount = Number(b.amount || 0);
   if (!isFinite(amount) || amount <= 0) return json({ ok: false, error: 'Enter a spend amount above zero.' }, 400);
