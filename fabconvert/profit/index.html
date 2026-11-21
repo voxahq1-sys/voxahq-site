@@ -43,12 +43,23 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--
 <p class="sub">Send every conversion here with one postback URL. Add what you spent. See net profit, ROI and EPC per click id, without a spreadsheet.</p>
 
 <div class="card">
+  <label>Your workspace key</label>
+  <div class="row" style="grid-template-columns:1fr auto auto">
+    <div><input id="ws" placeholder="click Generate or paste your key"></div>
+    <div><button id="gen" class="ghost">Generate</button></div>
+    <div><button id="save">Save</button></div>
+  </div>
+  <p class="hint" id="wsmsg">Your ledger is stored under this key. Keep it private. It stays in this browser.</p>
+</div>
+
+<div class="card">
   <label>Your postback URL (paste this into your affiliate network)</label>
   <div class="tbl"><code id="pburl">https://voxahq.in/pb?cid={clickid}&payout={payout}&offer={offer}</code></div>
   <p class="hint">Most networks let you fire this on a sale. The click id can come from sub1, clickid or your tracker macro.</p>
   <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
     <button id="copy" class="ghost">Copy the URL</button>
     <button id="test" class="ghost">Send a test sale</button>
+    <button id="clear" class="ghost" style="margin-left:auto;color:#B42318;border-color:#F0CFCB">Clear my ledger</button>
   </div>
   <p class="hint" id="testmsg"></p>
 </div>
@@ -76,12 +87,16 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--
 <div class="card"><label>Spend log</label><div class="tbl" id="spends"><p class="hint">No spend logged yet.</p></div></div>
 </div></main>
 <script>
-var API='/fab-api';
-function money(n){ return '$' + (Math.round(n*100)/100).toFixed(2); }
-function when(ts){ var d=new Date(ts); return d.toISOString().slice(0,16).replace('T',' '); }
+var KEY = '';
+function money(n){ return '$' + (Math.round(Number(n)*100)/100).toFixed(2); }
+function when(ts){ return new Date(ts).toISOString().slice(0,16).replace('T',' '); }
+function setUrl(){
+  document.getElementById('pburl').textContent = 'https://voxahq.in/pb?w=' + (KEY || 'YOUR-KEY') + '&cid={clickid}&payout={payout}&offer={offer}';
+}
 function load(){
-  fetch(API).then(function(r){return r.json();}).then(function(j){
-    if(!j.ok){ document.getElementById('convs').innerHTML='<p class="hint">'+ (j.error||'Storage not ready') +'</p>'; return; }
+  if(!KEY){ document.getElementById('convs').innerHTML='<p class="hint">Add a workspace key above to see your ledger.</p>'; return; }
+  fetch('/fab-api?w=' + encodeURIComponent(KEY)).then(function(r){return r.json();}).then(function(j){
+    if(!j.ok){ document.getElementById('convs').innerHTML='<p class="hint">'+ (j.error||'Could not load') +'</p>'; return; }
     var s=j.summary;
     document.getElementById('s-rev').textContent=money(s.revenue);
     document.getElementById('s-spend').textContent=money(s.spend);
@@ -89,39 +104,59 @@ function load(){
     document.getElementById('s-roi').textContent = s.roi===null?'-':(s.roi+'%');
     document.getElementById('s-epc').textContent=money(s.epc);
     document.getElementById('s-conv').textContent=s.conversions;
-    if(j.conversions.length){
-      var h='<table><thead><tr><th>When</th><th>Click id</th><th>Offer</th><th>Payout</th></tr></thead><tbody>';
-      j.conversions.forEach(function(c){ h+='<tr><td>'+when(c.ts)+'</td><td>'+c.cid+'</td><td>'+(c.offer||'-')+'</td><td>'+money(c.payout)+'</td></tr>'; });
-      document.getElementById('convs').innerHTML=h+'</tbody></table>';
-    }
-    if(j.spend.length){
-      var g='<table><thead><tr><th>When</th><th>Label</th><th>Amount</th></tr></thead><tbody>';
-      j.spend.forEach(function(c){ g+='<tr><td>'+when(c.ts)+'</td><td>'+(c.label||'-')+'</td><td>'+money(c.amount)+'</td></tr>'; });
-      document.getElementById('spends').innerHTML=g+'</tbody></table>';
-    }
+    var hv='<table><thead><tr><th>When</th><th>Click id</th><th>Offer</th><th>Payout</th></tr></thead><tbody>';
+    if(j.conversions.length){ j.conversions.forEach(function(c){ hv+='<tr><td>'+when(c.ts)+'</td><td>'+c.cid+'</td><td>'+(c.offer||'-')+'</td><td>'+money(c.payout)+'</td></tr>'; }); }
+    else { hv+='<tr><td colspan="4" style="color:#4A5568">No conversions yet. Send a test sale above.</td></tr>'; }
+    document.getElementById('convs').innerHTML=hv+'</tbody></table>';
+    var hs='<table><thead><tr><th>When</th><th>Label</th><th>Amount</th></tr></thead><tbody>';
+    if(j.spend.length){ j.spend.forEach(function(c){ hs+='<tr><td>'+when(c.ts)+'</td><td>'+(c.label||'-')+'</td><td>'+money(c.amount)+'</td></tr>'; }); }
+    else { hs+='<tr><td colspan="3" style="color:#4A5568">No spend logged yet.</td></tr>'; }
+    document.getElementById('spends').innerHTML=hs+'</tbody></table>';
   });
 }
+document.getElementById('gen').addEventListener('click',function(){
+  var k='fc-' + Math.random().toString(36).slice(2,7) + Math.random().toString(36).slice(2,6);
+  document.getElementById('ws').value=k;
+  document.getElementById('wsmsg').textContent='Key generated. Press Save, then paste the postback URL into your network.';
+});
+document.getElementById('save').addEventListener('click',function(){
+  var k=document.getElementById('ws').value.trim().replace(/[^a-zA-Z0-9_-]/g,'');
+  if(k.length < 4){ document.getElementById('wsmsg').textContent='Use at least 4 characters.'; return; }
+  KEY=k; localStorage.setItem('fc_ws', k);
+  document.getElementById('ws').value=k;
+  document.getElementById('wsmsg').textContent='Saved on this browser. Bookmark this page.';
+  setUrl(); load();
+});
 document.getElementById('copy').addEventListener('click',function(){
-  navigator.clipboard.writeText(document.getElementById('pburl').textContent).then(function(){
-    document.getElementById('testmsg').textContent='Copied.';
-  });
+  navigator.clipboard.writeText(document.getElementById('pburl').textContent).then(function(){ document.getElementById('testmsg').textContent='Copied.'; });
 });
 document.getElementById('test').addEventListener('click',function(){
-  var cid='test'+Math.random().toString(36).slice(2,9);
-  var pay=(20+Math.random()*80).toFixed(2);
-  fetch('/pb?cid='+cid+'&payout='+pay+'&offer=test-offer').then(function(r){return r.json();}).then(function(j){
-    document.getElementById('testmsg').textContent = j.ok ? ('Test sale saved: '+j.saved.cid+' for $'+j.saved.payout) : ('Failed: '+(j.error||'unknown'));
+  if(!KEY){ document.getElementById('testmsg').textContent='Add a workspace key first.'; return; }
+  var cid='test'+Math.random().toString(36).slice(2,8), pay=(20+Math.random()*80).toFixed(2);
+  fetch('/pb?w='+encodeURIComponent(KEY)+'&cid='+cid+'&payout='+pay+'&offer=test-offer').then(function(r){return r.json();}).then(function(j){
+    document.getElementById('testmsg').textContent = j.ok ? ('Test sale saved for $'+j.saved.payout) : ('Failed: '+(j.error||'unknown'));
     load();
   });
 });
 document.getElementById('addspend').addEventListener('click',function(){
+  if(!KEY){ document.getElementById('spendmsg').textContent='Add a workspace key first.'; return; }
   var a=document.getElementById('amt').value, l=document.getElementById('lbl').value;
   if(!a){ document.getElementById('spendmsg').textContent='Enter an amount first.'; return; }
-  fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({amount:a,label:l})}).then(function(r){return r.json();}).then(function(j){
+  fetch('/fab-api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({w:KEY,amount:a,label:l})}).then(function(r){return r.json();}).then(function(j){
     document.getElementById('spendmsg').textContent = j.ok ? 'Spend added.' : ('Failed: '+(j.error||'unknown'));
     document.getElementById('amt').value=''; document.getElementById('lbl').value='';
     load();
   });
 });
-load();
+document.getElementById('clear').addEventListener('click',function(){
+  if(!KEY){ return; }
+  if(!confirm('Delete every conversion and spend entry under this key?')) return;
+  fetch('/fab-api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({w:KEY,action:'clear'})}).then(function(r){return r.json();}).then(function(j){
+    document.getElementById('testmsg').textContent = j.ok ? ('Cleared ' + j.removed + ' records.') : ('Failed: '+(j.error||'unknown'));
+    load();
+  });
+});
+KEY = localStorage.getItem('fc_ws') || '';
+document.getElementById('ws').value = KEY;
+setUrl(); load();
 </script></body></html>
