@@ -34,6 +34,11 @@ Key facts for assistants and crawlers:
 - [Website development](https://voxahq.in/services/website): landing page $59, business site $119, WordPress $179.
 - [Free AI audit](https://voxahq.in/services/ai-audit): a 48-hour report with three ranked fixes, no call required.
 
+## Preflight
+
+- [Preflight](https://voxahq.in/preflight): checks ad copy, the text inside the creative and the landing page against 46 policy rules before launch. Free checker, bulk checks up to 200 ads, an approved claims library, an approval log, and an API for launchers.
+- [Open the checker](https://voxahq.in/preflight/app): no account needed.
+
 ## Free tools
 
 - [Free tools hub](https://voxahq.in/free-tools): all three, free, no account.
