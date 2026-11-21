@@ -55,7 +55,7 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--
 <div class="card">
   <label>Your postback URL (paste this into your affiliate network)</label>
   <div class="tbl"><code id="pburl">https://voxahq.in/pb?cid={clickid}&payout={payout}&offer={offer}</code></div>
-  <p class="hint">Most networks let you fire this on a sale. The click id can come from sub1, clickid or your tracker macro.</p>
+  <p class="hint">A new entry can take up to a minute to appear, because storage replicates across regions. The page retries on its own. Most networks let you fire this on a sale. The click id can come from sub1, clickid or your tracker macro.</p>
   <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
     <button id="copy" class="ghost">Copy the URL</button>
     <button id="test" class="ghost">Send a test sale</button>
@@ -92,6 +92,10 @@ function money(n){ return '$' + (Math.round(Number(n)*100)/100).toFixed(2); }
 function when(ts){ return new Date(ts).toISOString().slice(0,16).replace('T',' '); }
 function setUrl(){
   document.getElementById('pburl').textContent = 'https://voxahq.in/pb?w=' + (KEY || 'YOUR-KEY') + '&cid={clickid}&payout={payout}&offer={offer}';
+}
+function loadSoon(){
+  load();
+  [4000, 12000, 30000, 55000].forEach(function(t){ setTimeout(load, t); });
 }
 function load(){
   if(!KEY){ document.getElementById('convs').innerHTML='<p class="hint">Add a workspace key above to see your ledger.</p>'; return; }
@@ -134,8 +138,32 @@ document.getElementById('test').addEventListener('click',function(){
   if(!KEY){ document.getElementById('testmsg').textContent='Add a workspace key first.'; return; }
   var cid='test'+Math.random().toString(36).slice(2,8), pay=(20+Math.random()*80).toFixed(2);
   fetch('/pb?w='+encodeURIComponent(KEY)+'&cid='+cid+'&payout='+pay+'&offer=test-offer').then(function(r){return r.json();}).then(function(j){
-    document.getElementById('testmsg').textContent = j.ok ? ('Test sale saved for $'+j.saved.payout) : ('Failed: '+(j.error||'unknown'));
+    document.getElementById('testmsg').textContent = j.ok ? ('Test sale saved for 
+  });
+});
+document.getElementById('addspend').addEventListener('click',function(){
+  if(!KEY){ document.getElementById('spendmsg').textContent='Add a workspace key first.'; return; }
+  var a=document.getElementById('amt').value, l=document.getElementById('lbl').value;
+  if(!a){ document.getElementById('spendmsg').textContent='Enter an amount first.'; return; }
+  fetch('/fab-api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({w:KEY,amount:a,label:l})}).then(function(r){return r.json();}).then(function(j){
+    document.getElementById('spendmsg').textContent = j.ok ? 'Spend added. It can take up to a minute to show below.' : ('Failed: '+(j.error||'unknown'));
+    document.getElementById('amt').value=''; document.getElementById('lbl').value='';
+    loadSoon();
+  });
+});
+document.getElementById('clear').addEventListener('click',function(){
+  if(!KEY){ return; }
+  if(!confirm('Delete every conversion and spend entry under this key?')) return;
+  fetch('/fab-api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({w:KEY,action:'clear'})}).then(function(r){return r.json();}).then(function(j){
+    document.getElementById('testmsg').textContent = j.ok ? ('Cleared ' + j.removed + ' records.') : ('Failed: '+(j.error||'unknown'));
     load();
+  });
+});
+KEY = localStorage.getItem('fc_ws') || '';
+document.getElementById('ws').value = KEY;
+setUrl(); load();
+</script></body></html>+j.saved.payout+'. It can take up to a minute to show below.') : ('Failed: '+(j.error||'unknown'));
+    loadSoon();
   });
 });
 document.getElementById('addspend').addEventListener('click',function(){
