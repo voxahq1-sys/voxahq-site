@@ -255,9 +255,9 @@
   "id": "all-caps",
   "sev": "warn",
   "cat": "All capitals",
-  "pattern": "(\\b[A-Z]{5,}\\b.*){3,}",
-  "flags": "i",
-  "why": "Shouting copy reads as low quality and lowers delivery even when it passes review.",
+  "pattern": "\\b[A-Z]{4,}\\b(?=[\\s\\S]*\\b[A-Z]{4,}\\b)(?=[\\s\\S]*\\b[A-Z]{4,}\\b)",
+  "flags": "g",
+  "why": "Three or more words in capitals reads as shouting and lowers delivery even when it passes review.",
   "fix": "Use sentence case."
  },
  {
