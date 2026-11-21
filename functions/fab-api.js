@@ -51,9 +51,8 @@ export async function onRequestGet(context) {
   }
   const sales = conv.filter(c => c.status !== 'refund' && c.status !== 'lead');
   const refunds = conv.filter(c => c.status === 'refund');
-  const gross = sales.reduce((a, c) => a + (Number(c.payout) || 0), 0);
-  const reversed = refunds.reduce((a, c) => a + (Number(c.payout) || 0), 0);
-  const revenue = gross - reversed;
+  // A refunded sale flips its own record, so it must not be counted twice: only live sales add revenue.
+  const revenue = sales.reduce((a, c) => a + (Number(c.payout) || 0), 0);
   const cost = spend.reduce((a, s) => a + (Number(s.amount) || 0), 0);
   return json({
     ok: true, email, ws: w,
