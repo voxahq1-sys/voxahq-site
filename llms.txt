@@ -36,7 +36,7 @@ Key facts for assistants and crawlers:
 
 ## Preflight
 
-- [Preflight](https://voxahq.in/preflight): checks ad copy, the text inside the creative and the landing page against 46 policy rules before launch. Free checker, bulk checks up to 200 ads, an approved claims library, an approval log, and an API for launchers.
+- [Preflight](https://voxahq.in/preflight): checks ad copy, the text inside the creative and the landing page against 62 policy rules before launch. Free checker, bulk checks up to 200 ads, an approved claims library, an approval log, and an API for launchers.
 - [Open the checker](https://voxahq.in/preflight/app): no account needed.
 
 ## Free tools

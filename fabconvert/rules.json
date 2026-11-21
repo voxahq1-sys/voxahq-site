@@ -412,5 +412,149 @@
   "flags": "i",
   "why": "Statements of inferiority about appearance are prohibited.",
   "fix": "Focus on what the product does, not how the reader looks."
+ },
+ {
+  "id": "telehealth-guarantee",
+  "sev": "block",
+  "cat": "Guaranteed approval",
+  "pattern": "(guaranteed|instant|same[- ]day)\\s+(approval|prescription|consult)",
+  "flags": "i",
+  "why": "A medical service cannot promise an approval outcome.",
+  "fix": "Say a licensed clinician reviews each request."
+ },
+ {
+  "id": "no-prescription",
+  "sev": "block",
+  "cat": "No prescription claim",
+  "pattern": "(no prescription|without a prescription|no doctor visit|skip the doctor)",
+  "flags": "i",
+  "why": "Implying prescription medicine without a prescription is a hard block.",
+  "fix": "Describe the online consultation instead."
+ },
+ {
+  "id": "pharma-claim",
+  "sev": "block",
+  "cat": "Pharmacy claim",
+  "pattern": "(pharmacy[- ]grade|pharmaceutical[- ]strength|hospital[- ]grade)",
+  "flags": "i",
+  "why": "Impossible-to-verify quality claims invite review.",
+  "fix": "Name the ingredient and the dose."
+ },
+ {
+  "id": "weight-alone",
+  "sev": "warn",
+  "cat": "Weight loss without effort",
+  "pattern": "(no exercise needed|without changing your diet|eat whatever you want)",
+  "flags": "i",
+  "why": "Weight management rules prohibit claiming the product works alone.",
+  "fix": "Show the routine the product supports."
+ },
+ {
+  "id": "crypto-return",
+  "sev": "block",
+  "cat": "Guaranteed crypto return",
+  "pattern": "(guaranteed|risk[- ]free|fixed)\\s+(returns?|yield|apy|profit)",
+  "flags": "i",
+  "why": "Guaranteed returns in finance and crypto are prohibited outright.",
+  "fix": "Remove the number and the guarantee."
+ },
+ {
+  "id": "investment-promise",
+  "sev": "block",
+  "cat": "Investment promise",
+  "pattern": "(double your (money|investment|crypto)|10x your)",
+  "flags": "i",
+  "why": "Specific multiplication of money is a prohibited financial promise.",
+  "fix": "Describe the product, not the outcome."
+ },
+ {
+  "id": "loan-instant",
+  "sev": "block",
+  "cat": "Instant loan claim",
+  "pattern": "(instant approval|guaranteed loan|no credit check|approved in minutes)",
+  "flags": "i",
+  "why": "Lending claims need licensing and cannot promise approval.",
+  "fix": "Say an application takes two minutes."
+ },
+ {
+  "id": "clickbait",
+  "sev": "warn",
+  "cat": "Clickbait phrasing",
+  "pattern": "(you won'?t believe|doctors hate|shocking|this one trick|they don'?t want you to know)",
+  "flags": "i",
+  "why": "Sensational phrasing is the classic low-quality signal in health.",
+  "fix": "Replace with a plain benefit statement."
+ },
+ {
+  "id": "miracle-cure",
+  "sev": "block",
+  "cat": "Miracle claim",
+  "pattern": "(miracle (cure|fix|pill)|magic bullet)",
+  "flags": "i",
+  "why": "Miracle language paired with health is an exaggerated claim.",
+  "fix": "Describe the mechanism instead."
+ },
+ {
+  "id": "detox-tea",
+  "sev": "warn",
+  "cat": "Detox product claim",
+  "pattern": "(detox (tea|drink|wrap)|flushes? (fat|toxins))",
+  "flags": "i",
+  "why": "Detox and fat-flushing claims are a known scam pattern.",
+  "fix": "Talk about the ingredients and the routine."
+ },
+ {
+  "id": "age-attribute",
+  "sev": "block",
+  "cat": "Personal attributes",
+  "pattern": "(your age|your weight|your bmi|people your age)",
+  "flags": "i",
+  "why": "Implying something about the viewer body is prohibited.",
+  "fix": "Speak about the product."
+ },
+ {
+  "id": "proven-claim",
+  "sev": "warn",
+  "cat": "Proof claim without a source",
+  "pattern": "(scientifically proven|proven to work|studies show)",
+  "flags": "i",
+  "why": "Needs a citation you can show on the landing page.",
+  "fix": "Link the study or say clinically studied ingredient."
+ },
+ {
+  "id": "free-trial-trap",
+  "sev": "warn",
+  "cat": "Free trial wording",
+  "pattern": "(free trial|try free|pay only shipping)",
+  "flags": "i",
+  "why": "Negative-option trials draw complaints and platform scrutiny.",
+  "fix": "State the price after the trial clearly."
+ },
+ {
+  "id": "testimonial-income",
+  "sev": "block",
+  "cat": "Testimonial income claim",
+  "pattern": "(i made \\$?\\d+|my income|i earn \\$?\\d+)",
+  "flags": "i",
+  "why": "Income testimonials are a financial violation without disclosures.",
+  "fix": "Remove the number from the testimonial."
+ },
+ {
+  "id": "limited-stock",
+  "sev": "info",
+  "cat": "Scarcity",
+  "pattern": "(only \\d+ (left|remaining)|limited stock|selling fast)",
+  "flags": "i",
+  "why": "Scarcity is allowed but repeated in health ads it draws scrutiny.",
+  "fix": "Keep one honest deadline."
+ },
+ {
+  "id": "phone-number",
+  "sev": "info",
+  "cat": "Phone number in copy",
+  "pattern": "\\+?\\d[\\d\\s-]{8,}\\d",
+  "flags": "",
+  "why": "Phone numbers in ad copy are a common trigger for health offers.",
+  "fix": "Move the number to the landing page."
  }
 ]
