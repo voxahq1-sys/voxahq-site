@@ -154,7 +154,7 @@ function verdictOf(finds){
   var warns=finds.filter(function(f){return f.sev==='warn';}).length;
   return {cls: blocks?'v-red':(warns?'v-amber':'v-green'), word: blocks?'DO NOT LAUNCH':(warns?'FIX FIRST':'CLEAR TO LAUNCH'), blocks:blocks, warns:warns, score:Math.max(0,100-blocks*25-warns*8)};
 }
-fetch('/preflight/rules.json').then(function(r){return r.json();}).then(function(j){ PF.rules=j; PF.ready=true; }).catch(function(){ PF.ready=false; });
+fetch('/preflight/rules.json?v=3').then(function(r){return r.json();}).then(function(j){ PF.rules=j; PF.ready=true; }).catch(function(){ PF.ready=false; });
 
 document.querySelectorAll('.tab').forEach(function(t){
   t.addEventListener('click',function(){
