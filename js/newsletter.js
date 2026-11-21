@@ -82,7 +82,6 @@
   };
 
   if (isService) {
-    var host = document.querySelector('main') || document.body;
     var box = document.createElement('div');
     box.className = 'vnl-inline';
     box.innerHTML = '<h3 class="vnl-h">Subscribe and get 12% off any service.</h3>' +
@@ -90,7 +89,9 @@
       '<form class="vnl-form"><input class="vnl-in" type="email" required placeholder="you@company.com" aria-label="Email">' +
       '<button class="vnl-btn" type="submit">Subscribe and get 12% off</button></form>' +
       '<p class="vnl-note">The code arrives in the confirmation email. One use per subscriber.</p>';
-    host.appendChild(box);
+    var foot = document.querySelector('footer');
+    if (foot && foot.parentElement) { foot.parentElement.insertBefore(box, foot); }
+    else { (document.querySelector('main') || document.body).appendChild(box); }
     var f = box.querySelector('form'), b2 = box.querySelector('.vnl-btn');
     f.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -119,4 +120,4 @@
   }
 })();
 
-/* rev 2: triggers a redeploy so MAILERLITE_TOKEN applies */
+/* rev 3: inline block sits above the footer */
