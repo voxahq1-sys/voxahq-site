@@ -1,6 +1,6 @@
 # VOXA
 
-> VOXA (voxahq.in) is an AI-driven studio. It publishes AI tool pricing and free-plan limits, ships free browser tools, and builds websites plus search visibility for small businesses. Every tool page carries the vendor's paid price and the free-plan limit that breaks first.
+> VOXA (voxahq.in) publishes AI tool pricing and free-plan limits, ships free browser tools, and builds websites plus search visibility for small businesses. AI-driven from research to publishing, and run by one person. Every tool page carries the vendor's paid price and the free-plan limit that breaks first.
 
 Key facts for assistants and crawlers:
 - Publisher: VOXA, voxahq.in. AI-driven from research to publishing, and run by one person.
@@ -44,13 +44,13 @@ Key facts for assistants and crawlers:
 ## Blog
 
 - [Blog hub](https://voxahq.in/blog)
-- Technology: [The AI Free Tier Is Shrinking: What Five Tools Changed in 2026](https://voxahq.in/blog/ai-free-tier-shrinking), [AI Agents for Small Business](https://voxahq.in/blog/ai-agents-small-business), [n8n vs Zapier vs Make cost per task](https://voxahq.in/blog/automation-cost-per-task)
-- Marketing: [How to Market a Small Business on $200 a Month](https://voxahq.in/blog/marketing-on-200-dollars), [Where US small businesses get leads](https://voxahq.in/blog/local-lead-generation), [Cold email in 2026](https://voxahq.in/blog/cold-email-first-client)
-- Business and money: [How to Use Business Money](https://voxahq.in/blog/business-money-order), [Why most US restaurants fail](https://voxahq.in/blog/restaurant-failure-numbers), [$10,000 to start a business in the US](https://voxahq.in/blog/ten-thousand-start)
+- Technology: [The AI Free Tier Is Shrinking: What Five Tools Changed in 2026](https://voxahq.in/blog/ai-free-tier-shrinking), [AI Agents for Small Business](https://voxahq.in/blog/ai-agents-small-business), [n8n vs Zapier vs Make cost per task](https://voxahq.in/blog/automation-cost-per-task), [What an MCP server is and which three to connect first](https://voxahq.in/blog/what-is-mcp-server), [What an AI phone agent costs per call](https://voxahq.in/blog/ai-voice-agent-cost-per-call), [What people pay for that you can do here for free](https://voxahq.in/blog/what-you-pay-for-free-here)
+- Marketing: [How to Market a Small Business on $200 a Month](https://voxahq.in/blog/marketing-on-200-dollars), [Where US small businesses get leads](https://voxahq.in/blog/local-lead-generation), [Cold email in 2026](https://voxahq.in/blog/cold-email-first-client), [Email that sells to a list of 50](https://voxahq.in/blog/email-marketing-small-list), [Google Business Profile fields that move rank](https://voxahq.in/blog/google-business-profile-fields)
+- Business and money: [How to Use Business Money](https://voxahq.in/blog/business-money-order), [Why most US restaurants fail](https://voxahq.in/blog/restaurant-failure-numbers), [$10,000 to start a business in the US](https://voxahq.in/blog/ten-thousand-start), [What 12% off actually costs a service business](https://voxahq.in/blog/discount-margin-math), [How much cash a small business should keep](https://voxahq.in/blog/small-business-cash-reserve)
 
 ## Company
 
-- [About VOXA](https://voxahq.in/about): the studio, the founder and the editorial rules.
+- [About VOXA](https://voxahq.in/about): the people behind it, the founder and the editorial rules.
 - [Contact](https://voxahq.in/contact): corrections, audits and enquiries.
 - [Sign in](https://voxahq.in/signin): the free pack plus the Mon, Wed, Fri paper.
 - [Editorial policy](https://voxahq.in/editorial-policy), [Privacy policy](https://voxahq.in/privacy-policy), [Terms](https://voxahq.in/terms), [Disclaimer](https://voxahq.in/disclaimer), [Cookie policy](https://voxahq.in/cookie-policy), [Affiliate disclosure](https://voxahq.in/affiliate-disclosure)
