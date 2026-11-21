@@ -1,0 +1,127 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FabConvert Profit: postback tracking and net ROI</title>
+<meta name="description" content="One postback URL, then real revenue against real ad spend. Net profit, ROI and EPC per click id, in one ledger.">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<style>
+:root{--ink:#0F1729;--ink2:#4A5568;--bg:#FAFAF8;--line:#DAD4C8;--acc:#0E7C66;--red:#B42318;--amber:#B54708;--green:#067647;--soft:#F4F3F0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+header{background:#0F1729;color:#fff;padding:15px 0}
+header .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:18px;letter-spacing:-.4px;color:#fff;text-decoration:none}
+.chip{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:#1F2C46;color:#9FE3CF;padding:4px 9px;border-radius:999px}
+header nav{margin-left:auto;display:flex;gap:16px;font-size:14px}
+header nav a{color:#C9D2DF;text-decoration:none}
+main{padding:26px 0 60px}
+h1{font-size:26px;letter-spacing:-.7px;margin-bottom:6px}
+.sub{color:var(--ink2);font-size:15px;margin-bottom:20px;max-width:640px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px}
+label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink2);margin-bottom:6px}
+input,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px;font:inherit;font-size:15px}
+button{background:var(--acc);color:#fff;border:0;border-radius:10px;padding:12px 18px;font-size:15px;font-weight:600;cursor:pointer}
+button.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.row{display:grid;grid-template-columns:180px 1fr auto;gap:10px;align-items:end}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{display:block;font-size:26px;letter-spacing:-1px;line-height:1.1}
+.stat span{font-size:12.5px;color:var(--ink2)}
+.pos{color:var(--green)}.neg{color:var(--red)}
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}
+th{text-align:left;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--ink2);padding:8px 6px;border-bottom:1px solid var(--line)}
+td{padding:8px 6px;border-bottom:1px solid #EFEDE8}
+code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--soft);padding:2px 6px;border-radius:5px;word-break:break-all}
+.hint{font-size:12.5px;color:var(--ink2);margin-top:6px}
+.tbl{overflow-x:auto}
+@media(max-width:640px){.stats{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="wrap"><a class="brand" href="/fabconvert">FabConvert</a><span class="chip">Profit tracking</span>
+<nav><a href="/fabconvert">Overview</a><a href="/preflight/app/">Compliance check</a><a href="/fabconvert/profit">Profit</a></nav></div></header>
+<main><div class="wrap">
+<h1>The number after the click.</h1>
+<p class="sub">Send every conversion here with one postback URL. Add what you spent. See net profit, ROI and EPC per click id, without a spreadsheet.</p>
+
+<div class="card">
+  <label>Your postback URL (paste this into your affiliate network)</label>
+  <div class="tbl"><code id="pburl">https://voxahq.in/pb?cid={clickid}&payout={payout}&offer={offer}</code></div>
+  <p class="hint">Most networks let you fire this on a sale. The click id can come from sub1, clickid or your tracker macro.</p>
+  <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+    <button id="copy" class="ghost">Copy the URL</button>
+    <button id="test" class="ghost">Send a test sale</button>
+  </div>
+  <p class="hint" id="testmsg"></p>
+</div>
+
+<div class="stats">
+  <div class="stat"><b id="s-rev">$0</b><span>revenue from postbacks</span></div>
+  <div class="stat"><b id="s-spend">$0</b><span>ad spend logged</span></div>
+  <div class="stat"><b id="s-profit">$0</b><span>net profit</span></div>
+  <div class="stat"><b id="s-roi">-</b><span>ROI</span></div>
+  <div class="stat"><b id="s-epc">$0</b><span>revenue per conversion</span></div>
+  <div class="stat"><b id="s-conv">0</b><span>conversions</span></div>
+</div>
+
+<div class="card">
+  <label>Log what you spent</label>
+  <div class="row">
+    <div><input id="amt" type="number" placeholder="50" step="0.01"></div>
+    <div><input id="lbl" placeholder="Meta, campaign name, or today"></div>
+    <div><button id="addspend">Add spend</button></div>
+  </div>
+  <p class="hint" id="spendmsg"></p>
+</div>
+
+<div class="card"><label>Recent conversions</label><div class="tbl" id="convs"><p class="hint">Nothing yet. Send a test sale above.</p></div></div>
+<div class="card"><label>Spend log</label><div class="tbl" id="spends"><p class="hint">No spend logged yet.</p></div></div>
+</div></main>
+<script>
+var API='/fab-api';
+function money(n){ return '$' + (Math.round(n*100)/100).toFixed(2); }
+function when(ts){ var d=new Date(ts); return d.toISOString().slice(0,16).replace('T',' '); }
+function load(){
+  fetch(API).then(function(r){return r.json();}).then(function(j){
+    if(!j.ok){ document.getElementById('convs').innerHTML='<p class="hint">'+ (j.error||'Storage not ready') +'</p>'; return; }
+    var s=j.summary;
+    document.getElementById('s-rev').textContent=money(s.revenue);
+    document.getElementById('s-spend').textContent=money(s.spend);
+    var p=document.getElementById('s-profit'); p.textContent=money(s.profit); p.className = s.profit>=0?'pos':'neg';
+    document.getElementById('s-roi').textContent = s.roi===null?'-':(s.roi+'%');
+    document.getElementById('s-epc').textContent=money(s.epc);
+    document.getElementById('s-conv').textContent=s.conversions;
+    if(j.conversions.length){
+      var h='<table><thead><tr><th>When</th><th>Click id</th><th>Offer</th><th>Payout</th></tr></thead><tbody>';
+      j.conversions.forEach(function(c){ h+='<tr><td>'+when(c.ts)+'</td><td>'+c.cid+'</td><td>'+(c.offer||'-')+'</td><td>'+money(c.payout)+'</td></tr>'; });
+      document.getElementById('convs').innerHTML=h+'</tbody></table>';
+    }
+    if(j.spend.length){
+      var g='<table><thead><tr><th>When</th><th>Label</th><th>Amount</th></tr></thead><tbody>';
+      j.spend.forEach(function(c){ g+='<tr><td>'+when(c.ts)+'</td><td>'+(c.label||'-')+'</td><td>'+money(c.amount)+'</td></tr>'; });
+      document.getElementById('spends').innerHTML=g+'</tbody></table>';
+    }
+  });
+}
+document.getElementById('copy').addEventListener('click',function(){
+  navigator.clipboard.writeText(document.getElementById('pburl').textContent).then(function(){
+    document.getElementById('testmsg').textContent='Copied.';
+  });
+});
+document.getElementById('test').addEventListener('click',function(){
+  var cid='test'+Math.random().toString(36).slice(2,9);
+  var pay=(20+Math.random()*80).toFixed(2);
+  fetch('/pb?cid='+cid+'&payout='+pay+'&offer=test-offer').then(function(r){return r.json();}).then(function(j){
+    document.getElementById('testmsg').textContent = j.ok ? ('Test sale saved: '+j.saved.cid+' for $'+j.saved.payout) : ('Failed: '+(j.error||'unknown'));
+    load();
+  });
+});
+document.getElementById('addspend').addEventListener('click',function(){
+  var a=document.getElementById('amt').value, l=document.getElementById('lbl').value;
+  if(!a){ document.getElementById('spendmsg').textContent='Enter an amount first.'; return; }
+  fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({amount:a,label:l})}).then(function(r){return r.json();}).then(function(j){
+    document.getElementById('spendmsg').textContent = j.ok ? 'Spend added.' : ('Failed: '+(j.error||'unknown'));
+    document.getElementById('amt').value=''; document.getElementById('lbl').value='';
+    load();
+  });
+});
+load();
+</script></body></html>
