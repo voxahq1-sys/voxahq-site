@@ -46,12 +46,25 @@ button:disabled{opacity:.6;cursor:default}
 footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--ink2);font-size:13px}
 footer b{color:var(--ink)}
 @media(max-width:640px){.row{grid-template-columns:1fr}h1{font-size:24px}.tag{width:100%;margin-left:0}}
+#tabs{display:flex;gap:8px;margin:0 0 14px}
+.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;cursor:pointer;color:var(--ink2)}
+.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+table.bulk{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+table.bulk th{text-align:left;font-size:11.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--ink2);padding:8px 6px;border-bottom:1px solid var(--line)}
+table.bulk td{padding:9px 6px;border-bottom:1px solid #EFEDE8;vertical-align:top}
+td.v-red{color:var(--red);font-weight:700}
+td.v-amber{color:var(--amber);font-weight:700}
+td.v-green{color:var(--green);font-weight:700}
+.bulkrow{max-width:420px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#bulkout{margin-top:22px}
+.dl{display:inline-block;margin-top:12px;font-size:14px;font-weight:600;color:var(--acc)}
 </style></head><body>
 <header><div class="wrap"><span class="brand">Preflight</span><span class="chip">beta</span><span class="tag">Ad policy check before you spend</span></div></header>
 <main><div class="wrap">
 <h1>Paste the ad. See what a reviewer will flag.</h1>
 <p class="sub">Copy, the text inside your creative, and the landing page are all checked against health, finance and platform rules. You get a verdict, the reason, and a rewrite.</p>
-<div class="card">
+<div id="tabs"><button class="tab on" data-mode="single">Single ad</button><button class="tab" data-mode="bulk">Bulk check</button></div>
+<div class="card" id="singleCard">
   <label for="copy">Ad copy (headline, primary text, description)</label>
   <textarea id="copy" placeholder="Clinically proven to cure insomnia in 7 days. Guaranteed results or your money back."></textarea>
   <label for="img">Text inside the image or video (optional)</label>
@@ -62,6 +75,16 @@ footer b{color:var(--ink)}
   </div>
   <button id="go">Check this ad</button>
   <p class="hint">Nothing is stored. The landing page is fetched once to check what it says.</p>
+</div>
+</div>
+<div class="card" id="bulkCard" style="display:none">
+  <label for="bulk">One ad per line (paste up to 200)</label>
+  <textarea id="bulk" style="min-height:180px" placeholder="Cure insomnia in 7 days, guaranteed
+A daily probiotic with 10 strains, built to support digestive comfort
+Lose 20 lbs in 2 weeks — doctors hate this trick"></textarea>
+  <button id="gobulk">Check all of them</button>
+  <p class="hint">Each line is one ad. Nothing is stored.</p>
+  <div id="bulkout"></div>
 </div>
 <div id="out"></div>
 </div></main>
@@ -177,4 +200,49 @@ document.getElementById('go').addEventListener('click', function () {
     btn.disabled = false; btn.textContent = 'Check this ad';
   });
 });
+
+(function () {
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      tabs.forEach(function (x) { x.classList.remove('on'); });
+      t.classList.add('on');
+      var bulk = t.getAttribute('data-mode') === 'bulk';
+      document.getElementById('singleCard').style.display = bulk ? 'none' : 'block';
+      document.getElementById('bulkCard').style.display = bulk ? 'block' : 'none';
+    });
+  });
+  var lastRows = [];
+  document.getElementById('gobulk').addEventListener('click', function () {
+    var raw = document.getElementById('bulk').value || '';
+    var lines = raw.split('\n').map(function (s) { return s.trim(); }).filter(function (s) { return s.length > 3; }).slice(0, 200);
+    if (!lines.length) { document.getElementById('bulkout').innerHTML = '<p class="hint">Paste at least one ad.</p>'; return; }
+    lastRows = lines.map(function (line) {
+      var hits = scanText(line);
+      var seen = {};
+      hits = hits.filter(function (f) { if (seen[f.id]) return false; seen[f.id] = 1; return true; });
+      var blocks = hits.filter(function (h) { return h.sev === 'block'; });
+      var warns = hits.filter(function (h) { return h.sev === 'warn'; });
+      var verdict = blocks.length ? 'red' : (warns.length ? 'amber' : 'green');
+      return { line: line, verdict: verdict, blocks: blocks, warns: warns, top: blocks[0] || warns[0] || null };
+    });
+    var reds = lastRows.filter(function (r) { return r.verdict === 'red'; }).length;
+    var ambers = lastRows.filter(function (r) { return r.verdict === 'amber'; }).length;
+    var greens = lastRows.length - reds - ambers;
+    var h = '<div class="verdict ' + (reds ? 'v-red' : (ambers ? 'v-amber' : 'v-green')) + '"><b>' + reds + ' of ' + lastRows.length + ' cannot launch</b><span>' + ambers + ' to fix, ' + greens + ' clear</span></div>';
+    h += '<table class="bulk"><thead><tr><th>#</th><th>Ad</th><th>Verdict</th><th>Top issue</th></tr></thead><tbody>';
+    lastRows.forEach(function (r, i) {
+      h += '<tr><td>' + (i + 1) + '</td><td class="bulkrow" title="' + r.line.replace(/"/g, '&quot;') + '">' + r.line.replace(/</g, '&lt;') + '</td><td class="v-' + r.verdict + '">' + (r.verdict === 'red' ? 'DO NOT LAUNCH' : r.verdict === 'amber' ? 'FIX' : 'CLEAR') + '</td><td>' + (r.top ? r.top.cat : '-') + '</td></tr>';
+    });
+    h += '</tbody></table><a class="dl" id="csv" href="#">Download the results as CSV</a>';
+    document.getElementById('bulkout').innerHTML = h;
+    var csv = 'ad,verdict,top_issue,all_issues\n' + lastRows.map(function (r) {
+      var issues = r.blocks.concat(r.warns).map(function (x) { return x.cat; }).join('; ');
+      return '"' + r.line.replace(/"/g, '""') + '","' + r.verdict + '","' + (r.top ? r.top.cat : '') + '","' + issues.replace(/"/g, '""') + '"';
+    }).join('\n');
+    var blob = new Blob([csv], { type: 'text/csv' });
+    document.getElementById('csv').setAttribute('href', URL.createObjectURL(blob));
+    document.getElementById('csv').setAttribute('download', 'preflight-results.csv');
+  });
+})();
 </script></body></html>
