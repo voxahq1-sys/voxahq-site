@@ -133,6 +133,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://voxahq.in/fabconvert/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://voxahq.in/fabconvert/profit/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://voxahq.in/free-tools/</loc>
     <lastmod>2026-11-22</lastmod>
     <changefreq>weekly</changefreq>
