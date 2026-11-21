@@ -1,0 +1,90 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Preflight: catch the ad rejection before you spend</title>
+<meta name="description" content="Check ad copy, creative text and the landing page against 46 policy rules before you launch. Bulk checks, an approved claims library, approvals with a log, and an API.">
+<meta name="robots" content="noindex,nofollow">
+<style>
+:root{--ink:#0F1729;--ink2:#4A5568;--line:#DAD4C8;--acc:#0E7C66;--bg:#FAFAF8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,-apple-system,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header{padding:18px 0;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:12px}
+.brand{font-weight:800;font-size:19px;letter-spacing:-.4px}
+.chip{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:#E7F5F1;color:var(--acc);padding:4px 9px;border-radius:999px}
+a.cta{margin-left:auto;background:var(--acc);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none}
+section{padding:44px 0}
+h1{font-size:38px;line-height:1.1;letter-spacing:-1.2px;margin-bottom:14px}
+.lede{font-size:18px;color:var(--ink2);max-width:640px}
+h2{font-size:24px;letter-spacing:-.6px;margin:34px 0 12px}
+p{margin-bottom:12px;color:var(--ink2)}
+ul{margin:0 0 12px 20px;color:var(--ink2)}li{margin-bottom:7px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h3{font-size:16px;margin-bottom:6px}
+.card p{font-size:14px;margin:0}
+.price{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
+.plan.best{border-color:var(--acc);box-shadow:0 8px 26px rgba(14,124,102,.10)}
+.plan .num{font-size:28px;font-weight:800;letter-spacing:-1px}
+.plan .per{font-size:13px;color:var(--ink2)}
+.plan ul{margin:12px 0 0 18px;font-size:14px}
+pre{background:#0F1729;color:#E6EDF3;padding:16px;border-radius:12px;overflow-x:auto;font-size:13px;line-height:1.6;margin:12px 0}
+.note{background:#fff;border-left:4px solid var(--acc);border-radius:10px;padding:14px 16px;font-size:14.5px;color:var(--ink);margin:18px 0}
+footer{border-top:1px solid var(--line);padding:22px 0 44px;color:var(--ink2);font-size:13px}
+@media(max-width:760px){h1{font-size:28px}.grid,.price{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="wrap"><span class="brand">Preflight</span><span class="chip">beta</span><a class="cta" href="/preflight/">Open the checker</a></div></header>
+<section><div class="wrap">
+<h1>Catch the rejection before you spend.</h1>
+<p class="lede">Preflight checks ad copy, the text inside the creative, and the landing page against 46 health, finance and platform rules. It runs before launch, so a rejection costs you nothing.</p>
+<p>Most rejections are not mysterious. They are the same fifteen claims in different words: a cure, a guaranteed result, a number of pounds in a number of weeks, a question about the reader's body, a before and after, a percentage nobody can substantiate. Preflight names the line, the rule behind it, and the rewrite that keeps the offer.</p>
+
+<h2>What it does</h2>
+<div class="grid">
+<div class="card"><h3>Bulk check</h3><p>Paste up to 200 ads. Each gets red, amber or green, with the top issue named. Export the results as CSV.</p></div>
+<div class="card"><h3>Claims library</h3><p>Add the phrases your legal team already cleared. They pass instead of blocking, so you stop re-arguing the same sentence.</p></div>
+<div class="card"><h3>Approval log</h3><p>Approve or reject with your name on it. Every decision is timestamped and exportable for the client file.</p></div>
+</div>
+<div class="grid" style="margin-top:14px">
+<div class="card"><h3>Image text</h3><p>Upload the creative and the tool reads the words inside it, because half the claims hide in the picture.</p></div>
+<div class="card"><h3>Landing page</h3><p>Fetches the page, checks the tracking parameters, flags the risky claims there, and warns when the page does not match the ad.</p></div>
+<div class="card"><h3>API</h3><p>One POST returns a verdict per ad, so a launcher can gate every push without a human in the loop.</p></div>
+</div>
+
+<h2>How accurate is it</h2>
+<p>Two tests, both published here rather than claimed:</p>
+<ul>
+<li><strong>25 ads with documented rejections</strong> and their stated reasons: 25 flagged, 24 of them hard blocks.</li>
+<li><strong>52 live ads running on Meta today:</strong> zero false alarms after the rules were tightened.</li>
+</ul>
+<div class="note">It does not guarantee approval. Platform review is partly automated judgement. Preflight catches the written rules, which is where most rejections start, and the log shows exactly what was cleared and by whom.</div>
+
+<h2>Pricing</h2>
+<div class="price">
+<div class="plan"><div class="num">$0</div><div class="per">Free</div><ul><li>50 ads a month</li><li>Copy, image text, lander</li><li>No account</li></ul></div>
+<div class="plan best"><div class="num">$49</div><div class="per">per month, solo buyer</div><ul><li>2,000 ads a month</li><li>Claims library</li><li>Approval log and CSV</li><li>API access</li></ul></div>
+<div class="plan"><div class="num">$149</div><div class="per">per month, agency</div><ul><li>10,000 ads, 5 seats</li><li>Everything in Solo</li><li>Client-ready exports</li><li>Priority rule updates</li></ul></div>
+</div>
+<p style="margin-top:14px">Running a launcher or a platform? White-label pricing is per seat. The API is the same shape either way.</p>
+
+<h2>API</h2>
+<pre>POST https://voxahq.in/preflight-api
+x-api-key: your-key
+{ "ads": ["your ad copy", "another ad"] }
+
+200 OK
+{ "results": [ { "verdict": "red", "score": 25,
+  "blocks": [ { "cat": "Cure or treatment claim",
+                "match": "Cure insomnia",
+                "fix": "may support restful sleep" } ] } ] }</pre>
+
+<h2>Who it is for</h2>
+<ul>
+<li>Media buyers running health, supplement and telehealth offers at volume.</li>
+<li>Agencies that need a client sign-off before a launch, on the record.</li>
+<li>Platforms and launchers that want a policy gate in front of the push button.</li>
+</ul>
+<p style="margin-top:18px"><a class="cta" style="margin:0;display:inline-block" href="/preflight/">Open the checker</a></p>
+</div></section>
+<footer><div class="wrap">Preflight is built and run by VOXA. Rules are maintained against Meta, TikTok and Google advertising standards. Last rule count: 46.</div></footer>
+</body></html>
