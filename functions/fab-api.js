@@ -8,6 +8,10 @@ async function hmac(key, msg) {
   const sig = await crypto.subtle.sign('HMAC', k, new TextEncoder().encode(msg));
   return btoa(String.fromCharCode(...new Uint8Array(sig))).replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_');
 }
+async function sha256(s) {
+  const d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return btoa(String.fromCharCode(...new Uint8Array(d))).replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_').slice(0, 40);
+}
 async function wsFor(env, email) { return (await hmac(secret(env), 'ws:' + email)).slice(0, 18); }
 function cookieOf(request) {
   const c = request.headers.get('cookie') || '';
@@ -39,6 +43,10 @@ export async function onRequestGet(context) {
   const email = await session(request, env);
   if (!email) return json({ ok: false, signedIn: false, error: 'Sign in first.' }, 401);
   const w = await wsFor(env, email);
+  const month = new Date().toISOString().slice(0, 7);
+  const plan = (await env.PASSPORT.get('plan:' + email)) || 'free';
+  const limit = plan === 'agency' ? 10000 : (plan === 'solo' ? 2000 : 50);
+  const used = Number((await env.PASSPORT.get('u:' + w + ':' + month)) || 0);
   const conv = [];
   for (const k of (await listAll(env, 'w:' + w + ':p:')).slice(-500)) {
     const v = await env.PASSPORT.get(k);
@@ -55,7 +63,7 @@ export async function onRequestGet(context) {
   const revenue = sales.reduce((a, c) => a + (Number(c.payout) || 0), 0);
   const cost = spend.reduce((a, s) => a + (Number(s.amount) || 0), 0);
   return json({
-    ok: true, email, ws: w,
+    ok: true, email, ws: w, plan, usage: { used, limit, month },
     summary: {
       conversions: sales.length,
       refunds: refunds.length,
@@ -77,6 +85,11 @@ export async function onRequestPost(context) {
   const w = await wsFor(env, email);
   let b = {};
   try { b = await request.json(); } catch (e) { return json({ ok: false, error: 'Send JSON.' }, 400); }
+  if (b.action === 'newkey') {
+    const raw = 'fc_' + Array.from(crypto.getRandomValues(new Uint8Array(18))).map(x => ('0' + x.toString(16)).slice(-2)).join('');
+    await env.PASSPORT.put('key:' + await sha256(raw), email, { expirationTtl: 60 * 60 * 24 * 365 });
+    return json({ ok: true, key: raw });
+  }
   if (b.action === 'clear' || b.action === 'delete') {
     const keys = [...(await listAll(env, 'w:' + w + ':p:')), ...(await listAll(env, 'w:' + w + ':s:'))];
     for (const k of keys) await env.PASSPORT.delete(k);

@@ -1,0 +1,78 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FabConvert account</title><meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<style>
+:root{--ink:#0F1729;--ink2:#4A5568;--bg:#FAFAF8;--line:#DAD4C8;--acc:#0E7C66;--red:#B42318}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,sans-serif}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+header{background:#0F1729;color:#fff;padding:15px 0}
+header .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:18px;color:#fff;text-decoration:none}
+header nav{margin-left:auto;display:flex;gap:14px;font-size:14px}
+header nav a{color:#C9D2DF;text-decoration:none}
+main{padding:26px 0 60px}
+h1{font-size:24px;letter-spacing:-.6px;margin-bottom:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px}
+label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink2);margin-bottom:6px}
+.row{display:flex;justify-content:space-between;gap:12px;font-size:15px;padding:7px 0;border-bottom:1px solid #F0EDE7}
+.row:last-child{border:0}
+.row b{font-weight:600}
+button{background:var(--acc);color:#fff;border:0;border-radius:10px;padding:11px 16px;font-size:14.5px;font-weight:600;cursor:pointer}
+button.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+button.danger{background:#fff;border:1px solid #F0CFCB;color:var(--red)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:#F4F3F0;padding:3px 7px;border-radius:5px;word-break:break-all}
+.hint{font-size:12.5px;color:var(--ink2);margin-top:8px}
+.bar{height:8px;background:#EFEDE8;border-radius:99px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--acc)}
+</style></head><body>
+<header><div class="wrap"><a class="brand" href="/fabconvert">FabConvert</a><nav><a href="/fabconvert">Overview</a><a href="/fabconvert/compliance/">Compliance</a><a href="/fabconvert/profit/">Profit</a></nav></div></header>
+<main><div class="wrap">
+<h1>Account</h1>
+<div class="card">
+  <div class="row"><span>Email</span><b id="em">...</b></div>
+  <div class="row"><span>Plan</span><b id="plan">free</b></div>
+  <div class="row"><span>Checks this month</span><b id="use">0</b></div>
+  <div class="bar"><i id="bar" style="width:0%"></i></div>
+  <p class="hint">Free includes 50 checks a month. Paid plans raise it to 2,000 and 10,000. Billing is not connected yet, so paid plans are switched on by hand.</p>
+</div>
+<div class="card">
+  <label>API key</label>
+  <p class="hint" style="margin:0 0 10px">Use this in the header <code>x-api-key</code> against <code>https://voxahq.in/compliance-check</code>. Only a hash is stored, so a lost key cannot be shown again.</p>
+  <button id="newkey">Generate a new key</button>
+  <div id="keybox" style="margin-top:12px"></div>
+</div>
+<div class="card">
+  <label>Data</label>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <button class="ghost danger" id="clear">Clear my ledger</button>
+    <button class="ghost danger" id="del">Delete my account data</button>
+    <button class="ghost" id="out">Sign out</button>
+  </div>
+  <p class="hint">Clearing removes every conversion and spend entry. Deleting removes those and signs you out. Your email stays only as an empty account.</p>
+</div>
+</div></main>
+<script>
+function paint(j){
+  document.getElementById('em').textContent=j.email;
+  document.getElementById('plan').textContent=j.plan;
+  document.getElementById('use').textContent=j.usage.used+' of '+j.usage.limit;
+  document.getElementById('bar').style.width=Math.min(100,Math.round(j.usage.used/j.usage.limit*100))+'%';
+}
+fetch('/fab-api').then(function(r){ if(r.status===401){ window.location.href='/fabconvert/login'; return null;} return r.json(); }).then(function(j){ if(j&&j.ok) paint(j); });
+document.getElementById('newkey').addEventListener('click',function(){
+  if(!confirm('Generate a new key? The old one stops working.')) return;
+  fetch('/fab-api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'newkey'})}).then(function(r){return r.json();}).then(function(j){
+    document.getElementById('keybox').innerHTML = j.ok ? ('<code id="k">'+j.key+'</code><p class="hint">Copy it now. It will not be shown again.</p>') : ('<p class="hint">'+j.error+'</p>');
+  });
+});
+document.getElementById('clear').addEventListener('click',function(){
+  if(!confirm('Delete every conversion and spend entry?')) return;
+  fetch('/fab-api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'clear'})}).then(function(r){return r.json();}).then(function(j){ alert(j.ok?('Cleared '+j.removed+' records.'):j.error); });
+});
+document.getElementById('del').addEventListener('click',function(){
+  if(!confirm('Delete all data and sign out?')) return;
+  fetch('/fab-api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'delete'})}).then(function(){ window.location.href='/fabconvert'; });
+});
+document.getElementById('out').addEventListener('click',function(){ fetch('/auth?action=logout',{method:'POST'}).then(function(){ window.location.href='/fabconvert'; }); });
+</script></body></html>

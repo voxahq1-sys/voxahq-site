@@ -1,3 +1,5 @@
+/preflight/app  /fabconvert/compliance/  301
+/preflight  /fabconvert  301
 /preflight-info  /preflight  301
 /ai-stack-audit  /  301
 # 301 the .html variants to the clean URLs (removes duplicate URLs Google was choosing as canonical)

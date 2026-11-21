@@ -1,0 +1,167 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FabConvert compliance check</title>
+<meta name="description" content="Check ad copy, the text inside the creative and the landing page against 46 policy rules before you launch.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<style>
+:root{--ink:#0F1729;--ink2:#4A5568;--bg:#FAFAF8;--line:#DAD4C8;--acc:#0E7C66;--red:#B42318;--amber:#B54708;--green:#067647;--soft:#F4F3F0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{background:#0F1729;color:#fff;padding:15px 0}
+header .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:18px;color:#fff;text-decoration:none}
+.chip{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:#1F2C46;color:#9FE3CF;padding:4px 9px;border-radius:999px}
+header nav{margin-left:auto;display:flex;gap:14px;font-size:14px;align-items:center}
+header nav a{color:#C9D2DF;text-decoration:none}
+.usage{font-size:12.5px;color:#9FE3CF}
+main{padding:24px 0 60px}
+h1{font-size:25px;letter-spacing:-.7px;margin-bottom:6px}
+.sub{color:var(--ink2);font-size:15px;margin-bottom:18px;max-width:640px}
+.tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 15px;font-size:14px;font-weight:600;cursor:pointer;color:var(--ink2)}
+.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink2);margin:14px 0 6px}
+label:first-child{margin-top:0}
+textarea,input,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px;font:inherit;font-size:15px;background:#fff}
+textarea{min-height:90px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 170px;gap:12px}
+button{background:var(--acc);color:#fff;border:0;border-radius:10px;padding:13px 20px;font-size:15.5px;font-weight:600;cursor:pointer}
+button.wide{width:100%;margin-top:16px}
+button.ghost{background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13.5px;padding:8px 12px;border-radius:8px}
+.hint{font-size:12.5px;color:var(--ink2);margin-top:6px}
+.verdict{border-radius:14px;padding:18px 20px;color:#fff;display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:20px}
+.v-red{background:var(--red)}.v-amber{background:var(--amber)}.v-green{background:var(--green)}.v-idle{background:#3A4356}
+.verdict b{font-size:20px}.verdict .score{margin-left:auto;font-size:13.5px;opacity:.9}
+.find{background:#fff;border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:13px 15px;margin-top:9px}
+.find.block{border-left-color:var(--red)}.find.warn{border-left-color:var(--amber)}.find.info{border-left-color:#98A2B3}
+.find .top{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:5px}
+.pill{font-size:10.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;padding:3px 7px;border-radius:6px}
+.pill.block{background:#FEE4E2;color:var(--red)}.pill.warn{background:#FEF0C7;color:var(--amber)}.pill.info{background:#EEF0F3;color:#475467}
+.find .cat{font-weight:700;font-size:14px}
+.find .m{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--soft);padding:2px 6px;border-radius:5px;color:var(--red)}
+.find p{font-size:13.5px;color:var(--ink2);margin-top:5px}
+.find .fix{font-size:13.5px;color:var(--ink)}.find .fix b{color:var(--acc)}
+.secttl{font-size:12px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--ink2);margin:20px 0 4px}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13.5px}
+th{text-align:left;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--ink2);padding:8px 6px;border-bottom:1px solid var(--line)}
+td{padding:9px 6px;border-bottom:1px solid #EFEDE8;vertical-align:top}
+td.c-red{color:var(--red);font-weight:700;white-space:nowrap}td.c-amber{color:var(--amber);font-weight:700;white-space:nowrap}td.c-green{color:var(--green);font-weight:700;white-space:nowrap}
+.clip{max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#bulkout{overflow-x:auto}
+a.dl{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:600;color:var(--acc)}
+@media(max-width:640px){.row{grid-template-columns:1fr}h1{font-size:22px}}
+</style></head><body>
+<header><div class="wrap"><a class="brand" href="/fabconvert">FabConvert</a><span class="chip">Compliance</span>
+<nav><a href="/fabconvert">Overview</a><a href="/fabconvert/profit/">Profit</a><a href="/fabconvert/account/">Account</a><span class="usage" id="usage"></span></nav></div></header>
+<main><div class="wrap">
+<h1>Check the ad before a reviewer does.</h1>
+<p class="sub">46 rules across health, finance and platform limits. Every check counts against your monthly allowance.</p>
+
+<div class="tabs"><button class="tab on" data-t="single">Single ad</button><button class="tab" data-t="bulk">Bulk</button></div>
+
+<div id="pane-single"><div class="card">
+<label for="copy">Ad copy</label>
+<textarea id="copy" placeholder="Clinically proven to cure insomnia in 7 days. Guaranteed results."></textarea>
+<label for="img">Text inside the image or video</label>
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
+<input type="file" id="imgFile" accept="image/*" style="border:0;padding:0;width:auto;font-size:13.5px">
+<button type="button" id="ocr" class="ghost">Read the image</button>
+<span id="ocrmsg" class="hint" style="margin:0"></span>
+</div>
+<textarea id="img" style="min-height:60px" placeholder="LOSE 20LBS IN 2 WEEKS"></textarea>
+<div class="row">
+<div><label for="url">Landing page URL (optional)</label><input id="url" placeholder="https://example.com/offer"></div>
+<div><label for="plat">Platform</label><select id="plat"><option>Meta</option><option>TikTok</option><option>Google</option></select></div>
+</div>
+<button id="go" class="wide">Check this ad</button>
+<div id="out"></div>
+</div></div>
+
+<div id="pane-bulk" style="display:none"><div class="card">
+<label for="bulk">One ad per line, up to 200</label>
+<textarea id="bulk" style="min-height:160px" placeholder="Cure insomnia in 7 days, guaranteed&#10;A daily probiotic with 10 strains, built to support digestive comfort"></textarea>
+<button id="gobulk" class="wide">Check all</button>
+<div id="bulkout"></div>
+</div></div>
+</div></main>
+<script>
+var ME=null;
+function verdictBox(r){
+  var cls=r.verdict==='red'?'v-red':(r.verdict==='amber'?'v-amber':'v-green');
+  var word=r.verdict==='red'?'DO NOT LAUNCH':(r.verdict==='amber'?'FIX FIRST':'CLEAR TO LAUNCH');
+  var h='<div class="verdict '+cls+'"><b>'+word+'</b><span>'+r.blocks.length+' block, '+r.warns.length+' warning</span><span class="score">risk score '+r.score+'/100</span></div>';
+  if(!r.blocks.length && !r.warns.length) h+='<div class="find"><div class="top"><span class="pill info">clean</span><span class="cat">No rule matched</span></div><p>Nothing in this copy trips the current rule set. That is not a guarantee, only the absence of known flags.</p></div>';
+  ['block','warn'].forEach(function(sev){
+    var g=r[sev+'s'];
+    if(!g.length) return;
+    h+='<div class="secttl">'+sev+' ('+g.length+')</div>';
+    g.forEach(function(f){
+      h+='<div class="find '+sev+'"><div class="top"><span class="pill '+sev+'">'+sev+'</span><span class="cat">'+f.cat+'</span>'+(f.match?'<span class="m">'+f.match+'</span>':'')+'</div><p>'+f.why+'</p><p class="fix"><b>Fix:</b> '+f.fix+'</p></div>';
+    });
+  });
+  return h;
+}
+function setUsage(u){ if(u) document.getElementById('usage').textContent = u.used + ' of ' + u.limit + ' this month'; }
+fetch('/fab-api').then(function(r){ if(r.status===401){ window.location.href='/fabconvert/login'; return null; } return r.json(); }).then(function(j){ if(j&&j.ok){ ME=j; setUsage(j.usage); } });
+document.querySelectorAll('.tab').forEach(function(t){ t.addEventListener('click',function(){ document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');}); t.classList.add('on'); document.getElementById('pane-single').style.display = t.getAttribute('data-t')==='single'?'block':'none'; document.getElementById('pane-bulk').style.display = t.getAttribute('data-t')==='bulk'?'block':'none'; }); });
+document.getElementById('ocr').addEventListener('click',function(){
+  var f=document.getElementById('imgFile').files[0], st=document.getElementById('ocrmsg'), b=this;
+  if(!f){ st.textContent='Pick an image first.'; return; }
+  b.disabled=true; st.textContent='Loading the reader...';
+  function run(){
+    window.Tesseract.recognize(URL.createObjectURL(f),'eng',{logger:function(m){ if(m.status==='recognizing text') st.textContent='Reading... '+Math.round(m.progress*100)+'%'; }}).then(function(o){
+      var txt=o.data.text.replace(/\n+/g,' ').trim();
+      document.getElementById('img').value=txt; st.textContent = txt ? 'Read '+txt.length+' characters.' : 'No text found.';
+      b.disabled=false;
+    }).catch(function(){ st.textContent='Could not read it. Type the text.'; b.disabled=false; });
+  }
+  if(window.Tesseract) return run();
+  var s=document.createElement('script'); s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'; s.onload=run; s.onerror=function(){ st.textContent='Reader failed to load.'; b.disabled=false; }; document.head.appendChild(s);
+});
+document.getElementById('go').addEventListener('click',function(){
+  var btn=this, copy=document.getElementById('copy').value, img=document.getElementById('img').value, url=document.getElementById('url').value.trim();
+  if(!copy && !img){ document.getElementById('out').innerHTML='<div class="verdict v-idle">Add the ad copy first.</div>'; return; }
+  btn.disabled=true; btn.textContent='Checking...';
+  fetch('/compliance-check',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({ads:[copy+' '+img]})}).then(function(r){return r.json();}).then(function(j){
+    btn.disabled=false; btn.textContent='Check this ad';
+    if(!j.ok){ document.getElementById('out').innerHTML='<div class="verdict v-idle">'+j.error+'</div>'; if(j.usage) setUsage(j.usage); return; }
+    setUsage(j.usage);
+    document.getElementById('out').innerHTML=verdictBox(j.results[0]);
+    if(url){
+      fetch('/preflight-lander?url='+encodeURIComponent(url)+'&q='+encodeURIComponent(copy.slice(0,600))).then(function(r){return r.json();}).then(function(l){
+        var ex=[];
+        if(!l.ok) ex.push('Page: '+l.error);
+        else { ex.push('Page status '+l.status+' · '+l.words+' words'); ex.push('Tracking: '+(l.tracking||'none')); if(l.flags&&l.flags.length) ex.push('Page flags: '+l.flags.join(', ')); if(l.mismatch) ex.push('Ad and page do not look like the same offer.'); }
+        var d=document.createElement('div'); d.className='find info'; d.innerHTML='<div class="top"><span class="pill info">lander</span><span class="cat">Landing page</span></div><p>'+ex.join('<br>')+'</p>';
+        document.getElementById('out').appendChild(d);
+      });
+    }
+  }).catch(function(){ btn.disabled=false; btn.textContent='Check this ad'; });
+});
+document.getElementById('gobulk').addEventListener('click',function(){
+  var lines=document.getElementById('bulk').value.split('\n').map(function(s){return s.trim();}).filter(function(s){return s.length>3;}).slice(0,200);
+  if(!lines.length){ document.getElementById('bulkout').innerHTML='<p class="hint">Paste at least one ad.</p>'; return; }
+  var b=this; b.disabled=true; b.textContent='Checking '+lines.length+'...';
+  fetch('/compliance-check',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({ads:lines})}).then(function(r){return r.json();}).then(function(j){
+    b.disabled=false; b.textContent='Check all';
+    if(!j.ok){ document.getElementById('bulkout').innerHTML='<p class="hint">'+j.error+'</p>'; if(j.usage) setUsage(j.usage); return; }
+    setUsage(j.usage);
+    var reds=j.results.filter(function(r){return r.verdict==='red';}).length;
+    var ambers=j.results.filter(function(r){return r.verdict==='amber';}).length;
+    var h='<div class="verdict '+(reds?'v-red':(ambers?'v-amber':'v-green'))+'"><b>'+reds+' of '+j.results.length+' cannot launch</b><span>'+ambers+' to fix, '+(j.results.length-reds-ambers)+' clear</span></div>';
+    h+='<table><thead><tr><th>#</th><th>Ad</th><th>Verdict</th><th>Top issue</th></tr></thead><tbody>';
+    j.results.forEach(function(r,i){
+      var cls=r.verdict==='red'?'c-red':(r.verdict==='amber'?'c-amber':'c-green');
+      var word=r.verdict==='red'?'DO NOT LAUNCH':(r.verdict==='amber'?'FIX':'CLEAR');
+      h+='<tr><td>'+(i+1)+'</td><td class="clip">'+r.ad+'</td><td class="'+cls+'">'+word+'</td><td>'+(r.blocks[0]?r.blocks[0].cat:(r.warns[0]?r.warns[0].cat:'-'))+'</td></tr>';
+    });
+    h+='</tbody></table>';
+    var csv='ad,verdict,issues\n'+j.results.map(function(r){ return '"'+r.ad.replace(/"/g,'""')+'","'+r.verdict+'","'+r.blocks.concat(r.warns).map(function(x){return x.cat;}).join('; ')+'"'; }).join('\n');
+    h+='<a class="dl" id="csvexp" href="#" download="fabconvert-results.csv">Download results (CSV)</a>';
+    document.getElementById('bulkout').innerHTML=h;
+    var a=document.getElementById('csvexp'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  }).catch(function(){ b.disabled=false; b.textContent='Check all'; });
+});
+</script></body></html>
