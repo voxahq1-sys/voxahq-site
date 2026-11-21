@@ -1,293 +1,152 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Preflight: ad policy check before you launch</title>
-<meta name="description" content="Check ads for policy risk before you spend. Bulk checks, an approved claims library and an approval log.">
+<title>Preflight: check ads for policy risk before you launch</title>
+<meta name="description" content="Preflight checks ad copy, the text inside the creative and the landing page against 46 policy rules. Bulk checks, an approved claims library, approvals with a log, and an API.">
 <meta name="robots" content="index,follow">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <style>
-:root{--ink:#0F1729;--ink2:#4A5568;--bg:#FAFAF8;--line:#DAD4C8;--acc:#0E7C66;--red:#B42318;--amber:#B54708;--green:#067647;--soft:#F4F3F0}
+:root{--ink:#0F1729;--ink2:#4A5568;--line:#DAD4C8;--acc:#0E7C66;--bg:#FAFAF8;--soft:#F4F3F0}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,sans-serif}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
-header{background:#0F1729;color:#fff;padding:16px 0}
-header .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.brand{font-weight:800;font-size:19px;letter-spacing:-.4px}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,-apple-system,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+header{background:#0F1729;color:#fff;padding:16px 0;position:sticky;top:0;z-index:20}
+header .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:19px;letter-spacing:-.4px;color:#fff;text-decoration:none}
 .chip{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:#1F2C46;color:#9FE3CF;padding:4px 9px;border-radius:999px}
-.tag{color:#B9C2D0;font-size:14px;margin-left:auto}
-main{padding:26px 0 60px}
-h1{font-size:27px;line-height:1.18;letter-spacing:-.7px;margin-bottom:6px}
-.sub{color:var(--ink2);margin-bottom:20px;font-size:15.5px;max-width:640px}
-nav.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
-.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 15px;font-size:14px;font-weight:600;cursor:pointer;color:var(--ink2)}
-.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
-.card+.card{margin-top:16px}
-label{display:block;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink2);margin:14px 0 6px}
-label:first-child{margin-top:0}
-textarea,input,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
-textarea{min-height:92px;resize:vertical}
-.row{display:grid;grid-template-columns:1fr 170px;gap:12px}
-button{background:var(--acc);color:#fff;border:0;border-radius:10px;padding:13px 20px;font-size:15.5px;font-weight:600;cursor:pointer}
-button.wide{width:100%;margin-top:16px}
-button.ghost{background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13.5px;padding:8px 12px;border-radius:8px;margin-left:8px}
-.hint{font-size:12.5px;color:var(--ink2);margin-top:6px}
-.verdict{border-radius:14px;padding:18px 20px;color:#fff;display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:20px}
-.v-red{background:var(--red)}.v-amber{background:var(--amber)}.v-green{background:var(--green)}.v-idle{background:#3A4356}
-.verdict b{font-size:20px}
-.verdict .score{margin-left:auto;font-size:13.5px;opacity:.9}
-.find{background:#fff;border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:13px 15px;margin-top:9px}
-.find.block{border-left-color:var(--red)}.find.warn{border-left-color:var(--amber)}.find.info{border-left-color:#98A2B3}
-.find .top{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:5px}
-.pill{font-size:10.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;padding:3px 7px;border-radius:6px}
-.pill.block{background:#FEE4E2;color:var(--red)}.pill.warn{background:#FEF0C7;color:var(--amber)}.pill.info{background:#EEF0F3;color:#475467}
-.find .cat{font-weight:700;font-size:14px}
-.find .m{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--soft);padding:2px 6px;border-radius:5px;color:var(--red)}
-.find p{font-size:13.5px;color:var(--ink2);margin-top:5px}
-.find .fix{font-size:13.5px;color:var(--ink)}
-.find .fix b{color:var(--acc)}
-.secttl{font-size:12px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--ink2);margin:20px 0 4px}
-.lander{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px;margin-top:9px;font-size:13.5px;color:var(--ink2)}
-.lander b{color:var(--ink)}
-table.t{width:100%;border-collapse:collapse;margin-top:12px;font-size:13.5px}
-table.t th{text-align:left;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--ink2);padding:8px 6px;border-bottom:1px solid var(--line)}
-table.t td{padding:9px 6px;border-bottom:1px solid #EFEDE8;vertical-align:top}
-td.c-red{color:var(--red);font-weight:700;white-space:nowrap}
-td.c-amber{color:var(--amber);font-weight:700;white-space:nowrap}
-td.c-green{color:var(--green);font-weight:700;white-space:nowrap}
-.clip{max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-a.dl{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:600;color:var(--acc)}
-footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--ink2);font-size:12.5px}
-footer b{color:var(--ink)}
-@media(max-width:640px){.row{grid-template-columns:1fr}h1{font-size:22px}.tag{width:100%;margin-left:0}}
+header nav{display:flex;gap:18px;font-size:14.5px}
+header nav a{color:#C9D2DF;text-decoration:none}
+header nav a:hover{color:#fff}
+a.cta{margin-left:auto;background:var(--acc);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none}
+section{padding:52px 0}
+section.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+h1{font-size:42px;line-height:1.08;letter-spacing:-1.4px;margin-bottom:16px;max-width:760px}
+.sub{font-size:19px;color:var(--ink2);max-width:640px}
+.hero{padding:64px 0 50px}
+.hero .btns{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 22px;border-radius:11px;font-size:15.5px;font-weight:600;text-decoration:none}
+.btn.p{background:var(--acc);color:#fff}
+.btn.s{background:#fff;border:1px solid var(--line);color:var(--ink)}
+h2{font-size:27px;letter-spacing:-.7px;margin-bottom:10px}
+h3{font-size:17px;margin-bottom:6px}
+p{margin-bottom:12px;color:var(--ink2)}
+.lede{font-size:17px;max-width:640px}
+ul{margin:0 0 12px 20px;color:var(--ink2)} li{margin-bottom:6px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+section.alt .card{background:var(--soft);border-color:#E6E2D8}
+.card p{font-size:14px;margin:0}
+.steps{counter-reset:s;display:grid;gap:14px;margin-top:20px}
+.step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 18px 18px 62px;position:relative}
+.step:before{counter-increment:s;content:counter(s);position:absolute;left:18px;top:16px;width:30px;height:30px;border-radius:9px;background:var(--acc);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+.step p{font-size:14.5px;margin:0}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.num{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+.num b{display:block;font-size:30px;letter-spacing:-1px;color:var(--acc);line-height:1.1}
+.num span{font-size:13.5px;color:var(--ink2)}
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column}
+.plan.best{border-color:var(--acc);box-shadow:0 10px 30px rgba(14,124,102,.10)}
+.plan .tag{font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+.plan .num2{font-size:32px;font-weight:800;letter-spacing:-1.2px}
+.plan .per{font-size:13px;color:var(--ink2);margin-bottom:12px}
+.plan ul{margin:0 0 16px 18px;font-size:14px}
+.plan a{margin-top:auto}
+pre{background:#0F1729;color:#E6EDF3;padding:16px;border-radius:12px;overflow-x:auto;font-size:13px;line-height:1.6;margin:14px 0}
+.note{background:#fff;border-left:4px solid var(--acc);border-radius:10px;padding:14px 16px;font-size:14.5px;color:var(--ink);margin:18px 0}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:10px}
+summary{font-weight:600;cursor:pointer;font-size:15.5px}
+details p{margin:10px 0 0;font-size:14.5px}
+footer{border-top:1px solid var(--line);padding:24px 0 44px;color:var(--ink2);font-size:13px}
+@media(max-width:820px){h1{font-size:30px}.sub{font-size:17px}.grid3,.prices,.nums{grid-template-columns:1fr}header nav{display:none}}
 </style></head><body>
-<header><div class="wrap"><span class="brand">Preflight</span><span class="chip">beta</span><span class="tag">Policy check before you spend</span></div></header>
-<main><div class="wrap">
-<h1>Check the ad before a reviewer does.</h1>
-<p class="sub">Copy, creative text and the landing page against 46 health, finance and platform rules. Bulk checks, an approved claims library, and a log of who approved what.</p>
-<nav class="tabs">
-  <button class="tab on" data-t="single">Single ad</button>
-  <button class="tab" data-t="bulk">Bulk</button>
-  <button class="tab" data-t="library">Claims library</button>
-  <button class="tab" data-t="log">Approval log</button>
-</nav>
+<header><div class="wrap">
+<a class="brand" href="/preflight">Preflight</a><span class="chip">beta</span>
+<nav><a href="#how">How it works</a><a href="#inside">What is inside</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+<a class="cta" href="/preflight/app/">Open the checker</a>
+</div></header>
 
-<div id="pane-single">
-  <div class="card">
-    <label for="copy">Ad copy (headline, primary text, description)</label>
-    <textarea id="copy" placeholder="Clinically proven to cure insomnia in 7 days. Guaranteed results."></textarea>
-    <label for="img">Text inside the image or video</label>
-    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
-      <input type="file" id="imgFile" accept="image/*" style="border:0;padding:0;width:auto;font-size:13.5px">
-      <button type="button" id="ocrBtn" class="ghost" style="margin-left:0">Read the text from the image</button>
-      <span id="ocrStatus" class="hint" style="margin:0"></span>
-    </div>
-    <textarea id="img" style="min-height:60px" placeholder="LOSE 20LBS IN 2 WEEKS"></textarea>
-    <div class="row">
-      <div><label for="url">Landing page URL (optional)</label><input id="url" placeholder="https://example.com/offer"></div>
-      <div><label for="plat">Platform</label><select id="plat"><option>Meta</option><option>TikTok</option><option>Google</option></select></div>
-    </div>
-    <button id="go" class="wide">Check this ad</button>
-    <p class="hint">Nothing is stored on the server. The landing page is fetched once if you enter a URL.</p>
-    <div id="out"></div>
-  </div>
+<section class="hero"><div class="wrap">
+<h1>Know which ad will be rejected, before you spend on it.</h1>
+<p class="sub">Preflight reads the ad copy, the words inside the creative and the landing page, then tells you what a platform reviewer will flag, why, and what to write instead.</p>
+<div class="btns"><a class="btn p" href="/preflight/app/">Check an ad now, free</a><a class="btn s" href="#pricing">See pricing</a></div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<h2>Rejections are the same fifteen claims, over and over</h2>
+<p class="lede">A cure, a guaranteed result, a number of pounds in a number of weeks, a question about the reader's body, a before and after, a percentage nobody can substantiate. They cost you a test window, a review cycle, and sometimes the account.</p>
+<div class="nums">
+<div class="num"><b>46</b><span>policy rules across health, finance and platform limits</span></div>
+<div class="num"><b>25/25</b><span>documented rejections caught in testing, 24 as hard blocks</span></div>
+<div class="num"><b>0</b><span>false alarms across 52 ads running live on Meta</span></div>
 </div>
+</div></section>
 
-<div id="pane-bulk" style="display:none">
-  <div class="card">
-    <label for="bulk">One ad per line, up to 200</label>
-    <textarea id="bulk" style="min-height:170px" placeholder="Cure insomnia in 7 days, guaranteed&#10;A daily probiotic with 10 strains, built to support digestive comfort"></textarea>
-    <div class="row" style="margin-top:12px">
-      <div><label>Reviewer name</label><input id="rev" placeholder="Your name"></div>
-      <div><label>&nbsp;</label><button id="gobulk" style="width:100%">Check all</button></div>
-    </div>
-    <div id="bulkout"></div>
-  </div>
+<section id="how"><div class="wrap">
+<h2>How it works</h2>
+<div class="steps">
+<div class="step"><h3>Paste or upload</h3><p>One ad, or 200 at once. Copy in the box, the creative image for the text inside it, and the landing page URL. No account needed to try it.</p></div>
+<div class="step"><h3>Get a verdict</h3><p>Red, amber or green, with the exact line that tripped a rule, the reason behind it, and a rewrite that keeps the offer. Landing pages get their own check: status, tracking parameters and any risky claim on the page.</p></div>
+<div class="step"><h3>Approve and log it</h3><p>Clear the safe ones, fix the rest, and every decision is recorded with a name and a timestamp. Export the log when a client or a platform asks who signed off.</p></div>
 </div>
+</div></section>
 
-<div id="pane-library" style="display:none">
-  <div class="card">
-    <label for="lib">Approved phrases, one per line</label>
-    <textarea id="lib" style="min-height:150px" placeholder="supports joint comfort and mobility&#10;supports a normal sleep cycle"></textarea>
-    <button id="savelib" class="wide">Save the library</button>
-    <p class="hint">When a flagged line matches a phrase here, the tool marks it as cleared instead of blocking. The list stays in this browser.</p>
-    <div id="libout"></div>
-  </div>
+<section id="inside" class="alt"><div class="wrap">
+<h2>What is inside</h2>
+<div class="grid3">
+<div class="card"><h3>Bulk check</h3><p>Up to 200 ads in one pass. Each row gets a verdict and its top issue. Download the results as CSV.</p></div>
+<div class="card"><h3>Image text</h3><p>Upload the creative and the tool reads the words inside it, because half the claims hide in the picture, not the copy.</p></div>
+<div class="card"><h3>Landing page check</h3><p>Fetches the page, flags the claims on it, checks the tracking parameters, and warns when the page does not match the ad.</p></div>
+<div class="card"><h3>Claims library</h3><p>Add the phrases your legal team already cleared. They pass instead of blocking, so the same sentence is not argued twice.</p></div>
+<div class="card"><h3>Approvals with a log</h3><p>Approve or reject with your name on it. Every entry is timestamped and exportable for the client file.</p></div>
+<div class="card"><h3>API</h3><p>One POST returns a verdict per ad, so a launcher can gate every push without a human in the middle.</p></div>
 </div>
+</div></section>
 
-<div id="pane-log" style="display:none">
-  <div class="card">
-    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
-      <strong id="logcount">0 approvals recorded</strong>
-      <a class="dl" id="logcsv" href="#">Export the log (CSV)</a>
-    </div>
-    <div id="logout"></div>
-    <button id="clearlog" class="ghost">Clear the log</button>
-  </div>
+<section><div class="wrap">
+<h2>Who it is for</h2>
+<ul>
+<li><strong>Media buyers</strong> running health, supplement and telehealth offers at volume, where one policy slip costs an account.</li>
+<li><strong>Agencies</strong> that need a client sign-off before a launch, on the record, without a WhatsApp thread.</li>
+<li><strong>Launchers and platforms</strong> that want a policy gate in front of the push button.</li>
+</ul>
+<p class="note">Preflight does not guarantee approval. Platform review is partly automated judgement. It catches the written rules, which is where most rejections start, and it keeps the record of what was cleared and by whom.</p>
+</div></section>
+
+<section id="pricing" class="alt"><div class="wrap">
+<h2>Pricing</h2>
+<p class="lede">Start free. Move up when the volume or the team does.</p>
+<div class="prices">
+<div class="plan"><div class="tag">Free</div><div class="num2">$0</div><div class="per">no account, no card</div><ul><li>50 ads a month</li><li>Copy, image text and landing page</li><li>Single ad at a time</li></ul><a class="btn s" href="/preflight/app/">Open the checker</a></div>
+<div class="plan best"><div class="tag">Solo</div><div class="num2">$49</div><div class="per">per month, one buyer</div><ul><li>2,000 ads a month</li><li>Bulk check and CSV export</li><li>Claims library</li><li>Approval log</li><li>API access</li></ul><a class="btn p" href="/contact">Start with Solo</a></div>
+<div class="plan"><div class="tag">Agency</div><div class="num2">$149</div><div class="per">per month, up to 5 seats</div><ul><li>10,000 ads a month</li><li>Everything in Solo</li><li>Client-ready exports</li><li>Priority rule updates</li></ul><a class="btn s" href="/contact">Talk to us</a></div>
 </div>
-</div></main>
-<footer><div class="wrap"><b>What this does not do:</b> it cannot guarantee approval. Platform review is partly automated judgement. Preflight catches the written rules, which is where most rejections start. Built by VOXA.</div></footer>
-<script>
-var PF = { rules: [], ready: false };
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-function libList(){ try { return JSON.parse(localStorage.getItem('pf_lib')||'[]').filter(Boolean); } catch(e){ return []; } }
-function libApproved(match){
-  if(!match) return false;
-  var m = String(match).toLowerCase();
-  return libList().some(function(p){ p=String(p).toLowerCase().trim(); return p && (m.indexOf(p)>-1 || p.indexOf(m)>-1); });
-}
-function scan(text){
-  if(!PF.ready) return [];
-  var out=[];
-  PF.rules.forEach(function(r){
-    if(r.id==='long-headline') return;
-    var re=new RegExp(r.pattern, r.flags);
-    var m=text.match(re);
-    if(!m) return;
-    var sev=r.sev;
-    if(sev!=='info' && libApproved(m[0])) sev='info';
-    out.push({id:r.id,sev:sev,cat:r.cat,match:m[0],why:r.why,fix:r.fix});
-  });
-  var seen={};
-  return out.filter(function(f){ if(seen[f.id]) return false; seen[f.id]=1; return true; });
-}
-function verdictOf(finds){
-  var blocks=finds.filter(function(f){return f.sev==='block';}).length;
-  var warns=finds.filter(function(f){return f.sev==='warn';}).length;
-  return {cls: blocks?'v-red':(warns?'v-amber':'v-green'), word: blocks?'DO NOT LAUNCH':(warns?'FIX FIRST':'CLEAR TO LAUNCH'), blocks:blocks, warns:warns, score:Math.max(0,100-blocks*25-warns*8)};
-}
-fetch('/preflight/rules.json').then(function(r){return r.json();}).then(function(j){ PF.rules=j; PF.ready=true; }).catch(function(){ PF.ready=false; });
+<p style="margin-top:16px">Running a launcher or a platform? White-label pricing is per seat, and the API is the same shape. Write to <a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a>.</p>
 
-document.querySelectorAll('.tab').forEach(function(t){
-  t.addEventListener('click',function(){
-    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');});
-    t.classList.add('on');
-    ['single','bulk','library','log'].forEach(function(k){ document.getElementById('pane-'+k).style.display = (k===t.getAttribute('data-t'))?'block':'none'; });
-    if(t.getAttribute('data-t')==='log') renderLog();
-  });
-});
+<h3 style="margin-top:30px">API for launchers</h3>
+<pre>POST https://voxahq.in/preflight-api
+x-api-key: your-key
+{ "ads": ["your ad copy", "another ad"] }
 
-function renderFindings(finds, landerHtml, target){
-  var v=verdictOf(finds);
-  var h='<div class="verdict '+v.cls+'"><b>'+v.word+'</b><span>'+v.blocks+' block, '+v.warns+' warning</span><span class="score">risk score '+v.score+'/100</span></div>';
-  if(!finds.length) h+='<div class="find"><div class="top"><span class="pill info">clean</span><span class="cat">No rule matched</span></div><p>Nothing in this copy trips the current rule set. That is not a guarantee, only the absence of known flags.</p></div>';
-  ['block','warn','info'].forEach(function(sev){
-    var g=finds.filter(function(f){return f.sev===sev;});
-    if(!g.length) return;
-    h+='<div class="secttl">'+sev+' ('+g.length+')</div>';
-    g.forEach(function(f){
-      h+='<div class="find '+f.sev+'"><div class="top"><span class="pill '+f.sev+'">'+f.sev+'</span><span class="cat">'+esc(f.cat)+'</span>'+(f.match?'<span class="m">'+esc(f.match)+'</span>':'')+'</div><p>'+esc(f.why)+'</p><p class="fix"><b>Fix:</b> '+esc(f.fix)+'</p></div>';
-    });
-  });
-  if(landerHtml) h+='<div class="secttl">landing page</div><div class="lander">'+landerHtml+'</div>';
-  target.innerHTML=h;
-}
+200 OK
+{ "results": [ { "verdict": "red", "score": 25,
+  "blocks": [ { "cat": "Cure or treatment claim",
+                "match": "Cure insomnia",
+                "fix": "may support restful sleep" } ] } ] }</pre>
+</div></section>
 
-document.getElementById('go').addEventListener('click',function(){
-  var btn=this, copy=document.getElementById('copy').value||'', img=document.getElementById('img').value||'', url=(document.getElementById('url').value||'').trim();
-  if(!PF.ready){ document.getElementById('out').innerHTML='<div class="verdict v-idle">Rules are still loading, try again in a second.</div>'; return; }
-  if(!copy&&!img&&!url){ document.getElementById('out').innerHTML='<div class="verdict v-idle">Add copy, creative text or a landing page.</div>'; return; }
-  var finds=scan(copy+' \n '+img);
-  if(!url){ renderFindings(finds,null,document.getElementById('out')); return; }
-  btn.disabled=true; btn.textContent='Fetching the landing page...';
-  fetch('/preflight-lander?url='+encodeURIComponent(url)+'&q='+encodeURIComponent(copy.slice(0,600))).then(function(r){return r.json();}).then(function(j){
-    var ex=[];
-    if(!j.ok){ ex.push('Could not read the page: '+esc(j.error||'unknown')); }
-    else {
-      ex.push('<b>'+(j.status||'?')+'</b> from '+esc(j.host||'')+' · '+(j.words||0)+' words');
-      ex.push('Tracking parameters: '+(j.tracking?'<b>found</b> ('+esc(j.tracking)+')':'<b>none</b>'));
-      if(j.flags&&j.flags.length) ex.push('Page flags: <b>'+esc(j.flags.join(', '))+'</b>');
-      if(j.mismatch) ex.push('<b>Claim mismatch:</b> the ad talks about something the page does not mention.');
-    }
-    renderFindings(finds, ex.join('<br>'), document.getElementById('out'));
-    btn.disabled=false; btn.textContent='Check this ad';
-  }).catch(function(){
-    renderFindings(finds,'Landing page check unavailable right now.',document.getElementById('out'));
-    btn.disabled=false; btn.textContent='Check this ad';
-  });
-});
+<section id="faq"><div class="wrap">
+<h2>Questions</h2>
+<details><summary>Does it replace a compliance team?</summary><p>No. It removes the repetitive first pass. A human still signs off, and the log records who did.</p></details>
+<details><summary>Which platforms does it cover?</summary><p>Meta health and wellness, TikTok weight management and body image, and Google healthcare and financial services. Platform limits such as headline length are checked too.</p></details>
+<details><summary>What happens to my ads?</summary><p>The checker runs in your browser. Nothing is stored on the server, and the landing page is fetched once only if you enter a URL.</p></details>
+<details><summary>Can it be wrong?</summary><p>Yes, in one direction: it can pass something a reviewer rejects, because platform review includes automated judgement. It is built to be quiet on ads that are fine, which is why the test set includes 52 live ads with zero false alarms.</p></details>
+<details><summary>Can I add my own rules?</summary><p>On the Agency plan, yes. Send the phrase or the claim type and it goes into your rule set, kept separate from the shared list.</p></details>
+</div></section>
 
-function logAdd(entry){
-  var log=[]; try{ log=JSON.parse(localStorage.getItem('pf_log')||'[]'); }catch(e){}
-  log.unshift(entry);
-  localStorage.setItem('pf_log', JSON.stringify(log.slice(0,500)));
-}
-function logAll(){ try{ return JSON.parse(localStorage.getItem('pf_log')||'[]'); }catch(e){ return []; } }
-function renderLog(){
-  var log=logAll();
-  document.getElementById('logcount').textContent = log.length + ' approval' + (log.length===1?'':'s') + ' recorded';
-  if(!log.length){ document.getElementById('logout').innerHTML='<p class="hint" style="margin-top:12px">Nothing recorded yet. Approve an ad from the bulk table.</p>'; return; }
-  var h='<table class="t"><thead><tr><th>When</th><th>Reviewer</th><th>Ad</th><th>Verdict</th><th>Decision</th></tr></thead><tbody>';
-  log.forEach(function(e){ h+='<tr><td>'+esc(e.when)+'</td><td>'+esc(e.who||'-')+'</td><td class="clip" title="">'+esc(e.ad)+'</td><td class="c-'+e.verdict+'">'+e.verdict.toUpperCase()+'</td><td>'+esc(e.decision)+'</td></tr>'; });
-  h+='</tbody></table>';
-  document.getElementById('logout').innerHTML=h;
-  var csv='when,reviewer,ad,verdict,decision\n'+log.map(function(e){return '"'+e.when+'","'+String(e.who||'').replace(/"/g,'""')+'","'+String(e.ad).replace(/"/g,'""')+'","'+e.verdict+'","'+e.decision+'"';}).join('\n');
-  var a=document.getElementById('logcsv'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='preflight-approvals.csv';
-}
-document.getElementById('clearlog').addEventListener('click',function(){ localStorage.removeItem('pf_log'); renderLog(); });
+<section class="alt"><div class="wrap" style="text-align:center">
+<h2 style="margin-bottom:8px">Check one ad. It takes ten seconds.</h2>
+<p class="lede" style="margin:0 auto 20px">No account, no card. If it catches one rejection, it paid for itself.</p>
+<a class="btn p" href="/preflight/app/">Open the checker</a>
+</div></section>
 
-document.getElementById('gobulk').addEventListener('click',function(){
-  if(!PF.ready){ document.getElementById('bulkout').innerHTML='<p class="hint">Rules still loading.</p>'; return; }
-  var raw=document.getElementById('bulk').value||'';
-  var lines=raw.split('\n').map(function(s){return s.trim();}).filter(function(s){return s.length>3;}).slice(0,200);
-  if(!lines.length){ document.getElementById('bulkout').innerHTML='<p class="hint">Paste at least one ad.</p>'; return; }
-  var rows=lines.map(function(line){
-    var f=scan(line), v=verdictOf(f), top=f.filter(function(x){return x.sev==='block';})[0]||f[0]||null;
-    return {line:line, v:v, top:top, all:f};
-  });
-  var reds=rows.filter(function(r){return r.v.cls==='v-red';}).length, ambers=rows.filter(function(r){return r.v.cls==='v-amber';}).length;
-  var h='<div class="verdict '+(reds?'v-red':(ambers?'v-amber':'v-green'))+'"><b>'+reds+' of '+rows.length+' cannot launch</b><span>'+ambers+' to fix, '+(rows.length-reds-ambers)+' clear</span></div>';
-  h+='<table class="t"><thead><tr><th>#</th><th>Ad</th><th>Verdict</th><th>Top issue</th><th>Decision</th></tr></thead><tbody>';
-  rows.forEach(function(r,i){
-    var cls=r.v.cls==='v-red'?'c-red':(r.v.cls==='v-amber'?'c-amber':'c-green');
-    h+='<tr><td>'+(i+1)+'</td><td class="clip" title="'+esc(r.line)+'">'+esc(r.line)+'</td><td class="'+cls+'">'+r.v.word+'</td><td>'+(r.top?esc(r.top.cat):'-')+'</td><td><select data-i="'+i+'"><option value="">Pending</option><option>Approved</option><option>Rejected</option></select></td></tr>';
-  });
-  h+='</tbody></table><a class="dl" id="bulkcsv" href="#">Download results (CSV)</a>';
-  document.getElementById('bulkout').innerHTML=h;
-  document.querySelectorAll('#bulkout select').forEach(function(sel){
-    sel.addEventListener('change',function(){
-      if(!sel.value) return;
-      var r=rows[parseInt(sel.getAttribute('data-i'),10)];
-      logAdd({when:new Date().toISOString().slice(0,16).replace('T',' '), who:document.getElementById('rev').value||'unassigned', ad:r.line.slice(0,120), verdict:(r.v.cls==='v-red'?'red':(r.v.cls==='v-amber'?'amber':'green')), decision:sel.value});
-    });
-  });
-  var csv='ad,verdict,top_issue,all_issues\n'+rows.map(function(r){ return '"'+r.line.replace(/"/g,'""')+'","'+(r.v.cls==='v-red'?'red':(r.v.cls==='v-amber'?'amber':'green'))+'","'+(r.top?r.top.cat:'')+'","'+r.all.map(function(x){return x.cat;}).join('; ').replace(/"/g,'""')+'"'; }).join('\n');
-  var a=document.getElementById('bulkcsv'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='preflight-results.csv';
-});
-
-document.getElementById('lib').value=libList().join('\n');
-document.getElementById('savelib').addEventListener('click',function(){
-  var list=document.getElementById('lib').value.split('\n').map(function(s){return s.trim();}).filter(Boolean);
-  localStorage.setItem('pf_lib', JSON.stringify(list));
-  document.getElementById('libout').innerHTML='<p class="hint">Saved '+list.length+' phrases. They now pass instead of blocking.</p>';
-});
-document.getElementById('rev').value = localStorage.getItem('pf_reviewer')||'';
-document.getElementById('rev').addEventListener('change',function(){ localStorage.setItem('pf_reviewer', this.value); });
-renderLog();
-
-document.getElementById('ocrBtn').addEventListener('click', function () {
-  var f = document.getElementById('imgFile').files[0];
-  var st = document.getElementById('ocrStatus');
-  if (!f) { st.textContent = 'Pick an image first.'; return; }
-  var btn = this;
-  btn.disabled = true;
-  st.textContent = 'Loading the reader (first time takes a few seconds)...';
-  function run() {
-    st.textContent = 'Reading the text...';
-    var url = URL.createObjectURL(f);
-    window.Tesseract.recognize(url, 'eng', { logger: function (m) { if (m.status === 'recognizing text') st.textContent = 'Reading the text... ' + Math.round(m.progress * 100) + '%'; } })
-      .then(function (out) {
-        var txt = out.data.text.replace(/\n+/g, ' ').trim();
-        document.getElementById('img').value = txt;
-        st.textContent = txt ? 'Read ' + txt.length + ' characters. Edit it if the reader missed something.' : 'No text found in that image.';
-        btn.disabled = false;
-        URL.revokeObjectURL(url);
-      })
-      .catch(function () { st.textContent = 'Could not read that image. Type the text instead.'; btn.disabled = false; });
-  }
-  if (window.Tesseract) { run(); return; }
-  var s = document.createElement('script');
-  s.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
-  s.onload = run;
-  s.onerror = function () { st.textContent = 'The reader could not load. Type the text instead.'; btn.disabled = false; };
-  document.head.appendChild(s);
-});
-</script></body></html>
+<footer><div class="wrap">Preflight is built and run by VOXA. Rules are maintained against the Meta, TikTok and Google advertising standards. Current rule count: 46.</div></footer>
+</body></html>
