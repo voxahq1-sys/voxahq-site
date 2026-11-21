@@ -59,7 +59,7 @@ a.dl{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:600;color
 <h1>Check the ad before a reviewer does.</h1>
 <p class="sub">62 rules across health, finance and platform limits. Every check counts against your monthly allowance.</p>
 
-<div class="tabs"><button class="tab on" data-t="single">Single ad</button><button class="tab" data-t="bulk">Bulk</button></div>
+<div class="tabs"><button class="tab on" data-t="single">Single ad</button><button class="tab" data-t="bulk">Bulk</button><button class="tab" data-t="library">Claims library</button><button class="tab" data-t="approvals">Approvals</button></div>
 
 <div id="pane-single"><div class="card">
 <label for="copy">Ad copy</label>
@@ -82,15 +82,26 @@ a.dl{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:600;color
 <div id="pane-bulk" style="display:none"><div class="card">
 <label for="bulk">One ad per line, up to 200</label>
 <textarea id="bulk" style="min-height:160px" placeholder="Cure insomnia in 7 days, guaranteed&#10;A daily probiotic with 10 strains, built to support digestive comfort"></textarea>
-<button id="gobulk" class="wide">Check all</button>
+<div class="row" style="margin-top:14px"><div><input id="rev" placeholder="Reviewer name"></div><div><button id="gobulk" style="width:100%">Check all</button></div></div>
 <div id="bulkout"></div>
 </div></div>
-</div></main>
+<div id="pane-library" style="display:none"><div class="card"><label for="lib">Approved phrases, one per line</label><textarea id="lib" style="min-height:140px" placeholder="supports joint comfort and mobility"></textarea><button id="savelib" class="wide">Save the library</button><p class="hint">A flagged line that matches a phrase here is marked as cleared instead of blocking. Saved in this browser.</p><div id="libout"></div></div></div><div id="pane-approvals" style="display:none"><div class="card"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><strong id="logcount">0 approvals</strong><a class="dl" id="logcsv" href="#">Export (CSV)</a></div><div id="logout2" style="overflow-x:auto;margin-top:10px"></div><button class="ghost" id="clearlog" style="margin-top:12px">Clear the log</button></div></div></div></main>
 <script>
 var ME=null;
+function lib(){ try { return JSON.parse(localStorage.getItem('fc_lib')||'[]'); } catch(e){ return []; } }
+function approvedByLib(m){ if(!m) return false; var s=String(m).toLowerCase(); return lib().some(function(p){ p=String(p).toLowerCase().trim(); return p && (s.indexOf(p)>-1 || p.indexOf(s)>-1); }); }
+function applyLib(r){
+  var keep=[];
+  r.blocks = r.blocks.filter(function(f){ if(approvedByLib(f.match)){ r.warns.push({cat:f.cat+' (approved in library)', match:f.match, why:'This phrase is in your approved list, so it does not block.', fix:'No change needed.'}); return false; } return true; });
+  r.warns = r.warns.filter(function(f){ return !approvedByLib(f.match); });
+  r.score = Math.max(0, 100 - r.blocks.length*25 - r.warns.length*8);
+  r.verdict = r.blocks.length ? 'red' : (r.warns.length ? 'amber' : 'green');
+  return r;
+}
 function verdictBox(r){
   var cls=r.verdict==='red'?'v-red':(r.verdict==='amber'?'v-amber':'v-green');
   var word=r.verdict==='red'?'DO NOT LAUNCH':(r.verdict==='amber'?'FIX FIRST':'CLEAR TO LAUNCH');
+  r = applyLib(r); cls=r.verdict==='red'?'v-red':(r.verdict==='amber'?'v-amber':'v-green'); word=r.verdict==='red'?'DO NOT LAUNCH':(r.verdict==='amber'?'FIX FIRST':'CLEAR TO LAUNCH');
   var h='<div class="verdict '+cls+'"><b>'+word+'</b><span>'+r.blocks.length+' block, '+r.warns.length+' warning</span><span class="score">risk score '+r.score+'/100</span></div>';
   if(!r.blocks.length && !r.warns.length) h+='<div class="find"><div class="top"><span class="pill info">clean</span><span class="cat">No rule matched</span></div><p>Nothing in this copy trips the current rule set. That is not a guarantee, only the absence of known flags.</p></div>';
   ['block','warn'].forEach(function(sev){
@@ -105,7 +116,7 @@ function verdictBox(r){
 }
 function setUsage(u){ if(u) document.getElementById('usage').textContent = u.used + ' of ' + u.limit + ' this month'; }
 fetch('/fab-api').then(function(r){ if(r.status===401){ window.location.href='/fabconvert/login'; return null; } return r.json(); }).then(function(j){ if(j&&j.ok){ ME=j; setUsage(j.usage); } });
-document.querySelectorAll('.tab').forEach(function(t){ t.addEventListener('click',function(){ document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');}); t.classList.add('on'); document.getElementById('pane-single').style.display = t.getAttribute('data-t')==='single'?'block':'none'; document.getElementById('pane-bulk').style.display = t.getAttribute('data-t')==='bulk'?'block':'none'; }); });
+document.querySelectorAll('.tab').forEach(function(t){ t.addEventListener('click',function(){ document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');}); t.classList.add('on'); ['single','bulk','library','approvals'].forEach(function(k){ document.getElementById('pane-'+k).style.display = (k===t.getAttribute('data-t'))?'block':'none'; }); if(t.getAttribute('data-t')==='approvals') renderLog(); }); });
 document.getElementById('ocr').addEventListener('click',function(){
   var f=document.getElementById('imgFile').files[0], st=document.getElementById('ocrmsg'), b=this;
   if(!f){ st.textContent='Pick an image first.'; return; }
@@ -148,20 +159,49 @@ document.getElementById('gobulk').addEventListener('click',function(){
     b.disabled=false; b.textContent='Check all';
     if(!j.ok){ document.getElementById('bulkout').innerHTML='<p class="hint">'+j.error+'</p>'; if(j.usage) setUsage(j.usage); return; }
     setUsage(j.usage);
+    j.results = j.results.map(applyLib);
     var reds=j.results.filter(function(r){return r.verdict==='red';}).length;
     var ambers=j.results.filter(function(r){return r.verdict==='amber';}).length;
     var h='<div class="verdict '+(reds?'v-red':(ambers?'v-amber':'v-green'))+'"><b>'+reds+' of '+j.results.length+' cannot launch</b><span>'+ambers+' to fix, '+(j.results.length-reds-ambers)+' clear</span></div>';
-    h+='<table><thead><tr><th>#</th><th>Ad</th><th>Verdict</th><th>Top issue</th></tr></thead><tbody>';
+    h+='<table><thead><tr><th>#</th><th>Ad</th><th>Verdict</th><th>Top issue</th><th>Decision</th></tr></thead><tbody>';
     j.results.forEach(function(r,i){
       var cls=r.verdict==='red'?'c-red':(r.verdict==='amber'?'c-amber':'c-green');
       var word=r.verdict==='red'?'DO NOT LAUNCH':(r.verdict==='amber'?'FIX':'CLEAR');
-      h+='<tr><td>'+(i+1)+'</td><td class="clip">'+r.ad+'</td><td class="'+cls+'">'+word+'</td><td>'+(r.blocks[0]?r.blocks[0].cat:(r.warns[0]?r.warns[0].cat:'-'))+'</td></tr>';
+      h+='<tr><td>'+(i+1)+'</td><td class="clip">'+r.ad+'</td><td class="'+cls+'">'+word+'</td><td>'+(r.blocks[0]?r.blocks[0].cat:(r.warns[0]?r.warns[0].cat:'-'))+'</td><td><select data-i="'+i+'"><option value="">Pending</option><option>Approved</option><option>Rejected</option></select></td></tr>';
     });
     h+='</tbody></table>';
     var csv='ad,verdict,issues\n'+j.results.map(function(r){ return '"'+r.ad.replace(/"/g,'""')+'","'+r.verdict+'","'+r.blocks.concat(r.warns).map(function(x){return x.cat;}).join('; ')+'"'; }).join('\n');
     h+='<a class="dl" id="csvexp" href="#" download="fabconvert-results.csv">Download results (CSV)</a>';
     document.getElementById('bulkout').innerHTML=h;
+    document.querySelectorAll('#bulkout select').forEach(function(sel){
+      sel.addEventListener('change',function(){
+        if(!sel.value) return;
+        var r=j.results[parseInt(sel.getAttribute('data-i'),10)];
+        logAdd({when:new Date().toISOString().slice(0,16).replace('T',' '), who:(document.getElementById('rev')||{}).value||'unassigned', ad:r.ad.slice(0,120), verdict:r.verdict, decision:sel.value});
+      });
+    });
     var a=document.getElementById('csvexp'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
   }).catch(function(){ b.disabled=false; b.textContent='Check all'; });
 });
+
+function logAll(){ try { return JSON.parse(localStorage.getItem('fc_log')||'[]'); } catch(e){ return []; } }
+function logAdd(e){ var l=logAll(); l.unshift(e); localStorage.setItem('fc_log', JSON.stringify(l.slice(0,500))); }
+function renderLog(){
+  var l=logAll();
+  document.getElementById('logcount').textContent=l.length+' approval'+(l.length===1?'':'s');
+  if(!l.length){ document.getElementById('logout2').innerHTML='<p class="hint">Nothing recorded yet. Approve an ad from the bulk table.</p>'; return; }
+  var h='<table><thead><tr><th>When</th><th>Reviewer</th><th>Ad</th><th>Verdict</th><th>Decision</th></tr></thead><tbody>';
+  l.forEach(function(e){ h+='<tr><td>'+e.when+'</td><td>'+e.who+'</td><td class="clip">'+e.ad+'</td><td>'+e.verdict+'</td><td>'+e.decision+'</td></tr>'; });
+  document.getElementById('logout2').innerHTML=h+'</tbody></table>';
+  var csv='when,reviewer,ad,verdict,decision\n'+l.map(function(e){ return '"'+e.when+'","'+e.who+'","'+String(e.ad).replace(/"/g,'""')+'","'+e.verdict+'","'+e.decision+'"'; }).join('\n');
+  var a=document.getElementById('logcsv'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='fabconvert-approvals.csv';
+}
+document.getElementById('lib').value=lib().join('\n');
+document.getElementById('savelib').addEventListener('click',function(){
+  var list=document.getElementById('lib').value.split('\n').map(function(s){return s.trim();}).filter(Boolean);
+  localStorage.setItem('fc_lib', JSON.stringify(list));
+  document.getElementById('libout').innerHTML='<p class="hint">Saved '+list.length+' phrases. They now pass instead of blocking.</p>';
+});
+document.getElementById('clearlog').addEventListener('click',function(){ localStorage.removeItem('fc_log'); renderLog(); });
+renderLog();
 </script></body></html>
