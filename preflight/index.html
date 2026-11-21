@@ -1,248 +1,260 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Preflight: ad policy check before you launch</title>
-<meta name="description" content="Paste an ad and see what a platform reviewer will flag before you spend. Rule based, no account needed.">
+<meta name="description" content="Check ads for policy risk before you spend. Bulk checks, an approved claims library and an approval log.">
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <style>
 :root{--ink:#0F1729;--ink2:#4A5568;--bg:#FAFAF8;--line:#DAD4C8;--acc:#0E7C66;--red:#B42318;--amber:#B54708;--green:#067647;--soft:#F4F3F0}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,sans-serif}
-.wrap{max-width:900px;margin:0 auto;padding:0 20px}
-header{background:#0F1729;color:#fff;padding:18px 0}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{background:#0F1729;color:#fff;padding:16px 0}
 header .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .brand{font-weight:800;font-size:19px;letter-spacing:-.4px}
 .chip{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:#1F2C46;color:#9FE3CF;padding:4px 9px;border-radius:999px}
 .tag{color:#B9C2D0;font-size:14px;margin-left:auto}
-main{padding:32px 0 60px}
-h1{font-size:30px;line-height:1.15;letter-spacing:-.8px;margin-bottom:8px}
-.sub{color:var(--ink2);margin-bottom:26px;font-size:16px;max-width:640px}
+main{padding:26px 0 60px}
+h1{font-size:27px;line-height:1.18;letter-spacing:-.7px;margin-bottom:6px}
+.sub{color:var(--ink2);margin-bottom:20px;font-size:15.5px;max-width:640px}
+nav.tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 15px;font-size:14px;font-weight:600;cursor:pointer;color:var(--ink2)}
+.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
-label{display:block;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink2);margin:16px 0 6px}
+.card+.card{margin-top:16px}
+label{display:block;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink2);margin:14px 0 6px}
 label:first-child{margin-top:0}
-textarea,input,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
-textarea{min-height:96px;resize:vertical}
-.row{display:grid;grid-template-columns:1fr 180px;gap:12px}
-button{margin-top:18px;background:var(--acc);color:#fff;border:0;border-radius:10px;padding:14px 22px;font-size:16px;font-weight:600;cursor:pointer;width:100%}
-button:disabled{opacity:.6;cursor:default}
-.hint{font-size:13px;color:var(--ink2);margin-top:6px}
-#out{margin-top:26px}
-.verdict{border-radius:14px;padding:20px 22px;color:#fff;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+textarea,input,select{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px;font:inherit;font-size:15px;background:#fff;color:var(--ink)}
+textarea{min-height:92px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 170px;gap:12px}
+button{background:var(--acc);color:#fff;border:0;border-radius:10px;padding:13px 20px;font-size:15.5px;font-weight:600;cursor:pointer}
+button.wide{width:100%;margin-top:16px}
+button.ghost{background:#fff;border:1px solid var(--line);color:var(--ink);font-size:13.5px;padding:8px 12px;border-radius:8px;margin-left:8px}
+.hint{font-size:12.5px;color:var(--ink2);margin-top:6px}
+.verdict{border-radius:14px;padding:18px 20px;color:#fff;display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:20px}
 .v-red{background:var(--red)}.v-amber{background:var(--amber)}.v-green{background:var(--green)}.v-idle{background:#3A4356}
-.verdict b{font-size:22px;letter-spacing:-.3px}
-.verdict .score{margin-left:auto;font-size:14px;opacity:.9}
-.find{background:#fff;border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:14px 16px;margin-top:10px}
+.verdict b{font-size:20px}
+.verdict .score{margin-left:auto;font-size:13.5px;opacity:.9}
+.find{background:#fff;border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:13px 15px;margin-top:9px}
 .find.block{border-left-color:var(--red)}.find.warn{border-left-color:var(--amber)}.find.info{border-left-color:#98A2B3}
-.find .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
-.pill{font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;padding:3px 8px;border-radius:6px}
+.find .top{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:5px}
+.pill{font-size:10.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;padding:3px 7px;border-radius:6px}
 .pill.block{background:#FEE4E2;color:var(--red)}.pill.warn{background:#FEF0C7;color:var(--amber)}.pill.info{background:#EEF0F3;color:#475467}
 .find .cat{font-weight:700;font-size:14px}
-.find .m{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:var(--soft);padding:2px 6px;border-radius:5px;color:var(--red)}
-.find p{font-size:14px;color:var(--ink2);margin-top:6px}
-.find .fix{font-size:14px;color:var(--ink);margin-top:6px}
+.find .m{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--soft);padding:2px 6px;border-radius:5px;color:var(--red)}
+.find p{font-size:13.5px;color:var(--ink2);margin-top:5px}
+.find .fix{font-size:13.5px;color:var(--ink)}
 .find .fix b{color:var(--acc)}
-.secttl{font-size:13px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--ink2);margin:22px 0 4px}
-.lander{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:10px;font-size:14px;color:var(--ink2)}
+.secttl{font-size:12px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--ink2);margin:20px 0 4px}
+.lander{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px;margin-top:9px;font-size:13.5px;color:var(--ink2)}
 .lander b{color:var(--ink)}
-footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--ink2);font-size:13px}
+table.t{width:100%;border-collapse:collapse;margin-top:12px;font-size:13.5px}
+table.t th{text-align:left;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--ink2);padding:8px 6px;border-bottom:1px solid var(--line)}
+table.t td{padding:9px 6px;border-bottom:1px solid #EFEDE8;vertical-align:top}
+td.c-red{color:var(--red);font-weight:700;white-space:nowrap}
+td.c-amber{color:var(--amber);font-weight:700;white-space:nowrap}
+td.c-green{color:var(--green);font-weight:700;white-space:nowrap}
+.clip{max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+a.dl{display:inline-block;margin-top:12px;font-size:13.5px;font-weight:600;color:var(--acc)}
+footer{border-top:1px solid var(--line);padding:20px 0 40px;color:var(--ink2);font-size:12.5px}
 footer b{color:var(--ink)}
-@media(max-width:640px){.row{grid-template-columns:1fr}h1{font-size:24px}.tag{width:100%;margin-left:0}}
-#tabs{display:flex;gap:8px;margin:0 0 14px}
-.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;cursor:pointer;color:var(--ink2)}
-.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-table.bulk{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
-table.bulk th{text-align:left;font-size:11.5px;letter-spacing:.6px;text-transform:uppercase;color:var(--ink2);padding:8px 6px;border-bottom:1px solid var(--line)}
-table.bulk td{padding:9px 6px;border-bottom:1px solid #EFEDE8;vertical-align:top}
-td.c-red{color:var(--red);font-weight:700}
-td.c-amber{color:var(--amber);font-weight:700}
-td.c-green{color:var(--green);font-weight:700}
-.bulkrow{max-width:420px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#bulkout{margin-top:22px}
-.dl{display:inline-block;margin-top:12px;font-size:14px;font-weight:600;color:var(--acc)}
+@media(max-width:640px){.row{grid-template-columns:1fr}h1{font-size:22px}.tag{width:100%;margin-left:0}}
 </style></head><body>
-<header><div class="wrap"><span class="brand">Preflight</span><span class="chip">beta</span><span class="tag">Ad policy check before you spend</span></div></header>
+<header><div class="wrap"><span class="brand">Preflight</span><span class="chip">beta</span><span class="tag">Policy check before you spend</span></div></header>
 <main><div class="wrap">
-<h1>Paste the ad. See what a reviewer will flag.</h1>
-<p class="sub">Copy, the text inside your creative, and the landing page are all checked against health, finance and platform rules. You get a verdict, the reason, and a rewrite.</p>
-<div id="tabs"><button class="tab on" data-mode="single">Single ad</button><button class="tab" data-mode="bulk">Bulk check</button></div>
-<div class="card" id="singleCard">
-  <label for="copy">Ad copy (headline, primary text, description)</label>
-  <textarea id="copy" placeholder="Clinically proven to cure insomnia in 7 days. Guaranteed results or your money back."></textarea>
-  <label for="img">Text inside the image or video (optional)</label>
-  <textarea id="img" style="min-height:64px" placeholder="LOSE 20LBS IN 2 WEEKS"></textarea>
-  <div class="row">
-    <div><label for="url">Landing page URL (optional)</label><input id="url" placeholder="https://example.com/offer"></div>
-    <div><label for="plat">Platform</label><select id="plat"><option>Meta</option><option>TikTok</option><option>Google</option></select></div>
-  </div>
-  <button id="go">Check this ad</button>
-  <p class="hint">Nothing is stored. The landing page is fetched once to check what it says.</p>
-</div>
-</div>
-<div class="card" id="bulkCard" style="display:none">
-  <label for="bulk">One ad per line (paste up to 200)</label>
-  <textarea id="bulk" style="min-height:180px" placeholder="Cure insomnia in 7 days, guaranteed
-A daily probiotic with 10 strains, built to support digestive comfort
-Lose 20 lbs in 2 weeks — doctors hate this trick"></textarea>
-  <button id="gobulk">Check all of them</button>
-  <p class="hint">Each line is one ad. Nothing is stored.</p>
-  <div id="bulkout"></div>
-</div>
-<div id="out"></div>
-</div></main>
-<footer><div class="wrap"><b>What this does not do:</b> it does not guarantee approval. Platform review is partly automated judgement. Preflight catches the rules that are written down, which is where most rejections start. Built by VOXA.</div></footer>
-<script>
-const RULES = [
-  {id:'cure-claim', sev:'block', cat:'Cure or treatment claim', re:/(cures?|curing|treats?|treating|heals?|healing|eliminates?|reverses?)\s+(\w+\s+){0,3}(diabetes|cancer|insomnia|anxiety|depression|arthritis|psoriasis|thyroid|hypertension|adhd|autism|alzheimer|dementia|pcos|acne|migraine|asthma|gerd|ibs|copd)/i, why:'A product cannot claim to cure, treat or heal a medical condition. This is the fastest route to a rejection and an account restriction.', fix:'Move to benefit language with a hedge: "may support restful sleep" instead of "cures insomnia".'},
-  {id:'cure-generic', sev:'block', cat:'Cure claim', re:/(cures?|treats?|heals?|eliminates?)\s+(the\s+)?(root cause|disease|condition|illness)/i, why:'Same rule as above, without naming the condition.', fix:'Name what the product does, not what it fixes: "supports joint comfort".'},
-  {id:'guarantee', sev:'block', cat:'Guaranteed results', re:/(guaranteed|guarantee|risk[- ]free|no fail|always works|100%\s+(results?|effective|safe|works?|success))/i, why:'Guaranteed outcomes are not allowed in health and weight claims, and they read as an absolute promise.', fix:'Remove the guarantee. Use "designed to" or "may help".'},
-  {id:'time-bound', sev:'block', cat:'Results in a set time', re:/(in|within)\s+\d+\s*(days?|weeks?|hours?)/i, why:'Promising a specific outcome inside a specific window is a clickbait and unreliable-claims violation.', fix:'Drop the timeline, or state it as an average with a qualifier.'},
-  {id:'weight-number', sev:'block', cat:'Weight loss promise', re:/(lose|lost|drop|burn|shed)\s+\d+\s*(lbs?|pounds?|kg|kilos?)/i, why:'A specific amount of weight loss is a guaranteed outcome and gets rejected on health products.', fix:'Talk about the mechanism, not the number: "supports a calorie deficit".'},
-  {id:'overnight', sev:'block', cat:'Overnight or instant result', re:/(overnight|instantly|same day results|in minutes)/i, why:'Instant results are not credible and fall under exaggerated claims.', fix:'Describe the normal experience: "most people notice a difference in the first month".'},
-  {id:'personal-attr', sev:'block', cat:'Personal attributes', re:/(are you|do you|if you)\s+(\w+\s+){0,2}(suffering|struggling|battling|dealing with|tired of|overweight|obese|depressed|anxious|in pain)/i, why:'Meta bans copy that asserts or implies something about the viewer health or body. This is their own example of a rejected line.', fix:'Speak about the product, not the reader: "New sleep support formula" instead of "Struggling to sleep?".'},
-  {id:'body-shame', sev:'block', cat:'Negative body statement', re:/(fat|flabby|ugly|gross|disgusting)\s+(body|belly|stomach|arms|thighs)/i, why:'Negative statements about a person body are explicitly prohibited.', fix:'Describe the goal neutrally: "a flatter midsection".'},
-  {id:'fda', sev:'block', cat:'Regulatory claim', re:/(fda\s*(approved|cleared)|clinically proven|doctor recommended)/i, why:'Supplements are not FDA approved, and "clinically proven" needs a citation you probably cannot show.', fix:'Use "made in an FDA registered facility" or "clinically studied ingredient" only with a source.'},
-  {id:'no-effort', sev:'block', cat:'No effort claim', re:/(no diet|no exercise|without diet|without exercise|effortless)/i, why:'Claims that the product works without diet or exercise are prohibited in weight management.', fix:'Remove the promise and describe the product routine.'},
-  {id:'before-after', sev:'warn', cat:'Before and after', re:/(before\s*(and|&|\/)\s*after|transformation|results may vary)/i, why:'Before and after is allowed only for cosmetics shown to adults, and never for supplements. Risky.', fix:'Drop the side by side, or use a single adult-only lifestyle image.'},
-  {id:'miracle', sev:'warn', cat:'Exaggerated language', re:/(miracle|magic|breakthrough|revolutionary|secret|hack)/i, why:'Sensational language falls under exaggerated claims and often triggers manual review.', fix:'Replace with a plain functional benefit.'},
-  {id:'superlative', sev:'warn', cat:'Superlative', re:/(#1|number one|best|strongest|most powerful|world'?s)/i, why:'Unqualified superlatives invite a substantiation request.', fix:'Say what it is better at, with a number.'},
-  {id:'urgency', sev:'warn', cat:'Fake urgency', re:/(today only|last chance|only \d+ left|act now|expires tonight)/i, why:'Urgency is allowed but repeated scarcity in health ads raises scrutiny.', fix:'Keep one honest deadline, remove the rest.'},
-  {id:'disease-name', sev:'info', cat:'Condition named on the page', re:/(diabetes|cancer|insomnia|arthritis|psoriasis|thyroid|hypertension|depression)/i, why:'Naming a condition anywhere in the copy invites a deeper review, even when the sentence is neutral.', fix:'Use the symptom or the benefit instead of the diagnosis.'},
-  {id:'testimonial', sev:'warn', cat:'Testimonial result', re:/(i lost|my results|it worked for me|changed my life)/i, why:'Personal results need a clear disclaimer and must be plausible.', fix:'Add "results vary" and keep the claim modest.'},
-  {id:'money-back', sev:'warn', cat:'Refund promise', re:/(money back|refund guaranteed|free trial bottle)/i, why:'Refunds are fine, but pairing them with results reads as a guarantee.', fix:'State the refund policy separately from the outcome.'},
-  {id:'health-18', sev:'info', cat:'Age targeting', re:/(weight loss|dietary supplement|slimming)/i, why:'Health and weight products must be targeted to 18 and over.', fix:'Set the minimum age to 18+ in the ad set.'},
-  {id:'long-headline', sev:'info', cat:'Headline length', re:/(.{40,})/i, why:'Long headlines get truncated on most placements.', fix:'Keep the headline under 40 characters.'}
-  ,{id:'income-claim', sev:'block', cat:'Income promise', re:/(earn|make|profit)\s+(\$|usd\s*)?\d{2,}[\d,]*\s*(per|a|\/)\s*(day|week|month)/i, why:'Specific income promises are a financial-services violation and a classic affiliate rejection.', fix:'Describe the offer, not the earnings.'}
-  ,{id:'get-rich', sev:'block', cat:'Get rich claim', re:/(get rich|passive income guaranteed|financial freedom in|double your money)/i, why:'Guaranteed wealth claims are prohibited in finance ads.', fix:'Remove the outcome promise.'}
-  ,{id:'debt-claim', sev:'block', cat:'Debt relief claim', re:/(erase your debt|wipe out debt|debt free in \d+|eliminate credit card debt)/i, why:'Debt relief carries strict rules and is often restricted outright.', fix:'Say "debt consolidation options" and route to a licensed provider.'}
-  ,{id:'drug-name', sev:'block', cat:'Prescription drug reference', re:/(ozempic|wegovy|mounjaro|semaglutide|tirzepatide|adderall|xanax)/i, why:'Prescription brands cannot be used to sell a supplement, and comparison claims get rejected instantly.', fix:'Describe the category, never the brand.'}
-  ,{id:'rx-strength', sev:'block', cat:'Prescription comparison', re:/(prescription strength|works like .{0,12}(ozempic|wegovy)|pharmacy grade)/i, why:'Implying prescription equivalence is a hard block.', fix:'Remove the comparison entirely.'}
-  ,{id:'no-side-effects', sev:'warn', cat:'No side effects', re:/(no side effects|zero side effects|100% safe|completely safe)/i, why:'Absolute safety claims cannot be substantiated and invite a review.', fix:'Use "generally well tolerated" with a consultation note.'}
-  ,{id:'detox', sev:'warn', cat:'Detox claim', re:/(detox|cleanse your body|flush toxins|parasite cleanse)/i, why:'Detox and parasite claims are a known scam pattern and get extra scrutiny.', fix:'Speak to the ingredient and the routine.'}
-  ,{id:'anti-aging', sev:'warn', cat:'Anti-aging claim', re:/(reverse aging|turn back the clock|age backwards|anti[- ]aging miracle)/i, why:'Reversing ageing is an unsubstantiated outcome claim.', fix:'Say "supports skin hydration" instead.'}
-  ,{id:'testosterone', sev:'warn', cat:'Hormone claim', re:/(boost testosterone|raise testosterone|increase testosterone)/i, why:'Hormone claims need substantiation and often trip health review.', fix:'Use "supports healthy hormone levels" only with evidence.'}
-  ,{id:'all-caps', sev:'warn', cat:'All capitals', re:/(\b[A-Z]{5,}\b.*){3,}/, why:'Shouting copy reads as low quality and lowers delivery even when it passes review.', fix:'Use sentence case.'}
-  ,{id:'exclamations', sev:'info', cat:'Punctuation', re:/(!.*){3,}/, why:'Three or more exclamation marks is the classic spam signal.', fix:'Keep one.'}
-  ,{id:'click-here', sev:'info', cat:'Weak CTA', re:/(click here|tap here|swipe up)/i, why:'Generic CTAs underperform and add no information.', fix:'Name the action: "See the ingredient list".'}
-  ,{id:'personal-attr-2', sev:'block', cat:'Personal attributes', re:/(struggling with|suffering from|do you have|battling|tired of being)\s+(\w+\s+){0,2}(diabetes|cancer|insomnia|anxiety|depression|arthritis|psoriasis|thyroid|bloating|inflammation|pain|acne|migraine|overweight|fat|sleep|stress)/i, why:'Copy that asserts something about the viewer health or body is prohibited, even as a question.', fix:'Talk about the product, not the reader.'}
-  ,{id:'debt-2', sev:'block', cat:'Debt relief claim', re:/(erase|wipe out|eliminate|kill|clear)\s+(your\s+)?(credit card\s+|student\s+|medical\s+)?debt/i, why:'Promising to erase debt is a restricted financial claim.', fix:'Say debt consolidation options and route to a licensed provider.'}
-  ,{id:'symptom-treatment', sev:'block', cat:'Treatment claim', re:/(reduces|relieves|stops|prevents|treats)\s+(\w+\s+){0,2}(inflammation|joint pain|pain|swelling|bloating|cramps)/i, why:'Talking about reducing a symptom or inflammation reads as treating a medical condition, not supporting normal function.', fix:'Say what the product supports: "supports joint comfort and mobility".'}
-  ,{id:'pro-endorsement', sev:'block', cat:'Professional endorsement', re:/(i am a|as a)\s+(registered\s+)?(dietitian|dietician|nutritionist|pharmacist|nurse|doctor|physician)|i recommend this supplement to my (clients|patients)/i, why:'Professional authority plus a health outcome is one of the most common rejection patterns.', fix:'Drop the credential and the recommendation, describe the formula instead.'}
-  ,{id:'fight-illness', sev:'block', cat:'Disease prevention', re:/(fight off|prevents?|protect(s|ion)? against)\s+(\w+\s+){0,2}(illness|disease|cold|flu|infection|virus)/i, why:'Implying a product prevents illness is a disease claim.', fix:'Use "supports your immune system" with no outcome promise.'}
-  ,{id:'numeric-performance', sev:'block', cat:'Numeric performance claim', re:/(increase|boost|improve|raise)\s+(your\s+)?(performance|strength|energy|stamina|metabolism)\s+by\s+\d+/i, why:'A specific percentage improvement needs heavy substantiation and is usually treated as misleading.', fix:'Remove the number and describe the mechanism.'}
-  ,{id:'tired-of-body', sev:'block', cat:'Personal attributes', re:/(tired of|hate|embarrassed by)\s+(your|that)\s+(\w+\s+)?(stomach|belly|body|skin|hair|bloat|fat|gut)/i, why:'This talks directly to the reader about their body, which the personal attributes rule forbids.', fix:'Lead with the product: "A daily probiotic built to support digestive comfort".'}
-  ,{id:'do-you-suffer', sev:'block', cat:'Personal attributes', re:/(do you suffer from|do you have|are you living with|living with)\s+(\w+\s+){0,2}(ed|erectile|bloating|anxiety|depression|pain|insomnia|acne|hair loss|fatigue)/i, why:'A question that presumes a condition is the textbook personal attributes rejection.', fix:'Describe the service: "Prescription treatment options, reviewed online".'}
-  ,{id:'heals-your', sev:'block', cat:'Treatment claim', re:/(heals?|fixes?|repairs?|cures?)\s+(your\s+)?(gut|stomach|skin|hair|body|liver|joints)/i, why:'Healing or fixing a body part is a treatment claim.', fix:'Use "supports a healthy gut microbiome".'}
-  ,{id:'day-by-day', sev:'block', cat:'Before and after', re:/(day\s*\d+\s*(beside|vs\.?|versus|to)\s*day\s*\d+)|(down\s+\d+\s*(lbs?|pounds?|kg|kilos?)|(drop|lose)\s+(two|three|\d+)\s+(dress\s+)?sizes?)/i, why:'A day-by-day transformation or a clothing-size drop is a before and after claim, which is near-automatic rejection in supplements.', fix:'Show the routine, not the transformation.'}
-  ,{id:'percent-claim', sev:'block', cat:'Percentage claim', re:/\b(by|cuts?|reduces?)\s+\d{2,}\s*%/i, why:'Specific percentage outcomes are unsubstantiated performance promises.', fix:'Remove the number.'}
-  ,{id:'treats-ed', sev:'block', cat:'Efficacy claim', re:/(treats?|reverses?|cures?)\s+(ed|erectile|hair loss|baldness|acne|fatigue)/i, why:'Efficacy claims for a condition are rejected even in telehealth ads. Sell access to care, not the outcome.', fix:'Use access language: "get a prescription reviewed by a licensed clinician".'}
-  ,{id:'pounds-melt', sev:'warn', cat:'Passive weight loss', re:/(watch the (pounds|fat) melt|pounds melt away|fat melts off)/i, why:'Implies the product does the work alone, which weight management rules prohibit.', fix:'Describe the routine the product fits into.'}
-  ,{id:'disparage', sev:'warn', cat:'Disparaging comparison', re:/(better than|cheaper than)\s+(wegovy|ozempic|mounjaro|in-person clinics?|prescription)/i, why:'Comparisons that disparage a medicine or clinic carry a high substantiation bar and often trigger review.', fix:'Compare on convenience, not on efficacy or price.'}
-  ,{id:'mirror-shame', sev:'block', cat:'Body shaming', re:/(hate what you see|disgusted by|ashamed of)\s+(in the mirror|your body|your reflection)/i, why:'Statements of inferiority about appearance are prohibited.', fix:'Focus on what the product does, not how the reader looks.'}
-];
-function scanText(text) {
-  const out = [];
-  if (!text) return out;
-  RULES.forEach(function (r) {
-    if (r.id === 'long-headline') return;
-    r.re.lastIndex = 0;
-    const m = text.match(r.re);
-    if (m) out.push({ id: r.id, sev: r.sev, cat: r.cat, match: m[0], why: r.why, fix: r.fix, where: '' });
-  });
-  return out;
-}
+<h1>Check the ad before a reviewer does.</h1>
+<p class="sub">Copy, creative text and the landing page against 46 health, finance and platform rules. Bulk checks, an approved claims library, and a log of who approved what.</p>
+<nav class="tabs">
+  <button class="tab on" data-t="single">Single ad</button>
+  <button class="tab" data-t="bulk">Bulk</button>
+  <button class="tab" data-t="library">Claims library</button>
+  <button class="tab" data-t="log">Approval log</button>
+</nav>
 
-var $ = function (id) { return document.getElementById(id); };
-function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function render(findings, score, lander) {
-  var blocks = findings.filter(function(f){return f.sev==='block';}).length;
-  var warns = findings.filter(function(f){return f.sev==='warn';}).length;
-  var cls = blocks ? 'v-red' : (warns ? 'v-amber' : 'v-green');
-  var word = blocks ? 'DO NOT LAUNCH' : (warns ? 'FIX FIRST' : 'CLEAR TO LAUNCH');
-  var h = '<div class="verdict ' + cls + '"><b>' + word + '</b><span>' + blocks + ' block, ' + warns + ' warning</span><span class="score">risk score ' + score + '/100</span></div>';
-  if (!findings.length) h += '<div class="find"><div class="top"><span class="pill info">clean</span><span class="cat">No rule matched</span></div><p>Nothing in the copy or the creative text trips the current rule set. That is not a guarantee, only the absence of known flags.</p></div>';
-  ['block','warn','info'].forEach(function(sev){
-    var group = findings.filter(function(f){return f.sev===sev;});
-    if (!group.length) return;
-    h += '<div class="secttl">' + sev + ' (' + group.length + ')</div>';
-    group.forEach(function(f){
-      h += '<div class="find ' + f.sev + '"><div class="top"><span class="pill ' + f.sev + '">' + f.sev + '</span><span class="cat">' + esc(f.cat) + '</span>' + (f.match ? '<span class="m">' + esc(f.match) + '</span>' : '') + '</div><p>' + esc(f.why) + '</p><p class="fix"><b>Fix:</b> ' + esc(f.fix) + '</p></div>';
-    });
-  });
-  if (lander) h += '<div class="secttl">landing page</div><div class="lander">' + lander + '</div>';
-  $('out').innerHTML = h;
+<div id="pane-single">
+  <div class="card">
+    <label for="copy">Ad copy (headline, primary text, description)</label>
+    <textarea id="copy" placeholder="Clinically proven to cure insomnia in 7 days. Guaranteed results."></textarea>
+    <label for="img">Text inside the image or video (optional)</label>
+    <textarea id="img" style="min-height:60px" placeholder="LOSE 20LBS IN 2 WEEKS"></textarea>
+    <div class="row">
+      <div><label for="url">Landing page URL (optional)</label><input id="url" placeholder="https://example.com/offer"></div>
+      <div><label for="plat">Platform</label><select id="plat"><option>Meta</option><option>TikTok</option><option>Google</option></select></div>
+    </div>
+    <button id="go" class="wide">Check this ad</button>
+    <p class="hint">Nothing is stored on the server. The landing page is fetched once if you enter a URL.</p>
+    <div id="out"></div>
+  </div>
+</div>
+
+<div id="pane-bulk" style="display:none">
+  <div class="card">
+    <label for="bulk">One ad per line, up to 200</label>
+    <textarea id="bulk" style="min-height:170px" placeholder="Cure insomnia in 7 days, guaranteed&#10;A daily probiotic with 10 strains, built to support digestive comfort"></textarea>
+    <div class="row" style="margin-top:12px">
+      <div><label>Reviewer name</label><input id="rev" placeholder="Your name"></div>
+      <div><label>&nbsp;</label><button id="gobulk" style="width:100%">Check all</button></div>
+    </div>
+    <div id="bulkout"></div>
+  </div>
+</div>
+
+<div id="pane-library" style="display:none">
+  <div class="card">
+    <label for="lib">Approved phrases, one per line</label>
+    <textarea id="lib" style="min-height:150px" placeholder="supports joint comfort and mobility&#10;supports a normal sleep cycle"></textarea>
+    <button id="savelib" class="wide">Save the library</button>
+    <p class="hint">When a flagged line matches a phrase here, the tool marks it as cleared instead of blocking. The list stays in this browser.</p>
+    <div id="libout"></div>
+  </div>
+</div>
+
+<div id="pane-log" style="display:none">
+  <div class="card">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <strong id="logcount">0 approvals recorded</strong>
+      <a class="dl" id="logcsv" href="#">Export the log (CSV)</a>
+    </div>
+    <div id="logout"></div>
+    <button id="clearlog" class="ghost">Clear the log</button>
+  </div>
+</div>
+</div></main>
+<footer><div class="wrap"><b>What this does not do:</b> it cannot guarantee approval. Platform review is partly automated judgement. Preflight catches the written rules, which is where most rejections start. Built by VOXA.</div></footer>
+<script>
+var PF = { rules: [], ready: false };
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function libList(){ try { return JSON.parse(localStorage.getItem('pf_lib')||'[]').filter(Boolean); } catch(e){ return []; } }
+function libApproved(match){
+  if(!match) return false;
+  var m = String(match).toLowerCase();
+  return libList().some(function(p){ p=String(p).toLowerCase().trim(); return p && (m.indexOf(p)>-1 || p.indexOf(m)>-1); });
 }
-document.getElementById('go').addEventListener('click', function () {
-  var btn = this;
-  var copy = $('copy').value || '';
-  var img = $('img').value || '';
-  var url = ($('url').value || '').trim();
-  if (!copy && !img && !url) { $('out').innerHTML = '<div class="verdict v-idle">Add copy, creative text, or a landing page first.</div>'; return; }
-  var findings = scanText(copy + ' \n ' + img);
-  var seen = {};
-  findings = findings.filter(function(f){ if (seen[f.id]) return false; seen[f.id] = 1; return true; });
-  var blocks = findings.filter(function(f){return f.sev==='block';}).length;
-  var warns = findings.filter(function(f){return f.sev==='warn';}).length;
-  var score = Math.max(0, 100 - blocks * 25 - warns * 8);
-  if (!url) { render(findings, score, null); return; }
-  btn.disabled = true; btn.textContent = 'Fetching the landing page...';
-  fetch('/preflight-lander?url=' + encodeURIComponent(url) + '&q=' + encodeURIComponent(copy.slice(0,600))).then(function(r){ return r.json(); }).then(function(j){
-    var extra = [];
-    if (!j.ok) { extra.push('Could not read the page: ' + esc(j.error || 'unknown')); }
-    else {
-      extra.push('<b>' + (j.status || '?') + '</b> from ' + esc(j.host || '') + ' · ' + (j.words || 0) + ' words on the page');
-      extra.push('Tracking parameters: ' + (j.tracking ? '<b>found</b> (' + esc(j.tracking) + ')' : '<b>none</b>'));
-      if (j.flags && j.flags.length) extra.push('Page flags: <b>' + esc(j.flags.join(', ')) + '</b>');
-      if (j.mismatch) extra.push('<b>Claim mismatch:</b> the ad talks about something the page does not mention.');
-    }
-    render(findings, score, extra.join('<br>'));
-    btn.disabled = false; btn.textContent = 'Check this ad';
-  }).catch(function(){
-    render(findings, score, 'Landing page check unavailable right now.');
-    btn.disabled = false; btn.textContent = 'Check this ad';
+function scan(text){
+  if(!PF.ready) return [];
+  var out=[];
+  PF.rules.forEach(function(r){
+    if(r.id==='long-headline') return;
+    var re=new RegExp(r.pattern, r.flags);
+    var m=text.match(re);
+    if(!m) return;
+    var sev=r.sev;
+    if(sev!=='info' && libApproved(m[0])) sev='info';
+    out.push({id:r.id,sev:sev,cat:r.cat,match:m[0],why:r.why,fix:r.fix});
+  });
+  var seen={};
+  return out.filter(function(f){ if(seen[f.id]) return false; seen[f.id]=1; return true; });
+}
+function verdictOf(finds){
+  var blocks=finds.filter(function(f){return f.sev==='block';}).length;
+  var warns=finds.filter(function(f){return f.sev==='warn';}).length;
+  return {cls: blocks?'v-red':(warns?'v-amber':'v-green'), word: blocks?'DO NOT LAUNCH':(warns?'FIX FIRST':'CLEAR TO LAUNCH'), blocks:blocks, warns:warns, score:Math.max(0,100-blocks*25-warns*8)};
+}
+fetch('/preflight/rules.json').then(function(r){return r.json();}).then(function(j){ PF.rules=j; PF.ready=true; }).catch(function(){ PF.ready=false; });
+
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');});
+    t.classList.add('on');
+    ['single','bulk','library','log'].forEach(function(k){ document.getElementById('pane-'+k).style.display = (k===t.getAttribute('data-t'))?'block':'none'; });
+    if(t.getAttribute('data-t')==='log') renderLog();
   });
 });
 
-(function () {
-  var tabs = document.querySelectorAll('.tab');
-  tabs.forEach(function (t) {
-    t.addEventListener('click', function () {
-      tabs.forEach(function (x) { x.classList.remove('on'); });
-      t.classList.add('on');
-      var bulk = t.getAttribute('data-mode') === 'bulk';
-      document.getElementById('singleCard').style.display = bulk ? 'none' : 'block';
-      document.getElementById('bulkCard').style.display = bulk ? 'block' : 'none';
+function renderFindings(finds, landerHtml, target){
+  var v=verdictOf(finds);
+  var h='<div class="verdict '+v.cls+'"><b>'+v.word+'</b><span>'+v.blocks+' block, '+v.warns+' warning</span><span class="score">risk score '+v.score+'/100</span></div>';
+  if(!finds.length) h+='<div class="find"><div class="top"><span class="pill info">clean</span><span class="cat">No rule matched</span></div><p>Nothing in this copy trips the current rule set. That is not a guarantee, only the absence of known flags.</p></div>';
+  ['block','warn','info'].forEach(function(sev){
+    var g=finds.filter(function(f){return f.sev===sev;});
+    if(!g.length) return;
+    h+='<div class="secttl">'+sev+' ('+g.length+')</div>';
+    g.forEach(function(f){
+      h+='<div class="find '+f.sev+'"><div class="top"><span class="pill '+f.sev+'">'+f.sev+'</span><span class="cat">'+esc(f.cat)+'</span>'+(f.match?'<span class="m">'+esc(f.match)+'</span>':'')+'</div><p>'+esc(f.why)+'</p><p class="fix"><b>Fix:</b> '+esc(f.fix)+'</p></div>';
     });
   });
-  var lastRows = [];
-  document.getElementById('gobulk').addEventListener('click', function () {
-    var raw = document.getElementById('bulk').value || '';
-    var lines = raw.split('\n').map(function (s) { return s.trim(); }).filter(function (s) { return s.length > 3; }).slice(0, 200);
-    if (!lines.length) { document.getElementById('bulkout').innerHTML = '<p class="hint">Paste at least one ad.</p>'; return; }
-    lastRows = lines.map(function (line) {
-      var hits = scanText(line);
-      var seen = {};
-      hits = hits.filter(function (f) { if (seen[f.id]) return false; seen[f.id] = 1; return true; });
-      var blocks = hits.filter(function (h) { return h.sev === 'block'; });
-      var warns = hits.filter(function (h) { return h.sev === 'warn'; });
-      var verdict = blocks.length ? 'red' : (warns.length ? 'amber' : 'green');
-      return { line: line, verdict: verdict, blocks: blocks, warns: warns, top: blocks[0] || warns[0] || null };
-    });
-    var reds = lastRows.filter(function (r) { return r.verdict === 'red'; }).length;
-    var ambers = lastRows.filter(function (r) { return r.verdict === 'amber'; }).length;
-    var greens = lastRows.length - reds - ambers;
-    var h = '<div class="verdict ' + (reds ? 'v-red' : (ambers ? 'v-amber' : 'v-green')) + '"><b>' + reds + ' of ' + lastRows.length + ' cannot launch</b><span>' + ambers + ' to fix, ' + greens + ' clear</span></div>';
-    h += '<table class="bulk"><thead><tr><th>#</th><th>Ad</th><th>Verdict</th><th>Top issue</th></tr></thead><tbody>';
-    lastRows.forEach(function (r, i) {
-      h += '<tr><td>' + (i + 1) + '</td><td class="bulkrow" title="' + r.line.replace(/"/g, '&quot;') + '">' + r.line.replace(/</g, '&lt;') + '</td><td class="c-' + r.verdict + '">' + (r.verdict === 'red' ? 'DO NOT LAUNCH' : r.verdict === 'amber' ? 'FIX' : 'CLEAR') + '</td><td>' + (r.top ? r.top.cat : '-') + '</td></tr>';
-    });
-    h += '</tbody></table><a class="dl" id="csv" href="#">Download the results as CSV</a>';
-    document.getElementById('bulkout').innerHTML = h;
-    var csv = 'ad,verdict,top_issue,all_issues\n' + lastRows.map(function (r) {
-      var issues = r.blocks.concat(r.warns).map(function (x) { return x.cat; }).join('; ');
-      return '"' + r.line.replace(/"/g, '""') + '","' + r.verdict + '","' + (r.top ? r.top.cat : '') + '","' + issues.replace(/"/g, '""') + '"';
-    }).join('\n');
-    var blob = new Blob([csv], { type: 'text/csv' });
-    document.getElementById('csv').setAttribute('href', URL.createObjectURL(blob));
-    document.getElementById('csv').setAttribute('download', 'preflight-results.csv');
+  if(landerHtml) h+='<div class="secttl">landing page</div><div class="lander">'+landerHtml+'</div>';
+  target.innerHTML=h;
+}
+
+document.getElementById('go').addEventListener('click',function(){
+  var btn=this, copy=document.getElementById('copy').value||'', img=document.getElementById('img').value||'', url=(document.getElementById('url').value||'').trim();
+  if(!PF.ready){ document.getElementById('out').innerHTML='<div class="verdict v-idle">Rules are still loading, try again in a second.</div>'; return; }
+  if(!copy&&!img&&!url){ document.getElementById('out').innerHTML='<div class="verdict v-idle">Add copy, creative text or a landing page.</div>'; return; }
+  var finds=scan(copy+' \n '+img);
+  if(!url){ renderFindings(finds,null,document.getElementById('out')); return; }
+  btn.disabled=true; btn.textContent='Fetching the landing page...';
+  fetch('/preflight-lander?url='+encodeURIComponent(url)+'&q='+encodeURIComponent(copy.slice(0,600))).then(function(r){return r.json();}).then(function(j){
+    var ex=[];
+    if(!j.ok){ ex.push('Could not read the page: '+esc(j.error||'unknown')); }
+    else {
+      ex.push('<b>'+(j.status||'?')+'</b> from '+esc(j.host||'')+' · '+(j.words||0)+' words');
+      ex.push('Tracking parameters: '+(j.tracking?'<b>found</b> ('+esc(j.tracking)+')':'<b>none</b>'));
+      if(j.flags&&j.flags.length) ex.push('Page flags: <b>'+esc(j.flags.join(', '))+'</b>');
+      if(j.mismatch) ex.push('<b>Claim mismatch:</b> the ad talks about something the page does not mention.');
+    }
+    renderFindings(finds, ex.join('<br>'), document.getElementById('out'));
+    btn.disabled=false; btn.textContent='Check this ad';
+  }).catch(function(){
+    renderFindings(finds,'Landing page check unavailable right now.',document.getElementById('out'));
+    btn.disabled=false; btn.textContent='Check this ad';
   });
-})();
+});
+
+function logAdd(entry){
+  var log=[]; try{ log=JSON.parse(localStorage.getItem('pf_log')||'[]'); }catch(e){}
+  log.unshift(entry);
+  localStorage.setItem('pf_log', JSON.stringify(log.slice(0,500)));
+}
+function logAll(){ try{ return JSON.parse(localStorage.getItem('pf_log')||'[]'); }catch(e){ return []; } }
+function renderLog(){
+  var log=logAll();
+  document.getElementById('logcount').textContent = log.length + ' approval' + (log.length===1?'':'s') + ' recorded';
+  if(!log.length){ document.getElementById('logout').innerHTML='<p class="hint" style="margin-top:12px">Nothing recorded yet. Approve an ad from the bulk table.</p>'; return; }
+  var h='<table class="t"><thead><tr><th>When</th><th>Reviewer</th><th>Ad</th><th>Verdict</th><th>Decision</th></tr></thead><tbody>';
+  log.forEach(function(e){ h+='<tr><td>'+esc(e.when)+'</td><td>'+esc(e.who||'-')+'</td><td class="clip" title="">'+esc(e.ad)+'</td><td class="c-'+e.verdict+'">'+e.verdict.toUpperCase()+'</td><td>'+esc(e.decision)+'</td></tr>'; });
+  h+='</tbody></table>';
+  document.getElementById('logout').innerHTML=h;
+  var csv='when,reviewer,ad,verdict,decision\n'+log.map(function(e){return '"'+e.when+'","'+String(e.who||'').replace(/"/g,'""')+'","'+String(e.ad).replace(/"/g,'""')+'","'+e.verdict+'","'+e.decision+'"';}).join('\n');
+  var a=document.getElementById('logcsv'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='preflight-approvals.csv';
+}
+document.getElementById('clearlog').addEventListener('click',function(){ localStorage.removeItem('pf_log'); renderLog(); });
+
+document.getElementById('gobulk').addEventListener('click',function(){
+  if(!PF.ready){ document.getElementById('bulkout').innerHTML='<p class="hint">Rules still loading.</p>'; return; }
+  var raw=document.getElementById('bulk').value||'';
+  var lines=raw.split('\n').map(function(s){return s.trim();}).filter(function(s){return s.length>3;}).slice(0,200);
+  if(!lines.length){ document.getElementById('bulkout').innerHTML='<p class="hint">Paste at least one ad.</p>'; return; }
+  var rows=lines.map(function(line){
+    var f=scan(line), v=verdictOf(f), top=f.filter(function(x){return x.sev==='block';})[0]||f[0]||null;
+    return {line:line, v:v, top:top, all:f};
+  });
+  var reds=rows.filter(function(r){return r.v.cls==='v-red';}).length, ambers=rows.filter(function(r){return r.v.cls==='v-amber';}).length;
+  var h='<div class="verdict '+(reds?'v-red':(ambers?'v-amber':'v-green'))+'"><b>'+reds+' of '+rows.length+' cannot launch</b><span>'+ambers+' to fix, '+(rows.length-reds-ambers)+' clear</span></div>';
+  h+='<table class="t"><thead><tr><th>#</th><th>Ad</th><th>Verdict</th><th>Top issue</th><th>Decision</th></tr></thead><tbody>';
+  rows.forEach(function(r,i){
+    var cls=r.v.cls==='v-red'?'c-red':(r.v.cls==='v-amber'?'c-amber':'c-green');
+    h+='<tr><td>'+(i+1)+'</td><td class="clip" title="'+esc(r.line)+'">'+esc(r.line)+'</td><td class="'+cls+'">'+r.v.word+'</td><td>'+(r.top?esc(r.top.cat):'-')+'</td><td><select data-i="'+i+'"><option value="">Pending</option><option>Approved</option><option>Rejected</option></select></td></tr>';
+  });
+  h+='</tbody></table><a class="dl" id="bulkcsv" href="#">Download results (CSV)</a>';
+  document.getElementById('bulkout').innerHTML=h;
+  document.querySelectorAll('#bulkout select').forEach(function(sel){
+    sel.addEventListener('change',function(){
+      if(!sel.value) return;
+      var r=rows[parseInt(sel.getAttribute('data-i'),10)];
+      logAdd({when:new Date().toISOString().slice(0,16).replace('T',' '), who:document.getElementById('rev').value||'unassigned', ad:r.line.slice(0,120), verdict:(r.v.cls==='v-red'?'red':(r.v.cls==='v-amber'?'amber':'green')), decision:sel.value});
+    });
+  });
+  var csv='ad,verdict,top_issue,all_issues\n'+rows.map(function(r){ return '"'+r.line.replace(/"/g,'""')+'","'+(r.v.cls==='v-red'?'red':(r.v.cls==='v-amber'?'amber':'green'))+'","'+(r.top?r.top.cat:'')+'","'+r.all.map(function(x){return x.cat;}).join('; ').replace(/"/g,'""')+'"'; }).join('\n');
+  var a=document.getElementById('bulkcsv'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='preflight-results.csv';
+});
+
+document.getElementById('lib').value=libList().join('\n');
+document.getElementById('savelib').addEventListener('click',function(){
+  var list=document.getElementById('lib').value.split('\n').map(function(s){return s.trim();}).filter(Boolean);
+  localStorage.setItem('pf_lib', JSON.stringify(list));
+  document.getElementById('libout').innerHTML='<p class="hint">Saved '+list.length+' phrases. They now pass instead of blocking.</p>';
+});
+document.getElementById('rev').value = localStorage.getItem('pf_reviewer')||'';
+document.getElementById('rev').addEventListener('change',function(){ localStorage.setItem('pf_reviewer', this.value); });
+renderLog();
 </script></body></html>
