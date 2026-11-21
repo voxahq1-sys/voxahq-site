@@ -1,0 +1,142 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FabConvert pricing: free checker, $49 Solo, $149 Agency</title>
+<meta name="description" content="Free plan with 50 compliance checks a month. Solo at $49 for 2,000 checks and the API. Agency at $149 for 10,000 checks and client-ready exports.">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<style>
+:root{--ink:#0F1729;--ink2:#4A5568;--line:#DAD4C8;--acc:#0E7C66;--acc2:#12A183;--bg:#FAFAF8;--soft:#F4F3F0;--dark:#0F1729}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+a{text-decoration:none;color:inherit}
+header{background:var(--dark);color:#fff;position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;gap:26px;height:66px}
+.logo{font-weight:800;font-size:19px;letter-spacing:-.5px}
+.links{display:flex;gap:22px;font-size:14.5px;color:#C9D2DF;align-items:center}
+.links a:hover{color:#fff}
+.dd{position:relative}
+.dd>span{cursor:pointer;display:inline-flex;gap:5px;align-items:center}
+.ddmenu{position:absolute;top:34px;left:-14px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:8px;min-width:220px;box-shadow:0 14px 40px rgba(15,23,41,.18);display:none}
+.ddmenu a{display:block;padding:8px 10px;border-radius:8px;font-size:14px}
+.ddmenu a:hover{background:var(--soft)}
+.dd:hover .ddmenu{display:block}
+.navright{margin-left:auto;display:flex;gap:10px;align-items:center}
+.btn{display:inline-block;padding:11px 18px;border-radius:10px;font-size:14.5px;font-weight:600}
+.btn.p{background:var(--acc);color:#fff}
+.btn.w{background:#fff;color:var(--ink)}
+.btn.o{border:1px solid #3A465C;color:#DCE3EC}
+.btn.big{padding:14px 24px;font-size:15.5px;border-radius:12px}
+section{padding:64px 0}
+.hero{background:linear-gradient(160deg,#0F1729 0%,#12362F 60%,#0E7C66 130%);color:#fff;padding:74px 0 66px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:#9FE3CF;margin-bottom:14px}
+h1{font-size:50px;line-height:1.05;letter-spacing:-1.8px;max-width:820px;margin-bottom:18px}
+h1 u{text-decoration:none;color:#9FE3CF}
+.herosub{font-size:18.5px;color:#C9D2DF;max-width:620px;margin-bottom:26px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.small{font-size:13px;color:#93A0B4;margin-top:12px}
+h2{font-size:32px;letter-spacing:-1px;line-height:1.15;margin-bottom:10px}
+.sub{color:var(--ink2);max-width:660px;margin-bottom:26px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mod{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px}
+.mod .k{font-size:11.5px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+.mod h3{font-size:21px;letter-spacing:-.5px;margin-bottom:8px}
+.mod p{color:var(--ink2);font-size:15px;margin-bottom:14px}
+.mod ul{margin:0 0 18px 18px;color:var(--ink2);font-size:14.5px}
+.mod li{margin-bottom:5px}
+.steps{display:grid;gap:14px;margin-top:6px}
+.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 20px 20px 74px;position:relative}
+.step .n{position:absolute;left:20px;top:18px;font-size:13px;font-weight:800;color:var(--acc);letter-spacing:1px}
+.step h3{font-size:17px;margin-bottom:4px}
+.step p{color:var(--ink2);font-size:14.5px;margin:0}
+.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.stat b{display:block;font-size:34px;letter-spacing:-1.4px;color:var(--acc);line-height:1.05}
+.stat span{font-size:13.5px;color:var(--ink2)}
+.cmp{width:100%;border-collapse:collapse;margin-top:10px;font-size:15px}
+.cmp th{text-align:left;font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--ink2);padding:10px 8px;border-bottom:1px solid var(--line)}
+.cmp td{padding:12px 8px;border-bottom:1px solid #EFEDE8;color:var(--ink2);vertical-align:top}
+.cmp td:first-child{color:var(--ink);font-weight:600;width:34%}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column}
+.plan.best{border-color:var(--acc);box-shadow:0 12px 34px rgba(14,124,102,.12)}
+.plan .t{font-size:11.5px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+.plan .p{font-size:34px;font-weight:800;letter-spacing:-1.4px;line-height:1}
+.plan .per{font-size:13px;color:var(--ink2);margin:6px 0 14px}
+.plan ul{margin:0 0 18px 18px;font-size:14px;color:var(--ink2)}
+.plan a{margin-top:auto}
+.for{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.for .c{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.for h3{font-size:16.5px;margin-bottom:6px}
+.for p{font-size:14px;color:var(--ink2);margin:0}
+footer{background:var(--dark);color:#93A0B4;padding:40px 0 50px;font-size:14px}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+footer h5{color:#fff;font-size:13px;letter-spacing:.6px;text-transform:uppercase;margin-bottom:10px}
+footer a{display:block;margin-bottom:7px}
+@media(max-width:900px){h1{font-size:34px}.two,.plans,.for,.stats{grid-template-columns:1fr}footer .cols{grid-template-columns:1fr 1fr}.links{display:none}}
+</style>
+</head><body>
+<header><div class="wrap nav"><a class="logo" href="/fabconvert">FabConvert</a>
+<div class="links">
+<div class="dd"><span>Features ▾</span><div class="ddmenu"><a href="/fabconvert/compliance/">Compliance check</a><a href="/fabconvert/profit/">Profit tracking</a><a href="/fabconvert/account/">API and account</a></div></div>
+<div class="dd"><span>Workflow ▾</span><div class="ddmenu"><a href="#workflow">See it</a><a href="#workflow">Check it</a><a href="#workflow">Approve it</a><a href="#workflow">Measure it</a></div></div>
+<a href="/fabconvert/pricing/">Pricing</a>
+<a href="/fabconvert/postback-docs/">Docs</a>
+</div>
+<div class="navright"><a class="btn o" href="/fabconvert/login/">Log in</a><a class="btn w" href="/fabconvert/compliance/">Start free</a></div>
+</div></header>
+<section><div class="wrap">
+<div class="eyebrow" style="color:var(--acc)">Pricing</div>
+<h1 style="font-size:42px;letter-spacing:-1.6px;color:var(--ink)">Pay for the volume you run.</h1>
+<p class="sub">Both features are in every plan, including free. The plans differ on how many compliance checks you get and whether you need the API and exports.</p>
+<div class="plans">
+<div class="plan"><div class="t">Free</div><div class="p">$0</div><div class="per">no card, no expiry</div>
+<ul><li>50 compliance checks a month</li><li>Single ad at a time</li><li>Image text and landing page check</li><li>Unlimited postbacks and spend entries</li><li>Net profit, ROI and revenue per conversion</li></ul>
+<a class="btn o" href="/fabconvert/compliance/">Start free</a></div>
+<div class="plan best"><div class="t">Solo — most buyers</div><div class="p">$49</div><div class="per">per month</div>
+<ul><li>2,000 compliance checks a month</li><li>Bulk checks, 200 ads at a time, CSV out</li><li>Claims library</li><li>Approval log with a name and a timestamp</li><li>API access and one key</li></ul>
+<a class="btn p" href="/fabconvert/login/">Start with Solo</a></div>
+<div class="plan"><div class="t">Agency</div><div class="p">$149</div><div class="per">per month</div>
+<ul><li>10,000 compliance checks a month</li><li>Team access so a buyer and a reviewer share a workspace</li><li>Client-ready exports</li><li>Priority rule updates</li></ul>
+<a class="btn o" href="/fabconvert/login/">Start with Agency</a></div>
+</div>
+<p class="small" style="color:#5B6675;margin-top:16px">Billing is not connected yet. Plans are switched on by hand after a short email, so nothing is charged today. Prices are in US dollars, billed monthly, cancel any time.</p>
+</div></section>
+
+<section class="alt"><div class="wrap">
+<h2>What is in every plan</h2>
+<table class="cmp"><thead><tr><th>Feature</th><th>Free</th><th>Solo</th><th>Agency</th></tr></thead><tbody>
+<tr><td>Compliance check</td><td>50 / month</td><td>2,000 / month</td><td>10,000 / month</td></tr>
+<tr><td>Bulk checks and CSV</td><td>—</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Claims library</td><td>—</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Approval log</td><td>—</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>API access</td><td>—</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Team access</td><td>—</td><td>—</td><td>Yes</td></tr>
+<tr><td>Postback ledger</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
+<tr><td>Refunds subtracted</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+</tbody></table>
+</div></section>
+
+<section><div class="wrap">
+<h2>Questions about the plans</h2>
+<div class="steps">
+<div class="step"><div class="n">Q1</div><h3>What counts as a check?</h3><p>One ad, once. A bulk run of 50 ads counts as 50. A check refused because you hit the limit does not count against you.</p></div>
+<div class="step"><div class="n">Q2</div><h3>Do postbacks cost anything?</h3><p>No. Postbacks, spend entries and the profit ledger are unlimited on every plan, including free.</p></div>
+<div class="step"><div class="n">Q3</div><h3>Can I change plan later?</h3><p>Yes. Limits apply from the month you change, and nothing is pro-rated. Write to us and we switch it.</p></div>
+<div class="step"><div class="n">Q4</div><h3>Is there an annual price?</h3><p>Not yet. When billing is connected there will be two months free on a yearly plan.</p></div>
+<div class="step"><div class="n">Q5</div><h3>What if my network does not send refunds?</h3><p>Then the ledger cannot know, and profit stays optimistic. Ask the network to enable the refund postback; the <a href="/fabconvert/postback-docs/">setup page</a> shows how.</p></div>
+</div>
+</div></section>
+
+<section class="alt"><div class="wrap" style="text-align:center">
+<h2 style="margin-bottom:8px">Check one ad. It takes ten seconds.</h2>
+<p class="sub" style="margin:0 auto 20px">Free plan, no card. If one rejected ad is caught, the month paid for itself.</p>
+<a class="btn p big" href="/fabconvert/compliance/">Start free</a>
+</div></section>
+<footer><div class="wrap"><div class="cols">
+<div><div class="logo" style="margin-bottom:10px">FabConvert</div><p style="font-size:13.5px;max-width:280px">Compliance and profit for people who run paid ads. Built and run by VOXA.</p></div>
+<div><h5>Product</h5><a href="/fabconvert/compliance/">Compliance check</a><a href="/fabconvert/profit/">Profit tracking</a><a href="/fabconvert/pricing/">Pricing</a></div>
+<div><h5>Resources</h5><a href="/fabconvert/postback-docs/">Postback setup</a><a href="/fabconvert/account/">Account and API</a><a href="/fabconvert/policies/">Policies</a></div>
+<div><h5>Company</h5><a href="mailto:voxa.hq1@gmail.com">Email us</a><a href="/terms">Terms</a><a href="/privacy-policy">Privacy</a></div>
+</div><div style="margin-top:26px;font-size:13px">© 2026 VOXA · voxahq.in</div></div></footer>
+</body></html>

@@ -46,8 +46,9 @@ export async function onRequestPost(context) {
   try { body = await request.json(); } catch (e) { return json({ ok: false, error: 'Send JSON.' }, 400); }
   const ads = Array.isArray(body.ads) ? body.ads.slice(0, 200) : (body.copy ? [String(body.copy) + (body.imageText ? ' ' + body.imageText : '')] : []);
   if (!ads.length) return json({ ok: false, error: 'No ad text in the request.' }, 400);
-  const ws = await wsFor(env, who.email);
-  const plan = (await env.PASSPORT.get('plan:' + who.email)) || 'free';
+  const owner = (await env.PASSPORT.get('member:' + who.email)) || who.email;
+  const ws = await wsFor(env, owner);
+  const plan = (await env.PASSPORT.get('plan:' + owner)) || 'free';
   const limit = limitFor(plan);
   const month = new Date().toISOString().slice(0, 7);
   const usageKey = 'u:' + ws + ':' + month;

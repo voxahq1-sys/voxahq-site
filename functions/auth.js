@@ -72,6 +72,9 @@ export async function onRequestPost(context) {
     if (!saved || saved !== code) return json({ ok: false, error: 'That code is wrong or expired.' }, 401);
     await env.PASSPORT.delete('otp:' + email);
     const sig = await hmac(secret(env), 's:' + email);
+    const ws = await wsFor(env, email);
+    const known = await env.PASSPORT.get('wowner:' + ws);
+    if (!known) await env.PASSPORT.put('wowner:' + ws, email);
     const cookie = 'fc_session=' + encodeURIComponent(email) + '.' + sig + '; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=2592000';
     return json({ ok: true, email, ws: await wsFor(env, email) }, 200, { 'set-cookie': cookie });
   }

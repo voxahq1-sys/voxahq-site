@@ -42,9 +42,10 @@ export async function onRequestGet(context) {
   if (!env.PASSPORT) return json({ ok: false, error: 'Storage is not configured.' }, 500);
   const email = await session(request, env);
   if (!email) return json({ ok: false, signedIn: false, error: 'Sign in first.' }, 401);
-  const w = await wsFor(env, email);
+  const owner = (await env.PASSPORT.get('member:' + email)) || email;
+  const w = await wsFor(env, owner);
   const month = new Date().toISOString().slice(0, 7);
-  const plan = (await env.PASSPORT.get('plan:' + email)) || 'free';
+  const plan = (await env.PASSPORT.get('plan:' + owner)) || 'free';
   const limit = plan === 'agency' ? 10000 : (plan === 'solo' ? 2000 : 50);
   const used = Number((await env.PASSPORT.get('u:' + w + ':' + month)) || 0);
   const conv = [];
@@ -63,7 +64,7 @@ export async function onRequestGet(context) {
   const revenue = sales.reduce((a, c) => a + (Number(c.payout) || 0), 0);
   const cost = spend.reduce((a, s) => a + (Number(s.amount) || 0), 0);
   return json({
-    ok: true, email, ws: w, plan, usage: { used, limit, month },
+    ok: true, email, owner, ws: w, plan, usage: { used, limit, month }, team: JSON.parse((await env.PASSPORT.get('team:' + owner)) || '[]'),
     summary: {
       conversions: sales.length,
       refunds: refunds.length,
@@ -82,9 +83,20 @@ export async function onRequestPost(context) {
   if (!env.PASSPORT) return json({ ok: false, error: 'Storage is not configured.' }, 500);
   const email = await session(request, env);
   if (!email) return json({ ok: false, signedIn: false, error: 'Sign in first.' }, 401);
-  const w = await wsFor(env, email);
+  const owner = (await env.PASSPORT.get('member:' + email)) || email;
+  const w = await wsFor(env, owner);
   let b = {};
   try { b = await request.json(); } catch (e) { return json({ ok: false, error: 'Send JSON.' }, 400); }
+  if (b.action === 'invite') {
+    const mate = String(b.email || '').trim().toLowerCase();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(mate)) return json({ ok: false, error: 'Enter a valid email.' }, 400);
+    if (mate === owner) return json({ ok: false, error: 'That is already you.' }, 400);
+    const list = JSON.parse((await env.PASSPORT.get('team:' + owner)) || '[]');
+    if (list.indexOf(mate) === -1) list.push(mate);
+    await env.PASSPORT.put('team:' + owner, JSON.stringify(list));
+    await env.PASSPORT.put('member:' + mate, owner);
+    return json({ ok: true, team: list });
+  }
   if (b.action === 'newkey') {
     const raw = 'fc_' + Array.from(crypto.getRandomValues(new Uint8Array(18))).map(x => ('0' + x.toString(16)).slice(-2)).join('');
     await env.PASSPORT.put('key:' + await sha256(raw), email, { expirationTtl: 60 * 60 * 24 * 365 });

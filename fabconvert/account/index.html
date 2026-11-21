@@ -37,6 +37,12 @@ code{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:#F4F3F0;
   <p class="hint">Free includes 50 checks a month. Paid plans raise it to 2,000 and 10,000. Billing is not connected yet, so paid plans are switched on by hand.</p>
 </div>
 <div class="card">
+  <label>Team access</label>
+  <div id="teamlist" class="hint" style="margin-bottom:6px">No one else yet.</div>
+  <div style="display:flex;gap:8px;margin-top:6px"><input id="mate" placeholder="teammate@company.com" style="flex:1"><button id="addmate">Add</button></div>
+  <p class="hint">Someone added here signs in with their own email and sees the same ledger, usage and approval log. Remove is by emailing us.</p>
+</div>
+<div class="card">
   <label>API key</label>
   <p class="hint" style="margin:0 0 10px">Use this in the header <code>x-api-key</code> against <code>https://voxahq.in/compliance-check</code>. Only a hash is stored, so a lost key cannot be shown again.</p>
   <button id="newkey">Generate a new key</button>
@@ -59,7 +65,18 @@ function paint(j){
   document.getElementById('use').textContent=j.usage.used+' of '+j.usage.limit;
   document.getElementById('bar').style.width=Math.min(100,Math.round(j.usage.used/j.usage.limit*100))+'%';
 }
-fetch('/fab-api').then(function(r){ if(r.status===401){ window.location.href='/fabconvert/login'; return null;} return r.json(); }).then(function(j){ if(j&&j.ok) paint(j); });
+function paintTeam(list){
+  var el=document.getElementById('teamlist');
+  el.innerHTML = (list && list.length) ? list.map(function(e){ return '<div>'+e+'</div>'; }).join('') : 'No one else yet.';
+}
+fetch('/fab-api').then(function(r){ if(r.status===401){ window.location.href='/fabconvert/login'; return null;} return r.json(); }).then(function(j){ if(j&&j.ok){ paint(j); paintTeam(j.team); } });
+document.getElementById('addmate').addEventListener('click',function(){
+  var m=document.getElementById('mate').value.trim();
+  if(!m){ return; }
+  fetch('/fab-api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'invite',email:m})}).then(function(r){return r.json();}).then(function(j){
+    if(j.ok){ document.getElementById('mate').value=''; paintTeam(j.team); } else { alert(j.error); }
+  });
+});
 document.getElementById('newkey').addEventListener('click',function(){
   if(!confirm('Generate a new key? The old one stops working.')) return;
   fetch('/fab-api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'newkey'})}).then(function(r){return r.json();}).then(function(j){

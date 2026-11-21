@@ -1,0 +1,139 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FabConvert policies: data, refunds and cancellation</title>
+<meta name="description" content="What FabConvert stores, how long it keeps it, how refunds and cancellation work, and how to delete an account.">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<style>
+:root{--ink:#0F1729;--ink2:#4A5568;--line:#DAD4C8;--acc:#0E7C66;--acc2:#12A183;--bg:#FAFAF8;--soft:#F4F3F0;--dark:#0F1729}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+a{text-decoration:none;color:inherit}
+header{background:var(--dark);color:#fff;position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;gap:26px;height:66px}
+.logo{font-weight:800;font-size:19px;letter-spacing:-.5px}
+.links{display:flex;gap:22px;font-size:14.5px;color:#C9D2DF;align-items:center}
+.links a:hover{color:#fff}
+.dd{position:relative}
+.dd>span{cursor:pointer;display:inline-flex;gap:5px;align-items:center}
+.ddmenu{position:absolute;top:34px;left:-14px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:8px;min-width:220px;box-shadow:0 14px 40px rgba(15,23,41,.18);display:none}
+.ddmenu a{display:block;padding:8px 10px;border-radius:8px;font-size:14px}
+.ddmenu a:hover{background:var(--soft)}
+.dd:hover .ddmenu{display:block}
+.navright{margin-left:auto;display:flex;gap:10px;align-items:center}
+.btn{display:inline-block;padding:11px 18px;border-radius:10px;font-size:14.5px;font-weight:600}
+.btn.p{background:var(--acc);color:#fff}
+.btn.w{background:#fff;color:var(--ink)}
+.btn.o{border:1px solid #3A465C;color:#DCE3EC}
+.btn.big{padding:14px 24px;font-size:15.5px;border-radius:12px}
+section{padding:64px 0}
+.hero{background:linear-gradient(160deg,#0F1729 0%,#12362F 60%,#0E7C66 130%);color:#fff;padding:74px 0 66px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:#9FE3CF;margin-bottom:14px}
+h1{font-size:50px;line-height:1.05;letter-spacing:-1.8px;max-width:820px;margin-bottom:18px}
+h1 u{text-decoration:none;color:#9FE3CF}
+.herosub{font-size:18.5px;color:#C9D2DF;max-width:620px;margin-bottom:26px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.small{font-size:13px;color:#93A0B4;margin-top:12px}
+h2{font-size:32px;letter-spacing:-1px;line-height:1.15;margin-bottom:10px}
+.sub{color:var(--ink2);max-width:660px;margin-bottom:26px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mod{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px}
+.mod .k{font-size:11.5px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+.mod h3{font-size:21px;letter-spacing:-.5px;margin-bottom:8px}
+.mod p{color:var(--ink2);font-size:15px;margin-bottom:14px}
+.mod ul{margin:0 0 18px 18px;color:var(--ink2);font-size:14.5px}
+.mod li{margin-bottom:5px}
+.steps{display:grid;gap:14px;margin-top:6px}
+.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 20px 20px 74px;position:relative}
+.step .n{position:absolute;left:20px;top:18px;font-size:13px;font-weight:800;color:var(--acc);letter-spacing:1px}
+.step h3{font-size:17px;margin-bottom:4px}
+.step p{color:var(--ink2);font-size:14.5px;margin:0}
+.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.stat b{display:block;font-size:34px;letter-spacing:-1.4px;color:var(--acc);line-height:1.05}
+.stat span{font-size:13.5px;color:var(--ink2)}
+.cmp{width:100%;border-collapse:collapse;margin-top:10px;font-size:15px}
+.cmp th{text-align:left;font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--ink2);padding:10px 8px;border-bottom:1px solid var(--line)}
+.cmp td{padding:12px 8px;border-bottom:1px solid #EFEDE8;color:var(--ink2);vertical-align:top}
+.cmp td:first-child{color:var(--ink);font-weight:600;width:34%}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column}
+.plan.best{border-color:var(--acc);box-shadow:0 12px 34px rgba(14,124,102,.12)}
+.plan .t{font-size:11.5px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+.plan .p{font-size:34px;font-weight:800;letter-spacing:-1.4px;line-height:1}
+.plan .per{font-size:13px;color:var(--ink2);margin:6px 0 14px}
+.plan ul{margin:0 0 18px 18px;font-size:14px;color:var(--ink2)}
+.plan a{margin-top:auto}
+.for{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.for .c{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.for h3{font-size:16.5px;margin-bottom:6px}
+.for p{font-size:14px;color:var(--ink2);margin:0}
+footer{background:var(--dark);color:#93A0B4;padding:40px 0 50px;font-size:14px}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+footer h5{color:#fff;font-size:13px;letter-spacing:.6px;text-transform:uppercase;margin-bottom:10px}
+footer a{display:block;margin-bottom:7px}
+@media(max-width:900px){h1{font-size:34px}.two,.plans,.for,.stats{grid-template-columns:1fr}footer .cols{grid-template-columns:1fr 1fr}.links{display:none}}
+</style>
+<style>.doc{max-width:760px}.doc h2{font-size:22px;margin:30px 0 8px}.doc p,.doc li{color:var(--ink2)}.doc ul{margin:0 0 12px 20px}</style>
+</head><body>
+<header><div class="wrap nav"><a class="logo" href="/fabconvert">FabConvert</a>
+<div class="links">
+<div class="dd"><span>Features ▾</span><div class="ddmenu"><a href="/fabconvert/compliance/">Compliance check</a><a href="/fabconvert/profit/">Profit tracking</a><a href="/fabconvert/account/">API and account</a></div></div>
+<div class="dd"><span>Workflow ▾</span><div class="ddmenu"><a href="#workflow">See it</a><a href="#workflow">Check it</a><a href="#workflow">Approve it</a><a href="#workflow">Measure it</a></div></div>
+<a href="/fabconvert/pricing/">Pricing</a>
+<a href="/fabconvert/postback-docs/">Docs</a>
+</div>
+<div class="navright"><a class="btn o" href="/fabconvert/login/">Log in</a><a class="btn w" href="/fabconvert/compliance/">Start free</a></div>
+</div></header>
+<section><div class="wrap doc">
+<h1 style="font-size:34px;letter-spacing:-1px;margin-bottom:8px">Policies</h1>
+<p class="sub">Plain language, no legal padding. Last updated 22 November 2026.</p>
+
+<h2>What we store</h2>
+<ul>
+<li><strong>Your email address</strong>, so you can sign in with a code. No password is stored anywhere.</li>
+<li><strong>Your workspace id</strong>, a short code derived from your email, used in your postback URL.</li>
+<li><strong>Postback records</strong>: click id, offer name, payout, status (sale or refund), transaction id and time.</li>
+<li><strong>Spend entries</strong>: an amount, an optional label and a timestamp.</li>
+<li><strong>Usage counts</strong>: how many checks you ran this month.</li>
+<li><strong>A hash</strong> of your API key, never the key itself.</li>
+</ul>
+<p>We do not store the ad copy you check. The compliance check runs on the server, returns a verdict, and the text is not saved. The landing page is fetched once, only when you enter a URL.</p>
+
+<h2>What we do not do</h2>
+<ul>
+<li>No advertising trackers on FabConvert pages, no third-party analytics scripts.</li>
+<li>No selling or sharing of your data with anyone.</li>
+<li>No reading of your ad accounts. FabConvert never asks for ad platform credentials.</li>
+</ul>
+
+<h2>How long we keep it</h2>
+<p>Postback records are kept for 180 days, spend entries for 365 days, and usage counts for 70 days. After that they expire on their own. Your email stays as long as the account exists.</p>
+
+<h2>Deleting your data</h2>
+<p>Two buttons on the <a href="/fabconvert/account/">account page</a>. <strong>Clear my ledger</strong> deletes every postback and spend entry. <strong>Delete my account data</strong> does that and signs you out. Both are immediate and cannot be undone.</p>
+
+<h2>Free plan and paid plans</h2>
+<p>The free plan allows 50 compliance checks a calendar month and unlimited postbacks. Paid plans raise the check allowance to 2,000 (Solo) or 10,000 (Agency). A check that is refused because you hit the limit is not counted.</p>
+
+<h2>Refunds and cancellation</h2>
+<p>Paid plans are billed monthly. If you cancel, the plan stays active until the end of the period you already paid for and then drops to free; we do not pro-rate partial months. If FabConvert did not work for you in the first 14 days of a paid plan, reply to any email from us within those 14 days and we refund that month in full, no questions and no form. After 14 days, refunds are at our discretion and we will say yes or no in one reply.</p>
+<p>Nothing in this policy limits a refund right you have under the law where you live.</p>
+
+<h2>Service levels and limits</h2>
+<p>FabConvert is a small product. We aim for the checker and the postback endpoint to be available at all times, and we do not currently offer an uptime guarantee or a service credit. If the endpoint is down, your network can retry the postback later; duplicates are deduplicated by transaction id, so a retry is safe.</p>
+
+<h2>What FabConvert is not</h2>
+<p>It is not legal advice and it does not guarantee that a platform will approve an ad. Platform review includes automated judgement we cannot see. The checker catches the written rules, which is where most rejections start.</p>
+
+<h2>Contact</h2>
+<p>Write to <a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a>. We answer within two working days.</p>
+</div></section>
+<footer><div class="wrap"><div class="cols">
+<div><div class="logo" style="margin-bottom:10px">FabConvert</div><p style="font-size:13.5px;max-width:280px">Compliance and profit for people who run paid ads. Built and run by VOXA.</p></div>
+<div><h5>Product</h5><a href="/fabconvert/compliance/">Compliance check</a><a href="/fabconvert/profit/">Profit tracking</a><a href="/fabconvert/pricing/">Pricing</a></div>
+<div><h5>Resources</h5><a href="/fabconvert/postback-docs/">Postback setup</a><a href="/fabconvert/account/">Account and API</a><a href="/fabconvert/policies/">Policies</a></div>
+<div><h5>Company</h5><a href="mailto:voxa.hq1@gmail.com">Email us</a><a href="/terms">Terms</a><a href="/privacy-policy">Privacy</a></div>
+</div><div style="margin-top:26px;font-size:13px">© 2026 VOXA · voxahq.in</div></div></footer>
+</body></html>
