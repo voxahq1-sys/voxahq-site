@@ -118,3 +118,5 @@
     setTimeout(fire, 9000);
   }
 })();
+
+/* rev 2: triggers a redeploy so MAILERLITE_TOKEN applies */
