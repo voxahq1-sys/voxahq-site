@@ -27,7 +27,8 @@ export async function onRequestGet(context) {
     const sl = Number((await env.PASSPORT.get('lconv:' + params.slug + ':' + si)) || 0);
     stats.push({ views: vw, clicks: cl, sales: sl });
   }
-  const country = ((context.request.cf && context.request.cf.country) || '').toUpperCase();
+  const urlGeo = (new URL(context.request.url).searchParams.get('geo') || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2);
+  const country = urlGeo || ((context.request.cf && context.request.cf.country) || '').toUpperCase();
   const idxAll = d.variants.map(function (v, i) { return i; });
   const idxGeo = idxAll.filter(function (i) {
     const list = (d.variants[i].geo || '').split(',').map(function (s) { return s.trim(); }).filter(Boolean);
