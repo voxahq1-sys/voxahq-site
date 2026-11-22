@@ -106,7 +106,7 @@ export async function onRequestGet(context) {
     + '</style></head><body><div class="wrap"><div class="top"><span class="dot"></span><span>' + esc(d.brand || '') + '</span></div><div class="card">' + inner + '</div>'
     + '<div class="fine">Built with FabConvert. This page is not indexed and carries no third-party trackers.</div></div>'
     + '<script>document.querySelectorAll(".opt").forEach(function(b){b.addEventListener("click",function(){document.querySelectorAll(".opt").forEach(function(x){x.classList.remove("sel")});b.classList.add("sel");});});</script>'
-    + (d.template === 'quiz' ? '' : '<div class="sbar" id="sbar"><a class="cta" href="' + cta + '">' + esc(v.cta) + '</a></div><script>var sb=document.getElementById("sbar");if(sb){var shown=false;window.addEventListener("scroll",function(){if(shown)return;if(window.scrollY>window.innerHeight*0.45){sb.classList.add("on");shown=true;}});}</script>')
+    + (d.template === 'quiz' ? '' : '<div class="sbar" id="sbar"><a class="cta" href="' + cta + '">' + esc(v.cta) + '</a></div><script>var sb=document.getElementById("sbar");if(sb){var shown=false;var tick=function(){if(shown)return;var max=document.documentElement.scrollHeight-window.innerHeight;if(max<80){sb.classList.add("on");shown=true;return;}if(window.scrollY>max*0.35){sb.classList.add("on");shown=true;}};window.addEventListener("scroll",tick);setTimeout(tick,2500);}</script>')
     + '</body></html>';
   return new Response(html, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' } });
 }
