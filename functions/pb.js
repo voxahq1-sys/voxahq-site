@@ -48,7 +48,8 @@ export async function onRequestGet(context) {
     if (owner && worth && env.RESEND_API_KEY) {
       const subject = status === 'refund' ? ('Refund recorded: ' + payout) : ('Sale recorded: ' + payout);
       const body = '<div style="font-family:system-ui,sans-serif;max-width:520px"><h2 style="margin:0 0 6px;font-size:18px">' + subject + '</h2><p style="color:#555">Offer: ' + (offer || 'not named') + ' | click id: ' + cid + '</p><p style="color:#555">' + (status === 'refund' ? 'It has been subtracted from revenue in your ledger.' : 'It has been added to your ledger.') + '</p><p style="margin-top:16px"><a href="https://voxahq.in/fabconvert/profit/">Open the ledger</a></p></div>';
-      await fetch('https://api.resend.com/emails', { method: 'POST', headers: { 'content-type': 'application/json', authorization: 'Bearer ' + env.RESEND_API_KEY }, body: JSON.stringify({ from: 'FabConvert <login@voxahq.in>', to: [owner], subject, html: body }) });
+      await fetch('https://api.resend.com/emails', { method: 'POST', headers: { 'content-type': 'application/json', authorization: 'Bearer ' + env.RESEND_API_KEY }, body: JSON.stringify({ from: 'FabConvert <alerts@voxahq.in>',
+      reply_to: 'voxa.hq1@gmail.com', to: [owner], subject, html: body }) });
     }
   } catch (e) {}
   return json({ ok: true, saved: rec, dedupe: txid ? 'by transaction id' : 'by click id and payout' });

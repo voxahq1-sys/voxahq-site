@@ -55,7 +55,8 @@ export async function onRequestPost(context) {
         method: 'POST',
         headers: { 'content-type': 'application/json', authorization: 'Bearer ' + env.RESEND_API_KEY },
         body: JSON.stringify({
-          from: 'FabConvert <login@voxahq.in>',
+          from: 'FabConvert <alerts@voxahq.in>',
+      reply_to: 'voxa.hq1@gmail.com',
           to: [email],
           subject: 'Your FabConvert sign-in code: ' + code,
           html: '<div style="font-family:system-ui,sans-serif;max-width:520px"><h2 style="margin:0 0 8px">Your sign-in code</h2><p style="font-size:28px;letter-spacing:6px;font-weight:800;margin:12px 0">' + code + '</p><p style="color:#555">It expires in 10 minutes. If you did not ask for it, ignore this email.</p><p style="color:#777;font-size:13px">FabConvert by VOXA, voxahq.in</p></div>'
