@@ -112,7 +112,7 @@ function loadList(){
     el.innerHTML='';
     j.landers.forEach(function(l){
       var d=document.createElement('div'); d.className='item';
-      d.innerHTML='<div><b>'+l.name+'</b><div class="meta">'+l.template+' · '+l.variants+' variant'+(l.variants>1?'s':'')+' · /l/'+l.pubSlug+'</div></div><div class="sp"></div>';
+      d.innerHTML='<div><b>'+l.name+'</b><div class="meta">'+l.template+' · '+l.variants+' variant'+(l.variants>1?'s':'')+' · '+(l.clicks||0)+' clicks'+' · /l/'+l.pubSlug+'</div></div><div class="sp"></div>';
       var sp=d.querySelector('.sp');
       var open=document.createElement('button'); open.className='ghost'; open.textContent='Open'; open.onclick=function(){ window.open('/l/'+l.pubSlug,'_blank'); };
       var edit=document.createElement('button'); edit.className='ghost'; edit.textContent='Edit'; edit.onclick=function(){ editLander(l.slug); };

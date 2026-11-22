@@ -35,7 +35,15 @@ export async function onRequestGet(context) {
     const res = await env.PASSPORT.list({ prefix: 'lander:' + ws + ':', cursor, limit: 200 });
     for (const k of res.keys) {
       const v = await env.PASSPORT.get(k.name);
-      if (v) { try { const d = JSON.parse(v); list.push({ slug: d.slug, pubSlug: ws + '-' + d.slug, name: d.name, template: d.template, variants: d.variants.length, updated: d.updated }); } catch (e) {} }
+      if (v) { try {
+        const d = JSON.parse(v);
+        const pub = ws + '-' + d.slug;
+        let clicks = 0;
+        for (let vi = 0; vi < d.variants.length; vi++) {
+          clicks += Number((await env.PASSPORT.get('clicks:' + pub + ':' + vi)) || 0);
+        }
+        list.push({ slug: d.slug, pubSlug: pub, name: d.name, template: d.template, variants: d.variants.length, clicks, updated: d.updated });
+      } catch (e) {} }
     }
     if (res.list_complete) break;
     cursor = res.cursor;
