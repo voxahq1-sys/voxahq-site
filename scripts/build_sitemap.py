@@ -10,7 +10,7 @@ BASE = "https://voxahq.in"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SKIP_FILES = {"404.html", "home-preview-single-file.html"}
-SKIP_DIRS = {".git", ".github", "node_modules", "images", "css", "js", "scripts", "fabconvert", "preflight"}
+SKIP_DIRS = {".git", ".github", "node_modules", "images", "css", "js", "scripts", "preflight"}
 
 LEGAL = {"privacy-policy.html", "terms.html", "disclaimer.html", "cookie-policy.html"}
 INFO = {"about.html", "contact.html", "how-we-test.html", "editorial-policy.html", "start.html"}
