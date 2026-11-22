@@ -114,6 +114,7 @@ export async function onRequestPost(context) {
     };
   });
   if (!variants.length) return json({ ok: false, error: 'Add at least one variant.' }, 400);
+  if (!/^https?:\/\/[^\s]+/i.test(String(b.offer || ''))) return json({ ok: false, error: 'Add the offer link. It must start with http:// or https:// so the button can send people somewhere.' }, 400);
   const existing = await env.PASSPORT.get('lander:' + ws + ':' + slug).catch(() => null);
   let prevPub = null;
   try { if (existing) prevPub = JSON.parse(existing).pub || null; } catch (e) {}
