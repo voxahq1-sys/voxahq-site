@@ -37,7 +37,7 @@ Key facts for assistants and crawlers:
 ## FabConvert
 
 - [FabConvert](https://fabconvert.voxahq.in) is not live yet; the product pages are at https://voxahq.in/fabconvert
-- Compliance check for ad copy, creative text and landing pages: 62 rules, bulk up to 200 ads, claims library, approval log.
+- Compliance check for ad copy, creative text and landing pages: 89 rules, bulk up to 200 ads, claims library, approval log.
 - Lander builder: four templates, up to three variants, hosted pages, pixel and click id pass-through.
 - Profit tracking: one postback URL, duplicates deduped by transaction id, refunds subtracted, net profit and ROI.
 
