@@ -556,5 +556,248 @@
   "flags": "",
   "why": "Phone numbers in ad copy are a common trigger for health offers.",
   "fix": "Move the number to the landing page."
+ },
+ {
+  "id": "guaranteed-results-2",
+  "sev": "block",
+  "cat": "Guaranteed outcome",
+  "pattern": "(guaranteed|100%)\\s+(to\\s+)?(work|results?|success)",
+  "flags": "i",
+  "why": "A guaranteed outcome in health or finance is a rejection.",
+  "fix": "Remove the guarantee, describe the support."
+ },
+ {
+  "id": "prescription-free",
+  "sev": "block",
+  "cat": "Prescription claim",
+  "pattern": "(prescription[- ]free|no need for a prescription)",
+  "flags": "i",
+  "why": "Implying a prescription outcome without one is a policy violation.",
+  "fix": "Talk about the consultation route."
+ },
+ {
+  "id": "diagnose",
+  "sev": "block",
+  "cat": "Diagnosis claim",
+  "pattern": "diagnose (your|the) ",
+  "flags": "i",
+  "why": "A product or ad cannot diagnose.",
+  "fix": "Describe what the product supports."
+ },
+ {
+  "id": "treat-condition",
+  "sev": "block",
+  "cat": "Treatment claim",
+  "pattern": "treat(s|ing)? (your |the )?(acne|eczema|rosacea|hair loss|baldness|obesity)",
+  "flags": "i",
+  "why": "Naming a condition as the thing treated is a disease claim.",
+  "fix": "Use support language for normal function."
+ },
+ {
+  "id": "stop-medication",
+  "sev": "block",
+  "cat": "Medication advice",
+  "pattern": "(stop taking|replace your) (medication|meds|prescription)",
+  "flags": "i",
+  "why": "Advising someone off medication is a policy and safety problem.",
+  "fix": "Never suggest changing medication."
+ },
+ {
+  "id": "doctor-endorsement",
+  "sev": "block",
+  "cat": "Authority endorsement",
+  "pattern": "(doctors|pharmacists|nurses) (recommend|agree|use)",
+  "flags": "i",
+  "why": "Professional endorsement with a health outcome triggers review.",
+  "fix": "Remove the endorsement."
+ },
+ {
+  "id": "fda-approved-2",
+  "sev": "block",
+  "cat": "Regulatory claim",
+  "pattern": "(fda|ema|mhra)[- ]approved",
+  "flags": "i",
+  "why": "Supplements are not approved by these bodies.",
+  "fix": "Say registered facility instead."
+ },
+ {
+  "id": "cure-all",
+  "sev": "block",
+  "cat": "Cure-all claim",
+  "pattern": "(cures?|heals?) (everything|anything|all)",
+  "flags": "i",
+  "why": "A universal cure claim is automatically rejected.",
+  "fix": "Name one supported function."
+ },
+ {
+  "id": "weight-guarantee",
+  "sev": "block",
+  "cat": "Weight guarantee",
+  "pattern": "(guaranteed|lose) (weight|pounds|lbs) (fast|quick|today|now)",
+  "flags": "i",
+  "why": "Fast weight loss promises are unrealistic outcome claims.",
+  "fix": "Talk about habits and routine."
+ },
+ {
+  "id": "before-after-text",
+  "sev": "warn",
+  "cat": "Transformation wording",
+  "pattern": "(transform(ation)?|glow[- ]up) (in|within) \\d+",
+  "flags": "i",
+  "why": "A transformation in a set time is an unrealistic outcome.",
+  "fix": "Drop the timeframe."
+ },
+ {
+  "id": "income-guarantee",
+  "sev": "block",
+  "cat": "Income guarantee",
+  "pattern": "(guaranteed|assured) (income|earnings|profit)",
+  "flags": "i",
+  "why": "Guaranteed income is a financial violation.",
+  "fix": "Describe the offer, not the earnings."
+ },
+ {
+  "id": "crypto-guarantee",
+  "sev": "block",
+  "cat": "Crypto guarantee",
+  "pattern": "(crypto|bitcoin|token)s? (will|is going to) (moon|double|10x)",
+  "flags": "i",
+  "why": "Predicting a token price is a prohibited financial claim.",
+  "fix": "Remove the prediction."
+ },
+ {
+  "id": "loan-guarantee",
+  "sev": "block",
+  "cat": "Loan guarantee",
+  "pattern": "(guaranteed|everyone) (gets? )?approved",
+  "flags": "i",
+  "why": "Approval cannot be guaranteed in lending.",
+  "fix": "Say applying takes two minutes."
+ },
+ {
+  "id": "trading-guarantee",
+  "sev": "block",
+  "cat": "Trading guarantee",
+  "pattern": "(win rate|success rate) of \\d+%",
+  "flags": "i",
+  "why": "A specific win rate is an unsubstantiated performance claim.",
+  "fix": "Remove the number."
+ },
+ {
+  "id": "testimonial-doctor",
+  "sev": "warn",
+  "cat": "Expert testimonial",
+  "pattern": "(as a|i am a) (doctor|nurse|pharmacist|dietitian)",
+  "flags": "i",
+  "why": "Expert testimonials with outcomes draw review.",
+  "fix": "Drop the credential."
+ },
+ {
+  "id": "time-to-result",
+  "sev": "warn",
+  "cat": "Timeline claim",
+  "pattern": "(results?|difference) (in|within) \\d+ (days?|weeks?)",
+  "flags": "i",
+  "why": "A specific timeline needs a qualifier and average data.",
+  "fix": "Say most people notice a change over time."
+ },
+ {
+  "id": "secret-method",
+  "sev": "warn",
+  "cat": "Secret method",
+  "pattern": "(secret|hidden) (method|trick|formula)",
+  "flags": "i",
+  "why": "Secret-method framing is a clickbait pattern.",
+  "fix": "Describe the mechanism openly."
+ },
+ {
+  "id": "detox-liver",
+  "sev": "warn",
+  "cat": "Detox organ claim",
+  "pattern": "(cleanse|detox) (your )?(liver|kidney|colon)",
+  "flags": "i",
+  "why": "Organ detox claims are a known violation pattern.",
+  "fix": "Talk about general wellness support."
+ },
+ {
+  "id": "anti-aging-2",
+  "sev": "warn",
+  "cat": "Ageing claim",
+  "pattern": "(look|feel) \\d+ years younger",
+  "flags": "i",
+  "why": "A specific age reduction is an unrealistic outcome.",
+  "fix": "Describe the skin or energy benefit."
+ },
+ {
+  "id": "hair-regrowth",
+  "sev": "block",
+  "cat": "Regrowth claim",
+  "pattern": "(regrow|restore) (your )?(hair|hairline)",
+  "flags": "i",
+  "why": "Hair regrowth is a treatment claim.",
+  "fix": "Say supports healthy hair."
+ },
+ {
+  "id": "sleep-cure",
+  "sev": "block",
+  "cat": "Sleep cure",
+  "pattern": "(cure|fix|end) (your )?insomnia",
+  "flags": "i",
+  "why": "Insomnia is a condition; curing it is a disease claim.",
+  "fix": "Say may support restful sleep."
+ },
+ {
+  "id": "anxiety-cure",
+  "sev": "block",
+  "cat": "Anxiety cure",
+  "pattern": "(cure|treat|end) (your )?(anxiety|depression|stress)",
+  "flags": "i",
+  "why": "Mental health conditions cannot be cured in an ad.",
+  "fix": "Say supports a calm mood."
+ },
+ {
+  "id": "blood-sugar",
+  "sev": "block",
+  "cat": "Blood sugar claim",
+  "pattern": "(lower|control|reverse) (your )?(blood sugar|diabetes)",
+  "flags": "i",
+  "why": "Diabetes claims are a hard restriction.",
+  "fix": "Remove the condition."
+ },
+ {
+  "id": "cholesterol",
+  "sev": "block",
+  "cat": "Cholesterol claim",
+  "pattern": "(lower|reduce) (your )?cholesterol",
+  "flags": "i",
+  "why": "A cholesterol outcome is a treatment claim.",
+  "fix": "Say supports heart health."
+ },
+ {
+  "id": "immune-boost",
+  "sev": "warn",
+  "cat": "Immune claim",
+  "pattern": "(boost|strengthen) (your )?immunity",
+  "flags": "i",
+  "why": "Immunity boosting is a disease prevention claim.",
+  "fix": "Say supports normal immune function."
+ },
+ {
+  "id": "url-shortener",
+  "sev": "info",
+  "cat": "Shortened link",
+  "pattern": "(bit\\.ly|tinyurl|t\\.co)/",
+  "flags": "i",
+  "why": "Shortened links in health ads raise scrutiny.",
+  "fix": "Use your own domain URL."
+ },
+ {
+  "id": "vague-number",
+  "sev": "info",
+  "cat": "Vague statistic",
+  "pattern": "\\d+ (times|fold) (more|better)",
+  "flags": "i",
+  "why": "A multiplier claim needs a source.",
+  "fix": "Cite the study or drop it."
  }
 ]

@@ -103,7 +103,7 @@ footer .logo{color:#fff;font-weight:800;font-size:18px}
 <h1>Check the ad before a reviewer does.</h1>
 <p class="sub">62 rules across health, finance and platform limits. Every check counts against your monthly allowance.</p>
 
-<div class="tabs"><button class="tab on" data-t="single">Single ad</button><button class="tab" data-t="bulk">Bulk</button><button class="tab" data-t="library">Claims library</button><button class="tab" data-t="approvals">Approvals</button></div>
+<div class="tabs"><button class="tab on" data-t="single">Single ad</button><button class="tab" data-t="bulk">Bulk</button><button class="tab" data-t="library">Claims library</button><button class="tab" data-t="approvals">Approvals</button><button class="tab" data-t="rules">My rules</button></div>
 
 <div id="pane-single"><div class="card">
 <label for="copy">Ad copy</label>
@@ -129,7 +129,17 @@ footer .logo{color:#fff;font-weight:800;font-size:18px}
 <div class="row" style="margin-top:14px"><div><input id="rev" placeholder="Reviewer name"></div><div><button id="gobulk" style="width:100%">Check all</button></div></div>
 <div id="bulkout"></div>
 </div></div>
-<div id="pane-library" style="display:none"><div class="card"><label for="lib">Approved phrases, one per line</label><textarea id="lib" style="min-height:140px" placeholder="supports joint comfort and mobility"></textarea><button id="savelib" class="wide">Save the library</button><p class="hint">A flagged line that matches a phrase here is marked as cleared instead of blocking. Saved in this browser.</p><div id="libout"></div></div></div><div id="pane-approvals" style="display:none"><div class="card"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><strong id="logcount">0 approvals</strong><a class="dl" id="logcsv" href="#">Export (CSV)</a></div><div id="logout2" style="overflow-x:auto;margin-top:10px"></div><button class="ghost" id="clearlog" style="margin-top:12px">Clear the log</button></div></div></div></main>
+<div id="pane-library" style="display:none"><div class="card"><label for="lib">Approved phrases, one per line</label><textarea id="lib" style="min-height:140px" placeholder="supports joint comfort and mobility"></textarea><button id="savelib" class="wide">Save the library</button><p class="hint">A flagged line that matches a phrase here is marked as cleared instead of blocking. Saved in this browser.</p><div id="libout"></div></div></div><div id="pane-approvals" style="display:none"><div class="card"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><strong id="logcount">0 approvals</strong><a class="dl" id="logcsv" href="#">Export (CSV)</a></div><div id="logout2" style="overflow-x:auto;margin-top:10px"></div><button class="ghost" id="clearlog" style="margin-top:12px">Clear the log</button></div></div><div id="pane-rules" style="display:none"><div class="card">
+<label>Rules from your own rejections</label>
+<p class="hint" style="margin:0 0 10px">When Meta rejects a line, add it here. Every future check fails that line before you upload.</p>
+<div class="row" style="grid-template-columns:1fr 1fr">
+  <div><input id="rline" placeholder="The line that was rejected"></div>
+  <div><input id="rwhy" placeholder="What Meta said (optional)"></div>
+</div>
+<button id="radd" style="margin-top:12px">Add this rule</button>
+<div id="rlist" style="margin-top:14px"></div>
+</div></div>
+</div></main>
 <script>
 var ME=null;
 function lib(){ try { return JSON.parse(localStorage.getItem('fc_lib')||'[]'); } catch(e){ return []; } }
@@ -160,7 +170,7 @@ function verdictBox(r){
 }
 function setUsage(u){ if(u) document.getElementById('usage').textContent = u.used + ' of ' + u.limit + ' this month'; }
 fetch('/fab-api').then(function(r){ if(r.status===401){ window.location.href='/fabconvert/login'; return null; } return r.json(); }).then(function(j){ if(j&&j.ok){ ME=j; setUsage(j.usage); } });
-document.querySelectorAll('.tab').forEach(function(t){ t.addEventListener('click',function(){ document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');}); t.classList.add('on'); ['single','bulk','library','approvals'].forEach(function(k){ document.getElementById('pane-'+k).style.display = (k===t.getAttribute('data-t'))?'block':'none'; }); if(t.getAttribute('data-t')==='approvals') renderLog(); }); });
+document.querySelectorAll('.tab').forEach(function(t){ t.addEventListener('click',function(){ document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');}); t.classList.add('on'); ['single','bulk','library','approvals','rules'].forEach(function(k){ document.getElementById('pane-'+k).style.display = (k===t.getAttribute('data-t'))?'block':'none'; }); if(t.getAttribute('data-t')==='approvals') renderLog(); }); });
 document.getElementById('ocr').addEventListener('click',function(){
   var f=document.getElementById('imgFile').files[0], st=document.getElementById('ocrmsg'), b=this;
   if(!f){ st.textContent='Pick an image first.'; return; }
@@ -184,6 +194,7 @@ document.getElementById('go').addEventListener('click',function(){
     if(!j.ok){ document.getElementById('out').innerHTML='<div class="verdict v-idle">'+j.error+'</div>'; if(j.usage) setUsage(j.usage); return; }
     setUsage(j.usage);
     document.getElementById('out').innerHTML=verdictBox(j.results[0]);
+    if(j.results[0].blocks.length){ var bar=document.createElement('div'); bar.style.cssText='margin-top:14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap'; bar.innerHTML='<button id="fixbtn">Fix the flagged lines for me</button><span class="hint" style="margin:0">Rewrites the copy, then checks it again.</span>'; document.getElementById('out').appendChild(bar); var fb=document.getElementById('fixbtn'); if(fb) fb.addEventListener('click',fixCopy); }
     if(url){
       fetch('/preflight-lander?url='+encodeURIComponent(url)+'&q='+encodeURIComponent(copy.slice(0,600))).then(function(r){return r.json();}).then(function(l){
         var ex=[];
@@ -248,4 +259,30 @@ document.getElementById('savelib').addEventListener('click',function(){
 });
 document.getElementById('clearlog').addEventListener('click',function(){ localStorage.removeItem('fc_log'); renderLog(); });
 renderLog();
+var FIXMAP = [
+[/\bcures?\b/gi,'supports'],[/\bcuring\b/gi,'supporting'],[/\bheals?\b/gi,'supports'],[/\btreats?\b/gi,'supports'],
+[/\bguaranteed\b/gi,'designed'],[/\b100%\b/g,''],[/\bclinically proven\b/gi,'made with clinically studied ingredients'],
+[/\bmiracle\b/gi,''],[/\bovernight\b/gi,'over time'],[/\binstantly\b/gi,'gradually'],
+[/are you struggling with[^.?]*\?/gi,''],[/\blose \d+ ?(lbs?|pounds?|kg|kilos?) in \d+ ?(days?|weeks?)\b/gi,'support your weight goals'],
+[/\brisk[- ]free\b/gi,'low risk'],[/\bin \d+ ?(days?|weeks?)\b/gi,'over time']
+];
+function fixCopy(){
+  var el=document.getElementById('copy'); var t=el.value;
+  FIXMAP.forEach(function(p){ t=t.replace(p[0],p[1]); });
+  el.value=t.replace(/\s{2,}/g,' ').trim();
+  document.getElementById('go').click();
+}
+function renderRules(list){
+  var el=document.getElementById('rlist');
+  if(!list||!list.length){ el.innerHTML='<p class="hint">No rules yet.</p>'; return; }
+  el.innerHTML=list.map(function(r){ return '<div class="find info" style="margin-top:8px"><div class="top"><span class="pill info">rule</span><span class="cat">'+(r.cat||'reported')+'</span></div><p>'+r.why+'</p><p style="margin-top:6px"><a href="#" data-del="'+r.id+'" style="color:#B42318;font-weight:600">Remove</a></p></div>'; }).join('');
+  el.querySelectorAll('[data-del]').forEach(function(a){ a.addEventListener('click',function(ev){ ev.preventDefault(); fetch('/compliance-check',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'delrule',id:a.getAttribute('data-del')})}).then(function(r){return r.json();}).then(function(j){ if(j.ok) renderRules(j.rules); }); }); });
+}
+function loadRules(){ fetch('/compliance-check',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'listrules'})}).then(function(r){return r.json();}).then(function(j){ if(j.ok) renderRules(j.rules); }); }
+document.getElementById('radd').addEventListener('click',function(){
+  var line=document.getElementById('rline').value.trim(), why=document.getElementById('rwhy').value.trim();
+  if(line.length<3){ alert('Write the line that was rejected.'); return; }
+  fetch('/compliance-check',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'addrules',line:line,why:why})}).then(function(r){return r.json();}).then(function(j){ if(!j.ok){ alert(j.error); return; } document.getElementById('rline').value=''; document.getElementById('rwhy').value=''; renderRules(j.rules); });
+});
+loadRules();
 </script><footer><div class="cols"><div><div class="logo">FabConvert</div><p style="font-size:13.5px;max-width:280px;margin-top:8px">Compliance, landers and profit for people who run paid ads. Built and run by VOXA.</p></div><div><h5>Product</h5><a href="/fabconvert/compliance/">Compliance check</a><a href="/fabconvert/landers/">Lander builder</a><a href="/fabconvert/profit/">Profit tracking</a><a href="/fabconvert/pricing/">Pricing</a></div><div><h5>Resources</h5><a href="/fabconvert/postback-docs/">Postback setup</a><a href="/fabconvert/account/">Account and API</a><a href="/fabconvert/policies/">Policies</a></div><div><h5>Company</h5><a href="mailto:voxa.hq1@gmail.com">Email us</a><a href="/terms">Terms</a><a href="/privacy-policy">Privacy</a></div></div><div style="max-width:1080px;margin:24px auto 0;padding:0 22px;font-size:12.5px">© 2026 VOXA · voxahq.in</div></footer></body></html>

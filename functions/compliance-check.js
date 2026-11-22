@@ -44,6 +44,28 @@ export async function onRequestPost(context) {
   if (!who) return json({ ok: false, error: 'Sign in or send an API key.' }, 401);
   let body = {};
   try { body = await request.json(); } catch (e) { return json({ ok: false, error: 'Send JSON.' }, 400); }
+  if (body.action === 'addrules') {
+    const line = String(body.line || '').trim().slice(0, 200);
+    const reason = String(body.why || '').trim().slice(0, 200);
+    if (line.length < 3) return json({ ok: false, error: 'The flagged line is too short.' }, 400);
+    const wsA = await wsFor(env, who.email);
+    const listA = JSON.parse((await env.PASSPORT.get('crules:' + wsA)) || '[]');
+    const esc = line.replace(/[.*+?^${}()|[\]\\]/g, '\\  const ads = Array.isArray(body.ads)').replace(/\s+/g, '\\s+');
+    const id = 'custom-' + Date.now().toString(36);
+    listA.push({ id, sev: 'block', cat: reason || 'Reported rejection', pattern: esc, flags: 'i', why: reason ? ('Reported by the platform: ' + reason) : 'This line was rejected on a live ad.', fix: 'Rewrite this line so it makes no claim about a condition or a guaranteed outcome.' });
+    await env.PASSPORT.put('crules:' + wsA, JSON.stringify(listA.slice(-200)));
+    return json({ ok: true, rules: listA });
+  }
+  if (body.action === 'listrules') {
+    const wsL = await wsFor(env, who.email);
+    return json({ ok: true, rules: JSON.parse((await env.PASSPORT.get('crules:' + wsL)) || '[]') });
+  }
+  if (body.action === 'delrule') {
+    const wsD = await wsFor(env, who.email);
+    const listD = JSON.parse((await env.PASSPORT.get('crules:' + wsD)) || '[]').filter(function (r) { return r.id !== body.id; });
+    await env.PASSPORT.put('crules:' + wsD, JSON.stringify(listD));
+    return json({ ok: true, rules: listD });
+  }
   const ads = Array.isArray(body.ads) ? body.ads.slice(0, 200) : (body.copy ? [String(body.copy) + (body.imageText ? ' ' + body.imageText : '')] : []);
   if (!ads.length) return json({ ok: false, error: 'No ad text in the request.' }, 400);
   const owner = (await env.PASSPORT.get('member:' + who.email)) || who.email;
@@ -57,10 +79,13 @@ export async function onRequestPost(context) {
     return json({ ok: false, error: 'Monthly limit reached (' + used + ' of ' + limit + ').', plan, usage: { used, limit } }, 429);
   }
   const R = await rules(request);
+  let custom = [];
+  try { custom = JSON.parse((await env.PASSPORT.get('crules:' + ws)) || '[]'); } catch (e) {}
+  const ALL = R.concat(custom);
   const results = ads.map(function (raw) {
     const text = String(raw || '');
     const hits = [];
-    for (const r of R) {
+    for (const r of ALL) {
       if (r.id === 'long-headline') continue;
       let m;
       try { m = text.match(new RegExp(r.pattern, r.flags)); } catch (e) { continue; }
@@ -71,7 +96,7 @@ export async function onRequestPost(context) {
     return { ad: text.slice(0, 240), verdict: blocks.length ? 'red' : (warns.length ? 'amber' : 'green'), score: Math.max(0, 100 - blocks.length * 25 - warns.length * 8), blocks, warns };
   });
   await env.PASSPORT.put(usageKey, String(used + ads.length), { expirationTtl: 60 * 60 * 24 * 70 });
-  return json({ ok: true, results, rules: R.length, plan, usage: { used: used + ads.length, limit } });
+  return json({ ok: true, results, rules: R.length, customRules: custom.length, plan, usage: { used: used + ads.length, limit } });
 }
 export async function onRequestGet() {
   return json({ ok: true, use: 'POST { "ads": ["..."] } with a session cookie or an x-api-key header.' });
