@@ -86,6 +86,15 @@ export async function onRequestPost(context) {
     if (!known) {
       await env.PASSPORT.put('wowner:' + ws, email);
       await env.PASSPORT.put('signup:' + Date.now() + ':' + email, JSON.stringify({ email, ts: Date.now(), ua: String(request.headers.get('user-agent') || '').slice(0, 120) }));
+      if (env.RESEND_API_KEY) {
+        try {
+          await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: { authorization: 'Bearer ' + env.RESEND_API_KEY, 'content-type': 'application/json' },
+            body: JSON.stringify({ from: 'FabConvert <alerts@voxahq.in>', to: 'voxa.hq1@gmail.com', reply_to: 'voxa.hq1@gmail.com', subject: 'New FabConvert account: ' + email, html: '<p><b>A new account was created.</b></p><p><b>Email:</b> ' + email + '</p><p><b>Time (UTC):</b> ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + '</p><p><b>Country:</b> ' + ((request.cf && request.cf.country) || 'unknown') + '</p><p><b>Device:</b> ' + String(request.headers.get('user-agent') || '').slice(0, 90) + '</p><p>Workspace: ' + ws + '</p>' })
+          });
+        } catch (e) {}
+      }
     }
     const cookie = 'fc_session=' + encodeURIComponent(email) + '.' + sig + '; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=2592000';
     return json({ ok: true, email, ws: await wsFor(env, email) }, 200, { 'set-cookie': cookie });
