@@ -113,4 +113,4 @@ fetch('/fab-api').then(function(r){return r.json();}).then(function(j){
   });
 }).catch(function(){ document.querySelector('.wrap').innerHTML='<h1>Not signed in</h1>'; });
 </script>
-</body></html>
+<script>try{fetch('/pv?p='+encodeURIComponent(location.pathname)+'&r='+encodeURIComponent(document.referrer||''),{keepalive:true})}catch(e){}</script></body></html>
