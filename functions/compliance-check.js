@@ -37,6 +37,7 @@ async function whoFrom(request, env) {
   return sig === want ? { email, via: 'session' } : null;
 }
 function limitFor(plan) { return plan === 'agency' ? 10000 : (plan === 'solo' ? 2000 : 50); }
+function escapeRe(s) { return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 export async function onRequestPost(context) {
   const { request, env } = context;
   if (!env.PASSPORT) return json({ ok: false, error: 'Storage is not configured.' }, 500);
@@ -50,7 +51,7 @@ export async function onRequestPost(context) {
     if (line.length < 3) return json({ ok: false, error: 'The flagged line is too short.' }, 400);
     const wsA = await wsFor(env, who.email);
     const listA = JSON.parse((await env.PASSPORT.get('crules:' + wsA)) || '[]');
-    const esc = line.replace(/[.*+?^${}()|[\]\\]/g, '\\  const ads = Array.isArray(body.ads)').replace(/\s+/g, '\\s+');
+    const esc = escapeRe(line).replace(/ /g, '\\s+');
     const id = 'custom-' + Date.now().toString(36);
     listA.push({ id, sev: 'block', cat: reason || 'Reported rejection', pattern: esc, flags: 'i', why: reason ? ('Reported by the platform: ' + reason) : 'This line was rejected on a live ad.', fix: 'Rewrite this line so it makes no claim about a condition or a guaranteed outcome.' });
     await env.PASSPORT.put('crules:' + wsA, JSON.stringify(listA.slice(-200)));
@@ -75,14 +76,17 @@ export async function onRequestPost(context) {
   const month = new Date().toISOString().slice(0, 7);
   const usageKey = 'u:' + ws + ':' + month;
   const used = Number((await env.PASSPORT.get(usageKey)) || 0);
-  if (used + ads.length > limit) {
-    return json({ ok: false, error: 'Monthly limit reached (' + used + ' of ' + limit + ').', plan, usage: { used, limit } }, 429);
+  const left = limit - used;
+  if (left <= 0) {
+    return json({ ok: false, error: 'Monthly limit reached (' + used + ' of ' + limit + '). Upgrade for more checks.' }, 429);
   }
+  let batch = ads, partial = false;
+  if (ads.length > left) { batch = ads.slice(0, left); partial = true; }
   const R = await rules(request);
   let custom = [];
   try { custom = JSON.parse((await env.PASSPORT.get('crules:' + ws)) || '[]'); } catch (e) {}
   const ALL = R.concat(custom);
-  const results = ads.map(function (raw) {
+  const results = batch.map(function (raw) {
     const text = String(raw || '');
     const hits = [];
     for (const r of ALL) {
@@ -95,8 +99,8 @@ export async function onRequestPost(context) {
     const warns = hits.filter(h => h.sev === 'warn');
     return { ad: text.slice(0, 240), verdict: blocks.length ? 'red' : (warns.length ? 'amber' : 'green'), score: Math.max(0, 100 - blocks.length * 25 - warns.length * 8), blocks, warns };
   });
-  await env.PASSPORT.put(usageKey, String(used + ads.length), { expirationTtl: 60 * 60 * 24 * 70 });
-  return json({ ok: true, results, rules: R.length, customRules: custom.length, plan, usage: { used: used + ads.length, limit } });
+  await env.PASSPORT.put(usageKey, String(used + batch.length), { expirationTtl: 60 * 60 * 24 * 70 });
+  return json({ ok: true, results, rules: R.length, customRules: custom.length, plan, partial, processed: batch.length, requested: ads.length, usage: { used: used + batch.length, limit } });
 }
 export async function onRequestGet() {
   return json({ ok: true, use: 'POST { "ads": ["..."] } with a session cookie or an x-api-key header.' });
