@@ -18,11 +18,14 @@ export async function onRequestGet(context) {
   }
   let dest = 'https://voxahq.in/fabconvert';
   try { const t = new URL(to); if (/^https?:$/.test(t.protocol)) dest = t.toString(); } catch (e) {}
+  // fill placeholders some networks ask for, so braces never reach the offer
+  const tag = key + '-v' + v;
+  dest = dest.replace(/\{sub1\}|\{clickid\}|\{click_id\}/gi, tag);
   // pass the variant through, so a tracker can read it
   try {
     const t = new URL(dest);
     if (!t.searchParams.has('fcv')) t.searchParams.set('fcv', v);
-    if (!t.searchParams.has(pname)) t.searchParams.set(pname, key + '-v' + v);
+    if (!t.searchParams.has(pname)) t.searchParams.set(pname, tag);
     dest = t.toString();
   } catch (e) {}
   return new Response(null, { status: 302, headers: { location: dest, 'cache-control': 'no-store' } });
