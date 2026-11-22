@@ -20,13 +20,12 @@ export async function onRequestGet(context) {
   if (!raw) return new Response('<h1>Not found</h1>', { status: 404, headers: { 'content-type': 'text/html' } });
   const d = JSON.parse(raw);
   if (!d.variants || !d.variants.length) return new Response('<h1>Not found</h1>', { status: 404, headers: { 'content-type': 'text/html' } });
-  const stats = [];
-  for (let si = 0; si < d.variants.length; si++) {
-    const vw = Number((await env.PASSPORT.get('views:' + params.slug + ':' + si)) || 0);
-    const cl = Number((await env.PASSPORT.get('clicks:' + params.slug + ':' + si)) || 0);
-    const sl = Number((await env.PASSPORT.get('lconv:' + params.slug + ':' + si)) || 0);
-    stats.push({ views: vw, clicks: cl, sales: sl });
-  }
+  // one round of parallel reads instead of three per variant, so paid traffic is not kept waiting
+  const stats = await Promise.all(d.variants.map(async function (v, si) {
+    const ks = ['views:' + params.slug + ':' + si, 'clicks:' + params.slug + ':' + si, 'lconv:' + params.slug + ':' + si];
+    const vals = await Promise.all(ks.map(function (k) { return env.PASSPORT.get(k); }));
+    return { views: Number(vals[0] || 0), clicks: Number(vals[1] || 0), sales: Number(vals[2] || 0) };
+  }));
   const urlGeo = (new URL(context.request.url).searchParams.get('geo') || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2);
   const country = urlGeo || ((context.request.cf && context.request.cf.country) || '').toUpperCase();
   const idxAll = d.variants.map(function (v, i) { return i; });
