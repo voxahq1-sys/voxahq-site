@@ -262,7 +262,12 @@ function showStats(container, l){
     var cvr = v.clicks ? Math.round(v.sales / v.clicks * 100) : 0;
     return '<tr><td>' + (v.i+1) + '</td><td class="clip">' + v.headline + '</td><td>' + (v.geo || 'all') + '</td><td>' + v.views + '</td><td>' + v.clicks + '</td><td>' + ctr + '%</td><td>' + v.sales + '</td><td>' + cvr + '%</td></tr>';
   }).join('');
-  box.innerHTML = '<table><thead><tr><th>#</th><th>Headline</th><th>Geo</th><th>Views</th><th>Clicks</th><th>CTR</th><th>Sales</th><th>CVR</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  var dayRows = (l.days || []).map(function(d){
+    return '<tr><td>' + d.d.slice(5) + '</td><td>' + d.v + '</td><td>' + d.c + '</td><td>' + d.s + '</td></tr>';
+  }).join('');
+  box.innerHTML = '<table><thead><tr><th>#</th><th>Headline</th><th>Geo</th><th>Views</th><th>Clicks</th><th>CTR</th><th>Sales</th><th>CVR</th></tr></thead><tbody>' + rows + '</tbody></table>'
+    + '<p class="hint" style="margin:14px 0 6px">Last seven days</p>'
+    + '<table><thead><tr><th>Day</th><th>Views</th><th>Clicks</th><th>Sales</th></tr></thead><tbody>' + dayRows + '</tbody></table>';
   container.appendChild(box);
 }
 </script><footer><div class="cols"><div><div class="logo">FabConvert</div><p style="font-size:13.5px;max-width:280px;margin-top:8px">Compliance, landers and profit for people who run paid ads. Built and run by VOXA.</p></div><div><h5>Product</h5><a href="/fabconvert/compliance/">Compliance check</a><a href="/fabconvert/landers/">Lander builder</a><a href="/fabconvert/profit/">Profit tracking</a><a href="/fabconvert/pricing/">Pricing</a></div><div><h5>Resources</h5><a href="/fabconvert/postback-docs/">Postback setup</a><a href="/fabconvert/account/">Account and API</a><a href="/fabconvert/policies/">Policies</a></div><div><h5>Company</h5><a href="mailto:voxa.hq1@gmail.com">Email us</a><a href="/terms">Terms</a><a href="/privacy-policy">Privacy</a></div></div><div style="max-width:1080px;margin:24px auto 0;padding:0 22px;font-size:12.5px">© 2026 VOXA · voxahq.in</div></footer></body></html>

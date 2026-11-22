@@ -43,6 +43,9 @@ export async function onRequestGet(context) {
   try {
     const vk = 'views:' + params.slug + ':' + vi;
     await env.PASSPORT.put(vk, String((stats[vi].views || 0) + 1), { expirationTtl: 60 * 60 * 24 * 180 });
+    const day1 = new Date().toISOString().slice(0, 10);
+    const dk1 = 'day:v:' + params.slug + ':' + day1;
+    await env.PASSPORT.put(dk1, String(Number((await env.PASSPORT.get(dk1)) || 0) + 1), { expirationTtl: 60 * 60 * 24 * 120 });
   } catch (e) {}
   const cta = '/lc?k=' + encodeURIComponent(params.slug) + '&v=' + vi + '&p=' + encodeURIComponent(d.cidParam || 'sub1') + '&to=' + encodeURIComponent(d.offer || '');
   const bullets = v.bullets || [];
@@ -96,10 +99,14 @@ export async function onRequestGet(context) {
     + 'table.cmp td{padding:10px 6px;border-bottom:1px solid #F0EDE6;color:#374151}'
     + 'table.cmp td.yes{color:' + d.accent + ';font-weight:700}table.cmp td.no{color:#9AA3AF}'
     + '.fine{margin-top:16px;font-size:12px;color:#9AA3AF;line-height:1.55}'
-    + '@media(max-width:520px){h1{font-size:25px}.card{padding:22px 18px}a.cta{position:sticky;bottom:12px}}'
+    + '.sbar{position:fixed;left:0;right:0;bottom:0;padding:10px 16px 14px;background:rgba(255,255,255,.96);border-top:1px solid #E7E3DA;transform:translateY(115%);transition:transform .25s ease;z-index:40}'
+    + '.sbar.on{transform:none}.sbar a.cta{padding:15px;font-size:16.5px}'
+    + '@media(min-width:641px){.sbar{display:none}}'
+    + '@media(max-width:520px){h1{font-size:25px}.card{padding:22px 18px}}'
     + '</style></head><body><div class="wrap"><div class="top"><span class="dot"></span><span>' + esc(d.brand || '') + '</span></div><div class="card">' + inner + '</div>'
     + '<div class="fine">Built with FabConvert. This page is not indexed and carries no third-party trackers.</div></div>'
     + '<script>document.querySelectorAll(".opt").forEach(function(b){b.addEventListener("click",function(){document.querySelectorAll(".opt").forEach(function(x){x.classList.remove("sel")});b.classList.add("sel");});});</script>'
+    + (d.template === 'quiz' ? '' : '<div class="sbar" id="sbar"><a class="cta" href="' + cta + '">' + esc(v.cta) + '</a></div><script>var sb=document.getElementById("sbar");if(sb){var shown=false;window.addEventListener("scroll",function(){if(shown)return;if(window.scrollY>window.innerHeight*0.45){sb.classList.add("on");shown=true;}});}</script>')
     + '</body></html>';
   return new Response(html, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' } });
 }

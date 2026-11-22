@@ -34,6 +34,9 @@ export async function onRequestGet(context) {
       const lk = 'lconv:' + lcMatch[1] + ':' + lcMatch[2];
       const nL = Number((await env.PASSPORT.get(lk)) || 0);
       await env.PASSPORT.put(lk, String(nL + 1), { expirationTtl: 60 * 60 * 24 * 180 });
+      const d3 = new Date().toISOString().slice(0, 10);
+      const dks = 'day:s:' + lcMatch[1] + ':' + d3;
+      await env.PASSPORT.put(dks, String(Number((await env.PASSPORT.get(dks)) || 0) + 1), { expirationTtl: 60 * 60 * 24 * 120 });
     } catch (e) {}
   }
   const ts = Date.now();

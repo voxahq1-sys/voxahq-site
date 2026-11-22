@@ -11,6 +11,9 @@ export async function onRequestGet(context) {
     try {
       const n = Number((await env.PASSPORT.get(ck)) || 0);
       await env.PASSPORT.put(ck, String(n + 1), { expirationTtl: 60 * 60 * 24 * 180 });
+      const d2 = new Date().toISOString().slice(0, 10);
+      const dkc = 'day:c:' + key + ':' + d2;
+      await env.PASSPORT.put(dkc, String(Number((await env.PASSPORT.get(dkc)) || 0) + 1), { expirationTtl: 60 * 60 * 24 * 120 });
     } catch (e) {}
   }
   let dest = 'https://voxahq.in/fabconvert';

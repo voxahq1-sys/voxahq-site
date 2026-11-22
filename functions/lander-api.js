@@ -55,7 +55,17 @@ export async function onRequestGet(context) {
         for (let vi = 0; vi < d.variants.length; vi++) {
           clicks += Number((await env.PASSPORT.get('clicks:' + pub + ':' + vi)) || 0);
         }
-        list.push({ slug: d.slug, pubSlug: pub, name: d.name, template: d.template, variants: d.variants.length, clicks, convs, views, ctr: views > 0 ? Math.round((clicks / views) * 100) : 0, perVariant, updated: d.updated });
+        const days = [];
+        for (let back = 6; back >= 0; back--) {
+          const dt = new Date(Date.now() - back * 86400000).toISOString().slice(0, 10);
+          days.push({
+            d: dt,
+            v: Number((await env.PASSPORT.get('day:v:' + pub + ':' + dt)) || 0),
+            c: Number((await env.PASSPORT.get('day:c:' + pub + ':' + dt)) || 0),
+            s: Number((await env.PASSPORT.get('day:s:' + pub + ':' + dt)) || 0)
+          });
+        }
+        list.push({ slug: d.slug, pubSlug: pub, name: d.name, template: d.template, variants: d.variants.length, clicks, convs, views, days, ctr: views > 0 ? Math.round((clicks / views) * 100) : 0, perVariant, updated: d.updated });
       } catch (e) {} }
     }
     if (res.list_complete) break;
