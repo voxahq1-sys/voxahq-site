@@ -107,5 +107,5 @@ export async function onRequestPost(context) {
   };
   await env.PASSPORT.put('lander:' + ws + ':' + slug, JSON.stringify(doc));
   await env.PASSPORT.put('pub:' + ws + '-' + slug, JSON.stringify(doc));
-  return json({ ok: true, slug, url: '/l/' + ws + '-' + slug });
+  return json({ ok: true, slug, url: 'https://l.voxahq.in/l/' + ws + '-' + slug });
 }

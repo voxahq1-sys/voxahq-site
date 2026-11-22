@@ -146,7 +146,7 @@ $('save').onclick=function(){
   fetch('/lander-api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)}).then(function(r){return r.json();}).then(function(j){
     $('save').disabled=false;
     if(!j.ok){ $('msg').textContent=j.error||'Could not save'; return; }
-    $('msg').innerHTML='Published: <a href="'+j.url+'" target="_blank">'+location.origin+j.url+'</a>';
+    $('msg').innerHTML='Published: <a href="'+j.url+'" target="_blank">'+j.url+'</a>';
     loadList();
   });
 };
