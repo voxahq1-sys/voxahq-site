@@ -71,7 +71,7 @@ export async function onRequestGet(context) {
       + '<div class="byline">By the ' + esc(d.brand || 'editorial') + ' team · ' + month + ' · ' + read + ' min read</div>'
       + hero + '<p class="sub">' + esc(v.sub) + '</p>'
       + (bullets.length ? '<ul class="ticks">' + bullets.map(function (b) { return '<li>' + esc(b) + '</li>'; }).join('') + '</ul>' : '')
-      + '<a class="cta" href="' + cta + '">' + esc(v.cta) + '</a><p class="fine">Claims on this page must match the offer. Results vary by person.</p>';
+      + '<a class="cta" href="' + cta + '">' + esc(v.cta) + '</a><p class="fine">This is a paid advertisement. Claims on this page must match the offer, results vary by person, and nothing here is medical or financial advice.</p>';
   }
   const pixel = d.pixel ? d.pixel : '';
   const html = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>' + esc(v.headline) + '</title>'
