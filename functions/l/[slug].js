@@ -27,7 +27,18 @@ export async function onRequestGet(context) {
     const sl = Number((await env.PASSPORT.get('lconv:' + params.slug + ':' + si)) || 0);
     stats.push({ views: vw, clicks: cl, sales: sl });
   }
-  const vi = pick(d.variants, stats), v = d.variants[vi];
+  const country = ((context.request.cf && context.request.cf.country) || '').toUpperCase();
+  const idxAll = d.variants.map(function (v, i) { return i; });
+  const idxGeo = idxAll.filter(function (i) {
+    const list = (d.variants[i].geo || '').split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+    return list.length === 0 || (country && list.indexOf(country) > -1);
+  });
+  const pool = idxGeo.length ? idxGeo : idxAll;
+  const subStats = pool.map(function (i) { return stats[i]; });
+  const subVars = pool.map(function (i) { return d.variants[i]; });
+  const localIdx = pick(subVars, subStats);
+  const vi = pool[localIdx] !== undefined ? pool[localIdx] : 0;
+  const v = d.variants[vi];
   try {
     const vk = 'views:' + params.slug + ':' + vi;
     await env.PASSPORT.put(vk, String((stats[vi].views || 0) + 1), { expirationTtl: 60 * 60 * 24 * 180 });

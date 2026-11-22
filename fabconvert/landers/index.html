@@ -72,7 +72,7 @@ footer .logo{color:#fff;font-weight:800;font-size:18px}
 .adbox{background:#F1F8F5;border:1px solid #CFE9E0;border-radius:14px;padding:18px;margin-top:16px}
 .adbox h4{margin:0 0 6px;font-size:15px}
 @media(max-width:760px){.grid2{grid-template-columns:1fr}}
-</style></head><body>
+</style><style>.statsbox table{width:100%;border-collapse:collapse;font-size:13px}.statsbox th{text-align:left;font-size:10.5px;letter-spacing:.7px;text-transform:uppercase;color:#8A93A0;padding:7px 6px;border-bottom:1px solid #E7E3DA}.statsbox td{padding:8px 6px;border-bottom:1px solid #F0EDE6;color:#374151}</style></head><body>
 <header><div class="wrap nav"><a class="logo" href="/fabconvert">FabConvert</a><div class="links"><div class="dd"><span>Features ▾</span><div class="ddmenu"><a href="/fabconvert/compliance/">Compliance check</a><a href="/fabconvert/landers/">Lander builder</a><a href="/fabconvert/profit/">Profit tracking</a><a href="/fabconvert/account/">Account and API</a></div></div><div class="dd"><span>Workflow ▾</span><div class="ddmenu"><a href="/fabconvert#workflow">See it</a><a href="/fabconvert#workflow">Check it</a><a href="/fabconvert#workflow">Build it</a><a href="/fabconvert#workflow">Measure it</a></div></div><a href="/fabconvert/pricing/">Pricing</a><a href="/fabconvert/postback-docs/">Docs</a></div><div class="navright"><a class="btn o" href="/fabconvert/login/">Log in</a><a class="btn w" href="/fabconvert/compliance/">Start free</a></div></div></header>
 <style>
 .dd{padding-bottom:12px;margin-bottom:-12px}
@@ -117,9 +117,9 @@ footer .logo{color:#fff;font-weight:800;font-size:18px}
 <div class="fld"><label>Pixel or head script</label><textarea id="pixel" style="min-height:64px" placeholder="Meta pixel or any head script"></textarea></div>
 <div class="adbox"><h4>Start from the ad</h4><p class="hint" style="margin:0 0 8px">Paste the ad copy. The page is written from the same promise, so the two do not contradict each other.</p><textarea id="adcopy" style="min-height:58px" placeholder="Paste the primary text and headline of the ad this page has to match."></textarea><div style="display:flex;gap:10px;align-items:center;margin-top:8px;flex-wrap:wrap"><button class="ghost" id="fromad">Fill variant 1 from this ad</button><span class="hint" id="admsg" style="margin:0"></span></div></div>
 <div class="sechead"><h3>Variants</h3><span class="hint">Up to three. Traffic splits by weight, then shifts to whichever one sells.</span></div>
-<div class="vbox"><h4>Variant 1</h4><div class="fld"><label>Headline</label><input id="h0" placeholder="The 10-minute evening routine that changed my sleep"></div><div class="fld"><label>Sub line</label><textarea id="s0" placeholder="One paragraph that matches the ad promise."></textarea></div><div class="grid2"><div class="fld"><label>Bullets, one per line</label><textarea id="bl0" placeholder="Falls asleep faster No morning grogginess"></textarea></div><div class="fld"><label>Button text</label><input id="c0" placeholder="See the offer"><label style="margin-top:12px">Split weight</label><input id="w0" type="number" value="50"></div></div></div>
-<div class="vbox"><h4>Variant 2</h4><div class="fld"><label>Headline</label><input id="h1"></div><div class="fld"><label>Sub line</label><textarea id="s1"></textarea></div><div class="grid2"><div class="fld"><label>Bullets</label><textarea id="bl1"></textarea></div><div class="fld"><label>Button text</label><input id="c1"><label style="margin-top:12px">Split weight</label><input id="w1" type="number" value="50"></div></div></div>
-<div class="vbox"><h4>Variant 3</h4><div class="fld"><label>Headline</label><input id="h2"></div><div class="fld"><label>Sub line</label><textarea id="s2"></textarea></div><div class="grid2"><div class="fld"><label>Bullets</label><textarea id="bl2"></textarea></div><div class="fld"><label>Button text</label><input id="c2"><label style="margin-top:12px">Split weight</label><input id="w2" type="number" value="50"></div></div></div>
+<div class="vbox"><h4>Variant 1</h4><div class="fld"><label>Headline</label><input id="h0" placeholder="The 10-minute evening routine that changed my sleep"></div><div class="fld"><label>Sub line</label><textarea id="s0" placeholder="One paragraph that matches the ad promise."></textarea></div><div class="grid2"><div class="fld"><label>Bullets, one per line</label><textarea id="bl0" placeholder="Falls asleep faster No morning grogginess"></textarea></div><div class="fld"><label>Button text</label><input id="c0" placeholder="See the offer"><label style="margin-top:12px">Split weight</label><input id="w0" type="number" value="50"><label style="margin-top:12px">Countries</label><input id="g0" placeholder="US,CA or blank for all"></div></div></div>
+<div class="vbox"><h4>Variant 2</h4><div class="fld"><label>Headline</label><input id="h1"></div><div class="fld"><label>Sub line</label><textarea id="s1"></textarea></div><div class="grid2"><div class="fld"><label>Bullets</label><textarea id="bl1"></textarea></div><div class="fld"><label>Button text</label><input id="c1"><label style="margin-top:12px">Split weight</label><input id="w1" type="number" value="50"><label style="margin-top:12px">Countries</label><input id="g1" placeholder="US,CA or blank for all"></div></div></div>
+<div class="vbox"><h4>Variant 3</h4><div class="fld"><label>Headline</label><input id="h2"></div><div class="fld"><label>Sub line</label><textarea id="s2"></textarea></div><div class="grid2"><div class="fld"><label>Bullets</label><textarea id="bl2"></textarea></div><div class="fld"><label>Button text</label><input id="c2"><label style="margin-top:12px">Split weight</label><input id="w2" type="number" value="50"><label style="margin-top:12px">Countries</label><input id="g2" placeholder="US,CA or blank for all"></div></div></div>
 <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><button id="save">Save and publish</button><button class="ghost" id="check">Check policy first</button><button class="ghost" id="cancel">Close</button></div>
 <div id="msg" class="hint"></div><div id="policy"></div>
 </div></div></main>
@@ -132,7 +132,7 @@ function collect(){
   for (var i=0;i<3;i++){
     var h = $('h'+i).value.trim();
     if (!h) continue;
-    variants.push({headline:h, sub:$('s'+i).value.trim(), bullets:lines($('bl'+i).value), cta:$('c'+i).value.trim()||'See the offer', weight:Number($('w'+i).value)||50});
+    variants.push({headline:h, sub:$('s'+i).value.trim(), bullets:lines($('bl'+i).value), cta:$('c'+i).value.trim()||'See the offer', weight:Number($('w'+i).value)||50, geo:($('g'+i).value||'').trim()});
   }
   return {name:$('name').value.trim(), template:$('template').value, brand:$('brand').value.trim(), offer:$('offer').value.trim(), hero:$('hero').value.trim(), pixel:$('pixel').value.trim(), cidParam:$('cidParam').value.trim()||'sub1', accent:$('accent').value.trim(), variants:variants, slug:CUR?CUR.slug:''};
 }
@@ -142,7 +142,7 @@ function fill(d){
   for (var i=0;i<3;i++){
     var v = d && d.variants && d.variants[i];
     $('h'+i).value = v?v.headline:''; $('s'+i).value = v?v.sub:''; $('bl'+i).value = v?(v.bullets||[]).join('\n'):'';
-    $('c'+i).value = v?v.cta:''; $('w'+i).value = v?(v.weight||50):50;
+    $('c'+i).value = v?v.cta:''; $('w'+i).value = v?(v.weight||50):50; $('g'+i).value = v?(v.geo||''):'';
   }
   $('policy').innerHTML=''; $('msg').textContent='';
 }
@@ -157,12 +157,13 @@ function loadList(){
       d.innerHTML='<div><b>'+l.name+'</b><div class="meta">'+l.template+' · '+l.variants+' variant'+(l.variants>1?'s':'')+' · '+(l.views||0)+' views · '+(l.clicks||0)+' clicks · '+(l.ctr||0)+'% CTR · '+(l.convs||0)+' sales'+' · /l/'+l.pubSlug+'</div></div><div class="sp"></div>';
       var sp=d.querySelector('.sp');
       var open=document.createElement('button'); open.className='ghost'; open.textContent='Open'; open.onclick=function(){ window.open('/l/'+l.pubSlug,'_blank'); };
+      var statsBtn=document.createElement('button'); statsBtn.className='ghost'; statsBtn.textContent='Stats'; statsBtn.onclick=function(){ showStats(d, l); };
       var edit=document.createElement('button'); edit.className='ghost'; edit.textContent='Edit'; edit.onclick=function(){ editLander(l.slug); };
       var del=document.createElement('button'); del.className='danger'; del.textContent='Delete'; del.onclick=function(){
         if(!confirm('Delete this lander?')) return;
         fetch('/lander-api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'delete',slug:l.slug})}).then(loadList);
       };
-      sp.appendChild(open); sp.appendChild(edit); sp.appendChild(del);
+      sp.appendChild(open); sp.appendChild(statsBtn); sp.appendChild(edit); sp.appendChild(del);
       el.appendChild(d);
     });
   });
@@ -250,4 +251,18 @@ document.addEventListener('DOMContentLoaded', function(){
     msg.textContent = 'Filled. Edit it so it reads like a person wrote it.';
   });
 });
+function showStats(container, l){
+  var old = container.querySelector('.statsbox');
+  if(old){ old.remove(); return; }
+  var box = document.createElement('div');
+  box.className = 'statsbox';
+  box.style.cssText = 'flex-basis:100%;margin-top:10px;overflow-x:auto';
+  var rows = (l.perVariant || []).map(function(v){
+    var ctr = v.views ? Math.round(v.clicks / v.views * 100) : 0;
+    var cvr = v.clicks ? Math.round(v.sales / v.clicks * 100) : 0;
+    return '<tr><td>' + (v.i+1) + '</td><td class="clip">' + v.headline + '</td><td>' + (v.geo || 'all') + '</td><td>' + v.views + '</td><td>' + v.clicks + '</td><td>' + ctr + '%</td><td>' + v.sales + '</td><td>' + cvr + '%</td></tr>';
+  }).join('');
+  box.innerHTML = '<table><thead><tr><th>#</th><th>Headline</th><th>Geo</th><th>Views</th><th>Clicks</th><th>CTR</th><th>Sales</th><th>CVR</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  container.appendChild(box);
+}
 </script><footer><div class="cols"><div><div class="logo">FabConvert</div><p style="font-size:13.5px;max-width:280px;margin-top:8px">Compliance, landers and profit for people who run paid ads. Built and run by VOXA.</p></div><div><h5>Product</h5><a href="/fabconvert/compliance/">Compliance check</a><a href="/fabconvert/landers/">Lander builder</a><a href="/fabconvert/profit/">Profit tracking</a><a href="/fabconvert/pricing/">Pricing</a></div><div><h5>Resources</h5><a href="/fabconvert/postback-docs/">Postback setup</a><a href="/fabconvert/account/">Account and API</a><a href="/fabconvert/policies/">Policies</a></div><div><h5>Company</h5><a href="mailto:voxa.hq1@gmail.com">Email us</a><a href="/terms">Terms</a><a href="/privacy-policy">Privacy</a></div></div><div style="max-width:1080px;margin:24px auto 0;padding:0 22px;font-size:12.5px">© 2026 VOXA · voxahq.in</div></footer></body></html>

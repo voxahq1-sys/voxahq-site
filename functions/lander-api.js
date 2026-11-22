@@ -39,14 +39,23 @@ export async function onRequestGet(context) {
         const d = JSON.parse(v);
         const pub = d.pub || (ws + '-' + d.slug);
         let clicks = 0, convs = 0, views = 0;
+        const perVariant = [];
         for (let vi2 = 0; vi2 < d.variants.length; vi2++) {
           convs += Number((await env.PASSPORT.get('lconv:' + pub + ':' + vi2)) || 0);
           views += Number((await env.PASSPORT.get('views:' + pub + ':' + vi2)) || 0);
+          perVariant.push({
+            i: vi2,
+            headline: (d.variants[vi2].headline || '').slice(0, 70),
+            geo: d.variants[vi2].geo || '',
+            views: Number((await env.PASSPORT.get('views:' + pub + ':' + vi2)) || 0),
+            clicks: Number((await env.PASSPORT.get('clicks:' + pub + ':' + vi2)) || 0),
+            sales: Number((await env.PASSPORT.get('lconv:' + pub + ':' + vi2)) || 0)
+          });
         }
         for (let vi = 0; vi < d.variants.length; vi++) {
           clicks += Number((await env.PASSPORT.get('clicks:' + pub + ':' + vi)) || 0);
         }
-        list.push({ slug: d.slug, pubSlug: pub, name: d.name, template: d.template, variants: d.variants.length, clicks, convs, views, ctr: views > 0 ? Math.round((clicks / views) * 100) : 0, updated: d.updated });
+        list.push({ slug: d.slug, pubSlug: pub, name: d.name, template: d.template, variants: d.variants.length, clicks, convs, views, ctr: views > 0 ? Math.round((clicks / views) * 100) : 0, perVariant, updated: d.updated });
       } catch (e) {} }
     }
     if (res.list_complete) break;
@@ -90,6 +99,7 @@ export async function onRequestPost(context) {
       sub: String(v.sub || '').slice(0, 400),
       bullets: (Array.isArray(v.bullets) ? v.bullets : []).slice(0, 6).map(function (x) { return String(x).slice(0, 200); }),
       cta: String(v.cta || 'See the offer').slice(0, 40),
+      geo: String(v.geo || '').toUpperCase().replace(/[^A-Z,\s]/g, '').trim().slice(0, 80),
       weight: Math.max(1, Math.min(100, Number(v.weight) || 50))
     };
   });
