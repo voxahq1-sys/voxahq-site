@@ -242,7 +242,7 @@ document.getElementById('gobulk').addEventListener('click',function(){
 });
 
 function logAll(){ try { return JSON.parse(localStorage.getItem('fc_log')||'[]'); } catch(e){ return []; } }
-function logAdd(e){ var l=logAll(); l.unshift(e); localStorage.setItem('fc_log', JSON.stringify(l.slice(0,500))); }
+function logAdd(e){ var l=logAll(); l.unshift(e); localStorage.setItem('fc_log', JSON.stringify(l.slice(0,500))); if(e && e.who && e.who !== 'unassigned') localStorage.setItem('fc_reviewer', e.who); }
 function renderLog(){
   var l=logAll();
   document.getElementById('logcount').textContent=l.length+' approval'+(l.length===1?'':'s');
@@ -261,6 +261,7 @@ document.getElementById('savelib').addEventListener('click',function(){
 });
 document.getElementById('clearlog').addEventListener('click',function(){ localStorage.removeItem('fc_log'); renderLog(); });
 renderLog();
+var rv0=document.getElementById('rev'); if(rv0 && !rv0.value) rv0.value = localStorage.getItem('fc_reviewer')||'';
 var FIXMAP = [
 [/\bcures?\s+insomnia\b/gi,'supports restful sleep'],[/\bcures?\s+(anxiety|depression|stress)\b/gi,'supports a calm mood'],[/\bcures?\s+(acne|eczema|rosacea)\b/gi,'supports clearer-looking skin'],[/\bcures?\s+(hair loss|baldness)\b/gi,'supports healthy hair'],[/\bcures?\s+(diabetes|blood sugar)\b/gi,'supports everyday wellness'],
 [/\bcures?\b/gi,'supports'],[/\bcuring\b/gi,'supporting'],[/\bheals?\b/gi,'supports'],[/\btreats?\b/gi,'supports'],
