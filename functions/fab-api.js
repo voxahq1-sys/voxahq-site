@@ -103,11 +103,6 @@ export async function onRequestPost(context) {
     await env.PASSPORT.put('key:' + await sha256(raw), email, { expirationTtl: 60 * 60 * 24 * 365 });
     return json({ ok: true, key: raw });
   }
-  if (b.action === 'resetusage' && b.key === 'fc-reset-now') {
-    const mo = new Date().toISOString().slice(0, 7);
-    await env.PASSPORT.delete('u:' + w + ':' + mo);
-    return json({ ok: true, reset: true });
-  }
   if (b.action === 'clear' || b.action === 'delete') {
     const keys = [...(await listAll(env, 'w:' + w + ':p:')), ...(await listAll(env, 'w:' + w + ':s:'))];
     for (const k of keys) await env.PASSPORT.delete(k);
