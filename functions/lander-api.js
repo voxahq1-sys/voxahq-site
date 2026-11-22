@@ -65,7 +65,7 @@ export async function onRequestPost(context) {
     if (!m) return json({ ok: false, error: 'Send a jpeg, png or webp image.' }, 400);
     const bytes = Math.floor(m[2].length * 0.75);
     if (bytes > 900000) return json({ ok: false, error: 'Image is too large after resizing. Try a smaller one.' }, 400);
-    const key = ws + '-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    const key = Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
     const bin = Uint8Array.from(atob(m[2]), c => c.charCodeAt(0));
     await env.PASSPORT.put('img:' + key, bin.buffer, { expirationTtl: 60 * 60 * 24 * 365 });
     return json({ ok: true, url: '/i/' + key });
