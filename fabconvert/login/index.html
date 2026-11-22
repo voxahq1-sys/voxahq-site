@@ -1,53 +1,31 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sign in to FabConvert</title>
-<meta name="robots" content="index,follow">
+<title>Sign in to FabConvert</title><meta name="robots" content="index,follow">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <style>
 :root{--ink:#0F1729;--ink2:#4A5568;--line:#DAD4C8;--acc:#0E7C66;--bg:#FAFAF8}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,sans-serif;display:flex;min-height:100vh;flex-direction:column}
-.wrap{max-width:440px;margin:0 auto;padding:0 20px;width:100%}
-header{padding:16px 0}
-.brand{font-weight:800;font-size:18px;letter-spacing:-.4px;color:var(--ink);text-decoration:none}
-main{flex:1;display:flex;align-items:center;padding:20px 0 60px}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px}
-h1{font-size:23px;letter-spacing:-.6px;margin-bottom:6px}
-p{color:var(--ink2);font-size:14.5px;margin-bottom:16px}
-label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink2);margin-bottom:6px}
-input{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;font-size:16px}
-button{width:100%;margin-top:14px;background:var(--acc);color:#fff;border:0;border-radius:10px;padding:13px;font-size:15.5px;font-weight:600;cursor:pointer}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,sans-serif;display:flex;flex-direction:column;min-height:100vh}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;box-shadow:0 10px 30px rgba(16,24,40,.05)}
+h1{font-size:24px;letter-spacing:-.6px;margin-bottom:8px}
+p.lead{color:var(--ink2);font-size:15px;margin-bottom:22px}
+label{display:block;font-size:11.5px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:#6B7280;margin-bottom:7px}
+input{width:100%;border:1px solid var(--line);border-radius:11px;padding:13px 14px;font:inherit;font-size:16px;background:#fff}
+input:focus{outline:2px solid rgba(14,124,102,.25);border-color:var(--acc)}
+button{width:100%;margin-top:16px;background:var(--acc);color:#fff;border:0;border-radius:11px;padding:14px;font-size:16px;font-weight:700;cursor:pointer}
 button:disabled{opacity:.6}
 .msg{font-size:13.5px;margin-top:12px;color:var(--ink2)}
 .err{color:#B42318}
-.note{font-size:12px;color:#7A8797;margin-top:18px;line-height:1.55}
+.note{font-size:12.5px;color:#8A93A0;margin-top:22px;line-height:1.6}
+.note a{color:var(--acc)}
 .hide{display:none}
+.center{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px}
+.box{width:100%;max-width:440px}
 </style></head><body>
 <header><div class="wrap nav"><a class="logo" href="/fabconvert">FabConvert</a><div class="links"><div class="dd"><span>Features ▾</span><div class="ddmenu"><a href="/fabconvert/compliance/">Compliance check</a><a href="/fabconvert/landers/">Lander builder</a><a href="/fabconvert/profit/">Profit tracking</a><a href="/fabconvert/account/">Account and API</a></div></div><div class="dd"><span>Workflow ▾</span><div class="ddmenu"><a href="/fabconvert#workflow">See it</a><a href="/fabconvert#workflow">Check it</a><a href="/fabconvert#workflow">Build it</a><a href="/fabconvert#workflow">Measure it</a></div></div><a href="/fabconvert/pricing/">Pricing</a><a href="/fabconvert/postback-docs/">Docs</a></div><div class="navright"><a class="btn o" href="/fabconvert/login/">Log in</a><a class="btn w" href="/fabconvert/compliance/">Start free</a></div></div></header>
-<style>
-.dd{padding-bottom:12px;margin-bottom:-12px}
-.ddmenu{top:100%;margin-top:2px}
-.dd.open .ddmenu{display:block}
-</style>
-<script>
-(function(){
-  var dds = document.querySelectorAll(".dd");
-  dds.forEach(function(d){
-    var t = d.querySelector("span");
-    if(!t) return;
-    t.addEventListener("click", function(e){
-      e.preventDefault(); e.stopPropagation();
-      var was = d.classList.contains("open");
-      dds.forEach(function(x){ x.classList.remove("open"); });
-      if(!was) d.classList.add("open");
-    });
-  });
-  document.addEventListener("click", function(){ dds.forEach(function(x){ x.classList.remove("open"); }); });
-})();
-</script>
-<main><div class="wrap"><div class="card">
+<div class="center"><div class="box"><div class="card">
 <div id="step1">
 <h1>Sign in</h1>
-<p>We email you a 6-digit code. No password to remember, nothing else stored.</p>
+<p class="lead">We email you a six-digit code. No password to remember, and nothing else stored.</p>
 <label for="email">Work email</label>
 <input id="email" type="email" placeholder="you@company.com" autocomplete="email">
 <button id="send">Email me a code</button>
@@ -55,19 +33,19 @@ button:disabled{opacity:.6}
 </div>
 <div id="step2" class="hide">
 <h1>Enter the code</h1>
-<p>Sent to <strong id="whom"></strong>. It expires in 10 minutes.</p>
-<label for="code">6-digit code</label>
+<p class="lead">Sent to <strong id="whom"></strong>. It expires in ten minutes.</p>
+<label for="code">Six-digit code</label>
 <input id="code" inputmode="numeric" maxlength="6" placeholder="123456">
 <button id="verify">Sign in</button>
 <div class="msg" id="m2"></div>
 </div>
-<p class="note">By signing in you agree to the <a href="/terms">terms</a> and the <a href="/privacy-policy">privacy policy</a>. We store your email address, the conversions your postback sends us, and the spend entries you add. You can delete everything from the dashboard at any time.</p>
-</div></div></main>
+<p class="note">By signing in you agree to the <a href="/terms">terms</a> and the <a href="/privacy-policy">privacy policy</a>. We store your email address, the conversions your postback sends us, and the spend entries you add. You can delete all of it from the dashboard at any time.</p>
+</div></div></div>
 <script>
 var EMAIL='';
 document.getElementById('send').addEventListener('click',function(){
   var b=this, e=document.getElementById('email').value.trim();
-  if(!e){ document.getElementById('m1').textContent='Enter your email.'; return; }
+  if(!e){ document.getElementById('m1').textContent='Enter your email first.'; return; }
   b.disabled=true; document.getElementById('m1').textContent='Sending...';
   fetch('/auth?action=send',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:e})}).then(function(r){return r.json();}).then(function(j){
     b.disabled=false;
@@ -80,12 +58,12 @@ document.getElementById('send').addEventListener('click',function(){
 });
 document.getElementById('verify').addEventListener('click',function(){
   var b=this, c=document.getElementById('code').value.trim();
-  if(c.length!==6){ document.getElementById('m2').textContent='The code is 6 digits.'; return; }
+  if(c.length!==6){ document.getElementById('m2').textContent='The code is six digits.'; return; }
   b.disabled=true;
   fetch('/auth?action=verify',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:EMAIL,code:c})}).then(function(r){return r.json();}).then(function(j){
     b.disabled=false;
     if(!j.ok){ document.getElementById('m2').innerHTML='<span class="err">'+(j.error||'Wrong code')+'</span>'; return; }
-    window.location.href='/fabconvert/profit';
+    window.location.href='/fabconvert/compliance/';
   });
 });
 </script></body></html>
