@@ -139,7 +139,10 @@ export async function onRequestPost(context) {
     for (const k of pvtKeys.slice(-30)) { totals.push({ day: k.slice(4), n: Number((await env.PASSPORT.get(k)) || 0) }); }
     const signups = [];
     for (const k of signupKeys.slice(-50)) { const v = await env.PASSPORT.get(k); if (v) { try { signups.push(JSON.parse(v)); } catch (e) {} } }
-    return json({ ok: true, totals, views, signups });
+    const dbgKeys = await listAll(env, 'dbg:');
+    const dbg = [];
+    for (const k of dbgKeys.slice(-20)) { const v = await env.PASSPORT.get(k); if (v) { try { dbg.push(JSON.parse(v)); } catch (e) {} } }
+    return json({ ok: true, totals, views, signups, dbg });
   }
   if (b.action === 'setplan') {
     // only the account that owns the product can switch a plan on by hand
