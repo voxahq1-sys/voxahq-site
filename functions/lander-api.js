@@ -37,7 +37,7 @@ export async function onRequestGet(context) {
       const v = await env.PASSPORT.get(k.name);
       if (v) { try {
         const d = JSON.parse(v);
-        const pub = ws + '-' + d.slug;
+        const pub = d.pub || (ws + '-' + d.slug);
         let clicks = 0, convs = 0;
         for (let vi2 = 0; vi2 < d.variants.length; vi2++) { convs += Number((await env.PASSPORT.get('lconv:' + pub + ':' + vi2)) || 0); }
         for (let vi = 0; vi < d.variants.length; vi++) {
@@ -72,6 +72,8 @@ export async function onRequestPost(context) {
   }
   if (b.action === 'delete') {
     const slug = slugify(b.slug);
+    const rawDoc = await env.PASSPORT.get('lander:' + ws + ':' + slug);
+    if (rawDoc) { try { const dd = JSON.parse(rawDoc); if (dd.pub) await env.PASSPORT.delete('pub:' + dd.pub); } catch (e) {} }
     await env.PASSPORT.delete('lander:' + ws + ':' + slug);
     await env.PASSPORT.delete('pub:' + ws + '-' + slug);
     return json({ ok: true, deleted: slug });
@@ -89,8 +91,13 @@ export async function onRequestPost(context) {
     };
   });
   if (!variants.length) return json({ ok: false, error: 'Add at least one variant.' }, 400);
+  const existing = await env.PASSPORT.get('lander:' + ws + ':' + slug).catch(() => null);
+  let prevPub = null;
+  try { if (existing) prevPub = JSON.parse(existing).pub || null; } catch (e) {}
+  const pub = prevPub || (Math.random().toString(36).slice(2, 8) + Math.random().toString(36).slice(2, 8));
   const doc = {
     owner: email,
+    pub,
     ws,
     slug,
     name,
@@ -106,6 +113,7 @@ export async function onRequestPost(context) {
     created: Date.now()
   };
   await env.PASSPORT.put('lander:' + ws + ':' + slug, JSON.stringify(doc));
-  await env.PASSPORT.put('pub:' + ws + '-' + slug, JSON.stringify(doc));
-  return json({ ok: true, slug, url: 'https://l.voxahq.in/l/' + ws + '-' + slug });
+  await env.PASSPORT.put('pub:' + pub, JSON.stringify(doc));
+  if (prevPub && prevPub !== pub) await env.PASSPORT.delete('pub:' + prevPub);
+  return json({ ok: true, slug, pub, url: 'https://l.voxahq.in/l/' + pub });
 }
