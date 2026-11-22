@@ -62,7 +62,8 @@ footer .logo{color:#fff;font-weight:800;font-size:18px}
 .fld{display:flex;flex-direction:column;gap:6px}
 .fld.wide{grid-column:1 / -1}
 .fld label{margin:0!important}
-.inline{display:flex;gap:10px;align-items:center}
+.inline{display:flex;gap:10px;align-items:center;flex-wrap:wrap;min-width:0}
+.inline input{min-width:0}
 .inline input{flex:1}
 .filebtn{display:inline-flex!important;align-items:center;justify-content:center;background:#0E7C66;color:#fff!important;border-radius:10px;padding:11px 16px;font-size:13.5px!important;font-weight:700!important;letter-spacing:0!important;text-transform:none!important;cursor:pointer;white-space:nowrap}
 .filebtn input{display:none}
@@ -93,23 +94,6 @@ footer .logo{color:#fff;font-weight:800;font-size:18px}
   });
   document.addEventListener("click", function(){ dds.forEach(function(x){ x.classList.remove("open"); }); });
 })();
-document.getElementById('fromad').addEventListener('click', function(){
-  var raw = (document.getElementById('adcopy').value || '').trim();
-  if(!raw){ document.getElementById('admsg').textContent = 'Paste the ad copy first.'; return; }
-  var clean = raw.replace(/\s+/g, ' ');
-  var parts = clean.split(/(?<=[.!?])\s+/).filter(Boolean);
-  var head = parts[0] || clean;
-  if(head.length > 95) head = head.slice(0, 92).replace(/[ ,;:.]+$/, '') + '…';
-  var rest = parts.slice(1).join(' ');
-  var sub = rest.slice(0, 320) || ('The short version of: ' + head);
-  var bullets = parts.slice(1, 5).map(function(s){ return s.length > 90 ? s.slice(0, 87) + '…' : s; });
-  if(!bullets.length) bullets = [];
-  document.getElementById('h0').value = head;
-  document.getElementById('s0').value = sub;
-  document.getElementById('bl0').value = bullets.join('\n');
-  document.getElementById('c0').value = document.getElementById('c0').value || 'See the offer';
-  document.getElementById('admsg').textContent = 'Filled. Edit it, because the page has to sound like a person wrote it.';
-});
 </script>
 <main><div class="wrap">
 <h1>Build the page the ad points to.</h1>
@@ -244,5 +228,26 @@ document.getElementById('heroFile').addEventListener('change', function(){
     img.src = fr.result;
   };
   fr.readAsDataURL(f);
+});
+document.addEventListener('DOMContentLoaded', function(){
+  var fa = document.getElementById('fromad');
+  if(!fa) return;
+  fa.addEventListener('click', function(){
+    var raw = (document.getElementById('adcopy').value || '').trim();
+    var msg = document.getElementById('admsg');
+    if(!raw){ msg.textContent = 'Paste the ad copy first.'; return; }
+    var clean = raw.replace(/\s+/g, ' ');
+    var parts = clean.split(/(?<=[.!?])\s+/).filter(Boolean);
+    var head = parts[0] || clean;
+    if(head.length > 95) head = head.slice(0, 92).replace(/[ ,;:.]+$/, '') + '...';
+    var rest = parts.slice(1).join(' ');
+    var sub = rest.slice(0, 320) || ('The short version of: ' + head);
+    var bl = parts.slice(1, 5).map(function(s){ return s.length > 90 ? s.slice(0, 87) + '...' : s; });
+    document.getElementById('h0').value = head;
+    document.getElementById('s0').value = sub;
+    document.getElementById('bl0').value = bl.join('\n');
+    var c = document.getElementById('c0'); if(!c.value) c.value = 'See the offer';
+    msg.textContent = 'Filled. Edit it so it reads like a person wrote it.';
+  });
 });
 </script><footer><div class="cols"><div><div class="logo">FabConvert</div><p style="font-size:13.5px;max-width:280px;margin-top:8px">Compliance, landers and profit for people who run paid ads. Built and run by VOXA.</p></div><div><h5>Product</h5><a href="/fabconvert/compliance/">Compliance check</a><a href="/fabconvert/landers/">Lander builder</a><a href="/fabconvert/profit/">Profit tracking</a><a href="/fabconvert/pricing/">Pricing</a></div><div><h5>Resources</h5><a href="/fabconvert/postback-docs/">Postback setup</a><a href="/fabconvert/account/">Account and API</a><a href="/fabconvert/policies/">Policies</a></div><div><h5>Company</h5><a href="mailto:voxa.hq1@gmail.com">Email us</a><a href="/terms">Terms</a><a href="/privacy-policy">Privacy</a></div></div><div style="max-width:1080px;margin:24px auto 0;padding:0 22px;font-size:12.5px">© 2026 VOXA · voxahq.in</div></footer></body></html>
