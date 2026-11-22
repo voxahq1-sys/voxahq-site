@@ -261,16 +261,17 @@ document.getElementById('savelib').addEventListener('click',function(){
 document.getElementById('clearlog').addEventListener('click',function(){ localStorage.removeItem('fc_log'); renderLog(); });
 renderLog();
 var FIXMAP = [
+[/\bcures?\s+insomnia\b/gi,'supports restful sleep'],[/\bcures?\s+(anxiety|depression|stress)\b/gi,'supports a calm mood'],[/\bcures?\s+(acne|eczema|rosacea)\b/gi,'supports clearer-looking skin'],[/\bcures?\s+(hair loss|baldness)\b/gi,'supports healthy hair'],[/\bcures?\s+(diabetes|blood sugar)\b/gi,'supports everyday wellness'],
 [/\bcures?\b/gi,'supports'],[/\bcuring\b/gi,'supporting'],[/\bheals?\b/gi,'supports'],[/\btreats?\b/gi,'supports'],
 [/\bguaranteed\b/gi,'designed'],[/\b100%\b/g,''],[/\bclinically proven\b/gi,'made with clinically studied ingredients'],
 [/\bmiracle\b/gi,''],[/\bovernight\b/gi,'over time'],[/\binstantly\b/gi,'gradually'],
-[/are you struggling with[^.?]*\?/gi,''],[/\blose \d+ ?(lbs?|pounds?|kg|kilos?) in \d+ ?(days?|weeks?)\b/gi,'support your weight goals'],
+[/are you struggling with[^.?]*\?/gi,''],[/\blose \d+ ?(lbs?|pounds?|kg|kilos?) in \d+ ?(days?|weeks?)\b/gi,'support healthy weight goals'],
 [/\brisk[- ]free\b/gi,'low risk'],[/\bin \d+ ?(days?|weeks?)\b/gi,'over time']
 ];
 function fixCopy(){
   var el=document.getElementById('copy'); var t=el.value;
   FIXMAP.forEach(function(p){ t=t.replace(p[0],p[1]); });
-  el.value=t.replace(/\s{2,}/g,' ').trim();
+  t=t.replace(/\s{2,}/g,' ').trim(); t=t.replace(/(^|[.!?]\s+)([a-z])/g,function(m,a,b){return a+b.toUpperCase();}); el.value=t;
   document.getElementById('go').click();
 }
 function renderRules(list){
