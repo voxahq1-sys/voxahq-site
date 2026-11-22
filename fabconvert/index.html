@@ -1,110 +1,72 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FabConvert: compliance check and profit tracking for ad buyers</title>
-<meta name="description" content="Two things a performance buyer needs in one place: a policy check before the ad goes live, and a ledger that shows what each click actually earned. Built by VOXA.">
-<meta name="robots" content="noindex,nofollow">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<style>
-:root{--ink:#0F1729;--ink2:#4A5568;--line:#DAD4C8;--acc:#0E7C66;--bg:#FAFAF8;--soft:#F4F3F0}
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FabConvert: compliance, landers and profit for ad buyers</title><meta name="description" content="Check every ad before launch, build the page it points to, then track real revenue against real spend with one postback. Three features, one account."><meta name="robots" content="index,follow"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><style>
+:root{--ink:#0F1729;--ink2:#4A5568;--line:#DAD4C8;--acc:#0E7C66;--acc2:#12A183;--bg:#FAFAF8;--soft:#F4F3F0;--dark:#0F1729}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,-apple-system,sans-serif}
-.wrap{max-width:960px;margin:0 auto;padding:0 22px}
-header{background:#0F1729;color:#fff;padding:15px 0;position:sticky;top:0;z-index:20}
-header .wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.brand{font-weight:800;font-size:19px;letter-spacing:-.4px;color:#fff;text-decoration:none}
-.chip{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:#1F2C46;color:#9FE3CF;padding:4px 9px;border-radius:999px}
-header nav{display:flex;gap:18px;font-size:14.5px}
-header nav a{color:#C9D2DF;text-decoration:none}
-a.cta{margin-left:auto;background:var(--acc);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none}
-section{padding:52px 0}
-section.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-h1{font-size:40px;line-height:1.1;letter-spacing:-1.3px;margin-bottom:16px;max-width:780px}
-.sub{font-size:18.5px;color:var(--ink2);max-width:660px}
-.hero{padding:60px 0 46px}
-.btns{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
-.btn{display:inline-block;padding:13px 22px;border-radius:11px;font-size:15.5px;font-weight:600;text-decoration:none}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+a{text-decoration:none;color:inherit}
+header{background:var(--dark);color:#fff;position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;gap:26px;height:66px}
+.logo{font-weight:800;font-size:19px;letter-spacing:-.5px}
+.links{display:flex;gap:22px;font-size:14.5px;color:#C9D2DF;align-items:center}
+.links a:hover{color:#fff}
+.dd{position:relative}
+.dd>span{cursor:pointer;display:inline-flex;gap:5px;align-items:center}
+.ddmenu{position:absolute;top:34px;left:-14px;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:8px;min-width:220px;box-shadow:0 14px 40px rgba(15,23,41,.18);display:none}
+.ddmenu a{display:block;padding:8px 10px;border-radius:8px;font-size:14px}
+.ddmenu a:hover{background:var(--soft)}
+.dd:hover .ddmenu{display:block}
+.navright{margin-left:auto;display:flex;gap:10px;align-items:center}
+.btn{display:inline-block;padding:11px 18px;border-radius:10px;font-size:14.5px;font-weight:600}
 .btn.p{background:var(--acc);color:#fff}
-.btn.s{background:#fff;border:1px solid var(--line);color:var(--ink)}
-h2{font-size:26px;letter-spacing:-.7px;margin-bottom:10px}
-h3{font-size:17px;margin-bottom:6px}
-p{margin-bottom:12px;color:var(--ink2)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
-.feat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
-section.alt .feat{background:var(--soft);border-color:#E6E2D8}
-.feat .k{font-size:11.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--acc);margin-bottom:8px}
-.feat ul{margin:10px 0 16px 18px;font-size:14.5px;color:var(--ink2)}
-.feat li{margin-bottom:5px}
-.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
-.plan{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column}
-.plan.best{border-color:var(--acc);box-shadow:0 10px 30px rgba(14,124,102,.10)}
-.plan .tag{font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
-.plan .num{font-size:30px;font-weight:800;letter-spacing:-1.2px}
-.plan .per{font-size:13px;color:var(--ink2);margin-bottom:12px}
-.plan ul{margin:0 0 16px 18px;font-size:14px}
+.btn.w{background:#fff;color:var(--ink)}
+.btn.o{border:1px solid #3A465C;color:#DCE3EC}
+.btn.big{padding:14px 24px;font-size:15.5px;border-radius:12px}
+section{padding:64px 0}
+.hero{background:linear-gradient(160deg,#0F1729 0%,#12362F 60%,#0E7C66 130%);color:#fff;padding:74px 0 66px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:#9FE3CF;margin-bottom:14px}
+h1{font-size:50px;line-height:1.05;letter-spacing:-1.8px;max-width:820px;margin-bottom:18px}
+h1 u{text-decoration:none;color:#9FE3CF}
+.herosub{font-size:18.5px;color:#C9D2DF;max-width:620px;margin-bottom:26px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.small{font-size:13px;color:#93A0B4;margin-top:12px}
+h2{font-size:32px;letter-spacing:-1px;line-height:1.15;margin-bottom:10px}
+.sub{color:var(--ink2);max-width:660px;margin-bottom:26px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.mod{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px}
+.mod .k{font-size:11.5px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+.mod h3{font-size:21px;letter-spacing:-.5px;margin-bottom:8px}
+.mod p{color:var(--ink2);font-size:15px;margin-bottom:14px}
+.mod ul{margin:0 0 18px 18px;color:var(--ink2);font-size:14.5px}
+.mod li{margin-bottom:5px}
+.steps{display:grid;gap:14px;margin-top:6px}
+.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 20px 20px 74px;position:relative}
+.step .n{position:absolute;left:20px;top:18px;font-size:13px;font-weight:800;color:var(--acc);letter-spacing:1px}
+.step h3{font-size:17px;margin-bottom:4px}
+.step p{color:var(--ink2);font-size:14.5px;margin:0}
+.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.stat b{display:block;font-size:34px;letter-spacing:-1.4px;color:var(--acc);line-height:1.05}
+.stat span{font-size:13.5px;color:var(--ink2)}
+.cmp{width:100%;border-collapse:collapse;margin-top:10px;font-size:15px}
+.cmp th{text-align:left;font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--ink2);padding:10px 8px;border-bottom:1px solid var(--line)}
+.cmp td{padding:12px 8px;border-bottom:1px solid #EFEDE8;color:var(--ink2);vertical-align:top}
+.cmp td:first-child{color:var(--ink);font-weight:600;width:34%}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column}
+.plan.best{border-color:var(--acc);box-shadow:0 12px 34px rgba(14,124,102,.12)}
+.plan .t{font-size:11.5px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+.plan .p{font-size:34px;font-weight:800;letter-spacing:-1.4px;line-height:1}
+.plan .per{font-size:13px;color:var(--ink2);margin:6px 0 14px}
+.plan ul{margin:0 0 18px 18px;font-size:14px;color:var(--ink2)}
 .plan a{margin-top:auto}
-.note{background:#fff;border-left:4px solid var(--acc);border-radius:10px;padding:14px 16px;font-size:14.5px;color:var(--ink);margin:18px 0}
-details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:10px}
-summary{font-weight:600;cursor:pointer;font-size:15.5px}
-details p{margin:10px 0 0;font-size:14.5px}
-footer{border-top:1px solid var(--line);padding:24px 0 44px;color:var(--ink2);font-size:13px}
-@media(max-width:820px){h1{font-size:29px}.sub{font-size:17px}.two,.prices{grid-template-columns:1fr}header nav{display:none}}
-</style></head><body>
-<header><div class="wrap"><a class="brand" href="/fabconvert">FabConvert</a><span class="chip">beta</span>
-<nav><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
-<a class="cta" href="/fabconvert/profit">Open the ledger</a></div></header>
-
-<section class="hero"><div class="wrap">
-<h1>Two numbers decide an ad: will it be allowed, and did it make money?</h1>
-<p class="sub">FabConvert answers both. A policy check before the ad goes live, and a ledger that puts real affiliate revenue against real ad spend, per click.</p>
-<div class="btns"><a class="btn p" href="/fabconvert/compliance/">Check an ad free</a><a class="btn s" href="/fabconvert/profit">See the ledger</a></div>
-</div></section>
-
-<section id="features" class="alt"><div class="wrap">
-<h2>Two features, one job</h2>
-<div class="two">
-<div class="feat"><div class="k">Feature 1</div><h3>Compliance check</h3>
-<p>Paste the ad, upload the creative, add the landing page. Get a verdict before spend, with the line that will be flagged and the rewrite that keeps the offer.</p>
-<ul><li>62 rules across health, finance and platform limits</li><li>Bulk checks, up to 200 ads</li><li>Claims library and an approval log</li><li>API for launchers</li></ul>
-<a class="btn s" href="/fabconvert/compliance/">Open the checker</a></div>
-<div class="feat"><div class="k">Feature 2</div><h3>Profit tracking</h3>
-<p>One postback URL from your affiliate network. Add what you spent. The ledger shows revenue, cost, net profit, ROI and revenue per conversion.</p>
-<ul><li>Works with any network that fires a postback</li><li>Click id, offer and payout stored per sale</li><li>Spend log by campaign or day</li><li>No spreadsheet, no stitched CSV</li></ul>
-<a class="btn p" href="/fabconvert/profit">Open the ledger</a></div>
-</div>
-<p class="note">Together they answer the two questions a media buyer gets asked every week: why was this ad rejected, and where did the money go. Today those answers live in four different tools.</p>
-</div></section>
-
-<section><div class="wrap">
-<h2>How it works</h2>
-<p><strong>Before launch:</strong> paste the ad into the checker, get red, amber or green, fix what is flagged, and the approval is recorded with a name and a timestamp.</p>
-<p><strong>After launch:</strong> the network fires your postback on every sale. The ledger matches it to the click id, adds your spend, and keeps a running net profit.</p>
-<p><strong>Later:</strong> when a platform rejects something that passed, that line becomes a rule. The checker gets sharper with every miss.</p>
-</div></section>
-
-<section id="pricing" class="alt"><div class="wrap">
-<h2>Pricing</h2>
-<p>Start free on the checker. The ledger is part of every paid plan.</p>
-<div class="prices">
-<div class="plan"><div class="tag">Free</div><div class="num">$0</div><div class="per">no card</div><ul><li>50 compliance checks a month</li><li>Single ad at a time</li><li>Ledger preview</li></ul><a class="btn s" href="/fabconvert/compliance/">Open the checker</a></div>
-<div class="plan best"><div class="tag">Solo</div><div class="num">$49</div><div class="per">per month</div><ul><li>2,000 checks a month</li><li>Bulk check and CSV</li><li>Claims library and approval log</li><li>Unlimited postbacks and spend entries</li></ul><a class="btn p" href="/contact">Start with Solo</a></div>
-<div class="plan"><div class="tag">Agency</div><div class="num">$149</div><div class="per">per month, 5 seats</div><ul><li>10,000 checks a month</li><li>Everything in Solo</li><li>Client-ready exports</li><li>Priority rule updates</li></ul><a class="btn s" href="/contact">Talk to us</a></div>
-</div>
-<p style="margin-top:16px">For platforms and launchers, both features are available as an API. Write to <a href="mailto:voxa.hq1@gmail.com">voxa.hq1@gmail.com</a>.</p>
-</div></section>
-
-<section id="faq"><div class="wrap">
-<h2>Questions</h2>
-<details><summary>Do I need both features?</summary><p>No. The checker works on its own, and so does the ledger. They are stronger together because one record then carries the verdict and the profit.</p></details>
-<details><summary>Which networks work with the postback?</summary><p>Any network that lets you set a postback URL with a payout macro. ClickBank, Digistore24, BuyGoods, MaxWeb, and any tracker such as Voluum or RedTrack can send it.</p></details>
-<details><summary>Where is my data stored?</summary><p>Conversions and spend entries are stored as key-value records on Cloudflare, keyed by click id. The compliance checker itself runs in your browser and stores nothing.</p></details>
-<details><summary>Can it be wrong?</summary><p>The checker can pass something a reviewer later rejects, because platform review includes automated judgement. It does not guarantee approval. The ledger only reports what your postback and your spend entries say.</p></details>
-<details><summary>Is this part of VOXA?</summary><p>FabConvert is built and run by VOXA. The compliance tool has been live since November 2026 and is tested against documented rejections and live ads.</p></details>
-</div></section>
-
-<section class="alt"><div class="wrap" style="text-align:center">
-<h2 style="margin-bottom:8px">Check one ad. Send one postback.</h2>
-<p style="margin:0 auto 20px;max-width:560px">Ten seconds each. If one rejected ad is caught, or one leak in the numbers shows up, it paid for itself.</p>
-<a class="btn p" href="/fabconvert/compliance/">Open the checker</a>
-</div></section>
-
-<footer><div class="wrap">FabConvert is built and run by VOXA. Compliance rules are maintained against the Meta, TikTok and Google advertising standards. Current rule count: 62.</div></footer>
-</body></html>
+.for{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.for .c{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.for h3{font-size:16.5px;margin-bottom:6px}
+.for p{font-size:14px;color:var(--ink2);margin:0}
+footer{background:var(--dark);color:#93A0B4;padding:40px 0 50px;font-size:14px}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+footer h5{color:#fff;font-size:13px;letter-spacing:.6px;text-transform:uppercase;margin-bottom:10px}
+footer a{display:block;margin-bottom:7px}
+@media(max-width:900px){h1{font-size:34px}.two,.plans,.for,.stats{grid-template-columns:1fr}footer .cols{grid-template-columns:1fr 1fr}.links{display:none}}
+</style></head><body><header><div class="wrap nav"><a class="logo" href="/fabconvert">FabConvert</a><div class="links"><div class="dd"><span>Features ▾</span><div class="ddmenu"><a href="/fabconvert/compliance/">Compliance check</a><a href="/fabconvert/landers/">Lander builder</a><a href="/fabconvert/profit/">Profit tracking</a><a href="/fabconvert/account/">Account and API</a></div></div><div class="dd"><span>Workflow ▾</span><div class="ddmenu"><a href="/fabconvert#workflow">See it</a><a href="/fabconvert#workflow">Check it</a><a href="/fabconvert#workflow">Build it</a><a href="/fabconvert#workflow">Measure it</a></div></div><a href="/fabconvert/pricing/">Pricing</a><a href="/fabconvert/postback-docs/">Docs</a></div><div class="navright"><a class="btn o" href="/fabconvert/login/">Log in</a><a class="btn w" href="/fabconvert/compliance/">Start free</a></div></div></header><section class="hero"><div class="wrap"><div class="eyebrow">Ad compliance, landers and profit</div><h1>Approve the ad. Build the page. Count <u>the money.</u></h1><p class="herosub">FabConvert checks policy before the ad goes live, builds the landing page it points to, and keeps a ledger of what each click actually earned.</p><div class="ctas"><a class="btn p big" href="/fabconvert/compliance/">Start free</a><a class="btn o big" href="/fabconvert/pricing/">See pricing</a></div><p class="small">Free plan: 50 policy checks a month, no card. Paid plans from $49.</p></div></section><section><div class="wrap"><h2>Three features, one account</h2><p class="sub">Most buyers pay for a checker, a page builder, a tracker and a spreadsheet. This is those four in one place, and the three here talk to each other.</p><div class="two" style="grid-template-columns:repeat(3,1fr)"><div class="mod"><div class="k">Feature 1</div><h3>Compliance check</h3><p>Paste the copy, add the creative text, add the landing page. A verdict before spend, with the exact line that gets flagged and a rewrite that keeps the offer.</p><ul><li>62 rules: health, finance, telehealth, limits</li><li>Bulk checks, 200 at a time</li><li>Claims library and approval log</li></ul><a class="btn p" href="/fabconvert/compliance/">Open the checker</a></div><div class="mod"><div class="k">Feature 2</div><h3>Lander builder</h3><p>The page the ad points to, in four templates, with up to three variants and a split weight. Publish on your own link with your pixel and click id in place.</p><ul><li>Advertorial, quiz, listicle, comparison</li><li>Image upload, hosted for you</li><li>Clicks and sales counted per variant</li></ul><a class="btn p" href="/fabconvert/landers/">Build a lander</a></div><div class="mod"><div class="k">Feature 3</div><h3>Profit tracking</h3><p>One postback URL from your network. Add what you spent. Net profit, ROI and revenue per conversion, with refunds subtracted as they arrive.</p><ul><li>Any network that fires a postback</li><li>Duplicates deduped by transaction id</li><li>Sale and refund emails</li></ul><a class="btn p" href="/fabconvert/profit/">Open the ledger</a></div></div></div></section><section id="workflow" class="alt"><div class="wrap"><h2>Start to finish</h2><p class="sub">Four steps, and the last one is why the first three matter.</p><div class="steps"><div class="step"><div class="n">01</div><h3>See it</h3><p>Paste the ad copy, add the creative text and the landing page URL.</p></div><div class="step"><div class="n">02</div><h3>Check it</h3><p>62 rules run server side. Red, amber or green, with the reason and the rewrite. The lander gets its own check: status, tracking, claims, and whether it matches the ad.</p></div><div class="step"><div class="n">03</div><h3>Build it</h3><p>Pick a template, write the variants, upload the image, drop the pixel in. Publish on your own link and send the traffic.</p></div><div class="step"><div class="n">04</div><h3>Measure it</h3><p>The network fires your postback. The ledger matches the sale to the click id, subtracts spend, and shows net profit per day, campaign or lander variant.</p></div></div></div></section><section><div class="wrap"><h2>The difference is the join</h2><p class="sub">A checker does not know your profit. A tracker does not know your policy verdict. A page builder knows neither. Nobody keeps all three on the same ad.</p><table class="cmp"><thead><tr><th>Question</th><th>Today</th><th>With FabConvert</th></tr></thead><tbody><tr><td>Will this ad be rejected?</td><td>You find out after upload</td><td>Verdict before launch, with the fix</td></tr><tr><td>Who approved it?</td><td>A WhatsApp thread</td><td>A log with name, time and verdict</td></tr><tr><td>Where does the click land?</td><td>A builder you pay separately for</td><td>A page you build here, hosted here</td></tr><tr><td>Did it make money?</td><td>Platform ROAS, then Excel</td><td>Postback revenue minus spend</td></tr><tr><td>Which page wins?</td><td>Guesswork, or another tool</td><td>Clicks and sales per variant</td></tr></tbody></table></div></section><section class="alt"><div class="wrap"><h2>Tested, not claimed</h2><div class="stats"><div class="stat"><b>62</b><span>policy rules across health, finance, telehealth and platform limits</span></div><div class="stat"><b>25/25</b><span>documented rejections caught in testing, 24 as hard blocks</span></div><div class="stat"><b>0</b><span>false alarms across 52 ads running live on Meta</span></div></div></div></section><section><div class="wrap"><h2>Who it is for</h2><div class="for"><div class="c"><h3>Media buyers</h3><p>Health, supplement and telehealth offers at volume, where one policy slip costs an account.</p></div><div class="c"><h3>Agencies</h3><p>Client sign-off before a launch, on the record, and a page they can hand over.</p></div><div class="c"><h3>Launchers and platforms</h3><p>All three features as an API: gate the push, host the page, read the profit.</p></div></div></div></section><section class="alt"><div class="wrap"><h2>Pricing</h2><p class="sub">Start free. Move up when the volume or the team does.</p><div class="plans"><div class="plan"><div class="t">Free</div><div class="p">$0</div><div class="per">no card</div><ul><li>50 policy checks a month</li><li>3 landers</li><li>Unlimited postbacks</li></ul><a class="btn o" href="/fabconvert/compliance/">Start free</a></div><div class="plan best"><div class="t">Solo</div><div class="p">$49</div><div class="per">per month</div><ul><li>2,000 checks a month</li><li>Bulk checks and CSV</li><li>Unlimited landers</li><li>API access</li></ul><a class="btn p" href="/fabconvert/pricing/">See the plans</a></div><div class="plan"><div class="t">Agency</div><div class="p">$149</div><div class="per">per month</div><ul><li>10,000 checks a month</li><li>Everything in Solo</li><li>Team access</li></ul><a class="btn o" href="/fabconvert/pricing/">See the plans</a></div></div></div></section><footer><div class="wrap"><div class="cols"><div><div class="logo" style="margin-bottom:10px">FabConvert</div><p style="font-size:13.5px;max-width:280px">Compliance, landers and profit for people who run paid ads. Built and run by VOXA.</p></div><div><h5>Product</h5><a href="/fabconvert/compliance/">Compliance check</a><a href="/fabconvert/landers/">Lander builder</a><a href="/fabconvert/profit/">Profit tracking</a><a href="/fabconvert/pricing/">Pricing</a></div><div><h5>Resources</h5><a href="/fabconvert/postback-docs/">Postback setup</a><a href="/fabconvert/account/">Account and API</a><a href="/fabconvert/policies/">Policies</a></div><div><h5>Company</h5><a href="mailto:voxa.hq1@gmail.com">Email us</a><a href="/terms">Terms</a><a href="/privacy-policy">Privacy</a></div></div><div style="margin-top:26px;font-size:13px">© 2026 VOXA · voxahq.in</div></div></footer></body></html>
