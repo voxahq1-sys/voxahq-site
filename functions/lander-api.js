@@ -59,6 +59,17 @@ export async function onRequestPost(context) {
   const ws = await wsFor(env, email);
   let b = {};
   try { b = await request.json(); } catch (e) { return json({ ok: false, error: 'Send JSON.' }, 400); }
+  if (b.action === 'upload') {
+    const data = String(b.data || '');
+    const m = data.match(/^data:image\/(jpeg|png|webp);base64,([A-Za-z0-9+/=]+)$/);
+    if (!m) return json({ ok: false, error: 'Send a jpeg, png or webp image.' }, 400);
+    const bytes = Math.floor(m[2].length * 0.75);
+    if (bytes > 900000) return json({ ok: false, error: 'Image is too large after resizing. Try a smaller one.' }, 400);
+    const key = ws + '-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    const bin = Uint8Array.from(atob(m[2]), c => c.charCodeAt(0));
+    await env.PASSPORT.put('img:' + key, bin.buffer, { expirationTtl: 60 * 60 * 24 * 365 });
+    return json({ ok: true, url: '/i/' + key });
+  }
   if (b.action === 'delete') {
     const slug = slugify(b.slug);
     await env.PASSPORT.delete('lander:' + ws + ':' + slug);
