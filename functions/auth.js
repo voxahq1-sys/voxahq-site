@@ -68,9 +68,17 @@ export async function onRequestPost(context) {
   }
   if (action === 'verify') {
     const code = String(b.code || '').trim();
+    const wrongKey = 'otp_bad:' + email;
+    const wrong = Number((await env.PASSPORT.get(wrongKey)) || 0);
+    if (wrong >= 5) return json({ ok: false, error: 'Too many wrong codes. Ask for a new one in 15 minutes.' }, 429);
     const saved = await env.PASSPORT.get('otp:' + email);
-    if (!saved || saved !== code) return json({ ok: false, error: 'That code is wrong or expired.' }, 401);
+    if (!saved || saved !== code) {
+      await env.PASSPORT.put(wrongKey, String(wrong + 1), { expirationTtl: 900 });
+      if (wrong + 1 >= 5) await env.PASSPORT.delete('otp:' + email);
+      return json({ ok: false, error: 'That code is wrong or expired.' }, 401);
+    }
     await env.PASSPORT.delete('otp:' + email);
+    await env.PASSPORT.delete(wrongKey);
     const sig = await hmac(secret(env), 's:' + email);
     const ws = await wsFor(env, email);
     const known = await env.PASSPORT.get('wowner:' + ws);
