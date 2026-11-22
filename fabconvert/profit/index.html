@@ -155,11 +155,11 @@ function load(){
     document.getElementById('s-roi').textContent=s.roi===null?'-':(s.roi+'%');
     document.getElementById('s-epc').textContent=money(s.epc);
     document.getElementById('s-conv').textContent=s.conversions + (s.refunds ? ' (' + s.refunds + ' refunded)' : '');
-    var hv='<table><thead><tr><th>When</th><th>Click id</th><th>Offer</th><th>Payout</th><th>Status</th></tr></thead><tbody>';
+    var hv='<table><thead><tr><th>When (UTC)</th><th>Click id</th><th>Offer</th><th>Payout</th><th>Status</th></tr></thead><tbody>';
     if(j.conversions.length){ j.conversions.forEach(function(c){ hv+='<tr><td>'+when(c.ts)+'</td><td>'+c.cid+'</td><td>'+(c.offer||'-')+'</td><td>'+money(c.payout)+'</td><td>'+(c.status==='refund'?'<span style="color:#B42318">refund</span>':(c.status||'sale'))+'</td></tr>'; }); }
     else { hv+='<tr><td colspan="5" style="color:#4A5568">No conversions yet. Send a test sale above.</td></tr>'; }
     document.getElementById('convs').innerHTML=hv+'</tbody></table>';
-    var hs='<table><thead><tr><th>When</th><th>Label</th><th>Amount</th></tr></thead><tbody>';
+    var hs='<table><thead><tr><th>When (UTC)</th><th>Label</th><th>Amount</th></tr></thead><tbody>';
     if(j.spend.length){ j.spend.forEach(function(c){ hs+='<tr><td>'+when(c.ts)+'</td><td>'+(c.label||'-')+'</td><td>'+money(c.amount)+'</td></tr>'; }); }
     else { hs+='<tr><td colspan="3" style="color:#4A5568">No spend logged yet.</td></tr>'; }
     document.getElementById('spends').innerHTML=hs+'</tbody></table>';
