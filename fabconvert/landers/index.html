@@ -1,0 +1,164 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FabConvert landers</title><meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<style>
+:root{--ink:#0F1729;--ink2:#4A5568;--bg:#FAFAF8;--line:#DAD4C8;--acc:#0E7C66;--red:#B42318}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+header{background:#0F1729;padding:14px 0}header .wrap{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.brand{color:#fff;font-weight:800;text-decoration:none;font-size:18px}
+header nav{margin-left:auto;display:flex;gap:14px;font-size:14px}header nav a{color:#C9D2DF;text-decoration:none}
+main{padding:26px 0 70px}
+h1{font-size:26px;letter-spacing:-.7px;margin-bottom:6px}
+.sub{color:var(--ink2);margin-bottom:18px;max-width:620px;font-size:15px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px}
+label{display:block;font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--ink2);margin:12px 0 5px}
+label:first-child{margin-top:0}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;font-size:15px;background:#fff}
+textarea{min-height:70px;resize:vertical}
+button{background:var(--acc);color:#fff;border:0;border-radius:10px;padding:11px 16px;font-size:14.5px;font-weight:600;cursor:pointer}
+button.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+button.danger{background:#fff;border:1px solid #F0CFCB;color:var(--red)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.item{display:flex;gap:12px;align-items:center;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:10px;background:#fff}
+.item b{font-size:15px}.item .meta{font-size:12.5px;color:var(--ink2)}
+.item .sp{margin-left:auto;display:flex;gap:8px}
+.vbox{border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:10px;background:#FAFAF8}
+.vbox h4{font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:var(--acc);margin-bottom:8px}
+.hint{font-size:12.5px;color:var(--ink2);margin-top:6px}
+.hide{display:none}
+@media(max-width:760px){.row{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="wrap"><a class="brand" href="/fabconvert">FabConvert</a>
+<nav><a href="/fabconvert/compliance/">Compliance</a><a href="/fabconvert/profit/">Profit</a><a href="/fabconvert/account/">Account</a></nav></div></header>
+<main><div class="wrap">
+<h1>Build the page the ad points to.</h1>
+<p class="sub">Pick a template, write up to three variants, and publish on your own link. Every lander is checked against the same 62 rules before you push traffic to it.</p>
+
+<div class="card"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><strong>Your landers</strong><button class="ghost" id="new" style="margin-left:auto">New lander</button></div>
+<div id="list"><p class="hint">Loading.</p></div></div>
+
+<div class="card hide" id="editor">
+<label>Lander name</label><input id="name" placeholder="Sleep advertorial v1">
+<div class="row">
+<div><label>Template</label><select id="template"><option value="advertorial">Advertorial</option><option value="quiz">Quiz</option><option value="listicle">Listicle</option><option value="comparison">Comparison</option></select></div>
+<div><label>Brand line</label><input id="brand" placeholder="Your brand"></div>
+</div>
+<div class="row">
+<div><label>Offer URL (where the button goes)</label><input id="offer" placeholder="https://network.com/offer?aff=123"></div>
+<div><label>Accent colour</label><input id="accent" value="#0E7C66"></div>
+</div>
+
+<div class="vbox"><h4>Variant 1</h4>
+<label>Headline</label><input id="h0" placeholder="The 10-minute evening routine that changed my sleep">
+<label>Sub line</label><textarea id="s0" placeholder="One paragraph that matches the ad's promise, not a different one."></textarea>
+<label>Bullets, one per line</label><textarea id="bl0" placeholder="Falls asleep faster&#10;No morning grogginess&#10;Third-party tested"></textarea>
+<div class="row"><div><label>Button text</label><input id="c0" placeholder="See the offer"></div><div><label>Split weight</label><input id="w0" type="number" value="50"></div></div>
+</div>
+
+<div class="vbox"><h4>Variant 2 (optional)</h4>
+<label>Headline</label><input id="h1" placeholder="A different angle for the same offer">
+<label>Sub line</label><textarea id="s1"></textarea>
+<label>Bullets, one per line</label><textarea id="bl1"></textarea>
+<div class="row"><div><label>Button text</label><input id="c1"></div><div><label>Split weight</label><input id="w1" type="number" value="50"></div></div>
+</div>
+
+<div class="vbox"><h4>Variant 3 (optional)</h4>
+<label>Headline</label><input id="h2">
+<label>Sub line</label><textarea id="s2"></textarea>
+<label>Bullets, one per line</label><textarea id="bl2"></textarea>
+<div class="row"><div><label>Button text</label><input id="c2"></div><div><label>Split weight</label><input id="w2" type="number" value="50"></div></div>
+</div>
+
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+<button id="save">Save and publish</button>
+<button class="ghost" id="check">Check policy first</button>
+<button class="ghost" id="cancel">Close</button>
+</div>
+<div id="msg" class="hint"></div>
+<div id="policy"></div>
+</div>
+</div></main>
+<script>
+var CUR = null;
+function $(id){return document.getElementById(id);}
+function lines(v){return v.split('\n').map(function(s){return s.trim();}).filter(Boolean);}
+function collect(){
+  var variants = [];
+  for (var i=0;i<3;i++){
+    var h = $('h'+i).value.trim();
+    if (!h) continue;
+    variants.push({headline:h, sub:$('s'+i).value.trim(), bullets:lines($('bl'+i).value), cta:$('c'+i).value.trim()||'See the offer', weight:Number($('w'+i).value)||50});
+  }
+  return {name:$('name').value.trim(), template:$('template').value, brand:$('brand').value.trim(), offer:$('offer').value.trim(), accent:$('accent').value.trim(), variants:variants, slug:CUR?CUR.slug:''};
+}
+function fill(d){
+  $('name').value=d?d.name:''; $('template').value=d?d.template:'advertorial'; $('brand').value=d?d.brand:'';
+  $('offer').value=d?d.offer:''; $('accent').value=d?(d.accent||'#0E7C66'):'#0E7C66';
+  for (var i=0;i<3;i++){
+    var v = d && d.variants && d.variants[i];
+    $('h'+i).value = v?v.headline:''; $('s'+i).value = v?v.sub:''; $('bl'+i).value = v?(v.bullets||[]).join('\n'):'';
+    $('c'+i).value = v?v.cta:''; $('w'+i).value = v?(v.weight||50):50;
+  }
+  $('policy').innerHTML=''; $('msg').textContent='';
+}
+function loadList(){
+  fetch('/lander-api').then(function(r){ if(r.status===401){ window.location.href='/fabconvert/login'; return null;} return r.json(); }).then(function(j){
+    if(!j||!j.ok) return;
+    var el=$('list');
+    if(!j.landers.length){ el.innerHTML='<p class="hint">No landers yet. Press New lander.</p>'; return; }
+    el.innerHTML='';
+    j.landers.forEach(function(l){
+      var d=document.createElement('div'); d.className='item';
+      d.innerHTML='<div><b>'+l.name+'</b><div class="meta">'+l.template+' · '+l.variants+' variant'+(l.variants>1?'s':'')+' · /l/'+l.pubSlug+'</div></div><div class="sp"></div>';
+      var sp=d.querySelector('.sp');
+      var open=document.createElement('button'); open.className='ghost'; open.textContent='Open'; open.onclick=function(){ window.open('/l/'+l.pubSlug,'_blank'); };
+      var edit=document.createElement('button'); edit.className='ghost'; edit.textContent='Edit'; edit.onclick=function(){ editLander(l.slug); };
+      var del=document.createElement('button'); del.className='danger'; del.textContent='Delete'; del.onclick=function(){
+        if(!confirm('Delete this lander?')) return;
+        fetch('/lander-api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'delete',slug:l.slug})}).then(loadList);
+      };
+      sp.appendChild(open); sp.appendChild(edit); sp.appendChild(del);
+      el.appendChild(d);
+    });
+  });
+}
+function editLander(slug){
+  fetch('/lander-api').then(function(r){return r.json();}).then(function(j){
+    if(!j.ok) return;
+    var found=j.landers.filter(function(x){return x.slug===slug;})[0];
+    if(!found) return;
+    CUR=found; fill(null);
+    $('editor').classList.remove('hide');
+    $('name').value=found.name;
+    $('template').value=found.template;
+  });
+}
+$('new').onclick=function(){ CUR={slug:''}; fill(null); $('editor').classList.remove('hide'); $('name').focus(); };
+$('cancel').onclick=function(){ $('editor').classList.add('hide'); };
+$('save').onclick=function(){
+  var b=collect();
+  if(!b.variants.length){ $('msg').textContent='Add at least one headline.'; return; }
+  $('save').disabled=true; $('msg').textContent='Saving...';
+  fetch('/lander-api',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)}).then(function(r){return r.json();}).then(function(j){
+    $('save').disabled=false;
+    if(!j.ok){ $('msg').textContent=j.error||'Could not save'; return; }
+    $('msg').innerHTML='Published: <a href="'+j.url+'" target="_blank">'+location.origin+j.url+'</a>';
+    loadList();
+  });
+};
+$('check').onclick=function(){
+  var b=collect(); if(!b.variants.length){ $('msg').textContent='Add a headline first.'; return; }
+  var text=b.variants.map(function(v){ return v.headline+' '+v.sub+' '+(v.bullets||[]).join(' '); }).join(' \n ');
+  fetch('/compliance-check',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({ads:[text]})}).then(function(r){return r.json();}).then(function(j){
+    if(!j.ok){ $('policy').innerHTML='<p class="hint">'+j.error+'</p>'; return; }
+    var r0=j.results[0];
+    var cls=r0.blocks.length?'err':'ok';
+    var h='<div class="vbox"><h4>Policy check</h4><p class="hint">'+(r0.verdict==='red'?'Blocked lines found':(r0.verdict==='amber'?'Worth fixing':'No rule matched'))+' · score '+r0.score+'/100</p>';
+    r0.blocks.concat(r0.warns).forEach(function(f){ h+='<p class="hint">• <b>'+f.cat+'</b> — '+f.match+' → '+f.fix+'</p>'; });
+    $('policy').innerHTML=h+'</div>';
+  });
+};
+loadList();
+</script></body></html>
