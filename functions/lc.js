@@ -5,6 +5,7 @@ export async function onRequestGet(context) {
   const key = u.searchParams.get('k') || '';
   const v = String(parseInt(u.searchParams.get('v') || '0', 10));
   const to = u.searchParams.get('to') || '';
+  const pname = (u.searchParams.get('p') || 'sub1').replace(/[^a-zA-Z0-9_]/g, '').slice(0, 24);
   if (env.PASSPORT && key) {
     const ck = 'clicks:' + key + ':' + v;
     try {
@@ -18,6 +19,7 @@ export async function onRequestGet(context) {
   try {
     const t = new URL(dest);
     if (!t.searchParams.has('fcv')) t.searchParams.set('fcv', v);
+    if (!t.searchParams.has(pname)) t.searchParams.set(pname, key + '-v' + v);
     dest = t.toString();
   } catch (e) {}
   return new Response(null, { status: 302, headers: { location: dest, 'cache-control': 'no-store' } });

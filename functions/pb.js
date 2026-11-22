@@ -19,6 +19,14 @@ export async function onRequestGet(context) {
   const status = /refund|chargeback|reversal|cancel/.test(rawStatus) ? 'refund' : (rawStatus === 'lead' ? 'lead' : 'sale');
   const txid = (u.searchParams.get('txid') || u.searchParams.get('tx') || u.searchParams.get('transaction_id') || u.searchParams.get('orderid') || '').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 48);
   const key = txid ? ('t:' + txid) : ('h:' + cid + '-' + payout);
+  const lcMatch = cid.match(/^(.*)-v(\d+)$/);
+  if (lcMatch) {
+    try {
+      const lk = 'lconv:' + lcMatch[1] + ':' + lcMatch[2];
+      const nL = Number((await env.PASSPORT.get(lk)) || 0);
+      await env.PASSPORT.put(lk, String(nL + 1), { expirationTtl: 60 * 60 * 24 * 180 });
+    } catch (e) {}
+  }
   const ts = Date.now();
   const rec = { cid, payout, offer, status, txid: txid || null, ts, updated: ts };
   await env.PASSPORT.put('w:' + w + ':p:' + key, JSON.stringify(rec), { expirationTtl: 60 * 60 * 24 * 180 });

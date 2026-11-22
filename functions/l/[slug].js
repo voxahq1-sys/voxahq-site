@@ -9,7 +9,7 @@ export async function onRequestGet(context) {
   const d = JSON.parse(raw);
   if (!d.variants || !d.variants.length) return new Response('<h1>Not found</h1>', { status: 404, headers: { 'content-type': 'text/html' } });
   const vi = pick(d.variants), v = d.variants[vi];
-  const cta = '/lc?k=' + encodeURIComponent(params.slug) + '&v=' + vi + '&to=' + encodeURIComponent(d.offer || '');
+  const cta = '/lc?k=' + encodeURIComponent(params.slug) + '&v=' + vi + '&p=' + encodeURIComponent(d.cidParam || 'sub1') + '&to=' + encodeURIComponent(d.offer || '');
   const bullets = v.bullets || [];
   const month = new Date().toLocaleString('en-US', { month: 'long', year: 'numeric' });
   const read = Math.max(2, Math.round(((v.headline || '').split(' ').length + (v.sub || '').split(' ').length + bullets.join(' ').split(' ').length) / 120) + 2);
@@ -35,8 +35,9 @@ export async function onRequestGet(context) {
       + (bullets.length ? '<ul class="ticks">' + bullets.map(function (b) { return '<li>' + esc(b) + '</li>'; }).join('') + '</ul>' : '')
       + '<a class="cta" href="' + cta + '">' + esc(v.cta) + '</a><p class="fine">Claims on this page must match the offer. Results vary by person.</p>';
   }
+  const pixel = d.pixel ? d.pixel : '';
   const html = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>' + esc(v.headline) + '</title>'
-    + '<style>*{box-sizing:border-box}body{margin:0;background:#F6F5F1;color:#141821;font:17px/1.7 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}'
+    + pixel + '<style>*{box-sizing:border-box}body{margin:0;background:#F6F5F1;color:#141821;font:17px/1.7 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}'
     + '.wrap{max-width:660px;margin:0 auto;padding:16px 18px 70px}'
     + '.top{display:flex;align-items:center;gap:10px;padding:8px 0 16px;font-size:13.5px;color:#6B7280;font-weight:600}'
     + '.dot{width:24px;height:24px;border-radius:7px;background:' + d.accent + ';flex:none}'
