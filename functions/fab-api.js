@@ -104,7 +104,8 @@ export async function onRequestPost(context) {
     return json({ ok: true, key: raw });
   }
   if (b.action === 'resetusage' && b.key === 'fc-reset-now') {
-    await env.PASSPORT.delete('u:' + w + ':' + month);
+    const mo = new Date().toISOString().slice(0, 7);
+    await env.PASSPORT.delete('u:' + w + ':' + mo);
     return json({ ok: true, reset: true });
   }
   if (b.action === 'clear' || b.action === 'delete') {
