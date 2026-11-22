@@ -1,5 +1,17 @@
 // Public lander renderer: /l/<ws>-<slug>
-function pick(vs) { const t = vs.reduce((a, v) => a + (v.weight || 1), 0); let r = Math.random() * t; for (let i = 0; i < vs.length; i++) { r -= (vs[i].weight || 1); if (r <= 0) return i; } return 0; }
+function pick(vs, stats) {
+  var w = vs.map(function (v, i) {
+    var base = v.weight || 1;
+    var s = stats[i] || { views: 0, clicks: 0, sales: 0 };
+    if (s.sales > 0) base = base * (1 + 3 * s.sales);
+    else if (s.clicks >= 50) base = base * 0.2;
+    return base;
+  });
+  var t = w.reduce(function (a, b) { return a + b; }, 0);
+  var r = Math.random() * t;
+  for (var i = 0; i < w.length; i++) { r -= w[i]; if (r <= 0) return i; }
+  return 0;
+}
 function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 export async function onRequestGet(context) {
   const { env, params } = context;
@@ -8,7 +20,18 @@ export async function onRequestGet(context) {
   if (!raw) return new Response('<h1>Not found</h1>', { status: 404, headers: { 'content-type': 'text/html' } });
   const d = JSON.parse(raw);
   if (!d.variants || !d.variants.length) return new Response('<h1>Not found</h1>', { status: 404, headers: { 'content-type': 'text/html' } });
-  const vi = pick(d.variants), v = d.variants[vi];
+  const stats = [];
+  for (let si = 0; si < d.variants.length; si++) {
+    const vw = Number((await env.PASSPORT.get('views:' + params.slug + ':' + si)) || 0);
+    const cl = Number((await env.PASSPORT.get('clicks:' + params.slug + ':' + si)) || 0);
+    const sl = Number((await env.PASSPORT.get('lconv:' + params.slug + ':' + si)) || 0);
+    stats.push({ views: vw, clicks: cl, sales: sl });
+  }
+  const vi = pick(d.variants, stats), v = d.variants[vi];
+  try {
+    const vk = 'views:' + params.slug + ':' + vi;
+    await env.PASSPORT.put(vk, String((stats[vi].views || 0) + 1), { expirationTtl: 60 * 60 * 24 * 180 });
+  } catch (e) {}
   const cta = '/lc?k=' + encodeURIComponent(params.slug) + '&v=' + vi + '&p=' + encodeURIComponent(d.cidParam || 'sub1') + '&to=' + encodeURIComponent(d.offer || '');
   const bullets = v.bullets || [];
   const month = new Date().toLocaleString('en-US', { month: 'long', year: 'numeric' });

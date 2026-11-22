@@ -75,6 +75,23 @@ footer .logo{color:#fff;font-weight:800;font-size:18px}
   });
   document.addEventListener("click", function(){ dds.forEach(function(x){ x.classList.remove("open"); }); });
 })();
+document.getElementById('fromad').addEventListener('click', function(){
+  var raw = (document.getElementById('adcopy').value || '').trim();
+  if(!raw){ document.getElementById('admsg').textContent = 'Paste the ad copy first.'; return; }
+  var clean = raw.replace(/\s+/g, ' ');
+  var parts = clean.split(/(?<=[.!?])\s+/).filter(Boolean);
+  var head = parts[0] || clean;
+  if(head.length > 95) head = head.slice(0, 92).replace(/[ ,;:.]+$/, '') + '…';
+  var rest = parts.slice(1).join(' ');
+  var sub = rest.slice(0, 320) || ('The short version of: ' + head);
+  var bullets = parts.slice(1, 5).map(function(s){ return s.length > 90 ? s.slice(0, 87) + '…' : s; });
+  if(!bullets.length) bullets = [];
+  document.getElementById('h0').value = head;
+  document.getElementById('s0').value = sub;
+  document.getElementById('bl0').value = bullets.join('\n');
+  document.getElementById('c0').value = document.getElementById('c0').value || 'See the offer';
+  document.getElementById('admsg').textContent = 'Filled. Edit it, because the page has to sound like a person wrote it.';
+});
 </script>
 <main><div class="wrap">
 <h1>Build the page the ad points to.</h1>
@@ -96,7 +113,7 @@ footer .logo{color:#fff;font-weight:800;font-size:18px}
 <div><label>Accent colour</label><input id="accent" value="#0E7C66"></div>
 </div>
 
-<div class="vbox"><h4>Variant 1</h4>
+<div class="vbox" style="background:#F1F8F5;border-color:#CFE9E0"><h4>Start from the ad</h4><label>Paste the ad copy, the page gets written from the same promise</label><textarea id="adcopy" style="min-height:64px" placeholder="Paste the primary text and headline of the ad this page has to match."></textarea><button class="ghost" id="fromad" style="margin-top:8px">Fill variant 1 from this ad</button><p class="hint" id="admsg"></p></div><div class="vbox"><h4>Variant 1</h4>
 <label>Headline</label><input id="h0" placeholder="The 10-minute evening routine that changed my sleep">
 <label>Sub line</label><textarea id="s0" placeholder="One paragraph that matches the ad's promise, not a different one."></textarea>
 <label>Bullets, one per line</label><textarea id="bl0" placeholder="Falls asleep faster&#10;No morning grogginess&#10;Third-party tested"></textarea>
@@ -157,7 +174,7 @@ function loadList(){
     el.innerHTML='';
     j.landers.forEach(function(l){
       var d=document.createElement('div'); d.className='item';
-      d.innerHTML='<div><b>'+l.name+'</b><div class="meta">'+l.template+' · '+l.variants+' variant'+(l.variants>1?'s':'')+' · '+(l.clicks||0)+' clicks · '+(l.convs||0)+' sales'+' · /l/'+l.pubSlug+'</div></div><div class="sp"></div>';
+      d.innerHTML='<div><b>'+l.name+'</b><div class="meta">'+l.template+' · '+l.variants+' variant'+(l.variants>1?'s':'')+' · '+(l.views||0)+' views · '+(l.clicks||0)+' clicks · '+(l.ctr||0)+'% CTR · '+(l.convs||0)+' sales'+' · /l/'+l.pubSlug+'</div></div><div class="sp"></div>';
       var sp=d.querySelector('.sp');
       var open=document.createElement('button'); open.className='ghost'; open.textContent='Open'; open.onclick=function(){ window.open('/l/'+l.pubSlug,'_blank'); };
       var edit=document.createElement('button'); edit.className='ghost'; edit.textContent='Edit'; edit.onclick=function(){ editLander(l.slug); };

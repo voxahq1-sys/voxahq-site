@@ -38,12 +38,15 @@ export async function onRequestGet(context) {
       if (v) { try {
         const d = JSON.parse(v);
         const pub = d.pub || (ws + '-' + d.slug);
-        let clicks = 0, convs = 0;
-        for (let vi2 = 0; vi2 < d.variants.length; vi2++) { convs += Number((await env.PASSPORT.get('lconv:' + pub + ':' + vi2)) || 0); }
+        let clicks = 0, convs = 0, views = 0;
+        for (let vi2 = 0; vi2 < d.variants.length; vi2++) {
+          convs += Number((await env.PASSPORT.get('lconv:' + pub + ':' + vi2)) || 0);
+          views += Number((await env.PASSPORT.get('views:' + pub + ':' + vi2)) || 0);
+        }
         for (let vi = 0; vi < d.variants.length; vi++) {
           clicks += Number((await env.PASSPORT.get('clicks:' + pub + ':' + vi)) || 0);
         }
-        list.push({ slug: d.slug, pubSlug: pub, name: d.name, template: d.template, variants: d.variants.length, clicks, convs, updated: d.updated });
+        list.push({ slug: d.slug, pubSlug: pub, name: d.name, template: d.template, variants: d.variants.length, clicks, convs, views, ctr: views > 0 ? Math.round((clicks / views) * 100) : 0, updated: d.updated });
       } catch (e) {} }
     }
     if (res.list_complete) break;
