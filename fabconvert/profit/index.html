@@ -145,7 +145,7 @@ function load(){
     if(!j) return;
     if(!j.ok){ return; }
     document.getElementById('em').textContent=j.email;
-    document.getElementById('who').textContent=j.email;
+    var whoEl=document.getElementById('who'); if(whoEl) whoEl.textContent=j.email;
     WS=j.ws;
     document.getElementById('pburl').textContent='https://voxahq.in/pb?w='+j.ws+'&cid={clickid}&payout={payout}&offer={offer}&txid={transaction_id}&status=sale';
     var s=j.summary;
