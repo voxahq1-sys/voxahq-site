@@ -101,8 +101,9 @@ footer .logo{color:#fff;font-weight:800;font-size:18px}
 </script>
 <main><div class="wrap">
 <h1>Check the ad before a reviewer does.</h1>
-<p class="sub">62 rules across health, finance and platform limits. Every check counts against your monthly allowance.</p>
+<p class="sub">89 rules across health, finance and platform limits. Every check counts against your monthly allowance.</p>
 
+<p class="sub" style="margin-top:-6px"><span id="usage">Loading your allowance...</span></p>
 <div class="tabs"><button class="tab on" data-t="single">Single ad</button><button class="tab" data-t="bulk">Bulk</button><button class="tab" data-t="library">Claims library</button><button class="tab" data-t="approvals">Approvals</button><button class="tab" data-t="rules">My rules</button></div>
 
 <div id="pane-single"><div class="card">
@@ -168,7 +169,7 @@ function verdictBox(r){
   });
   return h;
 }
-function setUsage(u){ if(u) document.getElementById('usage').textContent = u.used + ' of ' + u.limit + ' this month'; }
+function setUsage(u){ var el=document.getElementById('usage'); if(u && el) el.textContent = u.used + ' of ' + u.limit + ' uses this month'; }
 fetch('/fab-api').then(function(r){ if(r.status===401){ window.location.href='/fabconvert/login'; return null; } return r.json(); }).then(function(j){ if(j&&j.ok){ ME=j; setUsage(j.usage); } });
 document.querySelectorAll('.tab').forEach(function(t){ t.addEventListener('click',function(){ document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on');}); t.classList.add('on'); ['single','bulk','library','approvals','rules'].forEach(function(k){ document.getElementById('pane-'+k).style.display = (k===t.getAttribute('data-t'))?'block':'none'; }); if(t.getAttribute('data-t')==='approvals') renderLog(); }); });
 document.getElementById('ocr').addEventListener('click',function(){
