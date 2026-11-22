@@ -13,6 +13,7 @@ async function sha256(s) {
   return btoa(String.fromCharCode(...new Uint8Array(d))).replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_').slice(0, 40);
 }
 async function wsFor(env, email) { return (await hmac(secret(env), 'ws:' + email)).slice(0, 18); }
+async function pbToken(env, ws) { return (await hmac(secret(env), 'pb:' + ws)).slice(0, 16); }
 function cookieOf(request) {
   const c = request.headers.get('cookie') || '';
   const m = c.match(/(?:^|; )fc_session=([^;]+)/);
@@ -64,7 +65,7 @@ export async function onRequestGet(context) {
   const revenue = sales.reduce((a, c) => a + (Number(c.payout) || 0), 0);
   const cost = spend.reduce((a, s) => a + (Number(s.amount) || 0), 0);
   return json({
-    ok: true, email, owner, ws: w, plan, usage: { used, limit, month }, team: JSON.parse((await env.PASSPORT.get('team:' + owner)) || '[]'),
+    ok: true, email, owner, ws: w, pbtoken: await pbToken(env, w), plan, usage: { used, limit, month }, team: JSON.parse((await env.PASSPORT.get('team:' + owner)) || '[]'),
     summary: {
       conversions: sales.length,
       refunds: refunds.length,

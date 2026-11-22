@@ -133,7 +133,7 @@ footer .logo{color:#fff;font-weight:800;font-size:18px}
 </div>
 </div></main>
 <script>
-var WS='';
+var WS=''; var PBTOKEN='';
 function money(n){ return '$' + (Math.round(Number(n)*100)/100).toFixed(2); }
 function when(ts){ return new Date(ts).toISOString().slice(0,16).replace('T',' '); }
 function loadSoon(){ load(); [4000,12000,30000,55000].forEach(function(t){ setTimeout(load,t); }); }
@@ -146,8 +146,8 @@ function load(){
     if(!j.ok){ return; }
     document.getElementById('em').textContent=j.email;
     var whoEl=document.getElementById('who'); if(whoEl) whoEl.textContent=j.email;
-    WS=j.ws;
-    document.getElementById('pburl').textContent='https://voxahq.in/pb?w='+j.ws+'&cid={clickid}&payout={payout}&offer={offer}&txid={transaction_id}&status=sale';
+    WS=j.ws; PBTOKEN=j.pbtoken;
+    document.getElementById('pburl').textContent='https://voxahq.in/pb?w='+j.ws+'&t='+j.pbtoken+'&cid={clickid}&payout={payout}&offer={offer}&txid={transaction_id}&status=sale';
     var s=j.summary;
     document.getElementById('s-rev').textContent=money(s.revenue);
     document.getElementById('s-spend').textContent=money(s.spend);
@@ -170,7 +170,7 @@ document.getElementById('copy').addEventListener('click',function(){
 });
 document.getElementById('test').addEventListener('click',function(){
   var cid='test'+Math.random().toString(36).slice(2,8), pay=(20+Math.random()*80).toFixed(2);
-  fetch('/pb?w='+encodeURIComponent(WS)+'&cid='+cid+'&payout='+pay+'&offer=test-offer').then(function(r){return r.json();}).then(function(j){
+  fetch('/pb?w='+encodeURIComponent(WS)+'&t='+encodeURIComponent(PBTOKEN)+'&cid='+cid+'&payout='+pay+'&offer=test-offer').then(function(r){return r.json();}).then(function(j){
     document.getElementById('testmsg').textContent = j.ok ? ('Test sale saved for $'+j.saved.payout+'. It can take up to a minute to show below.') : ('Failed: '+(j.error||'unknown'));
     loadSoon();
   });

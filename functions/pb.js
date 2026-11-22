@@ -1,5 +1,11 @@
 // FabConvert postback: /pb?w=<ws>&cid=&payout=&offer=&txid=&status=
 // One record per transaction, so a duplicate fire updates instead of double counting.
+function secret(env) { return env.FABCONVERT_SECRET || env.RESEND_API_KEY || ''; }
+async function hmac(key, msg) {
+  const k = await crypto.subtle.importKey('raw', new TextEncoder().encode(key), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const sig = await crypto.subtle.sign('HMAC', k, new TextEncoder().encode(msg));
+  return btoa(String.fromCharCode(...new Uint8Array(sig))).replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_');
+}
 function json(o, s = 200) {
   return new Response(JSON.stringify(o), { status: s, headers: { 'content-type': 'application/json', 'cache-control': 'no-store', 'access-control-allow-origin': '*' } });
 }
@@ -9,6 +15,9 @@ export async function onRequestGet(context) {
   const u = new URL(request.url);
   const w = (u.searchParams.get('w') || u.searchParams.get('ws') || '').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 40);
   if (!w) return json({ ok: false, error: 'Missing workspace key (w).' }, 400);
+  const tok = (u.searchParams.get('t') || u.searchParams.get('token') || '').slice(0, 40);
+  const wantTok = (await hmac(secret(env), 'pb:' + w)).slice(0, 16);
+  if (tok !== wantTok) return json({ ok: false, error: 'Bad or missing token (t). Copy the postback URL from the ledger page.' }, 403);
   const cid = (u.searchParams.get('cid') || u.searchParams.get('clickid') || u.searchParams.get('sub1') || '').trim().slice(0, 64);
   if (!cid) return json({ ok: false, error: 'Missing cid (click id).' }, 400);
   const payoutRaw = u.searchParams.get('payout') || u.searchParams.get('amount') || '0';
