@@ -128,6 +128,19 @@ export async function onRequestPost(context) {
     for (const k of ks) await env.PASSPORT.delete(k);
     return json({ ok: true, removed: ks.length });
   }
+  if (b.action === 'stats') {
+    if (email !== 'voxa.hq1@gmail.com') return json({ ok: false, error: 'Not allowed.' }, 403);
+    const pvKeys = await listAll(env, 'pv:');
+    const pvtKeys = await listAll(env, 'pvt:');
+    const signupKeys = await listAll(env, 'signup:');
+    const views = [];
+    for (const k of pvKeys.slice(-300)) { views.push({ key: k, n: Number((await env.PASSPORT.get(k)) || 0) }); }
+    const totals = [];
+    for (const k of pvtKeys.slice(-30)) { totals.push({ day: k.slice(4), n: Number((await env.PASSPORT.get(k)) || 0) }); }
+    const signups = [];
+    for (const k of signupKeys.slice(-50)) { const v = await env.PASSPORT.get(k); if (v) { try { signups.push(JSON.parse(v)); } catch (e) {} } }
+    return json({ ok: true, totals, views, signups });
+  }
   if (b.action === 'setplan') {
     // only the account that owns the product can switch a plan on by hand
     if (email !== 'voxa.hq1@gmail.com') return json({ ok: false, error: 'Not allowed.' }, 403);

@@ -83,7 +83,10 @@ export async function onRequestPost(context) {
     const sig = await hmac(secret(env), 's:' + email);
     const ws = await wsFor(env, email);
     const known = await env.PASSPORT.get('wowner:' + ws);
-    if (!known) await env.PASSPORT.put('wowner:' + ws, email);
+    if (!known) {
+      await env.PASSPORT.put('wowner:' + ws, email);
+      await env.PASSPORT.put('signup:' + Date.now() + ':' + email, JSON.stringify({ email, ts: Date.now(), ua: String(request.headers.get('user-agent') || '').slice(0, 120) }));
+    }
     const cookie = 'fc_session=' + encodeURIComponent(email) + '.' + sig + '; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=2592000';
     return json({ ok: true, email, ws: await wsFor(env, email) }, 200, { 'set-cookie': cookie });
   }
