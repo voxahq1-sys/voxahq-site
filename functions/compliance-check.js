@@ -16,7 +16,7 @@ async function sha256(s) {
 async function wsFor(env, email) { return (await hmac(secret(env), 'ws:' + email)).slice(0, 18); }
 async function rules(request) {
   if (CACHE) return CACHE;
-  const r = await fetch(new URL('/fabconvert/rules.json', request.url).toString(), { cf: { cacheTtl: 600 } });
+  const r = await fetch(new URL('/fabconvert/rules.json?v=4', request.url).toString(), { cf: { cacheTtl: 600 } });
   CACHE = await r.json();
   return CACHE;
 }
