@@ -49,6 +49,11 @@ export async function onRequestGet(context) {
   const plan = (await env.PASSPORT.get('plan:' + owner)) || 'free';
   const limit = plan === 'agency' ? 10000 : (plan === 'solo' ? 2000 : 50);
   const used = Number((await env.PASSPORT.get('u:' + w + ':' + month)) || 0);
+  const approvals = [];
+  for (const k of (await listAll(env, 'w:' + w + ':a:')).slice(-80)) {
+    const v = await env.PASSPORT.get(k);
+    if (v) { try { approvals.push(JSON.parse(v)); } catch (e) {} }
+  }
   const conv = [];
   for (const k of (await listAll(env, 'w:' + w + ':p:')).slice(-500)) {
     const v = await env.PASSPORT.get(k);
@@ -76,6 +81,7 @@ export async function onRequestGet(context) {
       epc: sales.length > 0 ? Math.round((revenue / sales.length) * 100) / 100 : 0
     },
     conversions: conv.sort((a, b) => b.ts - a.ts).slice(0, 100),
+    approvals: approvals.sort((a, b) => b.ts - a.ts).slice(0, 80),
     spend: spend.sort((a, b) => b.ts - a.ts).slice(0, 50)
   });
 }
@@ -102,6 +108,25 @@ export async function onRequestPost(context) {
     const raw = 'fc_' + Array.from(crypto.getRandomValues(new Uint8Array(18))).map(x => ('0' + x.toString(16)).slice(-2)).join('');
     await env.PASSPORT.put('key:' + await sha256(raw), email, { expirationTtl: 60 * 60 * 24 * 365 });
     return json({ ok: true, key: raw });
+  }
+  if (b.action === 'logapp') {
+    const rec = {
+      id: 'a' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+      ts: Date.now(),
+      when: new Date().toISOString().slice(0, 16).replace('T', ' '),
+      who: String(b.who || 'Reviewer').slice(0, 40),
+      ad: String(b.ad || '').slice(0, 140),
+      verdict: String(b.verdict || '').slice(0, 12),
+      decision: String(b.decision || 'Approved').slice(0, 20),
+      offer: String(b.offer || '').slice(0, 60)
+    };
+    await env.PASSPORT.put('w:' + w + ':a:' + rec.ts + '-' + rec.id, JSON.stringify(rec));
+    return json({ ok: true, saved: rec });
+  }
+  if (b.action === 'clearlog') {
+    const ks = await listAll(env, 'w:' + w + ':a:');
+    for (const k of ks) await env.PASSPORT.delete(k);
+    return json({ ok: true, removed: ks.length });
   }
   if (b.action === 'clear' || b.action === 'delete') {
     const keys = [...(await listAll(env, 'w:' + w + ':p:')), ...(await listAll(env, 'w:' + w + ':s:'))];
