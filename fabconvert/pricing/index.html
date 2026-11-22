@@ -77,6 +77,27 @@ footer a{display:block;margin-bottom:7px}
 </style>
 </head><body>
 <header><div class="wrap nav"><a class="logo" href="/fabconvert">FabConvert</a><div class="links"><div class="dd"><span>Features ▾</span><div class="ddmenu"><a href="/fabconvert/compliance/">Compliance check</a><a href="/fabconvert/landers/">Lander builder</a><a href="/fabconvert/profit/">Profit tracking</a><a href="/fabconvert/account/">Account and API</a></div></div><div class="dd"><span>Workflow ▾</span><div class="ddmenu"><a href="/fabconvert#workflow">See it</a><a href="/fabconvert#workflow">Check it</a><a href="/fabconvert#workflow">Build it</a><a href="/fabconvert#workflow">Measure it</a></div></div><a href="/fabconvert/pricing/">Pricing</a><a href="/fabconvert/postback-docs/">Docs</a></div><div class="navright"><a class="btn o" href="/fabconvert/login/">Log in</a><a class="btn w" href="/fabconvert/compliance/">Start free</a></div></div></header>
+<style>
+.dd{padding-bottom:12px;margin-bottom:-12px}
+.ddmenu{top:100%;margin-top:2px}
+.dd.open .ddmenu{display:block}
+</style>
+<script>
+(function(){
+  var dds = document.querySelectorAll(".dd");
+  dds.forEach(function(d){
+    var t = d.querySelector("span");
+    if(!t) return;
+    t.addEventListener("click", function(e){
+      e.preventDefault(); e.stopPropagation();
+      var was = d.classList.contains("open");
+      dds.forEach(function(x){ x.classList.remove("open"); });
+      if(!was) d.classList.add("open");
+    });
+  });
+  document.addEventListener("click", function(){ dds.forEach(function(x){ x.classList.remove("open"); }); });
+})();
+</script>
 <section><div class="wrap">
 <div class="eyebrow" style="color:var(--acc)">Pricing</div>
 <h1 style="font-size:42px;letter-spacing:-1.6px;color:var(--ink)">Pay for the volume you run.</h1>
