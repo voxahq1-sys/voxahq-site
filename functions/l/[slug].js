@@ -1,42 +1,69 @@
 // Public lander renderer: /l/<ws>-<slug>
-function pick(variants) {
-  const total = variants.reduce((a, v) => a + (v.weight || 1), 0);
-  let r = Math.random() * total;
-  for (let i = 0; i < variants.length; i++) { r -= (variants[i].weight || 1); if (r <= 0) return i; }
-  return 0;
-}
+function pick(vs) { const t = vs.reduce((a, v) => a + (v.weight || 1), 0); let r = Math.random() * t; for (let i = 0; i < vs.length; i++) { r -= (vs[i].weight || 1); if (r <= 0) return i; } return 0; }
 function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
 export async function onRequestGet(context) {
-  const { request, env, params } = context;
+  const { env, params } = context;
   if (!env.PASSPORT) return new Response('Not configured', { status: 500 });
-  const key = params.slug;
-  const raw = await env.PASSPORT.get('pub:' + key);
+  const raw = await env.PASSPORT.get('pub:' + params.slug);
   if (!raw) return new Response('<h1>Not found</h1>', { status: 404, headers: { 'content-type': 'text/html' } });
   const d = JSON.parse(raw);
   if (!d.variants || !d.variants.length) return new Response('<h1>Not found</h1>', { status: 404, headers: { 'content-type': 'text/html' } });
-  const vi = pick(d.variants);
-  const v = d.variants[vi];
-  const cta = '/lc?k=' + encodeURIComponent(key) + '&v=' + vi + '&to=' + encodeURIComponent(d.offer || '');
-  const bullets = (v.bullets || []).map(function (b) { return '<li>' + esc(b) + '</li>'; }).join('');
-  const isQuiz = d.template === 'quiz';
-  const isList = d.template === 'listicle';
-  const isCompare = d.template === 'comparison';
-  const badge = isQuiz ? 'Question 1 of 3' : (isList ? 'Editor pick' : (isCompare ? 'Comparison' : 'Sponsored review'));
-  const body = isQuiz
-    ? '<div class="card"><div class="badge">' + badge + '</div><h1>' + esc(v.headline) + '</h1><p class="sub">' + esc(v.sub) + '</p><div class="quiz">' + (v.bullets || []).map(function (b, i) { return '<div class="opt"><span>' + String.fromCharCode(65 + i) + '</span>' + esc(b) + '</div>'; }).join('') + '</div><a class="cta" href="' + cta + '">' + esc(v.cta) + '</a></div>'
-    : '<div class="card"><div class="badge">' + badge + '</div><h1>' + esc(v.headline) + '</h1><p class="sub">' + esc(v.sub) + '</p>' + (bullets ? '<ul>' + bullets + '</ul>' : '') + '<a class="cta" href="' + cta + '">' + esc(v.cta) + '</a></div>';
+  const vi = pick(d.variants), v = d.variants[vi];
+  const cta = '/lc?k=' + encodeURIComponent(params.slug) + '&v=' + vi + '&to=' + encodeURIComponent(d.offer || '');
+  const bullets = v.bullets || [];
+  const month = new Date().toLocaleString('en-US', { month: 'long', year: 'numeric' });
+  const read = Math.max(2, Math.round(((v.headline || '').split(' ').length + (v.sub || '').split(' ').length + bullets.join(' ').split(' ').length) / 120) + 2);
+  const hero = d.hero ? '<img class="hero" src="' + esc(d.hero) + '" alt="">' : '';
+  let inner = '';
+  if (d.template === 'quiz') {
+    inner = '<span class="pill">Question 1 of 3</span><h1>' + esc(v.headline) + '</h1><p class="sub">' + esc(v.sub) + '</p>'
+      + '<div class="quiz">' + bullets.map(function (b, i) { return '<button class="opt" data-i="' + i + '"><span>' + String.fromCharCode(65 + i) + '</span>' + esc(b) + '</button>'; }).join('') + '</div>'
+      + '<a class="cta" href="' + cta + '">' + esc(v.cta) + '</a><p class="fine">No sign-up needed to see the next step.</p>';
+  } else if (d.template === 'listicle') {
+    inner = '<span class="pill">' + bullets.length + ' things</span><h1>' + esc(v.headline) + '</h1><p class="sub">' + esc(v.sub) + '</p>'
+      + '<ol class="list">' + bullets.map(function (b) { return '<li>' + esc(b) + '</li>'; }).join('') + '</ol>'
+      + '<a class="cta" href="' + cta + '">' + esc(v.cta) + '</a>';
+  } else if (d.template === 'comparison') {
+    inner = '<span class="pill">Comparison</span><h1>' + esc(v.headline) + '</h1><p class="sub">' + esc(v.sub) + '</p>'
+      + '<table class="cmp"><thead><tr><th></th><th>This</th><th>Typical</th></tr></thead><tbody>'
+      + bullets.map(function (b) { const parts = b.split('|'); return '<tr><td>' + esc(parts[0] || '') + '</td><td class="yes">' + esc(parts[1] || 'Yes') + '</td><td class="no">' + esc(parts[2] || '') + '</td></tr>'; }).join('')
+      + '</tbody></table><a class="cta" href="' + cta + '">' + esc(v.cta) + '</a>';
+  } else {
+    inner = '<span class="pill">Sponsored review</span><h1>' + esc(v.headline) + '</h1>'
+      + '<div class="byline">By the ' + esc(d.brand || 'editorial') + ' team · ' + month + ' · ' + read + ' min read</div>'
+      + hero + '<p class="sub">' + esc(v.sub) + '</p>'
+      + (bullets.length ? '<ul class="ticks">' + bullets.map(function (b) { return '<li>' + esc(b) + '</li>'; }).join('') + '</ul>' : '')
+      + '<a class="cta" href="' + cta + '">' + esc(v.cta) + '</a><p class="fine">Claims on this page must match the offer. Results vary by person.</p>';
+  }
   const html = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>' + esc(v.headline) + '</title>'
-    + '<style>body{margin:0;background:#F7F6F3;font:17px/1.65 Inter,system-ui,-apple-system,sans-serif;color:#14181F}'
-    + '.wrap{max-width:680px;margin:0 auto;padding:22px 18px 60px}.top{display:flex;align-items:center;gap:10px;padding:10px 0 18px;font-size:13px;color:#6B7280}'
-    + '.dot{width:22px;height:22px;border-radius:6px;background:' + d.accent + '}.card{background:#fff;border:1px solid #E6E3DB;border-radius:16px;padding:24px}'
-    + '.badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:' + d.accent + ';background:#F2F8F6;padding:5px 10px;border-radius:999px;margin-bottom:14px}'
-    + 'h1{font-size:27px;line-height:1.25;letter-spacing:-.6px;margin:0 0 12px}p.sub{color:#4B5563;margin:0 0 16px}'
-    + 'ul{margin:0 0 18px 18px;color:#374151}li{margin-bottom:7px}'
-    + '.quiz{display:grid;gap:10px;margin:0 0 18px}.opt{display:flex;gap:10px;align-items:center;border:1px solid #E6E3DB;border-radius:12px;padding:12px 14px;font-size:15.5px}'
-    + '.opt span{width:24px;height:24px;border-radius:50%;background:#F2F8F6;color:' + d.accent + ';font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center}'
-    + 'a.cta{display:block;text-align:center;background:' + d.accent + ';color:#fff;text-decoration:none;font-weight:700;padding:16px;border-radius:12px;font-size:17px}'
-    + '.fine{margin-top:14px;font-size:12px;color:#9CA3AF;line-height:1.5}</style></head><body><div class="wrap">'
-    + '<div class="top"><span class="dot"></span><span>' + esc(d.brand || '') + '</span></div>' + body
-    + '<div class="fine">This page was built with FabConvert. Claims must match the offer. Results vary.</div></div></body></html>';
+    + '<style>*{box-sizing:border-box}body{margin:0;background:#F6F5F1;color:#141821;font:17px/1.7 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}'
+    + '.wrap{max-width:660px;margin:0 auto;padding:16px 18px 70px}'
+    + '.top{display:flex;align-items:center;gap:10px;padding:8px 0 16px;font-size:13.5px;color:#6B7280;font-weight:600}'
+    + '.dot{width:24px;height:24px;border-radius:7px;background:' + d.accent + ';flex:none}'
+    + '.card{background:#fff;border:1px solid #E7E3DA;border-radius:18px;padding:26px 24px;box-shadow:0 1px 2px rgba(16,24,40,.04)}'
+    + '.pill{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:' + d.accent + ';background:#F1F8F5;padding:6px 11px;border-radius:999px;margin-bottom:16px}'
+    + 'h1{font-size:30px;line-height:1.22;letter-spacing:-.8px;margin:0 0 12px;font-weight:800}'
+    + '.byline{font-size:13px;color:#8A93A0;margin:0 0 18px}'
+    + 'p.sub{color:#495260;margin:0 0 20px;font-size:17.5px}'
+    + 'img.hero{width:100%;height:auto;border-radius:14px;margin:4px 0 20px;display:block}'
+    + 'ul.ticks{list-style:none;margin:0 0 22px;padding:0}ul.ticks li{position:relative;padding-left:28px;margin-bottom:10px;color:#374151}'
+    + 'ul.ticks li:before{content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;background:#E8F5F0}'
+    + 'ul.ticks li:after{content:"";position:absolute;left:5px;top:11px;width:6px;height:3px;border-left:2px solid ' + d.accent + ';border-bottom:2px solid ' + d.accent + ';transform:rotate(-45deg)}'
+    + 'ol.list{margin:0 0 22px 22px;color:#374151}ol.list li{margin-bottom:10px;padding-left:4px}'
+    + '.quiz{display:grid;gap:10px;margin:0 0 20px}'
+    + '.opt{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:1px solid #E7E3DA;border-radius:12px;padding:14px 16px;font:inherit;font-size:16px;background:#fff;cursor:pointer;transition:.15s}'
+    + '.opt:hover{border-color:' + d.accent + ';background:#FAFDFB}.opt.sel{border-color:' + d.accent + ';background:#F1F8F5}'
+    + '.opt span{width:26px;height:26px;border-radius:50%;background:#F1F8F5;color:' + d.accent + ';font-weight:800;font-size:12.5px;display:flex;align-items:center;justify-content:center;flex:none}'
+    + 'a.cta{display:block;text-align:center;background:' + d.accent + ';color:#fff;text-decoration:none;font-weight:700;padding:17px;border-radius:13px;font-size:17.5px;box-shadow:0 8px 20px rgba(14,124,102,.18)}'
+    + 'table.cmp{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:15px}'
+    + 'table.cmp th{text-align:left;font-size:11px;letter-spacing:.7px;text-transform:uppercase;color:#8A93A0;padding:8px 6px;border-bottom:1px solid #E7E3DA}'
+    + 'table.cmp td{padding:10px 6px;border-bottom:1px solid #F0EDE6;color:#374151}'
+    + 'table.cmp td.yes{color:' + d.accent + ';font-weight:700}table.cmp td.no{color:#9AA3AF}'
+    + '.fine{margin-top:16px;font-size:12px;color:#9AA3AF;line-height:1.55}'
+    + '@media(max-width:520px){h1{font-size:25px}.card{padding:22px 18px}a.cta{position:sticky;bottom:12px}}'
+    + '</style></head><body><div class="wrap"><div class="top"><span class="dot"></span><span>' + esc(d.brand || '') + '</span></div><div class="card">' + inner + '</div>'
+    + '<div class="fine">Built with FabConvert. This page is not indexed and carries no third-party trackers.</div></div>'
+    + '<script>document.querySelectorAll(".opt").forEach(function(b){b.addEventListener("click",function(){document.querySelectorAll(".opt").forEach(function(x){x.classList.remove("sel")});b.classList.add("sel");});});</script>'
+    + '</body></html>';
   return new Response(html, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' } });
 }

@@ -46,7 +46,8 @@ button.danger{background:#fff;border:1px solid #F0CFCB;color:var(--red)}
 <div><label>Brand line</label><input id="brand" placeholder="Your brand"></div>
 </div>
 <div class="row">
-<div><label>Offer URL (where the button goes)</label><input id="offer" placeholder="https://network.com/offer?aff=123"></div>
+<div><label>Offer URL (where the button goes)</label><input id="offer" placeholder="https://network.com/offer?aff=123">
+<label>Hero image URL (optional)</label><input id="hero" placeholder="https://yoursite.com/image.jpg"></div>
 <div><label>Accent colour</label><input id="accent" value="#0E7C66"></div>
 </div>
 
@@ -91,11 +92,11 @@ function collect(){
     if (!h) continue;
     variants.push({headline:h, sub:$('s'+i).value.trim(), bullets:lines($('bl'+i).value), cta:$('c'+i).value.trim()||'See the offer', weight:Number($('w'+i).value)||50});
   }
-  return {name:$('name').value.trim(), template:$('template').value, brand:$('brand').value.trim(), offer:$('offer').value.trim(), accent:$('accent').value.trim(), variants:variants, slug:CUR?CUR.slug:''};
+  return {name:$('name').value.trim(), template:$('template').value, brand:$('brand').value.trim(), offer:$('offer').value.trim(), hero:$('hero').value.trim(), accent:$('accent').value.trim(), variants:variants, slug:CUR?CUR.slug:''};
 }
 function fill(d){
   $('name').value=d?d.name:''; $('template').value=d?d.template:'advertorial'; $('brand').value=d?d.brand:'';
-  $('offer').value=d?d.offer:''; $('accent').value=d?(d.accent||'#0E7C66'):'#0E7C66';
+  $('offer').value=d?d.offer:''; $('hero').value=d?(d.hero||''):''; $('accent').value=d?(d.accent||'#0E7C66'):'#0E7C66';
   for (var i=0;i<3;i++){
     var v = d && d.variants && d.variants[i];
     $('h'+i).value = v?v.headline:''; $('s'+i).value = v?v.sub:''; $('bl'+i).value = v?(v.bullets||[]).join('\n'):'';

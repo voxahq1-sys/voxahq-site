@@ -78,6 +78,7 @@ export async function onRequestPost(context) {
     brand: String(b.brand || '').slice(0, 60),
     accent: /^#[0-9a-fA-F]{6}$/.test(b.accent || '') ? b.accent : '#0E7C66',
     offer: String(b.offer || '').slice(0, 600),
+    hero: String(b.hero || '').slice(0, 400),
     variants,
     updated: Date.now(),
     created: Date.now()
