@@ -128,6 +128,17 @@ export async function onRequestPost(context) {
     for (const k of ks) await env.PASSPORT.delete(k);
     return json({ ok: true, removed: ks.length });
   }
+  if (b.action === 'setplan') {
+    // only the account that owns the product can switch a plan on by hand
+    if (email !== 'voxa.hq1@gmail.com') return json({ ok: false, error: 'Not allowed.' }, 403);
+    const target = String(b.email || '').trim().toLowerCase();
+    const pl = String(b.plan || 'free').toLowerCase();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(target)) return json({ ok: false, error: 'Send a valid email.' }, 400);
+    if (['free', 'solo', 'agency'].indexOf(pl) === -1) return json({ ok: false, error: 'Plan must be free, solo or agency.' }, 400);
+    const tOwner = (await env.PASSPORT.get('member:' + target)) || target;
+    await env.PASSPORT.put('plan:' + tOwner, pl);
+    return json({ ok: true, email: target, plan: pl });
+  }
   if (b.action === 'clear' || b.action === 'delete') {
     const keys = [...(await listAll(env, 'w:' + w + ':p:')), ...(await listAll(env, 'w:' + w + ':s:'))];
     for (const k of keys) await env.PASSPORT.delete(k);
