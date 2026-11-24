@@ -47,7 +47,7 @@ export async function onRequestGet(context) {
   const w = await wsFor(env, owner);
   const month = new Date().toISOString().slice(0, 7);
   const plan = (await env.PASSPORT.get('plan:' + owner)) || 'free';
-  const limit = plan === 'agency' ? 10000 : (plan === 'solo' ? 2000 : 50);
+  const limit = plan === 'agency' ? 15000 : (plan === 'team' ? 6000 : (plan === 'solo' ? 2000 : 50));
   const used = Number((await env.PASSPORT.get('u:' + w + ':' + month)) || 0);
   const approvals = [];
   for (const k of (await listAll(env, 'w:' + w + ':a:')).slice(-80)) {
@@ -150,7 +150,7 @@ export async function onRequestPost(context) {
     const target = String(b.email || '').trim().toLowerCase();
     const pl = String(b.plan || 'free').toLowerCase();
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(target)) return json({ ok: false, error: 'Send a valid email.' }, 400);
-    if (['free', 'solo', 'agency'].indexOf(pl) === -1) return json({ ok: false, error: 'Plan must be free, solo or agency.' }, 400);
+    if (['free', 'solo', 'team', 'agency'].indexOf(pl) === -1) return json({ ok: false, error: 'Plan must be free, solo, team or agency.' }, 400);
     const tOwner = (await env.PASSPORT.get('member:' + target)) || target;
     await env.PASSPORT.put('plan:' + tOwner, pl);
     return json({ ok: true, email: target, plan: pl });

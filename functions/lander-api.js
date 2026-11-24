@@ -119,7 +119,7 @@ export async function onRequestPost(context) {
   if (!existing) {
     const own = (await env.PASSPORT.get('wowner:' + ws)) || '';
     const pl = (await env.PASSPORT.get('plan:' + own)) || 'free';
-    const cap = pl === 'agency' ? 0 : (pl === 'solo' ? 10 : 1);
+    const cap = pl === 'agency' ? 0 : (pl === 'team' ? 30 : (pl === 'solo' ? 10 : 1));
     if (cap > 0) {
       let n = 0, cur;
       for (let li = 0; li < 5; li++) {
