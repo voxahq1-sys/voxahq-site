@@ -19,6 +19,10 @@ export async function onRequestGet(context) {
   let p = String(u.searchParams.get('p') || '/').slice(0, 120);
   if (p.indexOf('/fabconvert') !== 0) p = '/fabconvert' + (p === '/' ? '/' : p);
   const ref = String(u.searchParams.get('r') || 'direct').slice(0, 120);
+  const ua = String(request.headers.get('user-agent') || '');
+  if (/bot|crawler|spider|Mediapartners|AdsBot|Google-InspectionTool|preview|headless|lighthouse|curl|wget|python-requests/i.test(ua)) {
+    return json({ ok: true, counted: false, bot: true });
+  }
   let outcome = 'ok';
   try {
     const day = new Date().toISOString().slice(0, 10);
