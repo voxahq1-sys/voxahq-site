@@ -78,4 +78,35 @@ footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 <h2 style="margin-top:44px">Order ahead</h2><p class="sub">Send the order and we will have it on the bar when you walk in.</p>
 <form onsubmit="event.preventDefault();var b=this.querySelector('button');b.textContent='Sent. We reply today.';b.disabled=true;"><input placeholder="Your name" required><input type="email" placeholder="Email" required><textarea rows="3" placeholder="What would you like?"></textarea><button class="btn" type="submit">Send the order</button></form></div></section>
 <footer><div class="wrap"><div>Ember &amp; Oak Coffee · East Austin</div><div>Sample site · built by VOXA · voxahq.in</div></div></footer>
+
+<style>
+.beanfield{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.bean{position:absolute;width:14px;height:20px;border-radius:50% 50% 48% 48%/60% 60% 40% 40%;background:radial-gradient(circle at 34% 28%,#C89B6E,#5B3A22 75%);opacity:.28;animation:fall linear infinite}
+.bean:after{content:"";position:absolute;left:50%;top:12%;width:1.5px;height:76%;background:rgba(20,12,8,.55);transform:translateX(-50%)}
+@keyframes fall{0%{transform:translateY(-12vh) rotate(0)}100%{transform:translateY(112vh) rotate(320deg)}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+.cup{animation:tilt 9s ease-in-out infinite}
+@keyframes tilt{0%,100%{transform:translateZ(60px) rotateY(-6deg)}50%{transform:translateZ(80px) rotateY(6deg) rotateX(-3deg)}}
+.stage{transition:transform .25s ease-out}
+</style>
+<div class="beanfield" id="beanfield"></div>
+<script>
+(function(){
+  var f=document.getElementById('beanfield');if(!f)return;
+  for(var i=0;i<11;i++){var b=document.createElement('div');b.className='bean';
+    b.style.left=(Math.random()*100)+'%';b.style.animationDuration=(9+Math.random()*10)+'s';
+    b.style.animationDelay=(-Math.random()*16)+'s';b.style.transform='scale('+(0.6+Math.random()*0.9)+')';
+    f.appendChild(b);}
+  var st=document.querySelector('.stage');
+  if(st&&window.matchMedia('(min-width:900px)').matches){
+    document.addEventListener('mousemove',function(e){
+      var x=(e.clientX/window.innerWidth-0.5), y=(e.clientY/window.innerHeight-0.5);
+      st.style.transform='rotateY('+(-14+x*12)+'deg) rotateX('+(6-y*10)+'deg)';
+    });
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting)en.target.classList.add('in');});},{threshold:.15});
+  document.querySelectorAll('section,.about,.item').forEach(function(el){el.classList.add('reveal');io.observe(el);});
+})();
+</script>
 </body></html>
