@@ -116,6 +116,21 @@ export async function onRequestPost(context) {
   if (!variants.length) return json({ ok: false, error: 'Add at least one variant.' }, 400);
   if (!/^https?:\/\/[^\s]+/i.test(String(b.offer || ''))) return json({ ok: false, error: 'Add the offer link. It must start with http:// or https:// so the button can send people somewhere.' }, 400);
   const existing = await env.PASSPORT.get('lander:' + ws + ':' + slug).catch(() => null);
+  if (!existing) {
+    const own = (await env.PASSPORT.get('wowner:' + ws)) || '';
+    const pl = (await env.PASSPORT.get('plan:' + own)) || 'free';
+    const cap = pl === 'agency' ? 0 : (pl === 'solo' ? 10 : 1);
+    if (cap > 0) {
+      let n = 0, cur;
+      for (let li = 0; li < 5; li++) {
+        const res = await env.PASSPORT.list({ prefix: 'lander:' + ws + ':', cursor: cur, limit: 1000 });
+        n += res.keys.length;
+        if (res.list_complete) break;
+        cur = res.cursor;
+      }
+      if (n >= cap) return json({ ok: false, error: 'Your plan hosts ' + cap + ' lander' + (cap === 1 ? '' : 's') + '. Delete one, or move up a plan for more.' }, 402);
+    }
+  }
   let prevPub = null;
   try { if (existing) prevPub = JSON.parse(existing).pub || null; } catch (e) {}
   const pub = prevPub || (Math.random().toString(36).slice(2, 8) + Math.random().toString(36).slice(2, 8));
